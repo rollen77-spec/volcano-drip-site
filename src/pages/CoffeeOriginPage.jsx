@@ -273,6 +273,7 @@ const CoffeeOriginPage = ({ originKey }) => {
               <div className="flex flex-col items-center justify-center w-full max-w-md mx-auto">
                  {ECWID_PRODUCT_BY_ORIGIN[originKey] ? (
                    <EcwidPurchaseButton
+                     variant="origin"
                      productId={ECWID_PRODUCT_BY_ORIGIN[originKey]}
                      productPageUrl={originKey === 'guatemala' ? ECWID_GUATEMALA_PRODUCT_URL : ''}
                    />
