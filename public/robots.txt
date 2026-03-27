@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://volcanodrip.com/sitemap.xml
