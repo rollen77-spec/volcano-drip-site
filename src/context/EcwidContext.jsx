@@ -4,6 +4,7 @@ import { ECWID_STORE_ID } from '@/config/ecwid';
 const EcwidContext = createContext({
   ready: false,
   openCart: () => {},
+  openProduct: () => {},
 });
 
 const SCRIPT_ID = 'ecwid-script-code';
@@ -45,7 +46,19 @@ export function EcwidProvider({ children }) {
     }
   }, []);
 
-  const value = useMemo(() => ({ ready, openCart }), [ready, openCart]);
+  const openProduct = useCallback((productId) => {
+    if (!productId || typeof window === 'undefined' || !window.Ecwid?.openPage) {
+      return;
+    }
+    const id = Number.parseInt(String(productId), 10);
+    if (Number.isNaN(id)) return;
+    window.Ecwid.openPage('product', { id });
+  }, []);
+
+  const value = useMemo(
+    () => ({ ready, openCart, openProduct }),
+    [ready, openCart, openProduct]
+  );
 
   return (
     <EcwidContext.Provider value={value}>{children}</EcwidContext.Provider>

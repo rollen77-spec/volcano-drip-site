@@ -22,6 +22,13 @@ export const ECWID_PRODUCT_BY_ORIGIN = {
   'honduras': import.meta.env.VITE_ECWID_PRODUCT_HONDURAS || '',
 };
 
+/**
+ * Full URL to Antigua Ember on Ecwid (Catalog → product → open in browser → copy address bar).
+ * Used for the home tile button and Shop → Guatemala. Opens in a new tab.
+ */
+export const ECWID_GUATEMALA_PRODUCT_URL =
+  import.meta.env.VITE_ECWID_GUATEMALA_PRODUCT_URL || '';
+
 /** Subscription / club product in Ecwid (for the subscription page embed). */
 export const ECWID_SUBSCRIPTION_PRODUCT_ID =
   import.meta.env.VITE_ECWID_SUBSCRIPTION_PRODUCT_ID || '';
