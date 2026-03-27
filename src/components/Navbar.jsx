@@ -6,12 +6,9 @@ import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { useEcwid } from '@/context/EcwidContext';
-import { ECWID_GUATEMALA_PRODUCT_URL, ECWID_PRODUCT_BY_ORIGIN } from '@/config/ecwid';
-
-const GUATEMALA_HREF = '/origins/guatemala';
 
 const Navbar = () => {
-  const { openCart, openProduct } = useEcwid();
+  const { openCart } = useEcwid();
   const originLinks = [{
     href: '/origins/costa-rica',
     label: 'Costa Rica'
@@ -64,39 +61,11 @@ const Navbar = () => {
                   Shop all
                 </Link>
               </DropdownMenuItem>
-              {originLinks.map(link =>
-                link.href === GUATEMALA_HREF ? (
-                  ECWID_GUATEMALA_PRODUCT_URL ? (
-                    <DropdownMenuItem key={link.href} asChild>
-                      <a
-                        href={ECWID_GUATEMALA_PRODUCT_URL}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="cursor-pointer text-stone-600 focus:text-stone-900 focus:bg-stone-100"
-                      >
-                        {link.label}
-                      </a>
-                    </DropdownMenuItem>
-                  ) : (
-                    <DropdownMenuItem
-                      key={link.href}
-                      className="cursor-pointer text-stone-600 focus:text-stone-900 focus:bg-stone-100"
-                      onSelect={() => openProduct(ECWID_PRODUCT_BY_ORIGIN.guatemala)}
-                    >
-                      {link.label}
-                    </DropdownMenuItem>
-                  )
-                ) : (
-                  <DropdownMenuItem key={link.href} asChild>
-                    <Link
-                      to={link.href}
-                      className="cursor-pointer text-stone-600 focus:text-stone-900 focus:bg-stone-100"
-                    >
-                      {link.label}
-                    </Link>
-                  </DropdownMenuItem>
-                )
-              )}
+              {originLinks.map(link => <DropdownMenuItem key={link.href} asChild>
+                  <Link to={link.href} className="cursor-pointer text-stone-600 focus:text-stone-900 focus:bg-stone-100">
+                    {link.label}
+                  </Link>
+                </DropdownMenuItem>)}
             </DropdownMenuContent>
           </DropdownMenu>
 
@@ -135,38 +104,11 @@ const Navbar = () => {
                         Shop all
                       </Link>
                     </SheetClose>
-                    {originLinks.map(link =>
-                      link.href === GUATEMALA_HREF ? (
-                        ECWID_GUATEMALA_PRODUCT_URL ? (
-                          <SheetClose asChild key={link.href}>
-                            <a
-                              href={ECWID_GUATEMALA_PRODUCT_URL}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-lg text-stone-600 hover:text-stone-900"
-                            >
-                              {link.label}
-                            </a>
-                          </SheetClose>
-                        ) : (
-                          <SheetClose asChild key={link.href}>
-                            <button
-                              type="button"
-                              className="text-lg text-left w-full text-stone-600 hover:text-stone-900"
-                              onClick={() => openProduct(ECWID_PRODUCT_BY_ORIGIN.guatemala)}
-                            >
-                              {link.label}
-                            </button>
-                          </SheetClose>
-                        )
-                      ) : (
-                        <SheetClose asChild key={link.href}>
-                          <Link to={link.href} onClick={() => window.scrollTo(0, 0)} className="text-lg text-stone-600 hover:text-stone-900">
-                            {link.label}
-                          </Link>
-                        </SheetClose>
-                      )
-                    )}
+                    {originLinks.map(link => <SheetClose asChild key={link.href}>
+                         <Link to={link.href} onClick={() => window.scrollTo(0, 0)} className="text-lg text-stone-600 hover:text-stone-900">
+                          {link.label}
+                        </Link>
+                      </SheetClose>)}
                   </div>
                 </div>
 

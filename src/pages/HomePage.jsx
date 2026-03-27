@@ -7,11 +7,10 @@ import { Button } from '@/components/ui/button';
 import WelcomeMessage from '@/components/WelcomeMessage';
 import CallToAction from '@/components/CallToAction';
 import { ECWID_GUATEMALA_PRODUCT_URL, ECWID_PRODUCT_BY_ORIGIN } from '@/config/ecwid';
-import { useEcwid } from '@/context/EcwidContext';
+import EcwidPurchaseButton from '@/components/EcwidPurchaseButton';
 import { Link } from 'react-router-dom';
 
 const HomePage = () => {
-  const { openProduct } = useEcwid();
   const features = [{
     icon: <img src="https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/volcano-drip-icon-flame-orange-for-ui-and-web-elements-a3vCm.png" alt="Burgundy Flame" className="w-8 h-8 object-contain" />,
     title: "Born of Fire",
@@ -162,7 +161,7 @@ const HomePage = () => {
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {/* Antigua Ember with Ecwid Embed */}
+              {/* Antigua Ember — Add to cart (same flow as origin page) */}
               <motion.div 
                 initial={{ opacity: 0, y: 20 }} 
                 whileInView={{ opacity: 1, y: 0 }} 
@@ -211,28 +210,10 @@ const HomePage = () => {
                   </div>
 
                   <div className="mt-auto flex gap-3">
-                    {ECWID_GUATEMALA_PRODUCT_URL ? (
-                      <Button
-                        asChild
-                        className="w-full bg-white hover:bg-stone-200 text-stone-900 font-bold h-10 rounded-none transition-colors"
-                      >
-                        <a
-                          href={ECWID_GUATEMALA_PRODUCT_URL}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          View Details
-                        </a>
-                      </Button>
-                    ) : (
-                      <Button
-                        type="button"
-                        className="w-full bg-white hover:bg-stone-200 text-stone-900 font-bold h-10 rounded-none transition-colors"
-                        onClick={() => openProduct(ECWID_PRODUCT_BY_ORIGIN.guatemala)}
-                      >
-                        View Details
-                      </Button>
-                    )}
+                    <EcwidPurchaseButton
+                      productId={ECWID_PRODUCT_BY_ORIGIN.guatemala}
+                      productPageUrl={ECWID_GUATEMALA_PRODUCT_URL}
+                    />
                   </div>
                 </div>
               </motion.div>

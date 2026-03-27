@@ -7,8 +7,8 @@ import { Button } from '@/components/ui/button';
 import { Helmet } from 'react-helmet';
 import { useToast } from '@/components/ui/use-toast';
 import MasonryGallery from '@/components/MasonryGallery';
-import EcwidProduct from '@/components/EcwidProduct';
-import { ECWID_PRODUCT_BY_ORIGIN } from '@/config/ecwid';
+import EcwidPurchaseButton from '@/components/EcwidPurchaseButton';
+import { ECWID_GUATEMALA_PRODUCT_URL, ECWID_PRODUCT_BY_ORIGIN } from '@/config/ecwid';
 
 const originData = {
   'costa-rica': {
@@ -270,11 +270,11 @@ const CoffeeOriginPage = ({ originKey }) => {
             </div>
             
             <div className="border-t border-stone-200 pt-8">
-              <div className="flex flex-col items-center justify-center">
+              <div className="flex flex-col items-center justify-center w-full max-w-md mx-auto">
                  {ECWID_PRODUCT_BY_ORIGIN[originKey] ? (
-                   <EcwidProduct
+                   <EcwidPurchaseButton
                      productId={ECWID_PRODUCT_BY_ORIGIN[originKey]}
-                     productName={data.title}
+                     productPageUrl={originKey === 'guatemala' ? ECWID_GUATEMALA_PRODUCT_URL : ''}
                    />
                  ) : (
                    <Button onClick={handleNotAvailable} className="bg-amber-600 hover:bg-amber-700 text-white font-bold h-12 px-8 rounded-none min-w-[160px]">
