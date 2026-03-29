@@ -20,20 +20,18 @@ import {
 } from '@/config/ecwid';
 
 /**
- * Same visual frame for every tile: square viewport + object-contain so portrait (Inca),
- * landscape (Volcanic lineup), and bag shots (Copán) all read at consistent scale.
+ * Square media block (shorter than 4/5) so less empty area; image uses almost full width
+ * with tight padding — object-contain keeps aspect, portrait/landscape stay consistent.
  */
 function ProductTileMedia({ to, src, alt }) {
   return (
-    <Link to={to} className="block relative aspect-[4/5] overflow-hidden bg-white/5">
-      <div className="absolute inset-0 flex items-center justify-center p-3 sm:p-4">
-        <div className="flex aspect-square w-[min(100%,11.25rem)] sm:w-[min(100%,13.25rem)] shrink-0 items-center justify-center">
-          <img
-            src={src}
-            alt={alt}
-            className="h-full w-full object-contain object-center transition-transform duration-700 group-hover:scale-110"
-          />
-        </div>
+    <Link to={to} className="block relative aspect-square overflow-hidden bg-white/5">
+      <div className="absolute inset-0 flex items-center justify-center p-2 sm:p-2.5">
+        <img
+          src={src}
+          alt={alt}
+          className="h-full w-full object-contain object-center transition-transform duration-700 group-hover:scale-110"
+        />
       </div>
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-stone-900 via-transparent to-transparent opacity-60" />
     </Link>
@@ -383,7 +381,7 @@ const HomePage = () => {
               >
                 <ProductTileMedia
                   to="/origins/honduras"
-                  src="https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/0a7b694158eaebf3da40563c01636036.png"
+                  src="/copan-rise-front.png"
                   alt="Copán Rise Honduras coffee bag"
                 />
                 <div className="p-6 flex flex-col flex-grow">
