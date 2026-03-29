@@ -20,19 +20,18 @@ import {
 } from '@/config/ecwid';
 
 /**
- * Square media block (shorter than 4/5) so less empty area; image uses almost full width
- * with tight padding — object-contain keeps aspect, portrait/landscape stay consistent.
+ * Every tile uses the same square frame. object-cover + center fills the cell uniformly
+ * (Antigua / Sumatra / Copán style) so portrait, landscape, or wide lineup shots don’t
+ * leave mismatched letterboxing vs other cards.
  */
 function ProductTileMedia({ to, src, alt }) {
   return (
-    <Link to={to} className="block relative aspect-square overflow-hidden bg-white/5">
-      <div className="absolute inset-0 flex items-center justify-center p-2 sm:p-2.5">
-        <img
-          src={src}
-          alt={alt}
-          className="h-full w-full object-contain object-center transition-transform duration-700 group-hover:scale-110"
-        />
-      </div>
+    <Link to={to} className="block relative aspect-square overflow-hidden bg-stone-950/80">
+      <img
+        src={src}
+        alt={alt}
+        className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+      />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-stone-900 via-transparent to-transparent opacity-60" />
     </Link>
   );
