@@ -9,10 +9,10 @@ import CallToAction from '@/components/CallToAction';
 import {
   ECWID_GUATEMALA_PRODUCT_URL,
   ECWID_HONDURAS_PRODUCT_URL,
+  ECWID_PERU_PRODUCT_URL,
   ECWID_PRODUCT_BY_ORIGIN,
 } from '@/config/ecwid';
 import EcwidPurchaseButton from '@/components/EcwidPurchaseButton';
-import EcwidIncaAscentHomeEmbed from '@/components/EcwidIncaAscentHomeEmbed';
 import { Link } from 'react-router-dom';
 
 const HomePage = () => {
@@ -165,7 +165,7 @@ const HomePage = () => {
               </div>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {/* Antigua Ember — Add to cart (same flow as origin page) */}
               <motion.div 
                 initial={{ opacity: 0, y: 20 }} 
@@ -398,7 +398,7 @@ const HomePage = () => {
                 </div>
               </motion.div>
 
-              {/* Inca Ascent (Peru) — Ecwid product browser on home tile only */}
+              {/* Inca Ascent (Peru) — same Ecwid purchase flow as Guatemala / Honduras */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -438,7 +438,7 @@ const HomePage = () => {
                     <div className="flex flex-col items-center text-center gap-1 border-l border-stone-800">
                       <Flame className="w-4 h-4 text-amber-600 mb-1" />
                       <span className="text-[10px] text-stone-500 uppercase">Roast</span>
-                      <span className="text-xs font-medium text-stone-300">Light-Med</span>
+                      <span className="text-[11px] font-medium text-stone-300 leading-tight">Light-Med</span>
                     </div>
                     <div className="flex flex-col items-center text-center gap-1 border-l border-stone-800">
                       <Coffee className="w-4 h-4 text-amber-600 mb-1" />
@@ -447,8 +447,70 @@ const HomePage = () => {
                     </div>
                   </div>
 
-                  <div className="mt-auto w-full min-w-0">
-                    <EcwidIncaAscentHomeEmbed />
+                  <div className="mt-auto flex gap-3">
+                    <EcwidPurchaseButton
+                      productId={ECWID_PRODUCT_BY_ORIGIN.peru}
+                      productPageUrl={ECWID_PERU_PRODUCT_URL}
+                    />
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Volcanic Origins — subscription box (same tile style as Costa Rica / Indonesia) */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5 }}
+                className="group relative h-full flex flex-col bg-stone-900 border border-stone-800 overflow-hidden shadow-lg"
+              >
+                <Link to="/subscription" className="block relative aspect-[4/5] overflow-hidden bg-white/5">
+                  <img
+                    src="https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/hero-2-jTlVw.png"
+                    alt="Volcanic Origins subscription box of coffee beans"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-stone-900 via-transparent to-transparent opacity-60" />
+                </Link>
+                <div className="p-6 flex flex-col flex-grow">
+                  <div className="mb-4">
+                    <Link to="/subscription" className="block group-hover:text-amber-500 transition-colors">
+                      <h3 className="text-xl font-bold text-white mb-1 leading-tight">Volcanic Origins</h3>
+                    </Link>
+                    <p className="text-stone-400 text-sm">Subscription · Four volcanic origins</p>
+                  </div>
+
+                  <div className="mb-6">
+                    <h4 className="text-[10px] uppercase text-stone-500 font-bold mb-2 tracking-widest">Tasting Notes</h4>
+                    <div className="flex flex-wrap gap-2 text-sm text-stone-300 font-medium">
+                      <span>Variety •</span><span>Discovery •</span><span>Seasonal</span>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-3 gap-2 py-4 border-t border-stone-800 mb-6 mt-auto">
+                    <div className="flex flex-col items-center text-center gap-1">
+                      <Mountain className="w-4 h-4 text-amber-600 mb-1" />
+                      <span className="text-[10px] text-stone-500 uppercase">Origins</span>
+                      <span className="text-xs font-medium text-stone-300">4 / yr</span>
+                    </div>
+                    <div className="flex flex-col items-center text-center gap-1 border-l border-stone-800">
+                      <Flame className="w-4 h-4 text-amber-600 mb-1" />
+                      <span className="text-[10px] text-stone-500 uppercase">Roast</span>
+                      <span className="text-xs font-medium text-stone-300">Mixed</span>
+                    </div>
+                    <div className="flex flex-col items-center text-center gap-1 border-l border-stone-800">
+                      <Coffee className="w-4 h-4 text-amber-600 mb-1" />
+                      <span className="text-[10px] text-stone-500 uppercase">Body</span>
+                      <span className="text-xs font-medium text-stone-300">Varied</span>
+                    </div>
+                  </div>
+
+                  <div className="mt-auto flex gap-3">
+                    <Link to="/subscription" className="w-full">
+                      <Button className="w-full bg-white hover:bg-stone-200 text-stone-900 font-bold h-10 rounded-none transition-colors">
+                        View Details
+                      </Button>
+                    </Link>
                   </div>
                 </div>
               </motion.div>

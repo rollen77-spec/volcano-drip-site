@@ -36,6 +36,12 @@ export const ECWID_GUATEMALA_PRODUCT_URL =
 export const ECWID_HONDURAS_PRODUCT_URL =
   import.meta.env.VITE_ECWID_HONDURAS_PRODUCT_URL || '';
 
+/**
+ * Full URL to Inca Ascent on Ecwid (optional). Same pattern as Guatemala / Honduras.
+ */
+export const ECWID_PERU_PRODUCT_URL =
+  import.meta.env.VITE_ECWID_PERU_PRODUCT_URL || '';
+
 /** Subscription / club product in Ecwid (for the subscription page embed). */
 export const ECWID_SUBSCRIPTION_PRODUCT_ID =
   import.meta.env.VITE_ECWID_SUBSCRIPTION_PRODUCT_ID || '';

@@ -8,10 +8,10 @@ import { Helmet } from 'react-helmet';
 import { useToast } from '@/components/ui/use-toast';
 import MasonryGallery from '@/components/MasonryGallery';
 import EcwidPurchaseButton from '@/components/EcwidPurchaseButton';
-import EcwidIncaAscentSingleProductOrigin from '@/components/EcwidIncaAscentSingleProductOrigin';
 import {
   ECWID_GUATEMALA_PRODUCT_URL,
   ECWID_HONDURAS_PRODUCT_URL,
+  ECWID_PERU_PRODUCT_URL,
   ECWID_PRODUCT_BY_ORIGIN,
 } from '@/config/ecwid';
 
@@ -274,14 +274,8 @@ const CoffeeOriginPage = ({ originKey }) => {
             </div>
             
             <div className="border-t border-stone-200 pt-8">
-              <div
-                className={`flex flex-col items-center justify-center w-full mx-auto ${
-                  originKey === 'peru' ? 'max-w-lg' : 'max-w-md'
-                }`}
-              >
-                 {originKey === 'peru' && ECWID_PRODUCT_BY_ORIGIN.peru ? (
-                   <EcwidIncaAscentSingleProductOrigin />
-                 ) : ECWID_PRODUCT_BY_ORIGIN[originKey] ? (
+              <div className="flex flex-col items-center justify-center w-full max-w-md mx-auto">
+                 {ECWID_PRODUCT_BY_ORIGIN[originKey] ? (
                    <EcwidPurchaseButton
                      variant="origin"
                      productId={ECWID_PRODUCT_BY_ORIGIN[originKey]}
@@ -290,7 +284,9 @@ const CoffeeOriginPage = ({ originKey }) => {
                          ? ECWID_GUATEMALA_PRODUCT_URL
                          : originKey === 'honduras'
                            ? ECWID_HONDURAS_PRODUCT_URL
-                           : ''
+                           : originKey === 'peru'
+                             ? ECWID_PERU_PRODUCT_URL
+                             : ''
                      }
                    />
                  ) : (
