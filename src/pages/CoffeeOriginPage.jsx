@@ -8,8 +8,11 @@ import { Helmet } from 'react-helmet';
 import { useToast } from '@/components/ui/use-toast';
 import MasonryGallery from '@/components/MasonryGallery';
 import EcwidPurchaseButton from '@/components/EcwidPurchaseButton';
-import EcwidCopanRiseEmbed from '@/components/EcwidCopanRiseEmbed';
-import { ECWID_GUATEMALA_PRODUCT_URL, ECWID_PRODUCT_BY_ORIGIN } from '@/config/ecwid';
+import {
+  ECWID_GUATEMALA_PRODUCT_URL,
+  ECWID_HONDURAS_PRODUCT_URL,
+  ECWID_PRODUCT_BY_ORIGIN,
+} from '@/config/ecwid';
 
 const originData = {
   'costa-rica': {
@@ -110,7 +113,6 @@ const peruGalleryImages = [
   { src: "https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/d77b7a11209bdb80cf284f1cdd967e7d.png", alt: "Inca Ascent Peru coffee bag - white bag with burgundy label, medium roast, front view" },
   { src: "https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/3ffe7793b209d3738d5c264a6b48eb06.png", alt: "Inca Ascent Peru coffee bag - white bag with burgundy label, medium roast" },
   { src: "https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/739b44385c1031f952fe30480becaf36.png", alt: "Inca Ascent Peru coffee bag - white bag with burgundy label, side view" },
-  { src: "https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/0a7b694158eaebf3da40563c01636036.png", alt: "Copán Rise Honduras white bag" },
   { src: "https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/3ffe7793b209d3738d5c264a6b48eb06.png", alt: "Inca Ascent Peru coffee bottle - tall bottle with colorful gradient design" }
 ];
 
@@ -271,18 +273,18 @@ const CoffeeOriginPage = ({ originKey }) => {
             </div>
             
             <div className="border-t border-stone-200 pt-8">
-              <div
-                className={`flex flex-col items-center justify-center w-full mx-auto ${
-                  originKey === 'honduras' ? 'max-w-3xl' : 'max-w-md'
-                }`}
-              >
-                 {originKey === 'honduras' ? (
-                   <EcwidCopanRiseEmbed placement="origin" />
-                 ) : ECWID_PRODUCT_BY_ORIGIN[originKey] ? (
+              <div className="flex flex-col items-center justify-center w-full max-w-md mx-auto">
+                 {ECWID_PRODUCT_BY_ORIGIN[originKey] ? (
                    <EcwidPurchaseButton
                      variant="origin"
                      productId={ECWID_PRODUCT_BY_ORIGIN[originKey]}
-                     productPageUrl={originKey === 'guatemala' ? ECWID_GUATEMALA_PRODUCT_URL : ''}
+                     productPageUrl={
+                       originKey === 'guatemala'
+                         ? ECWID_GUATEMALA_PRODUCT_URL
+                         : originKey === 'honduras'
+                           ? ECWID_HONDURAS_PRODUCT_URL
+                           : ''
+                     }
                    />
                  ) : (
                    <Button onClick={handleNotAvailable} className="bg-amber-600 hover:bg-amber-700 text-white font-bold h-12 px-8 rounded-none min-w-[160px]">
