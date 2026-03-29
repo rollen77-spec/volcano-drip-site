@@ -8,6 +8,7 @@ import WelcomeMessage from '@/components/WelcomeMessage';
 import CallToAction from '@/components/CallToAction';
 import { ECWID_GUATEMALA_PRODUCT_URL, ECWID_PRODUCT_BY_ORIGIN } from '@/config/ecwid';
 import EcwidPurchaseButton from '@/components/EcwidPurchaseButton';
+import EcwidCopanRiseEmbed from '@/components/EcwidCopanRiseEmbed';
 import { Link } from 'react-router-dom';
 
 const HomePage = () => {
@@ -160,7 +161,7 @@ const HomePage = () => {
               </div>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
               {/* Antigua Ember — Add to cart (same flow as origin page) */}
               <motion.div 
                 initial={{ opacity: 0, y: 20 }} 
@@ -331,6 +332,61 @@ const HomePage = () => {
                          View Details
                        </Button>
                      </Link>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Copán Rise (Honduras) — Ecwid product browser (same as Ecwid install code) */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3 }}
+                className="group relative h-full flex flex-col bg-stone-900 border border-stone-800 overflow-hidden shadow-lg"
+              >
+                <Link to="/origins/honduras" className="block relative aspect-[4/5] overflow-hidden bg-white/5">
+                  <img
+                    src="https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/0a7b694158eaebf3da40563c01636036.png"
+                    alt="Copán Rise Honduras coffee bag"
+                    className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-110 p-4"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-stone-900 via-transparent to-transparent opacity-60" />
+                </Link>
+                <div className="p-6 flex flex-col flex-grow">
+                  <div className="mb-4">
+                    <Link to="/origins/honduras" className="block group-hover:text-amber-500 transition-colors">
+                      <h3 className="text-xl font-bold text-white mb-1 leading-tight">Copán Rise</h3>
+                    </Link>
+                    <p className="text-stone-400 text-sm">Honduras | Western Highlands</p>
+                  </div>
+
+                  <div className="mb-6">
+                    <h4 className="text-[10px] uppercase text-stone-500 font-bold mb-2 tracking-widest">Tasting Notes</h4>
+                    <div className="flex flex-wrap gap-2 text-sm text-stone-300 font-medium">
+                      <span>Citrus •</span><span>Stone Fruit •</span><span>Cocoa</span>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-3 gap-2 py-4 border-t border-stone-800 mb-6 mt-auto">
+                    <div className="flex flex-col items-center text-center gap-1">
+                      <Mountain className="w-4 h-4 text-amber-600 mb-1" />
+                      <span className="text-[10px] text-stone-500 uppercase">Elevation</span>
+                      <span className="text-xs font-medium text-stone-300">1,400m</span>
+                    </div>
+                    <div className="flex flex-col items-center text-center gap-1 border-l border-stone-800">
+                      <Flame className="w-4 h-4 text-amber-600 mb-1" />
+                      <span className="text-[10px] text-stone-500 uppercase">Roast</span>
+                      <span className="text-xs font-medium text-stone-300">Med-Dark</span>
+                    </div>
+                    <div className="flex flex-col items-center text-center gap-1 border-l border-stone-800">
+                      <Coffee className="w-4 h-4 text-amber-600 mb-1" />
+                      <span className="text-[10px] text-stone-500 uppercase">Body</span>
+                      <span className="text-xs font-medium text-stone-300">Medium</span>
+                    </div>
+                  </div>
+
+                  <div className="mt-auto w-full min-w-0">
+                    <EcwidCopanRiseEmbed placement="home" />
                   </div>
                 </div>
               </motion.div>

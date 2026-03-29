@@ -22,6 +22,11 @@ export const ECWID_PRODUCT_BY_ORIGIN = {
   'honduras': import.meta.env.VITE_ECWID_PRODUCT_HONDURAS || '',
 };
 
+/** Copán Rise (Honduras) — Ecwid product browser embed on home + origin page */
+export const ECWID_COPAN_PRODUCT_ID =
+  import.meta.env.VITE_ECWID_PRODUCT_HONDURAS || '825208085';
+export const ECWID_COPAN_SLUG = 'copan-rise';
+
 /**
  * Full URL to Antigua Ember on Ecwid (Catalog → product → open in browser → copy address bar).
  * Used for the home tile button and Shop → Guatemala. Opens in a new tab.

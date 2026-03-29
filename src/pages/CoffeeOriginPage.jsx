@@ -8,6 +8,7 @@ import { Helmet } from 'react-helmet';
 import { useToast } from '@/components/ui/use-toast';
 import MasonryGallery from '@/components/MasonryGallery';
 import EcwidPurchaseButton from '@/components/EcwidPurchaseButton';
+import EcwidCopanRiseEmbed from '@/components/EcwidCopanRiseEmbed';
 import { ECWID_GUATEMALA_PRODUCT_URL, ECWID_PRODUCT_BY_ORIGIN } from '@/config/ecwid';
 
 const originData = {
@@ -270,8 +271,14 @@ const CoffeeOriginPage = ({ originKey }) => {
             </div>
             
             <div className="border-t border-stone-200 pt-8">
-              <div className="flex flex-col items-center justify-center w-full max-w-md mx-auto">
-                 {ECWID_PRODUCT_BY_ORIGIN[originKey] ? (
+              <div
+                className={`flex flex-col items-center justify-center w-full mx-auto ${
+                  originKey === 'honduras' ? 'max-w-3xl' : 'max-w-md'
+                }`}
+              >
+                 {originKey === 'honduras' ? (
+                   <EcwidCopanRiseEmbed placement="origin" />
+                 ) : ECWID_PRODUCT_BY_ORIGIN[originKey] ? (
                    <EcwidPurchaseButton
                      variant="origin"
                      productId={ECWID_PRODUCT_BY_ORIGIN[originKey]}
