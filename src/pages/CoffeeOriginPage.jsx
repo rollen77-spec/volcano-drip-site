@@ -104,7 +104,7 @@ const defaultGalleryImages = [
 ];
 
 const guatemalaGalleryImages = [
-  { src: "https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/87bb12de7fca5a0144bb5f8633c7bf05.png", alt: "Coffee bag with volcano design - black background with colorful volcano illustration" },
+  { src: '/antigua-ember-front.png', alt: 'Antigua Ember Guatemala coffee bag — front' },
   { src: "https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/6153700e525f9c7ec28b0371e4157682.png", alt: "Tall coffee bottle with colorful gradient design - red, gold, and teal colors" },
   { src: "https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/7f6100f1b889eab99b21c62d7c06cef1.png", alt: "Coffee bag Antigua Ember - black bag with tan label showing roast level and flavor notes" },
   { src: "https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/00feade18082a3e999c77a6e48197de7.png", alt: "Coffee bag Antigua Ember - black bag with tan label, medium roast, cocoa caramel cinnamon flavors" },

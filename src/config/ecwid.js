@@ -19,7 +19,10 @@ export const ECWID_PRODUCT_BY_ORIGIN = {
     import.meta.env.VITE_ECWID_PRODUCT_COSTA_RICA ||
     import.meta.env.VITE_ECWID_COSTA_RICA ||
     '825206120',
-  'guatemala': import.meta.env.VITE_ECWID_PRODUCT_GUATEMALA || '825208083',
+  'guatemala':
+    import.meta.env.VITE_ECWID_PRODUCT_GUATEMALA ||
+    import.meta.env.VITE_ECWID_GUATEMALA ||
+    '825208083',
   'indonesia':
     import.meta.env.VITE_ECWID_PRODUCT_INDONESIA ||
     import.meta.env.VITE_ECWID_INDONESIA ||
@@ -29,8 +32,8 @@ export const ECWID_PRODUCT_BY_ORIGIN = {
 };
 
 /**
- * Full URL to Antigua Ember on Ecwid (Catalog → product → open in browser → copy address bar).
- * Used for the home tile button and Shop → Guatemala. Opens in a new tab.
+ * Antigua Ember (Guatemala) — full Ecwid product URL (optional). Same as Costa Rica / Indonesia:
+ * when set, buttons open this URL in a new tab; otherwise `openProduct` uses the product ID (825208083 default).
  */
 export const ECWID_GUATEMALA_PRODUCT_URL =
   import.meta.env.VITE_ECWID_GUATEMALA_PRODUCT_URL || '';

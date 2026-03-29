@@ -120,11 +120,11 @@ const getEnrichedData = title => {
   return DEFAULT_ENRICHMENT;
 };
 
-// Check if a product is "Primera Luz" and return the specific image override
+// Local hero assets for Ecwid-backed SKUs (matches home / origin pages).
 const getProductImage = product => {
-  if (product && product.title && product.title.toLowerCase().includes('primera luz')) {
-    return '/primera-luz-front.png';
-  }
+  const t = product?.title?.toLowerCase() || '';
+  if (t.includes('primera luz')) return '/primera-luz-front.png';
+  if (t.includes('antigua ember')) return '/antigua-ember-front.png';
   return product.image || placeholderImage;
 };
 
