@@ -20,18 +20,28 @@ import {
 } from '@/config/ecwid';
 
 /**
- * Every tile uses the same square frame. object-cover + center fills the cell uniformly
- * (Antigua / Sumatra / Copán style) so portrait, landscape, or wide lineup shots don’t
- * leave mismatched letterboxing vs other cards.
+ * Square media frame. Default `fit="cover"` matches single-bag tiles.
+ * `fit="contain"` shows the full asset (zoomed out) — e.g. wide Volcanic lineup so all bags stay visible.
  */
-function ProductTileMedia({ to, src, alt }) {
+function ProductTileMedia({ to, src, alt, fit = 'cover' }) {
+  const isContain = fit === 'contain';
   return (
     <Link to={to} className="block relative aspect-square overflow-hidden bg-stone-950/80">
-      <img
-        src={src}
-        alt={alt}
-        className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
-      />
+      {isContain ? (
+        <div className="absolute inset-0 flex items-center justify-center p-2 sm:p-3">
+          <img
+            src={src}
+            alt={alt}
+            className="max-h-full max-w-full object-contain object-center transition-transform duration-700 group-hover:scale-[1.02]"
+          />
+        </div>
+      ) : (
+        <img
+          src={src}
+          alt={alt}
+          className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+        />
+      )}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-stone-900 via-transparent to-transparent opacity-60" />
     </Link>
   );
@@ -436,7 +446,7 @@ const HomePage = () => {
               >
                 <ProductTileMedia
                   to="/origins/peru"
-                  src="https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/d77b7a11209bdb80cf284f1cdd967e7d.png"
+                  src="/inca-ascent-front.png"
                   alt="Inca Ascent Peru coffee bag"
                 />
                 <div className="p-6 flex flex-col flex-grow">
@@ -494,6 +504,7 @@ const HomePage = () => {
                   to="/subscription"
                   src="/volcanic-origins-five-bags.png"
                   alt="Five Volcano Drip single-origin coffee bags"
+                  fit="contain"
                 />
                 <div className="p-6 flex flex-col flex-grow">
                   <div className="mb-4">
