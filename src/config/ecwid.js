@@ -29,13 +29,6 @@ export const ECWID_PRODUCT_BY_ORIGIN = {
 export const ECWID_GUATEMALA_PRODUCT_URL =
   import.meta.env.VITE_ECWID_GUATEMALA_PRODUCT_URL || '';
 
-/**
- * Full URL to Copán Rise on Ecwid — same pattern as ECWID_GUATEMALA_PRODUCT_URL.
- * Used for the Honduras home tile and origin page Add to cart.
- */
-export const ECWID_HONDURAS_PRODUCT_URL =
-  import.meta.env.VITE_ECWID_HONDURAS_PRODUCT_URL || '';
-
 /** Subscription / club product in Ecwid (for the subscription page embed). */
 export const ECWID_SUBSCRIPTION_PRODUCT_ID =
   import.meta.env.VITE_ECWID_SUBSCRIPTION_PRODUCT_ID || '';

@@ -6,12 +6,9 @@ import { Mountain, BookOpen, Quote, Star, Zap, Check, Flame, Coffee, ArrowRight 
 import { Button } from '@/components/ui/button';
 import WelcomeMessage from '@/components/WelcomeMessage';
 import CallToAction from '@/components/CallToAction';
-import {
-  ECWID_GUATEMALA_PRODUCT_URL,
-  ECWID_HONDURAS_PRODUCT_URL,
-  ECWID_PRODUCT_BY_ORIGIN,
-} from '@/config/ecwid';
+import { ECWID_GUATEMALA_PRODUCT_URL, ECWID_PRODUCT_BY_ORIGIN } from '@/config/ecwid';
 import EcwidPurchaseButton from '@/components/EcwidPurchaseButton';
+import EcwidCopanRiseEmbed from '@/components/EcwidCopanRiseEmbed';
 import { Link } from 'react-router-dom';
 
 const HomePage = () => {
@@ -339,7 +336,7 @@ const HomePage = () => {
                 </div>
               </motion.div>
 
-              {/* Copán Rise (Honduras) — Add to cart (same flow as Antigua Ember / Guatemala) */}
+              {/* Copán Rise (Honduras) — Ecwid product browser embed */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -388,11 +385,8 @@ const HomePage = () => {
                     </div>
                   </div>
 
-                  <div className="mt-auto flex gap-3">
-                    <EcwidPurchaseButton
-                      productId={ECWID_PRODUCT_BY_ORIGIN.honduras}
-                      productPageUrl={ECWID_HONDURAS_PRODUCT_URL}
-                    />
+                  <div className="mt-auto w-full min-w-0">
+                    <EcwidCopanRiseEmbed placement="home" />
                   </div>
                 </div>
               </motion.div>
