@@ -55,6 +55,25 @@ function ProductTileMedia({ to, src, alt, fit = 'cover', bagScale = 1 }) {
   );
 }
 
+/** Country label above the image; Organic badge for Fairtrade Organic SKUs (e.g. Honduras, Peru). */
+function SingleOriginTileCountryHeader({ country, organic }) {
+  return (
+    <div className="shrink-0 border-b border-stone-800 bg-stone-900 px-3 pt-5 pb-4 text-center sm:px-4">
+      <div className="mb-3 flex min-h-[30px] items-center justify-center">
+        {organic ? (
+          <span
+            className="inline-flex rounded-full border border-emerald-400/80 bg-emerald-500/20 px-3.5 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-300 shadow-sm shadow-emerald-950/40"
+            aria-label="Organic coffee"
+          >
+            Organic
+          </span>
+        ) : null}
+      </div>
+      <p className="text-2xl font-black tracking-tight text-white sm:text-3xl">{country}</p>
+    </div>
+  );
+}
+
 const HomePage = () => {
   const features = [{
     icon: <img src="https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/volcano-drip-icon-flame-orange-for-ui-and-web-elements-a3vCm.png" alt="Burgundy Flame" className="w-8 h-8 object-contain" />,
@@ -213,22 +232,23 @@ const HomePage = () => {
                 viewport={{ once: true }}
                 className="group relative h-full flex flex-col bg-stone-900 border border-stone-800 overflow-hidden shadow-lg"
               >
+                <SingleOriginTileCountryHeader country="Guatemala" organic={false} />
                 <ProductTileMedia
                   to="/origins/guatemala"
                   src="/antigua-ember-front.png"
                   alt="Antigua Ember"
                 />
-                <div className="p-6 flex flex-col flex-grow">
+                <div className="p-6 flex flex-col flex-grow text-center">
                   <div className="mb-4">
                     <Link to="/origins/guatemala" className="block group-hover:text-amber-500 transition-colors">
                       <h3 className="text-xl font-bold text-white mb-1 leading-tight">Antigua Ember</h3>
                     </Link>
-                    <p className="text-stone-400 text-sm">Guatemala | Antigua Valley</p>
+                    <p className="text-stone-400 text-sm">Antigua Valley</p>
                   </div>
                   
                   <div className="mb-6">
                     <h4 className="text-[10px] uppercase text-stone-500 font-bold mb-2 tracking-widest">Tasting Notes</h4>
-                    <div className="flex flex-wrap gap-2 text-sm text-stone-300 font-medium">
+                    <div className="flex flex-wrap justify-center gap-x-2 gap-y-1 text-sm text-stone-300 font-medium">
                       <span>Cocoa •</span><span>Caramel •</span><span>Subtle Spice</span>
                     </div>
                   </div>
@@ -269,22 +289,23 @@ const HomePage = () => {
                 transition={{ delay: 0.1 }}
                 className="group relative h-full flex flex-col bg-stone-900 border border-stone-800 overflow-hidden shadow-lg"
               >
+                <SingleOriginTileCountryHeader country="Costa Rica" organic={false} />
                 <ProductTileMedia
                   to="/origins/costa-rica"
                   src="https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/9c54b0318732594ba5bdff086a255122.png"
                   alt="Primera Luz"
                 />
-                <div className="p-6 flex flex-col flex-grow">
+                <div className="p-6 flex flex-col flex-grow text-center">
                   <div className="mb-4">
                     <Link to="/origins/costa-rica" className="block group-hover:text-amber-500 transition-colors">
                       <h3 className="text-xl font-bold text-white mb-1 leading-tight">Primera Luz</h3>
                     </Link>
-                    <p className="text-stone-400 text-sm">Costa Rica | Arenal Volcano</p>
+                    <p className="text-stone-400 text-sm">Arenal Volcano</p>
                   </div>
                   
                   <div className="mb-6">
                     <h4 className="text-[10px] uppercase text-stone-500 font-bold mb-2 tracking-widest">Tasting Notes</h4>
-                    <div className="flex flex-wrap gap-2 text-sm text-stone-300 font-medium">
+                    <div className="flex flex-wrap justify-center gap-x-2 gap-y-1 text-sm text-stone-300 font-medium">
                       <span>Citrus •</span><span>Honey •</span><span>Milk Chocolate</span>
                     </div>
                   </div>
@@ -332,22 +353,23 @@ const HomePage = () => {
                 transition={{ delay: 0.2 }}
                 className="group relative h-full flex flex-col bg-stone-900 border border-stone-800 overflow-hidden shadow-lg"
               >
+                <SingleOriginTileCountryHeader country="Indonesia" organic={false} />
                 <ProductTileMedia
                   to="/origins/indonesia"
                   src="https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/26228c47c0a695d1421560309e4ebe2e.png"
                   alt="Sumatra Black"
                 />
-                <div className="p-6 flex flex-col flex-grow">
+                <div className="p-6 flex flex-col flex-grow text-center">
                   <div className="mb-4">
                     <Link to="/origins/indonesia" className="block group-hover:text-amber-500 transition-colors">
                       <h3 className="text-xl font-bold text-white mb-1 leading-tight">Sumatra Black</h3>
                     </Link>
-                    <p className="text-stone-400 text-sm">Indonesia | Lake Toba</p>
+                    <p className="text-stone-400 text-sm">Lake Toba</p>
                   </div>
                   
                   <div className="mb-6">
                     <h4 className="text-[10px] uppercase text-stone-500 font-bold mb-2 tracking-widest">Tasting Notes</h4>
-                    <div className="flex flex-wrap gap-2 text-sm text-stone-300 font-medium">
+                    <div className="flex flex-wrap justify-center gap-x-2 gap-y-1 text-sm text-stone-300 font-medium">
                       <span>Earthy •</span><span>Dark Chocolate •</span><span>Smoky</span>
                     </div>
                   </div>
@@ -396,22 +418,23 @@ const HomePage = () => {
                 transition={{ delay: 0.3 }}
                 className="group relative h-full flex flex-col bg-stone-900 border border-stone-800 overflow-hidden shadow-lg"
               >
+                <SingleOriginTileCountryHeader country="Honduras" organic />
                 <ProductTileMedia
                   to="/origins/honduras"
                   src="/copan-rise-front.png"
                   alt="Copán Rise Honduras coffee bag"
                 />
-                <div className="p-6 flex flex-col flex-grow">
+                <div className="p-6 flex flex-col flex-grow text-center">
                   <div className="mb-4">
                     <Link to="/origins/honduras" className="block group-hover:text-amber-500 transition-colors">
                       <h3 className="text-xl font-bold text-white mb-1 leading-tight">Copán Rise</h3>
                     </Link>
-                    <p className="text-stone-400 text-sm">Honduras | Western Highlands</p>
+                    <p className="text-stone-400 text-sm">Western Highlands</p>
                   </div>
 
                   <div className="mb-6">
                     <h4 className="text-[10px] uppercase text-stone-500 font-bold mb-2 tracking-widest">Tasting Notes</h4>
-                    <div className="flex flex-wrap gap-2 text-sm text-stone-300 font-medium">
+                    <div className="flex flex-wrap justify-center gap-x-2 gap-y-1 text-sm text-stone-300 font-medium">
                       <span>Citrus •</span><span>Stone Fruit •</span><span>Cocoa</span>
                     </div>
                   </div>
@@ -452,22 +475,23 @@ const HomePage = () => {
                 transition={{ delay: 0.4 }}
                 className="group relative h-full flex flex-col bg-stone-900 border border-stone-800 overflow-hidden shadow-lg"
               >
+                <SingleOriginTileCountryHeader country="Peru" organic />
                 <ProductTileMedia
                   to="/origins/peru"
                   src="/inca-ascent-front.png"
                   alt="Inca Ascent Peru coffee bag"
                 />
-                <div className="p-6 flex flex-col flex-grow">
+                <div className="p-6 flex flex-col flex-grow text-center">
                   <div className="mb-4">
                     <Link to="/origins/peru" className="block group-hover:text-amber-500 transition-colors">
                       <h3 className="text-xl font-bold text-white mb-1 leading-tight">Inca Ascent</h3>
                     </Link>
-                    <p className="text-stone-400 text-sm">Peru | Andes Volcanic Belt</p>
+                    <p className="text-stone-400 text-sm">Andes Volcanic Belt</p>
                   </div>
 
                   <div className="mb-6">
                     <h4 className="text-[10px] uppercase text-stone-500 font-bold mb-2 tracking-widest">Tasting Notes</h4>
-                    <div className="flex flex-wrap gap-2 text-sm text-stone-300 font-medium">
+                    <div className="flex flex-wrap justify-center gap-x-2 gap-y-1 text-sm text-stone-300 font-medium">
                       <span>Soft Citrus •</span><span>Stone Fruit •</span><span>Subtle Cocoa</span>
                     </div>
                   </div>
