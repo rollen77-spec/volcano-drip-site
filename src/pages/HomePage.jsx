@@ -6,13 +6,6 @@ import { Mountain, BookOpen, Quote, Star, Zap, Check, Flame, Coffee, ArrowRight 
 import { Button } from '@/components/ui/button';
 import WelcomeMessage from '@/components/WelcomeMessage';
 import CallToAction from '@/components/CallToAction';
-import {
-  ECWID_GUATEMALA_PRODUCT_URL,
-  ECWID_HONDURAS_PRODUCT_URL,
-  ECWID_PERU_PRODUCT_URL,
-  ECWID_PRODUCT_BY_ORIGIN,
-} from '@/config/ecwid';
-import EcwidPurchaseButton from '@/components/EcwidPurchaseButton';
 import { Link } from 'react-router-dom';
 
 const HomePage = () => {
@@ -166,7 +159,7 @@ const HomePage = () => {
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {/* Antigua Ember — Add to cart (same flow as origin page) */}
+              {/* Antigua Ember */}
               <motion.div 
                 initial={{ opacity: 0, y: 20 }} 
                 whileInView={{ opacity: 1, y: 0 }} 
@@ -215,15 +208,16 @@ const HomePage = () => {
                   </div>
 
                   <div className="mt-auto flex gap-3">
-                    <EcwidPurchaseButton
-                      productId={ECWID_PRODUCT_BY_ORIGIN.guatemala}
-                      productPageUrl={ECWID_GUATEMALA_PRODUCT_URL}
-                    />
+                    <Link to="/origins/guatemala" className="w-full">
+                      <Button className="w-full bg-white hover:bg-stone-200 text-stone-900 font-bold h-10 rounded-none transition-colors">
+                        View Details
+                      </Button>
+                    </Link>
                   </div>
                 </div>
               </motion.div>
 
-              {/* Static Tile for other products to fill the grid visually since ProductsList is removed */}
+              {/* Static tiles — home CTAs are View Details (Ecwid on origin pages) */}
               <motion.div 
                 initial={{ opacity: 0, y: 20 }} 
                 whileInView={{ opacity: 1, y: 0 }} 
@@ -340,7 +334,7 @@ const HomePage = () => {
                 </div>
               </motion.div>
 
-              {/* Copán Rise (Honduras) — same as Antigua Ember: Ecwid purchase button only */}
+              {/* Copán Rise (Honduras) */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -390,15 +384,16 @@ const HomePage = () => {
                   </div>
 
                   <div className="mt-auto flex gap-3">
-                    <EcwidPurchaseButton
-                      productId={ECWID_PRODUCT_BY_ORIGIN.honduras}
-                      productPageUrl={ECWID_HONDURAS_PRODUCT_URL}
-                    />
+                    <Link to="/origins/honduras" className="w-full">
+                      <Button className="w-full bg-white hover:bg-stone-200 text-stone-900 font-bold h-10 rounded-none transition-colors">
+                        View Details
+                      </Button>
+                    </Link>
                   </div>
                 </div>
               </motion.div>
 
-              {/* Inca Ascent (Peru) — same Ecwid purchase flow as Guatemala / Honduras */}
+              {/* Inca Ascent (Peru) */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -407,12 +402,14 @@ const HomePage = () => {
                 className="group relative h-full flex flex-col bg-stone-900 border border-stone-800 overflow-hidden shadow-lg"
               >
                 <Link to="/origins/peru" className="block relative aspect-[4/5] overflow-hidden bg-white/5">
-                  <img
-                    src="https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/d77b7a11209bdb80cf284f1cdd967e7d.png"
-                    alt="Inca Ascent Peru coffee bag"
-                    className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-110 p-4"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-stone-900 via-transparent to-transparent opacity-60" />
+                  <div className="absolute inset-0 flex items-center justify-center p-4">
+                    <img
+                      src="https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/d77b7a11209bdb80cf284f1cdd967e7d.png"
+                      alt="Inca Ascent Peru coffee bag"
+                      className="max-h-full max-w-full w-auto object-contain transition-transform duration-700 group-hover:scale-110"
+                    />
+                  </div>
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-stone-900 via-transparent to-transparent opacity-60" />
                 </Link>
                 <div className="p-6 flex flex-col flex-grow">
                   <div className="mb-4">
@@ -448,15 +445,16 @@ const HomePage = () => {
                   </div>
 
                   <div className="mt-auto flex gap-3">
-                    <EcwidPurchaseButton
-                      productId={ECWID_PRODUCT_BY_ORIGIN.peru}
-                      productPageUrl={ECWID_PERU_PRODUCT_URL}
-                    />
+                    <Link to="/origins/peru" className="w-full">
+                      <Button className="w-full bg-white hover:bg-stone-200 text-stone-900 font-bold h-10 rounded-none transition-colors">
+                        View Details
+                      </Button>
+                    </Link>
                   </div>
                 </div>
               </motion.div>
 
-              {/* Volcanic Origins — subscription box (same tile style as Costa Rica / Indonesia) */}
+              {/* Volcanic Origins — subscription */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -465,45 +463,28 @@ const HomePage = () => {
                 className="group relative h-full flex flex-col bg-stone-900 border border-stone-800 overflow-hidden shadow-lg"
               >
                 <Link to="/subscription" className="block relative aspect-[4/5] overflow-hidden bg-white/5">
-                  <img
-                    src="https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/hero-2-jTlVw.png"
-                    alt="Volcanic Origins subscription box of coffee beans"
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-stone-900 via-transparent to-transparent opacity-60" />
+                  <div className="absolute inset-0 flex items-center justify-center p-4">
+                    <img
+                      src="/volcanic-origins-five-bags.png"
+                      alt="Five Volcano Drip single-origin coffee bags"
+                      className="max-h-full max-w-full w-auto object-contain transition-transform duration-700 group-hover:scale-110"
+                    />
+                  </div>
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-stone-900 via-transparent to-transparent opacity-60" />
                 </Link>
                 <div className="p-6 flex flex-col flex-grow">
                   <div className="mb-4">
                     <Link to="/subscription" className="block group-hover:text-amber-500 transition-colors">
                       <h3 className="text-xl font-bold text-white mb-1 leading-tight">Volcanic Origins</h3>
                     </Link>
-                    <p className="text-stone-400 text-sm">Subscription · Four volcanic origins</p>
                   </div>
 
-                  <div className="mb-6">
-                    <h4 className="text-[10px] uppercase text-stone-500 font-bold mb-2 tracking-widest">Tasting Notes</h4>
-                    <div className="flex flex-wrap gap-2 text-sm text-stone-300 font-medium">
-                      <span>Variety •</span><span>Discovery •</span><span>Seasonal</span>
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-3 gap-2 py-4 border-t border-stone-800 mb-6 mt-auto">
-                    <div className="flex flex-col items-center text-center gap-1">
-                      <Mountain className="w-4 h-4 text-amber-600 mb-1" />
-                      <span className="text-[10px] text-stone-500 uppercase">Origins</span>
-                      <span className="text-xs font-medium text-stone-300">4 / yr</span>
-                    </div>
-                    <div className="flex flex-col items-center text-center gap-1 border-l border-stone-800">
-                      <Flame className="w-4 h-4 text-amber-600 mb-1" />
-                      <span className="text-[10px] text-stone-500 uppercase">Roast</span>
-                      <span className="text-xs font-medium text-stone-300">Mixed</span>
-                    </div>
-                    <div className="flex flex-col items-center text-center gap-1 border-l border-stone-800">
-                      <Coffee className="w-4 h-4 text-amber-600 mb-1" />
-                      <span className="text-[10px] text-stone-500 uppercase">Body</span>
-                      <span className="text-xs font-medium text-stone-300">Varied</span>
-                    </div>
-                  </div>
+                  <p className="text-sm text-stone-300 leading-relaxed mb-6 flex-grow">
+                    <span className="font-bold text-white block mb-2">The Volcano Drip Subscription</span>
+                    Explore the world&apos;s volcanic coffee regions with every delivery. Each box includes 4
+                    freshly roasted coffees grown in mineral-rich volcanic soil—known for producing bold,
+                    complex flavors.
+                  </p>
 
                   <div className="mt-auto flex gap-3">
                     <Link to="/subscription" className="w-full">
