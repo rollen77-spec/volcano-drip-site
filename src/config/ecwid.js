@@ -15,7 +15,10 @@ export const ECWID_DEFAULT_CATEGORY_ID =
  * Add env vars or edit strings here as you publish products.
  */
 export const ECWID_PRODUCT_BY_ORIGIN = {
-  'costa-rica': import.meta.env.VITE_ECWID_PRODUCT_COSTA_RICA || '',
+  'costa-rica':
+    import.meta.env.VITE_ECWID_PRODUCT_COSTA_RICA ||
+    import.meta.env.VITE_ECWID_COSTA_RICA ||
+    '825206120',
   'guatemala': import.meta.env.VITE_ECWID_PRODUCT_GUATEMALA || '825208083',
   'indonesia':
     import.meta.env.VITE_ECWID_PRODUCT_INDONESIA ||
@@ -45,7 +48,10 @@ export const ECWID_HONDURAS_PRODUCT_URL =
 export const ECWID_PERU_PRODUCT_URL =
   import.meta.env.VITE_ECWID_PERU_PRODUCT_URL || '';
 
-/** Primera Luz (Costa Rica) — Ecwid product page URL for home “View Details”. */
+/**
+ * Primera Luz (Costa Rica) — full Ecwid product URL (optional). Same as Indonesia / Honduras:
+ * when set, buttons open this URL in a new tab; otherwise `openProduct` uses the product ID.
+ */
 export const ECWID_COSTA_RICA_PRODUCT_URL =
   import.meta.env.VITE_ECWID_COSTA_RICA_PRODUCT_URL || '';
 

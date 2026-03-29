@@ -292,7 +292,7 @@ const HomePage = () => {
                 <SingleOriginTileCountryHeader country="Costa Rica" organic={false} />
                 <ProductTileMedia
                   to="/origins/costa-rica"
-                  src="https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/9c54b0318732594ba5bdff086a255122.png"
+                  src="/primera-luz-front.png"
                   alt="Primera Luz"
                 />
                 <div className="p-6 flex flex-col flex-grow text-center">

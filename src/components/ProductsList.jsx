@@ -123,7 +123,7 @@ const getEnrichedData = title => {
 // Check if a product is "Primera Luz" and return the specific image override
 const getProductImage = product => {
   if (product && product.title && product.title.toLowerCase().includes('primera luz')) {
-    return "https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/9c54b0318732594ba5bdff086a255122.png";
+    return '/primera-luz-front.png';
   }
   return product.image || placeholderImage;
 };

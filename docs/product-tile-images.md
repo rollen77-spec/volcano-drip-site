@@ -37,7 +37,7 @@ Following the above reduces the need for per-product **`bagScale`** tweaks in co
 ## 3. File delivery
 
 - **Location:** Add files under **`public/`** so they are served as static assets (e.g. `/antigua-ember-front.png`).
-- **Naming:** `{product-slug}-front.png` (kebab-case), e.g. `antigua-ember-front.png`, `sumatra-black-front.png`, `inca-ascent-front.png`, `copan-rise-front.png`.
+- **Naming:** `{product-slug}-front.png` (kebab-case), e.g. `antigua-ember-front.png`, `primera-luz-front.png`, `sumatra-black-front.png`, `inca-ascent-front.png`, `copan-rise-front.png`.
 - **Format:** PNG or WebP with good quality; keep file sizes reasonable for web.
 
 Avoid relying on long-lived third-party CDN URLs for hero tile art when you have a definitive brand asset — prefer **`public/`** for the home grid.
@@ -58,7 +58,7 @@ Avoid relying on long-lived third-party CDN URLs for hero tile art when you have
 ## 5. Component behavior (summary)
 
 - **`ProductTileMedia`** — `to`, `src`, `alt`, optional **`fit`** (`"contain"` for Volcanic-style only), optional **`bagScale`** (default `1`) for fine-tuning single-bag scale without re-exporting.
-- **Ecwid / CTAs** — Product IDs and optional product page URLs live in **`src/config/ecwid.js`** and env (`VITE_*`). Sumatra Black (Indonesia) uses product ID **825206117** by default (`VITE_ECWID_PRODUCT_INDONESIA`); set **`VITE_ECWID_INDONESIA_PRODUCT_URL`** if you want home / Shop → Indonesia “Add to cart” to open the Ecwid product page in a new tab (same pattern as Guatemala and Honduras).
+- **Ecwid / CTAs** — Product IDs and optional product page URLs live in **`src/config/ecwid.js`** and env (`VITE_*`). Defaults: Primera Luz (Costa Rica) **825206120** (`VITE_ECWID_PRODUCT_COSTA_RICA` or `VITE_ECWID_COSTA_RICA`); Sumatra Black (Indonesia) **825206117** (`VITE_ECWID_PRODUCT_INDONESIA` / `VITE_ECWID_INDONESIA`). Optional new-tab product pages: **`VITE_ECWID_COSTA_RICA_PRODUCT_URL`**, **`VITE_ECWID_INDONESIA_PRODUCT_URL`** (same pattern as Guatemala and Honduras).
 
 ---
 

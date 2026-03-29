@@ -9,6 +9,7 @@ import { useToast } from '@/components/ui/use-toast';
 import MasonryGallery from '@/components/MasonryGallery';
 import EcwidPurchaseButton from '@/components/EcwidPurchaseButton';
 import {
+  ECWID_COSTA_RICA_PRODUCT_URL,
   ECWID_GUATEMALA_PRODUCT_URL,
   ECWID_HONDURAS_PRODUCT_URL,
   ECWID_INDONESIA_PRODUCT_URL,
@@ -84,6 +85,15 @@ const originData = {
   }
 };
 
+const costaRicaGalleryImages = [
+  { src: '/primera-luz-front.png', alt: 'Primera Luz Costa Rica coffee bag — front' },
+  { src: "https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/b452913c6caa128cdba4f0b2200391b6.png", alt: "Front-facing coffee bag duplicate angle" },
+  { src: "https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/06af6a885b40e55a21ac04a8cdd5b815.png", alt: "Coffee bag at 3/4 angle showing side design" },
+  { src: "https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/d4ade6b373d17772a90c4c5ca74de54c.png", alt: "Coffee bag tall view showing full back label" },
+  { src: "https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/411e9d119d8ab0564ed9ade25c9f83d5.png", alt: "Coffee bag side view showing colorful volcano gradient design" },
+  { src: "https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/5bf50b1e18a9d48bfbe35d0defb35294.png", alt: "Coffee bag back view showing full product information" }
+];
+
 const defaultGalleryImages = [
   { src: "https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/9c54b0318732594ba5bdff086a255122.png", alt: "Front-facing coffee bag" },
   { src: "https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/b452913c6caa128cdba4f0b2200391b6.png", alt: "Front-facing coffee bag duplicate angle" },
@@ -149,15 +159,17 @@ const CoffeeOriginPage = ({ originKey }) => {
   
   if (!data) return <div>Origin not found</div>;
   
-  const currentGalleryImages = originKey === 'guatemala' 
-    ? guatemalaGalleryImages 
-    : originKey === 'indonesia'
-      ? indonesiaGalleryImages
-      : originKey === 'peru'
-        ? peruGalleryImages
-        : originKey === 'honduras'
-          ? hondurasGalleryImages
-          : defaultGalleryImages;
+  const currentGalleryImages = originKey === 'costa-rica'
+    ? costaRicaGalleryImages
+    : originKey === 'guatemala'
+      ? guatemalaGalleryImages
+      : originKey === 'indonesia'
+        ? indonesiaGalleryImages
+        : originKey === 'peru'
+          ? peruGalleryImages
+          : originKey === 'honduras'
+            ? hondurasGalleryImages
+            : defaultGalleryImages;
   
   const handleNotAvailable = () => {
     toast({
@@ -289,7 +301,9 @@ const CoffeeOriginPage = ({ originKey }) => {
                              ? ECWID_INDONESIA_PRODUCT_URL
                              : originKey === 'peru'
                                ? ECWID_PERU_PRODUCT_URL
-                               : ''
+                               : originKey === 'costa-rica'
+                                 ? ECWID_COSTA_RICA_PRODUCT_URL
+                                 : ''
                      }
                    />
                  ) : (
