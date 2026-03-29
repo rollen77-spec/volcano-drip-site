@@ -17,7 +17,10 @@ export const ECWID_DEFAULT_CATEGORY_ID =
 export const ECWID_PRODUCT_BY_ORIGIN = {
   'costa-rica': import.meta.env.VITE_ECWID_PRODUCT_COSTA_RICA || '',
   'guatemala': import.meta.env.VITE_ECWID_PRODUCT_GUATEMALA || '825208083',
-  'indonesia': import.meta.env.VITE_ECWID_PRODUCT_INDONESIA || '825206117',
+  'indonesia':
+    import.meta.env.VITE_ECWID_PRODUCT_INDONESIA ||
+    import.meta.env.VITE_ECWID_INDONESIA ||
+    '825206117',
   'peru': import.meta.env.VITE_ECWID_PRODUCT_PERU || '825208084',
   'honduras': import.meta.env.VITE_ECWID_PRODUCT_HONDURAS || '825208085',
 };
