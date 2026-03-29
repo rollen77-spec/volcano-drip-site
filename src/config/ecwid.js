@@ -17,7 +17,7 @@ export const ECWID_DEFAULT_CATEGORY_ID =
 export const ECWID_PRODUCT_BY_ORIGIN = {
   'costa-rica': import.meta.env.VITE_ECWID_PRODUCT_COSTA_RICA || '',
   'guatemala': import.meta.env.VITE_ECWID_PRODUCT_GUATEMALA || '825208083',
-  'indonesia': import.meta.env.VITE_ECWID_PRODUCT_INDONESIA || '',
+  'indonesia': import.meta.env.VITE_ECWID_PRODUCT_INDONESIA || '825206117',
   'peru': import.meta.env.VITE_ECWID_PRODUCT_PERU || '825208084',
   'honduras': import.meta.env.VITE_ECWID_PRODUCT_HONDURAS || '825208085',
 };
@@ -46,7 +46,10 @@ export const ECWID_PERU_PRODUCT_URL =
 export const ECWID_COSTA_RICA_PRODUCT_URL =
   import.meta.env.VITE_ECWID_COSTA_RICA_PRODUCT_URL || '';
 
-/** Sumatra Black (Indonesia) — Ecwid product page URL for home “View Details”. */
+/**
+ * Sumatra Black (Indonesia) — full Ecwid product URL (optional). Same as Guatemala / Honduras:
+ * when set, buttons open this URL in a new tab; otherwise `openProduct` uses the catalog product ID.
+ */
 export const ECWID_INDONESIA_PRODUCT_URL =
   import.meta.env.VITE_ECWID_INDONESIA_PRODUCT_URL || '';
 

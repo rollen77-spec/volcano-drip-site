@@ -356,7 +356,7 @@ const HomePage = () => {
                 <SingleOriginTileCountryHeader country="Indonesia" organic={false} />
                 <ProductTileMedia
                   to="/origins/indonesia"
-                  src="https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/26228c47c0a695d1421560309e4ebe2e.png"
+                  src="/sumatra-black-front.png"
                   alt="Sumatra Black"
                 />
                 <div className="p-6 flex flex-col flex-grow text-center">

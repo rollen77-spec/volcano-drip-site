@@ -7,7 +7,7 @@ import { useEcwid } from '@/context/EcwidContext';
 const homeTileClass =
   'w-full bg-white hover:bg-stone-200 text-stone-900 font-bold h-10 rounded-none transition-colors';
 
-/** Matches “Coming Soon” on origin pages (Peru, Indonesia, etc.) — amber on light background */
+/** Origin page primary CTA — amber on light background (used when Ecwid product is configured). */
 const originPageClass =
   'w-full bg-amber-600 hover:bg-amber-700 text-white font-bold h-12 px-8 rounded-none min-w-[160px]';
 

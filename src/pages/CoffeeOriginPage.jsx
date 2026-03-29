@@ -11,6 +11,7 @@ import EcwidPurchaseButton from '@/components/EcwidPurchaseButton';
 import {
   ECWID_GUATEMALA_PRODUCT_URL,
   ECWID_HONDURAS_PRODUCT_URL,
+  ECWID_INDONESIA_PRODUCT_URL,
   ECWID_PERU_PRODUCT_URL,
   ECWID_PRODUCT_BY_ORIGIN,
 } from '@/config/ecwid';
@@ -102,7 +103,7 @@ const guatemalaGalleryImages = [
 ];
 
 const indonesiaGalleryImages = [
-  { src: "https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/26228c47c0a695d1421560309e4ebe2e.png", alt: "Sumatra Black coffee bag - black bag with blue label" },
+  { src: '/sumatra-black-front.png', alt: 'Sumatra Black coffee bag - black bag with blue label' },
   { src: "https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/24917196317ac6f5bba04e662092a757.png", alt: "Sumatra Black coffee bag - similar angle" },
   { src: "https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/723d0aa95ae49575b4e66bb3dc36c3e0.png", alt: "Colorful gradient coffee bottle - red, gold, teal" },
   { src: "https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/09a7af04d7d4691367261ff6b6677d5a.png", alt: "Volcano Drip brand story bag - black bag with company story" },
@@ -284,9 +285,11 @@ const CoffeeOriginPage = ({ originKey }) => {
                          ? ECWID_GUATEMALA_PRODUCT_URL
                          : originKey === 'honduras'
                            ? ECWID_HONDURAS_PRODUCT_URL
-                           : originKey === 'peru'
-                             ? ECWID_PERU_PRODUCT_URL
-                             : ''
+                           : originKey === 'indonesia'
+                             ? ECWID_INDONESIA_PRODUCT_URL
+                             : originKey === 'peru'
+                               ? ECWID_PERU_PRODUCT_URL
+                               : ''
                      }
                    />
                  ) : (
