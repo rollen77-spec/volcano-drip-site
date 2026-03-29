@@ -42,6 +42,21 @@ export const ECWID_HONDURAS_PRODUCT_URL =
 export const ECWID_PERU_PRODUCT_URL =
   import.meta.env.VITE_ECWID_PERU_PRODUCT_URL || '';
 
+/** Primera Luz (Costa Rica) — Ecwid product page URL for home “View Details”. */
+export const ECWID_COSTA_RICA_PRODUCT_URL =
+  import.meta.env.VITE_ECWID_COSTA_RICA_PRODUCT_URL || '';
+
+/** Sumatra Black (Indonesia) — Ecwid product page URL for home “View Details”. */
+export const ECWID_INDONESIA_PRODUCT_URL =
+  import.meta.env.VITE_ECWID_INDONESIA_PRODUCT_URL || '';
+
+/**
+ * Volcanic Origins subscription — Ecwid product URL when set (home tile).
+ * Falls back to openProduct(SUBSCRIPTION_PRODUCT_ID) when only ID is set.
+ */
+export const ECWID_SUBSCRIPTION_PRODUCT_URL =
+  import.meta.env.VITE_ECWID_SUBSCRIPTION_PRODUCT_URL || '';
+
 /** Subscription / club product in Ecwid (for the subscription page embed). */
 export const ECWID_SUBSCRIPTION_PRODUCT_ID =
   import.meta.env.VITE_ECWID_SUBSCRIPTION_PRODUCT_ID || '';

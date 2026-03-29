@@ -20,18 +20,29 @@ const EcwidPurchaseButton = ({
   productPageUrl = '',
   variant = 'home',
   className,
+  /** Home tiles often use "View Details"; origin pages use "Add to cart". */
+  label,
 }) => {
   const baseClass =
     variant === 'origin' ? originPageClass : homeTileClass;
   const { openProduct } = useEcwid();
+  const text = label ?? 'Add to cart';
 
   const merged = cn(baseClass, className);
+
+  const hasId =
+    productId !== undefined &&
+    productId !== null &&
+    String(productId).trim() !== '';
+  if (!productPageUrl && !hasId) {
+    return null;
+  }
 
   if (productPageUrl) {
     return (
       <Button asChild className={merged}>
         <a href={productPageUrl} target="_blank" rel="noopener noreferrer">
-          Add to cart
+          {text}
         </a>
       </Button>
     );
@@ -43,7 +54,7 @@ const EcwidPurchaseButton = ({
       className={merged}
       onClick={() => openProduct(productId)}
     >
-      Add to cart
+      {text}
     </Button>
   );
 };

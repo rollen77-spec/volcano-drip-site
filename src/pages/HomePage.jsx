@@ -7,6 +7,21 @@ import { Button } from '@/components/ui/button';
 import WelcomeMessage from '@/components/WelcomeMessage';
 import CallToAction from '@/components/CallToAction';
 import { Link } from 'react-router-dom';
+import EcwidPurchaseButton from '@/components/EcwidPurchaseButton';
+import {
+  ECWID_COSTA_RICA_PRODUCT_URL,
+  ECWID_GUATEMALA_PRODUCT_URL,
+  ECWID_HONDURAS_PRODUCT_URL,
+  ECWID_INDONESIA_PRODUCT_URL,
+  ECWID_PERU_PRODUCT_URL,
+  ECWID_PRODUCT_BY_ORIGIN,
+  ECWID_SUBSCRIPTION_PRODUCT_ID,
+  ECWID_SUBSCRIPTION_PRODUCT_URL,
+} from '@/config/ecwid';
+
+/** Matches Antigua Ember / Primera Luz tile image framing */
+const productTileImageClass =
+  'w-full h-full object-contain transition-transform duration-700 group-hover:scale-110 p-4';
 
 const HomePage = () => {
   const features = [{
@@ -170,7 +185,7 @@ const HomePage = () => {
                   <img 
                     src="https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/7f6100f1b889eab99b21c62d7c06cef1.png" 
                     alt="Antigua Ember" 
-                    className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-110 p-4" 
+                    className={productTileImageClass}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-stone-900 via-transparent to-transparent opacity-60" />
                 </Link>
@@ -207,17 +222,17 @@ const HomePage = () => {
                      </div>
                   </div>
 
-                  <div className="mt-auto flex gap-3">
-                    <Link to="/origins/guatemala" className="w-full">
-                      <Button className="w-full bg-white hover:bg-stone-200 text-stone-900 font-bold h-10 rounded-none transition-colors">
-                        View Details
-                      </Button>
-                    </Link>
+                  <div className="mt-auto flex w-full">
+                    <EcwidPurchaseButton
+                      productId={ECWID_PRODUCT_BY_ORIGIN.guatemala}
+                      productPageUrl={ECWID_GUATEMALA_PRODUCT_URL}
+                      label="View Details"
+                    />
                   </div>
                 </div>
               </motion.div>
 
-              {/* Static tiles — home CTAs are View Details (Ecwid on origin pages) */}
+              {/* Primera Luz */}
               <motion.div 
                 initial={{ opacity: 0, y: 20 }} 
                 whileInView={{ opacity: 1, y: 0 }} 
@@ -229,7 +244,7 @@ const HomePage = () => {
                   <img 
                     src="https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/9c54b0318732594ba5bdff086a255122.png" 
                     alt="Primera Luz" 
-                    className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-110 p-4" 
+                    className={productTileImageClass}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-stone-900 via-transparent to-transparent opacity-60" />
                 </Link>
@@ -266,12 +281,20 @@ const HomePage = () => {
                      </div>
                   </div>
 
-                  <div className="mt-auto flex gap-3">
-                     <Link to="/origins/costa-rica" className="w-full">
-                       <Button className="w-full bg-white hover:bg-stone-200 text-stone-900 font-bold h-10 rounded-none transition-colors">
-                         View Details
-                       </Button>
-                     </Link>
+                  <div className="mt-auto flex w-full">
+                    {ECWID_PRODUCT_BY_ORIGIN['costa-rica'] || ECWID_COSTA_RICA_PRODUCT_URL ? (
+                      <EcwidPurchaseButton
+                        productId={ECWID_PRODUCT_BY_ORIGIN['costa-rica']}
+                        productPageUrl={ECWID_COSTA_RICA_PRODUCT_URL}
+                        label="View Details"
+                      />
+                    ) : (
+                      <Link to="/origins/costa-rica" className="w-full">
+                        <Button className="w-full bg-white hover:bg-stone-200 text-stone-900 font-bold h-10 rounded-none transition-colors">
+                          View Details
+                        </Button>
+                      </Link>
+                    )}
                   </div>
                 </div>
               </motion.div>
@@ -287,7 +310,7 @@ const HomePage = () => {
                   <img 
                     src="https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/26228c47c0a695d1421560309e4ebe2e.png" 
                     alt="Sumatra Black" 
-                    className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-110 p-4" 
+                    className={productTileImageClass}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-stone-900 via-transparent to-transparent opacity-60" />
                 </Link>
@@ -324,12 +347,20 @@ const HomePage = () => {
                      </div>
                   </div>
 
-                  <div className="mt-auto flex gap-3">
-                     <Link to="/origins/indonesia" className="w-full">
-                       <Button className="w-full bg-white hover:bg-stone-200 text-stone-900 font-bold h-10 rounded-none transition-colors">
-                         View Details
-                       </Button>
-                     </Link>
+                  <div className="mt-auto flex w-full">
+                    {ECWID_PRODUCT_BY_ORIGIN.indonesia || ECWID_INDONESIA_PRODUCT_URL ? (
+                      <EcwidPurchaseButton
+                        productId={ECWID_PRODUCT_BY_ORIGIN.indonesia}
+                        productPageUrl={ECWID_INDONESIA_PRODUCT_URL}
+                        label="View Details"
+                      />
+                    ) : (
+                      <Link to="/origins/indonesia" className="w-full">
+                        <Button className="w-full bg-white hover:bg-stone-200 text-stone-900 font-bold h-10 rounded-none transition-colors">
+                          View Details
+                        </Button>
+                      </Link>
+                    )}
                   </div>
                 </div>
               </motion.div>
@@ -346,7 +377,7 @@ const HomePage = () => {
                   <img
                     src="https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/0a7b694158eaebf3da40563c01636036.png"
                     alt="Copán Rise Honduras coffee bag"
-                    className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-110 p-4"
+                    className={productTileImageClass}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-stone-900 via-transparent to-transparent opacity-60" />
                 </Link>
@@ -383,12 +414,12 @@ const HomePage = () => {
                     </div>
                   </div>
 
-                  <div className="mt-auto flex gap-3">
-                    <Link to="/origins/honduras" className="w-full">
-                      <Button className="w-full bg-white hover:bg-stone-200 text-stone-900 font-bold h-10 rounded-none transition-colors">
-                        View Details
-                      </Button>
-                    </Link>
+                  <div className="mt-auto flex w-full">
+                    <EcwidPurchaseButton
+                      productId={ECWID_PRODUCT_BY_ORIGIN.honduras}
+                      productPageUrl={ECWID_HONDURAS_PRODUCT_URL}
+                      label="View Details"
+                    />
                   </div>
                 </div>
               </motion.div>
@@ -402,14 +433,12 @@ const HomePage = () => {
                 className="group relative h-full flex flex-col bg-stone-900 border border-stone-800 overflow-hidden shadow-lg"
               >
                 <Link to="/origins/peru" className="block relative aspect-[4/5] overflow-hidden bg-white/5">
-                  <div className="absolute inset-0 flex items-center justify-center p-4">
-                    <img
-                      src="https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/d77b7a11209bdb80cf284f1cdd967e7d.png"
-                      alt="Inca Ascent Peru coffee bag"
-                      className="max-h-full max-w-full w-auto object-contain transition-transform duration-700 group-hover:scale-110"
-                    />
-                  </div>
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-stone-900 via-transparent to-transparent opacity-60" />
+                  <img
+                    src="https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/d77b7a11209bdb80cf284f1cdd967e7d.png"
+                    alt="Inca Ascent Peru coffee bag"
+                    className={productTileImageClass}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-stone-900 via-transparent to-transparent opacity-60" />
                 </Link>
                 <div className="p-6 flex flex-col flex-grow">
                   <div className="mb-4">
@@ -444,12 +473,12 @@ const HomePage = () => {
                     </div>
                   </div>
 
-                  <div className="mt-auto flex gap-3">
-                    <Link to="/origins/peru" className="w-full">
-                      <Button className="w-full bg-white hover:bg-stone-200 text-stone-900 font-bold h-10 rounded-none transition-colors">
-                        View Details
-                      </Button>
-                    </Link>
+                  <div className="mt-auto flex w-full">
+                    <EcwidPurchaseButton
+                      productId={ECWID_PRODUCT_BY_ORIGIN.peru}
+                      productPageUrl={ECWID_PERU_PRODUCT_URL}
+                      label="View Details"
+                    />
                   </div>
                 </div>
               </motion.div>
@@ -463,14 +492,12 @@ const HomePage = () => {
                 className="group relative h-full flex flex-col bg-stone-900 border border-stone-800 overflow-hidden shadow-lg"
               >
                 <Link to="/subscription" className="block relative aspect-[4/5] overflow-hidden bg-white/5">
-                  <div className="absolute inset-0 flex items-center justify-center p-4">
-                    <img
-                      src="/volcanic-origins-five-bags.png"
-                      alt="Five Volcano Drip single-origin coffee bags"
-                      className="max-h-full max-w-full w-auto object-contain transition-transform duration-700 group-hover:scale-110"
-                    />
-                  </div>
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-stone-900 via-transparent to-transparent opacity-60" />
+                  <img
+                    src="/volcanic-origins-five-bags.png"
+                    alt="Five Volcano Drip single-origin coffee bags"
+                    className={productTileImageClass}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-stone-900 via-transparent to-transparent opacity-60" />
                 </Link>
                 <div className="p-6 flex flex-col flex-grow">
                   <div className="mb-4">
@@ -486,12 +513,20 @@ const HomePage = () => {
                     complex flavors.
                   </p>
 
-                  <div className="mt-auto flex gap-3">
-                    <Link to="/subscription" className="w-full">
-                      <Button className="w-full bg-white hover:bg-stone-200 text-stone-900 font-bold h-10 rounded-none transition-colors">
-                        View Details
-                      </Button>
-                    </Link>
+                  <div className="mt-auto flex w-full">
+                    {ECWID_SUBSCRIPTION_PRODUCT_ID || ECWID_SUBSCRIPTION_PRODUCT_URL ? (
+                      <EcwidPurchaseButton
+                        productId={ECWID_SUBSCRIPTION_PRODUCT_ID}
+                        productPageUrl={ECWID_SUBSCRIPTION_PRODUCT_URL}
+                        label="View Details"
+                      />
+                    ) : (
+                      <Link to="/subscription" className="w-full">
+                        <Button className="w-full bg-white hover:bg-stone-200 text-stone-900 font-bold h-10 rounded-none transition-colors">
+                          View Details
+                        </Button>
+                      </Link>
+                    )}
                   </div>
                 </div>
               </motion.div>
