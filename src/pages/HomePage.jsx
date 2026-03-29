@@ -207,7 +207,7 @@ const HomePage = () => {
               >
                 <ProductTileMedia
                   to="/origins/guatemala"
-                  src="https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/7f6100f1b889eab99b21c62d7c06cef1.png"
+                  src="/antigua-ember-front.png"
                   alt="Antigua Ember"
                 />
                 <div className="p-6 flex flex-col flex-grow">
