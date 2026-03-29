@@ -31,7 +31,7 @@ const MasonryGallery = ({ images }) => {
       <div className="grid grid-cols-2 md:grid-cols-3 auto-rows-[200px] gap-4">
         {images.map((image, index) => (
           <motion.div
-            key={index}
+            key={`${image.src}-${index}`}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}

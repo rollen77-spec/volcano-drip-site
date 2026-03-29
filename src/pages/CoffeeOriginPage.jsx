@@ -85,62 +85,52 @@ const originData = {
   }
 };
 
+/**
+ * Each origin gallery: exactly four images in this order —
+ * [0] front, [1] side, [2] three-quarter, [3] back.
+ * Use local `/…-front.png` for the hero front to avoid CDN mix-ups between SKUs.
+ */
 const costaRicaGalleryImages = [
-  { src: '/primera-luz-front.png', alt: 'Primera Luz Costa Rica coffee bag — front' },
-  { src: "https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/b452913c6caa128cdba4f0b2200391b6.png", alt: "Front-facing coffee bag duplicate angle" },
-  { src: "https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/06af6a885b40e55a21ac04a8cdd5b815.png", alt: "Coffee bag at 3/4 angle showing side design" },
-  { src: "https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/d4ade6b373d17772a90c4c5ca74de54c.png", alt: "Coffee bag tall view showing full back label" },
-  { src: "https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/411e9d119d8ab0564ed9ade25c9f83d5.png", alt: "Coffee bag side view showing colorful volcano gradient design" },
-  { src: "https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/5bf50b1e18a9d48bfbe35d0defb35294.png", alt: "Coffee bag back view showing full product information" }
+  { src: '/primera-luz-front.png', alt: 'Primera Luz — front' },
+  { src: 'https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/411e9d119d8ab0564ed9ade25c9f83d5.png', alt: 'Primera Luz — side (volcano artwork)' },
+  { src: 'https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/06af6a885b40e55a21ac04a8cdd5b815.png', alt: 'Primera Luz — three-quarter view' },
+  { src: 'https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/5bf50b1e18a9d48bfbe35d0defb35294.png', alt: 'Primera Luz — back' },
 ];
 
 const defaultGalleryImages = [
-  { src: "https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/9c54b0318732594ba5bdff086a255122.png", alt: "Front-facing coffee bag" },
-  { src: "https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/b452913c6caa128cdba4f0b2200391b6.png", alt: "Front-facing coffee bag duplicate angle" },
-  { src: "https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/06af6a885b40e55a21ac04a8cdd5b815.png", alt: "Coffee bag at 3/4 angle showing side design" },
-  { src: "https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/d4ade6b373d17772a90c4c5ca74de54c.png", alt: "Coffee bag tall view showing full back label" },
-  { src: "https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/411e9d119d8ab0564ed9ade25c9f83d5.png", alt: "Coffee bag side view showing colorful volcano gradient design" },
-  { src: "https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/5bf50b1e18a9d48bfbe35d0defb35294.png", alt: "Coffee bag back view showing full product information" }
+  { src: 'https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/9c54b0318732594ba5bdff086a255122.png', alt: 'Coffee bag — front' },
+  { src: 'https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/411e9d119d8ab0564ed9ade25c9f83d5.png', alt: 'Coffee bag — side' },
+  { src: 'https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/06af6a885b40e55a21ac04a8cdd5b815.png', alt: 'Coffee bag — three-quarter' },
+  { src: 'https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/5bf50b1e18a9d48bfbe35d0defb35294.png', alt: 'Coffee bag — back' },
 ];
 
 const guatemalaGalleryImages = [
-  { src: '/antigua-ember-front.png', alt: 'Antigua Ember Guatemala coffee bag — front' },
-  { src: "https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/6153700e525f9c7ec28b0371e4157682.png", alt: "Tall coffee bottle with colorful gradient design - red, gold, and teal colors" },
-  { src: "https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/7f6100f1b889eab99b21c62d7c06cef1.png", alt: "Coffee bag Antigua Ember - black bag with tan label showing roast level and flavor notes" },
-  { src: "https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/00feade18082a3e999c77a6e48197de7.png", alt: "Coffee bag Antigua Ember - black bag with tan label, medium roast, cocoa caramel cinnamon flavors" },
-  { src: "https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/0d34ece396d1895e402c73d11f0a566c.png", alt: "Coffee bag Antigua Ember - black bag with tan label back view" },
-  { src: "https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/87bb12de7fca5a0144bb5f8633c7bf05.png", alt: "Coffee bag with volcano design - duplicate" }
+  { src: '/antigua-ember-front.png', alt: 'Antigua Ember — front' },
+  { src: 'https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/87bb12de7fca5a0144bb5f8633c7bf05.png', alt: 'Antigua Ember — side (volcano graphic)' },
+  { src: 'https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/7f6100f1b889eab99b21c62d7c06cef1.png', alt: 'Antigua Ember — three-quarter (tan label)' },
+  { src: 'https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/0d34ece396d1895e402c73d11f0a566c.png', alt: 'Antigua Ember — back' },
 ];
 
-/** Sumatra Black only — avoid legacy CDN assets that mixed in other SKUs (e.g. Inca Ascent). */
 const indonesiaGalleryImages = [
-  {
-    src: '/sumatra-black-front.png',
-    alt: 'Sumatra Black — Indonesia, black bag with light blue label, dark roast',
-  },
-  {
-    src: 'https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/7636b73b436367dfe1557ecf77904e1e.png',
-    alt: 'Sumatra Black — angled view with Volcano Drip logo and side artwork',
-  },
-  {
-    src: 'https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/09a7af04d7d4691367261ff6b6677d5a.png',
-    alt: 'Volcano Drip black bag — back with brand story and brewing notes',
-  },
+  { src: '/sumatra-black-front.png', alt: 'Sumatra Black — front' },
+  { src: 'https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/24917196317ac6f5bba04e662092a757.png', alt: 'Sumatra Black — side profile' },
+  { src: 'https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/7636b73b436367dfe1557ecf77904e1e.png', alt: 'Sumatra Black — three-quarter (logo + panel)' },
+  { src: 'https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/09a7af04d7d4691367261ff6b6677d5a.png', alt: 'Sumatra Black — back (brand story)' },
 ];
 
 const peruGalleryImages = [
-  { src: "https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/d77b7a11209bdb80cf284f1cdd967e7d.png", alt: "Inca Ascent Peru coffee bag - white bag with burgundy label, medium roast, front view" },
-  { src: "https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/3ffe7793b209d3738d5c264a6b48eb06.png", alt: "Inca Ascent Peru coffee bag - white bag with burgundy label, medium roast" },
-  { src: "https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/739b44385c1031f952fe30480becaf36.png", alt: "Inca Ascent Peru coffee bag - white bag with burgundy label, side view" },
-  { src: "https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/3ffe7793b209d3738d5c264a6b48eb06.png", alt: "Inca Ascent Peru coffee bottle - tall bottle with colorful gradient design" }
+  { src: '/inca-ascent-front.png', alt: 'Inca Ascent — front' },
+  { src: 'https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/739b44385c1031f952fe30480becaf36.png', alt: 'Inca Ascent — side' },
+  { src: 'https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/d77b7a11209bdb80cf284f1cdd967e7d.png', alt: 'Inca Ascent — three-quarter' },
+  { src: 'https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/3ffe7793b209d3738d5c264a6b48eb06.png', alt: 'Inca Ascent — back / detail' },
 ];
 
+/** Copán Rise only — drop duplicate “front” CDN and generic gradient bottle that showed other SKUs. */
 const hondurasGalleryImages = [
-  { src: "https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/0a7b694158eaebf3da40563c01636036.png", alt: "Copán Rise Honduras coffee bag - white bag with orange label, medium roast" },
-  { src: "https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/d09fe30cdc6f5e6aee2ae7599cf27758.png", alt: "Copán Rise Honduras coffee bag - front view" },
-  { src: "https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/3f2132c122fff3c0f1bc7982e72fcbfe.png", alt: "Copán Rise Honduras coffee bag - side angle" },
-  { src: "https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/337da68c2a38e444005bba8a300bc8e7.png", alt: "Copán Rise Honduras coffee bottle - tall bottle with colorful gradient" },
-  { src: "https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/5a85e75d76ff01955d54aaefd721005b.png", alt: "Copán Rise Honduras coffee bottle - back view" }
+  { src: '/copan-rise-front.png', alt: 'Copán Rise — front' },
+  { src: 'https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/3f2132c122fff3c0f1bc7982e72fcbfe.png', alt: 'Copán Rise — side' },
+  { src: 'https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/0a7b694158eaebf3da40563c01636036.png', alt: 'Copán Rise — three-quarter' },
+  { src: 'https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/5a85e75d76ff01955d54aaefd721005b.png', alt: 'Copán Rise — back' },
 ];
 
 const getHeroImage = key => {

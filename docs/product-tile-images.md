@@ -53,6 +53,8 @@ Avoid relying on long-lived third-party CDN URLs for hero tile art when you have
 5. Leave **`fit`** unset for single-bag tiles; use **`fit="contain"`** only for wide/multi-bag artwork.
 6. If one tile still looks slightly larger or smaller than the others after deploy, ask dev to set **`bagScale`** on that tile only (e.g. `0.94` or `1.06`) — scaling is from the **bottom center** to match the layout.
 
+**Origin page gallery (`CoffeeOriginPage.jsx`):** Each country uses **exactly four** images, in order: **front** (prefer the same local `/*-front.png` as the home tile), **side**, **three-quarter**, **back**. Do not duplicate the front slot with a second CDN “front,” and avoid generic gradient-bottle assets that are not the correct SKU.
+
 ---
 
 ## 5. Component behavior (summary)
