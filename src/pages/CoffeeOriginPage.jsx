@@ -112,13 +112,20 @@ const guatemalaGalleryImages = [
   { src: "https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/87bb12de7fca5a0144bb5f8633c7bf05.png", alt: "Coffee bag with volcano design - duplicate" }
 ];
 
+/** Sumatra Black only — avoid legacy CDN assets that mixed in other SKUs (e.g. Inca Ascent). */
 const indonesiaGalleryImages = [
-  { src: '/sumatra-black-front.png', alt: 'Sumatra Black coffee bag - black bag with blue label' },
-  { src: "https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/24917196317ac6f5bba04e662092a757.png", alt: "Sumatra Black coffee bag - similar angle" },
-  { src: "https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/723d0aa95ae49575b4e66bb3dc36c3e0.png", alt: "Colorful gradient coffee bottle - red, gold, teal" },
-  { src: "https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/09a7af04d7d4691367261ff6b6677d5a.png", alt: "Volcano Drip brand story bag - black bag with company story" },
-  { src: "https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/7636b73b436367dfe1557ecf77904e1e.png", alt: "Sumatra Black coffee bag with colorful side design" },
-  { src: "https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/0295b23e0e302b6da16f299be580f8c5.png", alt: "Colorful gradient coffee bottle - red, gold, teal" }
+  {
+    src: '/sumatra-black-front.png',
+    alt: 'Sumatra Black — Indonesia, black bag with light blue label, dark roast',
+  },
+  {
+    src: 'https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/7636b73b436367dfe1557ecf77904e1e.png',
+    alt: 'Sumatra Black — angled view with Volcano Drip logo and side artwork',
+  },
+  {
+    src: 'https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/09a7af04d7d4691367261ff6b6677d5a.png',
+    alt: 'Volcano Drip black bag — back with brand story and brewing notes',
+  },
 ];
 
 const peruGalleryImages = [
