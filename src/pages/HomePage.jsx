@@ -12,6 +12,7 @@ import {
   ECWID_PRODUCT_BY_ORIGIN,
 } from '@/config/ecwid';
 import EcwidPurchaseButton from '@/components/EcwidPurchaseButton';
+import EcwidIncaAscentHomeEmbed from '@/components/EcwidIncaAscentHomeEmbed';
 import { Link } from 'react-router-dom';
 
 const HomePage = () => {
@@ -164,7 +165,7 @@ const HomePage = () => {
               </div>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
               {/* Antigua Ember — Add to cart (same flow as origin page) */}
               <motion.div 
                 initial={{ opacity: 0, y: 20 }} 
@@ -393,6 +394,61 @@ const HomePage = () => {
                       productId={ECWID_PRODUCT_BY_ORIGIN.honduras}
                       productPageUrl={ECWID_HONDURAS_PRODUCT_URL}
                     />
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Inca Ascent (Peru) — Ecwid product browser on home tile only */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.4 }}
+                className="group relative h-full flex flex-col bg-stone-900 border border-stone-800 overflow-hidden shadow-lg"
+              >
+                <Link to="/origins/peru" className="block relative aspect-[4/5] overflow-hidden bg-white/5">
+                  <img
+                    src="https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/d77b7a11209bdb80cf284f1cdd967e7d.png"
+                    alt="Inca Ascent Peru coffee bag"
+                    className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-110 p-4"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-stone-900 via-transparent to-transparent opacity-60" />
+                </Link>
+                <div className="p-6 flex flex-col flex-grow">
+                  <div className="mb-4">
+                    <Link to="/origins/peru" className="block group-hover:text-amber-500 transition-colors">
+                      <h3 className="text-xl font-bold text-white mb-1 leading-tight">Inca Ascent</h3>
+                    </Link>
+                    <p className="text-stone-400 text-sm">Peru | Andes Volcanic Belt</p>
+                  </div>
+
+                  <div className="mb-6">
+                    <h4 className="text-[10px] uppercase text-stone-500 font-bold mb-2 tracking-widest">Tasting Notes</h4>
+                    <div className="flex flex-wrap gap-2 text-sm text-stone-300 font-medium">
+                      <span>Soft Citrus •</span><span>Stone Fruit •</span><span>Subtle Cocoa</span>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-3 gap-2 py-4 border-t border-stone-800 mb-6 mt-auto">
+                    <div className="flex flex-col items-center text-center gap-1">
+                      <Mountain className="w-4 h-4 text-amber-600 mb-1" />
+                      <span className="text-[10px] text-stone-500 uppercase">Elevation</span>
+                      <span className="text-xs font-medium text-stone-300">2,000m</span>
+                    </div>
+                    <div className="flex flex-col items-center text-center gap-1 border-l border-stone-800">
+                      <Flame className="w-4 h-4 text-amber-600 mb-1" />
+                      <span className="text-[10px] text-stone-500 uppercase">Roast</span>
+                      <span className="text-xs font-medium text-stone-300">Light-Med</span>
+                    </div>
+                    <div className="flex flex-col items-center text-center gap-1 border-l border-stone-800">
+                      <Coffee className="w-4 h-4 text-amber-600 mb-1" />
+                      <span className="text-[10px] text-stone-500 uppercase">Body</span>
+                      <span className="text-xs font-medium text-stone-300">Medium</span>
+                    </div>
+                  </div>
+
+                  <div className="mt-auto w-full min-w-0">
+                    <EcwidIncaAscentHomeEmbed />
                   </div>
                 </div>
               </motion.div>
