@@ -19,9 +19,26 @@ import {
   ECWID_SUBSCRIPTION_PRODUCT_URL,
 } from '@/config/ecwid';
 
-/** Matches Antigua Ember / Primera Luz tile image framing */
-const productTileImageClass =
-  'w-full h-full object-contain transition-transform duration-700 group-hover:scale-110 p-4';
+/**
+ * Same visual frame for every tile: square viewport + object-contain so portrait (Inca),
+ * landscape (Volcanic lineup), and bag shots (Copán) all read at consistent scale.
+ */
+function ProductTileMedia({ to, src, alt }) {
+  return (
+    <Link to={to} className="block relative aspect-[4/5] overflow-hidden bg-white/5">
+      <div className="absolute inset-0 flex items-center justify-center p-3 sm:p-4">
+        <div className="flex aspect-square w-[min(100%,11.25rem)] sm:w-[min(100%,13.25rem)] shrink-0 items-center justify-center">
+          <img
+            src={src}
+            alt={alt}
+            className="h-full w-full object-contain object-center transition-transform duration-700 group-hover:scale-110"
+          />
+        </div>
+      </div>
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-stone-900 via-transparent to-transparent opacity-60" />
+    </Link>
+  );
+}
 
 const HomePage = () => {
   const features = [{
@@ -181,14 +198,11 @@ const HomePage = () => {
                 viewport={{ once: true }}
                 className="group relative h-full flex flex-col bg-stone-900 border border-stone-800 overflow-hidden shadow-lg"
               >
-                <Link to="/origins/guatemala" className="block relative aspect-[4/5] overflow-hidden bg-white/5">
-                  <img 
-                    src="https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/7f6100f1b889eab99b21c62d7c06cef1.png" 
-                    alt="Antigua Ember" 
-                    className={productTileImageClass}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-stone-900 via-transparent to-transparent opacity-60" />
-                </Link>
+                <ProductTileMedia
+                  to="/origins/guatemala"
+                  src="https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/7f6100f1b889eab99b21c62d7c06cef1.png"
+                  alt="Antigua Ember"
+                />
                 <div className="p-6 flex flex-col flex-grow">
                   <div className="mb-4">
                     <Link to="/origins/guatemala" className="block group-hover:text-amber-500 transition-colors">
@@ -240,14 +254,11 @@ const HomePage = () => {
                 transition={{ delay: 0.1 }}
                 className="group relative h-full flex flex-col bg-stone-900 border border-stone-800 overflow-hidden shadow-lg"
               >
-                <Link to="/origins/costa-rica" className="block relative aspect-[4/5] overflow-hidden bg-white/5">
-                  <img 
-                    src="https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/9c54b0318732594ba5bdff086a255122.png" 
-                    alt="Primera Luz" 
-                    className={productTileImageClass}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-stone-900 via-transparent to-transparent opacity-60" />
-                </Link>
+                <ProductTileMedia
+                  to="/origins/costa-rica"
+                  src="https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/9c54b0318732594ba5bdff086a255122.png"
+                  alt="Primera Luz"
+                />
                 <div className="p-6 flex flex-col flex-grow">
                   <div className="mb-4">
                     <Link to="/origins/costa-rica" className="block group-hover:text-amber-500 transition-colors">
@@ -306,14 +317,11 @@ const HomePage = () => {
                 transition={{ delay: 0.2 }}
                 className="group relative h-full flex flex-col bg-stone-900 border border-stone-800 overflow-hidden shadow-lg"
               >
-                <Link to="/origins/indonesia" className="block relative aspect-[4/5] overflow-hidden bg-white/5">
-                  <img 
-                    src="https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/26228c47c0a695d1421560309e4ebe2e.png" 
-                    alt="Sumatra Black" 
-                    className={productTileImageClass}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-stone-900 via-transparent to-transparent opacity-60" />
-                </Link>
+                <ProductTileMedia
+                  to="/origins/indonesia"
+                  src="https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/26228c47c0a695d1421560309e4ebe2e.png"
+                  alt="Sumatra Black"
+                />
                 <div className="p-6 flex flex-col flex-grow">
                   <div className="mb-4">
                     <Link to="/origins/indonesia" className="block group-hover:text-amber-500 transition-colors">
@@ -373,14 +381,11 @@ const HomePage = () => {
                 transition={{ delay: 0.3 }}
                 className="group relative h-full flex flex-col bg-stone-900 border border-stone-800 overflow-hidden shadow-lg"
               >
-                <Link to="/origins/honduras" className="block relative aspect-[4/5] overflow-hidden bg-white/5">
-                  <img
-                    src="https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/0a7b694158eaebf3da40563c01636036.png"
-                    alt="Copán Rise Honduras coffee bag"
-                    className={productTileImageClass}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-stone-900 via-transparent to-transparent opacity-60" />
-                </Link>
+                <ProductTileMedia
+                  to="/origins/honduras"
+                  src="https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/0a7b694158eaebf3da40563c01636036.png"
+                  alt="Copán Rise Honduras coffee bag"
+                />
                 <div className="p-6 flex flex-col flex-grow">
                   <div className="mb-4">
                     <Link to="/origins/honduras" className="block group-hover:text-amber-500 transition-colors">
@@ -432,14 +437,11 @@ const HomePage = () => {
                 transition={{ delay: 0.4 }}
                 className="group relative h-full flex flex-col bg-stone-900 border border-stone-800 overflow-hidden shadow-lg"
               >
-                <Link to="/origins/peru" className="block relative aspect-[4/5] overflow-hidden bg-white/5">
-                  <img
-                    src="https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/d77b7a11209bdb80cf284f1cdd967e7d.png"
-                    alt="Inca Ascent Peru coffee bag"
-                    className={productTileImageClass}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-stone-900 via-transparent to-transparent opacity-60" />
-                </Link>
+                <ProductTileMedia
+                  to="/origins/peru"
+                  src="https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/d77b7a11209bdb80cf284f1cdd967e7d.png"
+                  alt="Inca Ascent Peru coffee bag"
+                />
                 <div className="p-6 flex flex-col flex-grow">
                   <div className="mb-4">
                     <Link to="/origins/peru" className="block group-hover:text-amber-500 transition-colors">
@@ -491,14 +493,11 @@ const HomePage = () => {
                 transition={{ delay: 0.5 }}
                 className="group relative h-full flex flex-col bg-stone-900 border border-stone-800 overflow-hidden shadow-lg"
               >
-                <Link to="/subscription" className="block relative aspect-[4/5] overflow-hidden bg-white/5">
-                  <img
-                    src="/volcanic-origins-five-bags.png"
-                    alt="Five Volcano Drip single-origin coffee bags"
-                    className={productTileImageClass}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-stone-900 via-transparent to-transparent opacity-60" />
-                </Link>
+                <ProductTileMedia
+                  to="/subscription"
+                  src="/volcanic-origins-five-bags.png"
+                  alt="Five Volcano Drip single-origin coffee bags"
+                />
                 <div className="p-6 flex flex-col flex-grow">
                   <div className="mb-4">
                     <Link to="/subscription" className="block group-hover:text-amber-500 transition-colors">
