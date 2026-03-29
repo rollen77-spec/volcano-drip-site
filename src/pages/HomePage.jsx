@@ -20,10 +20,12 @@ import {
 } from '@/config/ecwid';
 
 /**
- * Square media frame. Default `fit="cover"` matches single-bag tiles.
- * `fit="contain"` shows the full asset (zoomed out) — e.g. wide Volcanic lineup so all bags stay visible.
+ * Square media frame.
+ * - Single-bag tiles (`fit="cover"`): bottom-aligned `object-contain` in a fixed-height slot so bags read
+ *   at a similar scale despite different camera distances; no image zoom on hover (avoids “size shift”).
+ * - `fit="contain"`: full asset visible (e.g. Volcanic wide lineup).
  */
-function ProductTileMedia({ to, src, alt, fit = 'cover' }) {
+function ProductTileMedia({ to, src, alt, fit = 'cover', bagScale = 1 }) {
   const isContain = fit === 'contain';
   return (
     <Link to={to} className="block relative aspect-square overflow-hidden bg-stone-950/80">
@@ -36,11 +38,17 @@ function ProductTileMedia({ to, src, alt, fit = 'cover' }) {
           />
         </div>
       ) : (
-        <img
-          src={src}
-          alt={alt}
-          className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
-        />
+        <div className="absolute inset-0 flex items-end justify-center px-2 pb-1 pt-12 sm:px-3 sm:pt-14">
+          <img
+            src={src}
+            alt={alt}
+            className="h-auto w-full max-h-[82%] object-contain object-bottom"
+            style={{
+              transform: bagScale !== 1 ? `scale(${bagScale})` : undefined,
+              transformOrigin: 'bottom center',
+            }}
+          />
+        </div>
       )}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-stone-900 via-transparent to-transparent opacity-60" />
     </Link>
