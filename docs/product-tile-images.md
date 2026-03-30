@@ -4,7 +4,7 @@ This document defines how we shoot, export, and wire **Coffee Shop** grid images
 
 **Implementation reference:** `src/pages/HomePage.jsx` — `ProductTileMedia`, `SingleOriginTileCountryHeader`, and the product grid section.
 
-**Copy layout (single-origin tiles):** Country name is centered **above** the image (large type). Below the image, the **product name**, **region** (without repeating the country), and **tasting notes** are **centered**. Honduras and Peru show an **Organic** pill in the header (Fairtrade Organic SKUs). The subscription tile (Volcanic Origins) keeps its own layout.
+**Copy layout (single-origin tiles):** Country name is centered **above** the image (large type). Below the image, the **product name**, **region** (without repeating the country), and **tasting notes** are **centered**. Honduras and Peru show a **leaf icon + “Organic”** label in the header (Fairtrade Organic SKUs), no pill. The subscription tile (Volcanic Origins) keeps its own layout.
 
 ---
 

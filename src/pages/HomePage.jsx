@@ -2,7 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet';
-import { Mountain, BookOpen, Quote, Star, Zap, Check, Flame, Coffee, ArrowRight } from 'lucide-react';
+import { Mountain, BookOpen, Quote, Star, Zap, Check, Flame, Coffee, ArrowRight, Leaf } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import WelcomeMessage from '@/components/WelcomeMessage';
 import CallToAction from '@/components/CallToAction';
@@ -55,17 +55,18 @@ function ProductTileMedia({ to, src, alt, fit = 'cover', bagScale = 1 }) {
   );
 }
 
-/** Country label above the image; Organic badge for Fairtrade Organic SKUs (e.g. Honduras, Peru). */
+/** Country label above the image; organic SKUs (e.g. Honduras, Peru) use a leaf icon + label — no pill/glow. */
 function SingleOriginTileCountryHeader({ country, organic }) {
   return (
     <div className="shrink-0 border-b border-stone-800 bg-stone-900 px-3 pt-5 pb-4 text-center sm:px-4">
       <div className="mb-3 flex min-h-[30px] items-center justify-center">
         {organic ? (
           <span
-            className="inline-flex rounded-full border border-emerald-400/80 bg-emerald-500/20 px-3.5 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-300 shadow-sm shadow-emerald-950/40"
+            className="inline-flex items-center justify-center gap-1.5 text-stone-400"
             aria-label="Organic coffee"
           >
-            Organic
+            <Leaf className="h-4 w-4 shrink-0 text-emerald-600/85" strokeWidth={2} aria-hidden />
+            <span className="text-xs font-semibold tracking-wide text-stone-300">Organic</span>
           </span>
         ) : null}
       </div>
