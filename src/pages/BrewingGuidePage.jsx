@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Clock, Droplet, Scale, Thermometer } from 'lucide-react';
+import { ArrowRight, Clock, Droplet, Flame, Scale, Thermometer } from 'lucide-react';
 const BrewingGuidePage = () => {
   return <>
       <Helmet>
@@ -16,6 +17,48 @@ const BrewingGuidePage = () => {
            <p className="text-stone-400 max-w-xl mx-auto text-lg">
              Volcanic beans are dense and complex. Brewing them requires patience and precision to unlock the full spectrum of flavor.
            </p>
+        </div>
+
+        <div className="max-w-4xl mx-auto px-4 pt-12 pb-0">
+          <p className="text-center text-xs font-bold uppercase tracking-widest text-amber-700 mb-4">
+            Before you brew
+          </p>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <Link
+              to="/brewing/roasting-options"
+              className="group flex items-center justify-between gap-4 rounded-xl border border-stone-200 bg-white p-6 text-left shadow-sm transition-all hover:border-amber-300 hover:shadow-md"
+            >
+              <div className="flex items-start gap-3">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-amber-100 text-amber-800">
+                  <Flame className="h-5 w-5" aria-hidden />
+                </span>
+                <div>
+                  <h2 className="font-bold text-stone-900 group-hover:text-amber-900">Roasting options</h2>
+                  <p className="mt-1 text-sm text-stone-600">
+                    Light to dark—and how each level changes your cup.
+                  </p>
+                </div>
+              </div>
+              <ArrowRight className="h-5 w-5 shrink-0 text-stone-400 transition-transform group-hover:translate-x-0.5 group-hover:text-amber-700" aria-hidden />
+            </Link>
+            <Link
+              to="/brewing/grind-options"
+              className="group flex items-center justify-between gap-4 rounded-xl border border-stone-200 bg-white p-6 text-left shadow-sm transition-all hover:border-amber-300 hover:shadow-md"
+            >
+              <div className="flex items-start gap-3">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-stone-100 text-stone-800">
+                  <Scale className="h-5 w-5" aria-hidden />
+                </span>
+                <div>
+                  <h2 className="font-bold text-stone-900 group-hover:text-amber-900">Grind options</h2>
+                  <p className="mt-1 text-sm text-stone-600">
+                    Match grind size to your brew method—from whole bean to Turkish.
+                  </p>
+                </div>
+              </div>
+              <ArrowRight className="h-5 w-5 shrink-0 text-stone-400 transition-transform group-hover:translate-x-0.5 group-hover:text-amber-700" aria-hidden />
+            </Link>
+          </div>
         </div>
 
         <div className="max-w-4xl mx-auto px-4 py-16">

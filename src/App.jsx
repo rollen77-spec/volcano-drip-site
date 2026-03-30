@@ -12,6 +12,8 @@ import CoffeeOriginPage from '@/pages/CoffeeOriginPage';
 import AboutPage from '@/pages/AboutPage';
 import SourcingPage from '@/pages/SourcingPage';
 import BrewingGuidePage from '@/pages/BrewingGuidePage';
+import RoastingOptionsPage from '@/pages/RoastingOptionsPage';
+import GrindOptionsPage from '@/pages/GrindOptionsPage';
 import ContactPage from '@/pages/ContactPage';
 import SubscriptionPage from '@/pages/SubscriptionPage';
 import PrivacyPolicyPage from '@/pages/PrivacyPolicyPage';
@@ -77,6 +79,8 @@ function MainLayout({ children }) {
               <li><Link to="/shop" className="hover:text-[#FF8C00] transition-colors">Shop all</Link></li>
               <li><Link to="/subscription" className="hover:text-[#FF8C00] transition-colors">Subscriptions</Link></li>
               <li><Link to="/brewing" className="hover:text-[#FF8C00] transition-colors">Brewing guides</Link></li>
+              <li><Link to="/brewing/roasting-options" className="hover:text-[#FF8C00] transition-colors">Roasting options</Link></li>
+              <li><Link to="/brewing/grind-options" className="hover:text-[#FF8C00] transition-colors">Grind options</Link></li>
             </ul>
           </div>
           <div className="lg:col-span-3">
@@ -133,6 +137,8 @@ function App() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/sourcing" element={<SourcingPage />} />
           <Route path="/brewing" element={<BrewingGuidePage />} />
+          <Route path="/brewing/roasting-options" element={<RoastingOptionsPage />} />
+          <Route path="/brewing/grind-options" element={<GrindOptionsPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/subscription" element={<SubscriptionPage />} />
           <Route path="/signature-drinks" element={<SignatureDrinksPage />} />
