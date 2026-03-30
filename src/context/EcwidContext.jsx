@@ -5,12 +5,29 @@ const EcwidContext = createContext({
   ready: false,
   openCart: () => {},
   openProduct: () => {},
+  initEcwidWidgets: () => {},
 });
 
 const SCRIPT_ID = 'ecwid-script-code';
 
+/** Renders `ec-cart-widget`, product browser, etc. Required for mini-cart item count. */
+function runEcwidInit() {
+  if (typeof window === 'undefined' || typeof window.Ecwid?.init !== 'function') {
+    return;
+  }
+  try {
+    window.Ecwid.init();
+  } catch {
+    /* Ecwid may throw if DOM not ready; retry on next navigation */
+  }
+}
+
 export function EcwidProvider({ children }) {
   const [ready, setReady] = useState(false);
+
+  const initEcwidWidgets = useCallback(() => {
+    runEcwidInit();
+  }, []);
 
   useEffect(() => {
     const markReady = () => setReady(true);
@@ -40,6 +57,15 @@ export function EcwidProvider({ children }) {
     document.body.appendChild(script);
   }, []);
 
+  /** After API is ready, init widgets so `.ec-cart-widget` mounts with live cart count. */
+  useEffect(() => {
+    if (!ready) return;
+    const id = requestAnimationFrame(() => {
+      runEcwidInit();
+    });
+    return () => cancelAnimationFrame(id);
+  }, [ready]);
+
   const openCart = useCallback(() => {
     if (typeof window !== 'undefined' && window.Ecwid?.openPage) {
       window.Ecwid.openPage('cart');
@@ -56,8 +82,8 @@ export function EcwidProvider({ children }) {
   }, []);
 
   const value = useMemo(
-    () => ({ ready, openCart, openProduct }),
-    [ready, openCart, openProduct]
+    () => ({ ready, openCart, openProduct, initEcwidWidgets }),
+    [ready, openCart, openProduct, initEcwidWidgets]
   );
 
   return (

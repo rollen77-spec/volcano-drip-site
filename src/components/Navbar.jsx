@@ -1,14 +1,20 @@
 
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Menu, ChevronDown, ShoppingBag } from 'lucide-react';
+import React, { useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { Menu, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { useEcwid } from '@/context/EcwidContext';
 
 const Navbar = () => {
-  const { openCart } = useEcwid();
+  const { initEcwidWidgets } = useEcwid();
+  const location = useLocation();
+
+  /** Re-run Ecwid widget init after client navigation so mini-cart stays in sync. */
+  useEffect(() => {
+    initEcwidWidgets();
+  }, [location.pathname, initEcwidWidgets]);
   const originLinks = [{
     href: '/origins/costa-rica',
     label: 'Costa Rica'
@@ -48,41 +54,40 @@ const Navbar = () => {
           <img src="https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/primary-logo-copy-wWYt4.png" alt="Volcano Drip Coffee Logo" className="h-[50px] w-auto mix-blend-multiply" />
         </Link>
 
-        {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8">
-          
-          <DropdownMenu>
-            <DropdownMenuTrigger className="flex items-center gap-1 rounded-sm text-sm font-medium text-stone-600 outline-none hover:text-stone-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
-              Shop <ChevronDown className="h-4 w-4 opacity-50" />
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="start" className="w-48 bg-white border-stone-200 p-2">
-              <DropdownMenuItem asChild>
-                <Link to="/shop" className="cursor-pointer text-stone-900 font-semibold focus:bg-stone-100">
-                  Shop all
-                </Link>
-              </DropdownMenuItem>
-              {originLinks.map(link => <DropdownMenuItem key={link.href} asChild>
-                  <Link to={link.href} className="cursor-pointer text-stone-600 focus:text-stone-900 focus:bg-stone-100">
-                    {link.label}
+        <div className="flex flex-1 items-center justify-end gap-2 md:gap-8">
+          {/* Desktop Nav */}
+          <div className="hidden md:flex items-center gap-8">
+            <DropdownMenu>
+              <DropdownMenuTrigger className="flex items-center gap-1 rounded-sm text-sm font-medium text-stone-600 outline-none hover:text-stone-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
+                Shop <ChevronDown className="h-4 w-4 opacity-50" />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start" className="w-48 bg-white border-stone-200 p-2">
+                <DropdownMenuItem asChild>
+                  <Link to="/shop" className="cursor-pointer text-stone-900 font-semibold focus:bg-stone-100">
+                    Shop all
                   </Link>
-                </DropdownMenuItem>)}
-            </DropdownMenuContent>
-          </DropdownMenu>
+                </DropdownMenuItem>
+                {originLinks.map(link => <DropdownMenuItem key={link.href} asChild>
+                    <Link to={link.href} className="cursor-pointer text-stone-600 focus:text-stone-900 focus:bg-stone-100">
+                      {link.label}
+                    </Link>
+                  </DropdownMenuItem>)}
+              </DropdownMenuContent>
+            </DropdownMenu>
 
-          {mainLinks.map(link => <Link key={link.href} to={link.href} className={`rounded-sm text-sm font-medium ${link.href === '/subscription' ? 'text-amber-700 font-bold' : 'text-stone-600'} transition-all hover:text-stone-900 hover:underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2`}>
-              {link.label}
-            </Link>)}
+            {mainLinks.map(link => <Link key={link.href} to={link.href} className={`rounded-sm text-sm font-medium ${link.href === '/subscription' ? 'text-amber-700 font-bold' : 'text-stone-600'} transition-all hover:text-stone-900 hover:underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2`}>
+                {link.label}
+              </Link>)}
+          </div>
 
-          <Button type="button" variant="ghost" size="icon" className="text-stone-700" onClick={openCart} aria-label="Open shopping cart">
-            <ShoppingBag className="h-5 w-5" />
-          </Button>
-        </div>
+          {/* Ecwid mini-cart (bag + item count) — same slot desktop & mobile */}
+          <div
+            className="ec-cart-widget flex min-h-10 min-w-10 shrink-0 items-center justify-center text-stone-700 [&_a]:inline-flex [&_a]:items-center [&_a]:justify-center"
+            title="Shopping cart"
+          />
 
-        {/* Mobile Nav */}
-        <div className="flex items-center gap-1 md:hidden">
-          <Button type="button" variant="ghost" size="icon" className="text-stone-700" onClick={openCart} aria-label="Open shopping cart">
-            <ShoppingBag className="h-6 w-6" />
-          </Button>
+          {/* Mobile menu */}
+          <div className="flex items-center md:hidden">
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
@@ -144,6 +149,7 @@ const Navbar = () => {
               </div>
             </SheetContent>
           </Sheet>
+          </div>
         </div>
       </div>
     </nav>;
