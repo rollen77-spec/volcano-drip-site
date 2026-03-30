@@ -2,103 +2,90 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
-import {
-  ArrowLeft,
-  ArrowRight,
-  Bean,
-  Coffee,
-  Cog,
-  CookingPot,
-  Filter,
-  Flame,
-  FlaskConical,
-  GlassWater,
-  RefreshCw,
-} from 'lucide-react';
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from '@/components/ui/accordion';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
-const GRIND_HERO_IMAGE =
-  'https://images.unsplash.com/photo-1517668808822-ad9bb3cf3c1c?auto=format&fit=crop&w=2000&q=80';
+const IMG = {
+  grindHero: '/images/grinding-hero.png',
+};
 
 const grindItems = [
   {
-    value: 'whole-bean',
-    emoji: '🫘',
     title: 'Whole Bean',
-    Icon: Bean,
     summary: 'Maximum freshness',
-    expanded: 'Grind at home for peak flavor and control.',
+    body: 'Grind at home for peak flavor and control.',
+    crop: { x: 15, y: 35 },
   },
   {
-    value: 'french-press',
-    emoji: '🫖',
     title: 'French Press',
-    Icon: GlassWater,
     summary: 'Coarse grind',
-    expanded: 'Large grounds create a rich, full-bodied cup.',
+    body: 'Large grounds create a rich, full-bodied cup.',
+    crop: { x: 45, y: 30 },
   },
   {
-    value: 'percolator',
-    emoji: '🔄',
     title: 'Percolator',
-    Icon: RefreshCw,
     summary: 'Coarse grind',
-    expanded: 'Designed for repeated brewing cycles.',
+    body: 'Designed for repeated brewing cycles.',
+    crop: { x: 70, y: 25 },
   },
   {
-    value: 'drip-flat',
-    emoji: '☕',
     title: 'Drip (Flat Bottom)',
-    Icon: Coffee,
     summary: 'Medium grind',
-    expanded: 'Balanced extraction for standard coffee makers.',
+    body: 'Balanced extraction for standard coffee makers.',
+    crop: { x: 30, y: 55 },
   },
   {
-    value: 'pour-over',
-    emoji: '🔺',
     title: 'Pour Over (Cone Filter)',
-    Icon: Filter,
     summary: 'Medium-fine grind',
-    expanded: 'Optimized for controlled, even extraction.',
+    body: 'Optimized for controlled, even extraction.',
+    crop: { x: 55, y: 50 },
   },
   {
-    value: 'aeropress',
-    emoji: '🧪',
     title: 'AeroPress',
-    Icon: FlaskConical,
     summary: 'Medium-fine grind',
-    expanded: 'Versatile brewing with smooth results.',
+    body: 'Versatile brewing with smooth results.',
+    crop: { x: 75, y: 45 },
   },
   {
-    value: 'moka',
-    emoji: '🔥',
     title: 'Moka Pot',
-    Icon: Flame,
     summary: 'Fine grind',
-    expanded: 'Strong, concentrated coffee (not as fine as espresso).',
+    body: 'Strong, concentrated coffee (not as fine as espresso).',
+    crop: { x: 40, y: 70 },
   },
   {
-    value: 'espresso',
-    emoji: '⚙️',
     title: 'Espresso Machine',
-    Icon: Cog,
     summary: 'Fine grind',
-    expanded: 'Essential for pressure-based brewing.',
+    body: 'Essential for pressure-based brewing.',
+    crop: { x: 65, y: 75 },
   },
   {
-    value: 'turkish',
-    emoji: '🏺',
     title: 'Turkish',
-    Icon: CookingPot,
     summary: 'Extra fine',
-    expanded: 'Powder-like grind for intense, unfiltered coffee.',
+    body: 'Powder-like grind for intense, unfiltered coffee.',
+    crop: { x: 85, y: 65 },
   },
 ];
+
+function GrindPhotoStrip({ objectPosition, alt, className }) {
+  return (
+    <div
+      className={cn(
+        'relative h-48 w-full overflow-hidden rounded-xl bg-stone-200 md:h-56',
+        className
+      )}
+    >
+      <img
+        src={IMG.grindHero}
+        alt={alt}
+        className="h-full w-full object-cover"
+        style={{ objectPosition: `${objectPosition.x}% ${objectPosition.y}%` }}
+        loading="lazy"
+        decoding="async"
+      />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-stone-900/25 to-transparent" />
+    </div>
+  );
+}
 
 const GrindOptionsPage = () => {
   return (
@@ -111,90 +98,110 @@ const GrindOptionsPage = () => {
         />
       </Helmet>
 
-      <div className="min-h-screen bg-stone-50">
-        <div className="relative h-[min(48vh,480px)] min-h-[260px] overflow-hidden bg-stone-900 md:h-[55vh]">
+      <div className="min-h-screen bg-stone-50 font-sans">
+        <div className="relative min-h-[300px] overflow-hidden bg-stone-900 md:min-h-[52vh] md:max-h-[680px]">
           <div className="absolute inset-0">
             <img
-              src={GRIND_HERO_IMAGE}
-              alt="Coffee grinder—precision and consistency for the perfect brew"
+              src={IMG.grindHero}
+              alt="Coffee roasting and grinding—whole beans and ground coffee in the cooling tray"
               className="h-full w-full object-cover object-center"
-              width={2000}
-              height={1333}
+              width={1920}
+              height={1080}
+              fetchPriority="high"
+              decoding="async"
             />
           </div>
-          <div className="absolute inset-0 bg-gradient-to-t from-stone-900 via-stone-900/50 to-stone-900/25" />
-          <div className="relative flex h-full flex-col items-center justify-end px-4 pb-10 text-center md:justify-center md:pb-0">
-            <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-amber-400">
-              ⚙️ Grind types
-            </p>
-            <h1 className="mb-4 max-w-3xl font-black text-4xl tracking-tight text-white md:text-5xl">
-              Grind options
-            </h1>
-            <p className="max-w-lg text-stone-200">
-              The right particle size balances extraction—method by method.
-            </p>
+          <div className="absolute inset-0 bg-gradient-to-r from-stone-950/88 via-stone-900/50 to-stone-800/30" />
+          <div className="absolute inset-0 bg-gradient-to-t from-stone-950/85 via-transparent to-stone-900/35" />
+          <div className="relative flex min-h-[300px] flex-col justify-end px-6 pb-12 pt-24 md:min-h-[52vh] md:justify-center md:pb-16 md:pt-16">
+            <div className="mx-auto max-w-4xl text-center md:text-left">
+              <p className="mb-4 text-xs font-bold uppercase tracking-[0.22em] text-amber-400">
+                Grind types
+              </p>
+              <h1 className="font-playfair text-[1.85rem] font-bold leading-[1.2] tracking-tight text-white sm:text-4xl md:text-5xl lg:text-[3.25rem]">
+                Choose the Right Grind
+                <span className="mt-2 block sm:mt-1">for Your Brew</span>
+              </h1>
+              <p className="mt-6 max-w-2xl text-base font-medium leading-relaxed text-stone-200 md:text-lg">
+                The right particle size balances extraction—method by method.
+              </p>
+            </div>
           </div>
         </div>
 
-        <div className="mx-auto max-w-3xl px-4 py-16">
+        <div className="mx-auto max-w-3xl px-6 py-16 md:px-8">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="space-y-6 text-center"
+            className="space-y-8 text-center"
           >
-            <p className="text-lg leading-relaxed text-stone-600 md:text-xl">
+            <p className="text-lg font-normal leading-relaxed text-stone-600 md:text-xl">
               Grind size plays a critical role in how your coffee tastes. It controls how quickly
               water extracts flavor from the coffee grounds during brewing.
             </p>
-            <p className="text-lg leading-relaxed text-stone-600 md:text-xl">
+            <p className="text-lg font-normal leading-relaxed text-stone-600 md:text-xl">
               If the grind is too coarse, the coffee can taste weak or under-extracted. Too fine, and
               it may become bitter or over-extracted. Each brewing method is designed for a specific
               grind size to achieve the best balance of flavor.
             </p>
-            <p className="text-lg leading-relaxed text-stone-600 md:text-xl">
+            <p className="text-lg font-normal leading-relaxed text-stone-600 md:text-xl">
               Choosing the right grind ensures a smoother, more consistent cup—whether you&apos;re
               using a French press, drip machine, or espresso maker.
             </p>
           </motion.div>
         </div>
 
-        <section className="mx-auto max-w-3xl px-4 pb-20">
-          <Accordion type="multiple" className="rounded-xl border border-stone-200 bg-white px-2 shadow-sm md:px-4">
-            {grindItems.map((item) => {
-              const Icon = item.Icon;
-              return (
-                <AccordionItem key={item.value} value={item.value} className="border-stone-100">
-                  <AccordionTrigger className="py-5 hover:no-underline [&[data-state=open]]:bg-stone-50/80">
-                    <div className="flex w-full items-start gap-3 pr-2 text-left">
-                      <span className="text-xl leading-none" aria-hidden>
-                        {item.emoji}
-                      </span>
-                      <span
-                        className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-amber-100 text-amber-900"
-                        aria-hidden
-                      >
-                        <Icon className="h-5 w-5" strokeWidth={2} />
-                      </span>
-                      <div className="min-w-0 flex-1">
-                        <span className="block font-bold text-stone-900">{item.title}</span>
-                        <span className="mt-0.5 block text-sm font-semibold text-amber-800">
-                          {item.summary}
-                        </span>
-                      </div>
-                    </div>
-                  </AccordionTrigger>
-                  <AccordionContent className="border-t border-stone-50 bg-stone-50/40">
-                    <p className="pl-3 pr-3 pb-4 pt-1 text-base leading-relaxed text-stone-600 sm:pl-[5.25rem]">
-                      {item.expanded}
-                    </p>
-                  </AccordionContent>
-                </AccordionItem>
-              );
-            })}
-          </Accordion>
+        {/* Visual break — same hero asset, wider crop */}
+        <div className="mx-auto max-w-5xl px-6 pb-16 md:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="overflow-hidden rounded-2xl border border-stone-200 shadow-sm"
+          >
+            <div className="relative aspect-[21/9] min-h-[200px] w-full md:aspect-[2.4/1]">
+              <img
+                src={IMG.grindHero}
+                alt="Range of grind sizes from coarse to fine"
+                className="h-full w-full object-cover"
+                style={{ objectPosition: '50% 45%' }}
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </motion.div>
+        </div>
 
-          <div className="mt-16 flex flex-col items-center gap-4 border-t border-stone-200 pt-12 text-center sm:flex-row sm:justify-center">
+        <section className="mx-auto max-w-6xl space-y-16 px-6 pb-24 md:px-8">
+          {grindItems.map((item, i) => (
+            <motion.article
+              key={item.title}
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className={cn(
+                'grid gap-8 md:grid-cols-2 md:items-center md:gap-12',
+                i % 2 === 1 && 'md:[&>div:first-child]:order-2'
+              )}
+            >
+              <GrindPhotoStrip
+                objectPosition={item.crop}
+                alt={`Coffee and grind texture — ${item.title}`}
+              />
+              <div>
+                <h2 className="font-playfair text-2xl font-bold tracking-tight text-stone-900 md:text-3xl">
+                  {item.title}
+                </h2>
+                <p className="mt-2 text-sm font-semibold uppercase tracking-wide text-amber-800">
+                  {item.summary}
+                </p>
+                <p className="mt-5 text-base leading-relaxed text-stone-600 md:text-lg">{item.body}</p>
+              </div>
+            </motion.article>
+          ))}
+
+          <div className="flex flex-col items-center gap-4 border-t border-stone-200 pt-14 text-center sm:flex-row sm:justify-center">
             <Link
               to="/brewing/roasting-options"
               className="inline-flex items-center gap-2 text-sm font-bold text-amber-800 underline-offset-4 hover:text-amber-600 hover:underline"
