@@ -6,7 +6,12 @@ import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const IMG = {
-  grindHero: '/images/grinding-hero.png',
+  wholeBean: '/images/grind-whole-bean.png',
+  frenchPress: '/images/grind-french-press.png',
+  pourOver: '/images/grind-pour-over.png',
+  aeropress: '/images/grind-aeropress.png',
+  moka: '/images/grind-moka-pot.png',
+  espresso: '/images/grind-espresso.png',
 };
 
 const grindItems = [
@@ -14,59 +19,65 @@ const grindItems = [
     title: 'Whole Bean',
     summary: 'Maximum freshness',
     body: 'Grind at home for peak flavor and control.',
-    crop: { x: 15, y: 35 },
+    image: IMG.wholeBean,
   },
   {
     title: 'French Press',
     summary: 'Coarse grind',
     body: 'Large grounds create a rich, full-bodied cup.',
-    crop: { x: 45, y: 30 },
+    image: IMG.frenchPress,
   },
   {
     title: 'Percolator',
     summary: 'Coarse grind',
     body: 'Designed for repeated brewing cycles.',
-    crop: { x: 70, y: 25 },
+    image: IMG.wholeBean,
+    objectPosition: '48% 62%',
   },
   {
     title: 'Drip (Flat Bottom)',
     summary: 'Medium grind',
     body: 'Balanced extraction for standard coffee makers.',
-    crop: { x: 30, y: 55 },
+    image: IMG.pourOver,
+    objectPosition: '45% 42%',
   },
   {
     title: 'Pour Over (Cone Filter)',
     summary: 'Medium-fine grind',
     body: 'Optimized for controlled, even extraction.',
-    crop: { x: 55, y: 50 },
+    image: IMG.pourOver,
+    objectPosition: '50% 50%',
   },
   {
     title: 'AeroPress',
     summary: 'Medium-fine grind',
     body: 'Versatile brewing with smooth results.',
-    crop: { x: 75, y: 45 },
+    image: IMG.aeropress,
   },
   {
     title: 'Moka Pot',
     summary: 'Fine grind',
     body: 'Strong, concentrated coffee (not as fine as espresso).',
-    crop: { x: 40, y: 70 },
+    image: IMG.moka,
   },
   {
     title: 'Espresso Machine',
     summary: 'Fine grind',
     body: 'Essential for pressure-based brewing.',
-    crop: { x: 65, y: 75 },
+    image: IMG.espresso,
   },
   {
     title: 'Turkish',
     summary: 'Extra fine',
     body: 'Powder-like grind for intense, unfiltered coffee.',
-    crop: { x: 85, y: 65 },
+    image: IMG.espresso,
+    objectPosition: '52% 48%',
   },
 ];
 
-function GrindPhotoStrip({ objectPosition, alt, className }) {
+function GrindSectionImage({ item, alt, className }) {
+  const position = item.objectPosition || '50% 50%';
+
   return (
     <div
       className={cn(
@@ -75,10 +86,10 @@ function GrindPhotoStrip({ objectPosition, alt, className }) {
       )}
     >
       <img
-        src={IMG.grindHero}
+        src={item.image}
         alt={alt}
         className="h-full w-full object-cover"
-        style={{ objectPosition: `${objectPosition.x}% ${objectPosition.y}%` }}
+        style={{ objectPosition: position }}
         loading="lazy"
         decoding="async"
       />
@@ -102,9 +113,10 @@ const GrindOptionsPage = () => {
         <div className="relative min-h-[300px] overflow-hidden bg-stone-900 md:min-h-[52vh] md:max-h-[680px]">
           <div className="absolute inset-0">
             <img
-              src={IMG.grindHero}
-              alt="Coffee roasting and grinding—whole beans and ground coffee in the cooling tray"
-              className="h-full w-full object-cover object-center"
+              src={IMG.pourOver}
+              alt="Pour-over coffee brewing with a gooseneck kettle"
+              className="h-full w-full object-cover"
+              style={{ objectPosition: '50% 45%' }}
               width={1920}
               height={1080}
               fetchPriority="high"
@@ -152,7 +164,6 @@ const GrindOptionsPage = () => {
           </motion.div>
         </div>
 
-        {/* Visual break — same hero asset, wider crop */}
         <div className="mx-auto max-w-5xl px-6 pb-16 md:px-8">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -162,10 +173,10 @@ const GrindOptionsPage = () => {
           >
             <div className="relative aspect-[21/9] min-h-[200px] w-full md:aspect-[2.4/1]">
               <img
-                src={IMG.grindHero}
-                alt="Range of grind sizes from coarse to fine"
+                src={IMG.wholeBean}
+                alt="Volcano Drip whole roasted coffee beans"
                 className="h-full w-full object-cover"
-                style={{ objectPosition: '50% 45%' }}
+                style={{ objectPosition: '50% 55%' }}
                 loading="lazy"
                 decoding="async"
               />
@@ -185,9 +196,9 @@ const GrindOptionsPage = () => {
                 i % 2 === 1 && 'md:[&>div:first-child]:order-2'
               )}
             >
-              <GrindPhotoStrip
-                objectPosition={item.crop}
-                alt={`Coffee and grind texture — ${item.title}`}
+              <GrindSectionImage
+                item={item}
+                alt={`${item.title} — Volcano Drip grind guide`}
               />
               <div>
                 <h2 className="font-playfair text-2xl font-bold tracking-tight text-stone-900 md:text-3xl">
