@@ -88,38 +88,41 @@ const RoastingOptionsPage = () => {
       </Helmet>
 
       <div className="min-h-screen bg-stone-50 font-sans">
-        {/* Hero — Figtree/Playfair per site: display headline in Playfair */}
-        <div className="relative min-h-[320px] overflow-hidden bg-stone-900 md:min-h-[56vh] md:max-h-[720px]">
-          <div className="absolute inset-0">
+        {/* Hero — match Grind / Subscription: sans display title + pill kicker */}
+        <section className="relative flex h-[min(70vh,820px)] min-h-[360px] items-center justify-center overflow-hidden bg-stone-900 text-white">
+          <div className="absolute inset-0 z-0 opacity-50">
             <img
-              src={IMG.roastingHero}
               alt="Coffee roasting—flames and beans in the cooling tray"
               className="h-full w-full object-cover object-center"
+              src={IMG.roastingHero}
               width={1920}
               height={1080}
               fetchPriority="high"
               decoding="async"
             />
           </div>
-          <div className="absolute inset-0 bg-gradient-to-r from-stone-950/85 via-stone-900/55 to-stone-900/25 md:from-stone-950/80 md:via-stone-900/40" />
-          <div className="absolute inset-0 bg-gradient-to-t from-stone-950/90 via-transparent to-stone-900/30" />
-          <div className="relative flex min-h-[320px] flex-col justify-end px-6 pb-14 pt-24 md:min-h-[56vh] md:justify-center md:pb-20 md:pt-20">
-            <div className="mx-auto max-w-4xl text-center md:text-left">
-              <p className="mb-4 text-xs font-bold uppercase tracking-[0.22em] text-amber-400">
-                Roast levels
-              </p>
-              <h1 className="font-playfair text-[2rem] font-bold leading-[1.15] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-[3.5rem]">
-                From Light to Dark.
-                <span className="mt-2 block text-[1.85rem] sm:text-4xl md:text-5xl lg:text-[3rem]">
-                  Discover Your Roast
-                </span>
-              </h1>
-              <p className="mt-6 max-w-xl text-base font-medium leading-relaxed text-stone-200 md:text-lg">
-                Coffee begins its transformation in the flame.
-              </p>
-            </div>
+          <div className="absolute inset-0 z-10 bg-gradient-to-t from-stone-900 via-stone-900/40 to-transparent" />
+
+          <div className="relative z-20 mt-10 max-w-5xl px-4 text-center">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
+              className="mb-4 inline-block rounded-full border border-amber-500/50 bg-amber-500/10 px-4 py-1 text-xs font-bold uppercase tracking-widest text-amber-400 backdrop-blur-md"
+            >
+              Roast levels
+            </motion.div>
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="mb-6 text-6xl font-bold tracking-tighter md:text-8xl"
+            >
+              From Light to Dark.{' '}
+              <span className="text-amber-500">Discover Your Roast</span>.
+            </motion.h1>
           </div>
-        </div>
+        </section>
 
         <div className="mx-auto max-w-3xl px-6 py-16 text-center md:px-8">
           <motion.p

@@ -14,6 +14,8 @@ const IMG = {
   aeropress: '/images/grind-aeropress.png',
   moka: '/images/grind-moka-pot.png',
   espresso: '/images/grind-espresso.png',
+  percolator: '/images/grind-percolator.png',
+  turkish: '/images/grind-turkish.png',
 };
 
 const grindItems = [
@@ -33,8 +35,7 @@ const grindItems = [
     title: 'Percolator',
     summary: 'Coarse grind',
     body: 'Designed for repeated brewing cycles.',
-    image: IMG.wholeBean,
-    objectPosition: '48% 62%',
+    image: IMG.percolator,
   },
   {
     title: 'Drip (Flat Bottom)',
@@ -72,8 +73,7 @@ const grindItems = [
     title: 'Turkish',
     summary: 'Extra fine',
     body: 'Powder-like grind for intense, unfiltered coffee.',
-    image: IMG.espresso,
-    objectPosition: '52% 48%',
+    image: IMG.turkish,
   },
 ];
 
