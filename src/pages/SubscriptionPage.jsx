@@ -138,9 +138,12 @@ const SubscriptionPage = () => {
                     <AlertCircle className="w-10 h-10 text-amber-500" />
                     <p className="text-stone-300 text-sm max-w-md">
                       Add your subscription product in Ecwid, then set{' '}
-                      <code className="text-amber-400 text-xs">VITE_ECWID_SUBSCRIPTION_PRODUCT_ID</code>{' '}
-                      in your <code className="text-amber-400 text-xs">.env</code> file (see{' '}
-                      <code className="text-amber-400 text-xs">.env.example</code>).
+                      <code className="text-amber-400 text-xs">VITE_ECWID_SUBSCRIPTION_PRODUCT_ID</code>
+                      {' '}or{' '}
+                      <code className="text-amber-400 text-xs">VITE_ECWID_VOLCANIC_ORIGINS_BOX</code>{' '}
+                      in your <code className="text-amber-400 text-xs">.env</code> (see{' '}
+                      <code className="text-amber-400 text-xs">.env.example</code>). The site defaults to
+                      product ID 825519010 when unset.
                     </p>
                     <Link
                       to="/shop"

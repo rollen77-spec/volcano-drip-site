@@ -60,7 +60,7 @@ Avoid relying on long-lived third-party CDN URLs for hero tile art when you have
 ## 5. Component behavior (summary)
 
 - **`ProductTileMedia`** — `to`, `src`, `alt`, optional **`fit`** (`"contain"` for Volcanic-style only), optional **`bagScale`** (default `1`) for fine-tuning single-bag scale without re-exporting.
-- **Ecwid / CTAs** — Product IDs and optional product page URLs live in **`src/config/ecwid.js`** and env (`VITE_*`). Defaults include Antigua Ember (Guatemala) **825208083** (`VITE_ECWID_PRODUCT_GUATEMALA` or `VITE_ECWID_GUATEMALA`); Primera Luz (Costa Rica) **825206120**; Sumatra Black (Indonesia) **825206117**. Optional new-tab URLs: **`VITE_ECWID_GUATEMALA_PRODUCT_URL`**, **`VITE_ECWID_COSTA_RICA_PRODUCT_URL`**, **`VITE_ECWID_INDONESIA_PRODUCT_URL`**, etc.
+- **Ecwid / CTAs** — Product IDs and optional product page URLs live in **`src/config/ecwid.js`** and env (`VITE_*`). Defaults include Antigua Ember (Guatemala) **825208083** (`VITE_ECWID_PRODUCT_GUATEMALA` or `VITE_ECWID_GUATEMALA`); Primera Luz (Costa Rica) **825206120**; Sumatra Black (Indonesia) **825206117**; Volcanic Origins Box **825519010** (`VITE_ECWID_SUBSCRIPTION_PRODUCT_ID` or `VITE_ECWID_VOLCANIC_ORIGINS_BOX`). Optional new-tab URLs: **`VITE_ECWID_GUATEMALA_PRODUCT_URL`**, **`VITE_ECWID_SUBSCRIPTION_PRODUCT_URL`**, etc.
 
 ---
 

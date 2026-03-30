@@ -66,12 +66,17 @@ export const ECWID_INDONESIA_PRODUCT_URL =
   import.meta.env.VITE_ECWID_INDONESIA_PRODUCT_URL || '';
 
 /**
- * Volcanic Origins subscription — Ecwid product URL when set (home tile).
- * Falls back to openProduct(SUBSCRIPTION_PRODUCT_ID) when only ID is set.
+ * Volcanic Origins Box — optional full Ecwid product URL. When set, home “View Details” opens in a new tab;
+ * otherwise `openProduct(subscriptionId)` uses the product ID below.
  */
 export const ECWID_SUBSCRIPTION_PRODUCT_URL =
   import.meta.env.VITE_ECWID_SUBSCRIPTION_PRODUCT_URL || '';
 
-/** Subscription / club product in Ecwid (for the subscription page embed). */
+/**
+ * Volcanic Origins Box subscription product in Ecwid (home tile + `/subscription` embed).
+ * Default 825519010 (`volcanic-origins-box`); override with env.
+ */
 export const ECWID_SUBSCRIPTION_PRODUCT_ID =
-  import.meta.env.VITE_ECWID_SUBSCRIPTION_PRODUCT_ID || '';
+  import.meta.env.VITE_ECWID_SUBSCRIPTION_PRODUCT_ID ||
+  import.meta.env.VITE_ECWID_VOLCANIC_ORIGINS_BOX ||
+  '825519010';
