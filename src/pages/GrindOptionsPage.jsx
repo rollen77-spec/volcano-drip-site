@@ -6,6 +6,8 @@ import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const IMG = {
+  heroTray: '/images/grind-hero-tray.png',
+  afterIntro: '/images/grind-after-intro.png',
   wholeBean: '/images/grind-whole-bean.png',
   frenchPress: '/images/grind-french-press.png',
   pourOver: '/images/grind-pour-over.png',
@@ -110,36 +112,41 @@ const GrindOptionsPage = () => {
       </Helmet>
 
       <div className="min-h-screen bg-stone-50 font-sans">
-        <div className="relative min-h-[300px] overflow-hidden bg-stone-900 md:min-h-[52vh] md:max-h-[680px]">
-          <div className="absolute inset-0">
+        {/* Hero — match Subscription page: sans display title scale + overlay */}
+        <section className="relative flex h-[min(70vh,820px)] min-h-[360px] items-center justify-center overflow-hidden bg-stone-900 text-white">
+          <div className="absolute inset-0 z-0 opacity-50">
             <img
-              src={IMG.pourOver}
-              alt="Pour-over coffee brewing with a gooseneck kettle"
-              className="h-full w-full object-cover"
-              style={{ objectPosition: '50% 45%' }}
+              alt="Cooling tray with whole beans and a range of grind sizes"
+              className="h-full w-full object-cover object-center"
+              src={IMG.heroTray}
               width={1920}
               height={1080}
               fetchPriority="high"
               decoding="async"
             />
           </div>
-          <div className="absolute inset-0 bg-gradient-to-r from-stone-950/88 via-stone-900/50 to-stone-800/30" />
-          <div className="absolute inset-0 bg-gradient-to-t from-stone-950/85 via-transparent to-stone-900/35" />
-          <div className="relative flex min-h-[300px] flex-col justify-end px-6 pb-12 pt-24 md:min-h-[52vh] md:justify-center md:pb-16 md:pt-16">
-            <div className="mx-auto max-w-4xl text-center md:text-left">
-              <p className="mb-4 text-xs font-bold uppercase tracking-[0.22em] text-amber-400">
-                Grind types
-              </p>
-              <h1 className="font-playfair text-[1.85rem] font-bold leading-[1.2] tracking-tight text-white sm:text-4xl md:text-5xl lg:text-[3.25rem]">
-                Choose the Right Grind
-                <span className="mt-2 block sm:mt-1">for Your Brew</span>
-              </h1>
-              <p className="mt-6 max-w-2xl text-base font-medium leading-relaxed text-stone-200 md:text-lg">
-                The right particle size balances extraction—method by method.
-              </p>
-            </div>
+          <div className="absolute inset-0 z-10 bg-gradient-to-t from-stone-900 via-stone-900/40 to-transparent" />
+
+          <div className="relative z-20 mt-10 max-w-5xl px-4 text-center">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
+              className="mb-4 inline-block rounded-full border border-amber-500/50 bg-amber-500/10 px-4 py-1 text-xs font-bold uppercase tracking-widest text-amber-400 backdrop-blur-md"
+            >
+              Grind types
+            </motion.div>
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="mb-6 text-6xl font-bold tracking-tighter md:text-8xl"
+            >
+              Choose the Right Grind for{' '}
+              <span className="text-amber-500">Your Brew</span>.
+            </motion.h1>
           </div>
-        </div>
+        </section>
 
         <div className="mx-auto max-w-3xl px-6 py-16 md:px-8">
           <motion.div
@@ -171,12 +178,11 @@ const GrindOptionsPage = () => {
             viewport={{ once: true }}
             className="overflow-hidden rounded-2xl border border-stone-200 shadow-sm"
           >
-            <div className="relative aspect-[21/9] min-h-[200px] w-full md:aspect-[2.4/1]">
+            <div className="relative aspect-[21/9] min-h-[200px] w-full md:aspect-[2.35/1]">
               <img
-                src={IMG.wholeBean}
-                alt="Volcano Drip whole roasted coffee beans"
-                className="h-full w-full object-cover"
-                style={{ objectPosition: '50% 55%' }}
+                src={IMG.afterIntro}
+                alt="Enjoying a freshly brewed cup of coffee"
+                className="h-full w-full object-cover object-[50%_35%]"
                 loading="lazy"
                 decoding="async"
               />
