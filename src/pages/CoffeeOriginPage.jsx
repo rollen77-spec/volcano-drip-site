@@ -6,7 +6,7 @@ import { ArrowLeft, Mountain, Flame, Droplets } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Helmet } from 'react-helmet';
 import { useToast } from '@/components/ui/use-toast';
-import MasonryGallery from '@/components/MasonryGallery';
+import OriginProductGallery from '@/components/OriginProductGallery';
 import EcwidPurchaseButton from '@/components/EcwidPurchaseButton';
 import {
   ECWID_COSTA_RICA_PRODUCT_URL,
@@ -213,7 +213,7 @@ const CoffeeOriginPage = ({ originKey }) => {
           </div>
         </div>
 
-        <div className="max-w-4xl mx-auto px-4 -mt-20 relative z-10">
+        <div className="max-w-5xl mx-auto px-4 -mt-20 relative z-10">
           <motion.div initial={{
           opacity: 0,
           y: 30
@@ -223,100 +223,100 @@ const CoffeeOriginPage = ({ originKey }) => {
         }} transition={{
           delay: 0.3
         }} className="bg-white p-8 md:p-12 shadow-xl rounded-sm border border-stone-100">
-            {/* Main Content Area */}
-            <div className="flex flex-col gap-10 mb-10">
-              {/* Specs & Origin Story */}
-              <div className="w-full">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 border-b border-stone-100 pb-8">
-                  <div className="flex flex-col items-center text-center">
-                    <div className="bg-stone-100 p-3 rounded-full mb-3 text-stone-700">
-                      <Mountain size={24} />
-                    </div>
-                    <span className="text-sm text-stone-500 uppercase tracking-wide">Elevation</span>
-                    <span className="font-semibold text-stone-900">{data.elevation}</span>
+            {/* Specs */}
+            <div className="w-full border-b border-stone-100 pb-8 mb-8">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="flex flex-col items-center text-center">
+                  <div className="bg-stone-100 p-3 rounded-full mb-3 text-stone-700">
+                    <Mountain size={24} />
                   </div>
-                  <div className="flex flex-col items-center text-center">
-                    <div className="bg-stone-100 p-3 rounded-full mb-3 text-stone-700">
-                      <Flame size={24} />
-                    </div>
-                    <span className="text-sm text-stone-500 uppercase tracking-wide">Roast Level</span>
-                    <span className="font-semibold text-stone-900">{data.roastLevel}</span>
-                  </div>
-                  <div className="flex flex-col items-center text-center">
-                    <div className="bg-stone-100 p-3 rounded-full mb-3 text-stone-700">
-                      <Droplets size={24} />
-                    </div>
-                    <span className="text-sm text-stone-500 uppercase tracking-wide">Process</span>
-                    <span className="font-semibold text-stone-900">{data.process}</span>
-                  </div>
+                  <span className="text-sm text-stone-500 uppercase tracking-wide">Elevation</span>
+                  <span className="font-semibold text-stone-900">{data.elevation}</span>
                 </div>
-
-                <h2 className="text-2xl font-bold mb-4 text-stone-900">The Origin Story</h2>
-                <p className="text-lg text-stone-600 leading-relaxed mb-6">
-                  {data.description}
-                </p>
-                {data.storyImage && <motion.div initial={{
-                opacity: 0,
-                y: 20
-              }} animate={{
-                opacity: 1,
-                y: 0
-              }} transition={{
-                delay: 0.5,
-                duration: 0.8
-              }} className="w-full overflow-hidden rounded-sm shadow-lg mb-10">
-                    <img src={data.storyImage} alt={`${data.title} volcanic landscape and coffee cherries`} className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700" />
-                  </motion.div>}
-              </div>
-
-              <div className="w-full">
-                 <MasonryGallery images={currentGalleryImages} />
+                <div className="flex flex-col items-center text-center">
+                  <div className="bg-stone-100 p-3 rounded-full mb-3 text-stone-700">
+                    <Flame size={24} />
+                  </div>
+                  <span className="text-sm text-stone-500 uppercase tracking-wide">Roast Level</span>
+                  <span className="font-semibold text-stone-900">{data.roastLevel}</span>
+                </div>
+                <div className="flex flex-col items-center text-center">
+                  <div className="bg-stone-100 p-3 rounded-full mb-3 text-stone-700">
+                    <Droplets size={24} />
+                  </div>
+                  <span className="text-sm text-stone-500 uppercase tracking-wide">Process</span>
+                  <span className="font-semibold text-stone-900">{data.process}</span>
+                </div>
               </div>
             </div>
 
-            <div className="bg-stone-900 text-stone-100 p-6 rounded-sm mb-10">
-              <h3 className="text-amber-500 text-sm font-bold uppercase tracking-widest mb-4">Tasting Notes</h3>
-              <div className="flex flex-wrap gap-4">
-                {data.tastingNotes.map((note, index) => <span key={index} className="px-4 py-2 border border-stone-700 rounded-full text-sm">
-                    {note}
-                  </span>)}
+            <OriginProductGallery images={currentGalleryImages} />
+
+            <div className="mt-6 sm:mt-8 space-y-5">
+              <div className="bg-stone-900 text-stone-100 p-5 sm:p-6 rounded-sm">
+                <h3 className="text-amber-500 text-sm font-bold uppercase tracking-widest mb-3">Tasting Notes</h3>
+                <div className="flex flex-wrap gap-3">
+                  {data.tastingNotes.map((note, index) => (
+                    <span key={index} className="px-4 py-2 border border-stone-700 rounded-full text-sm">
+                      {note}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </div>
-            
-            <div className="border-t border-stone-200 pt-8">
+
               <div className="flex flex-col items-center justify-center w-full max-w-md mx-auto">
-                 {ECWID_PRODUCT_BY_ORIGIN[originKey] ? (
-                   <EcwidPurchaseButton
-                     variant="origin"
-                     productId={ECWID_PRODUCT_BY_ORIGIN[originKey]}
-                     productPageUrl={
-                       originKey === 'guatemala'
-                         ? ECWID_GUATEMALA_PRODUCT_URL
-                         : originKey === 'honduras'
-                           ? ECWID_HONDURAS_PRODUCT_URL
-                           : originKey === 'indonesia'
-                             ? ECWID_INDONESIA_PRODUCT_URL
-                             : originKey === 'peru'
-                               ? ECWID_PERU_PRODUCT_URL
-                               : originKey === 'costa-rica'
-                                 ? ECWID_COSTA_RICA_PRODUCT_URL
-                                 : ''
-                     }
-                   />
-                 ) : (
-                   <Button onClick={handleNotAvailable} className="bg-amber-600 hover:bg-amber-700 text-white font-bold h-12 px-8 rounded-none min-w-[160px]">
-                     Coming Soon
-                   </Button>
-                 )}
-              </div>
-              
-              <div className="mt-8 text-center sm:text-left">
-                <Link to="/" className="text-stone-500 hover:text-stone-900 hover:underline text-sm inline-flex items-center gap-2">
-                   <ArrowLeft size={16} /> Back to Home
-                </Link>
+                {ECWID_PRODUCT_BY_ORIGIN[originKey] ? (
+                  <EcwidPurchaseButton
+                    variant="origin"
+                    productId={ECWID_PRODUCT_BY_ORIGIN[originKey]}
+                    productPageUrl={
+                      originKey === 'guatemala'
+                        ? ECWID_GUATEMALA_PRODUCT_URL
+                        : originKey === 'honduras'
+                          ? ECWID_HONDURAS_PRODUCT_URL
+                          : originKey === 'indonesia'
+                            ? ECWID_INDONESIA_PRODUCT_URL
+                            : originKey === 'peru'
+                              ? ECWID_PERU_PRODUCT_URL
+                              : originKey === 'costa-rica'
+                                ? ECWID_COSTA_RICA_PRODUCT_URL
+                                : ''
+                    }
+                  />
+                ) : (
+                  <Button onClick={handleNotAvailable} className="bg-amber-600 hover:bg-amber-700 text-white font-bold h-12 px-8 rounded-none min-w-[160px]">
+                    Coming Soon
+                  </Button>
+                )}
               </div>
             </div>
 
+            <div className="mt-10 pt-10 border-t border-stone-200">
+              <h2 className="text-2xl font-bold mb-4 text-stone-900">The Origin Story</h2>
+              <p className="text-lg text-stone-600 leading-relaxed mb-8">
+                {data.description}
+              </p>
+              {data.storyImage && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2, duration: 0.8 }}
+                  className="w-full overflow-hidden rounded-sm shadow-lg"
+                >
+                  <img
+                    src={data.storyImage}
+                    alt={`${data.title} volcanic landscape and coffee cherries`}
+                    className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700"
+                  />
+                </motion.div>
+              )}
+            </div>
+
+            <div className="mt-10 pt-8 border-t border-stone-200 text-center sm:text-left">
+              <Link to="/" className="text-stone-500 hover:text-stone-900 hover:underline text-sm inline-flex items-center gap-2">
+                <ArrowLeft size={16} /> Back to Home
+              </Link>
+            </div>
           </motion.div>
         </div>
       </div>
