@@ -1,10 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet';
-import { Flame, Check, Coffee, Mountain, Truck, AlertCircle } from 'lucide-react';
+import { Flame, Coffee, Mountain, Truck, AlertCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import EcwidProduct from '@/components/EcwidProduct';
-import { ECWID_SUBSCRIPTION_PRODUCT_ID } from '@/config/ecwid';
+import EcwidPurchaseButton from '@/components/EcwidPurchaseButton';
+import { ECWID_SUBSCRIPTION_PRODUCT_ID, ECWID_SUBSCRIPTION_PRODUCT_URL } from '@/config/ecwid';
 
 const SubscriptionPage = () => {
   const membershipFeatures = [
@@ -119,18 +119,18 @@ const SubscriptionPage = () => {
               </div>
 
               <div className="relative z-10">
-                <h3 className="text-2xl font-bold text-white mb-2 text-center">
+                <h3 className="text-2xl font-bold text-white mb-8 text-center">
                   The Volcanic Origins Box
                 </h3>
-                <p className="text-stone-400 text-sm text-center mb-8">
-                  Subscribe through our Ecwid store — same cart and secure checkout as the rest of the site.
-                </p>
 
-                {ECWID_SUBSCRIPTION_PRODUCT_ID ? (
-                  <div className="max-w-md mx-auto">
-                    <EcwidProduct
+                {ECWID_SUBSCRIPTION_PRODUCT_ID || ECWID_SUBSCRIPTION_PRODUCT_URL ? (
+                  <div className="mx-auto w-full max-w-md">
+                    <EcwidPurchaseButton
+                      variant="origin"
                       productId={ECWID_SUBSCRIPTION_PRODUCT_ID}
-                      productName="Volcanic Origins Box"
+                      productPageUrl={ECWID_SUBSCRIPTION_PRODUCT_URL}
+                      label="Add to cart"
+                      className="w-full"
                     />
                   </div>
                 ) : (
