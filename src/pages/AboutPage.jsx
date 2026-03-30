@@ -9,7 +9,7 @@ import HeroImage from '@/components/HeroImage';
 const AboutPage = () => {
   return <>
       <Helmet>
-        <title>About Us | The Volcano Drip Story</title>
+        <title>About Us | Volcano Drip</title>
         <meta name="description" content="Discover how Volcano Drip was born from a passion for volcanic soil coffee and sustainable sourcing." />
       </Helmet>
 

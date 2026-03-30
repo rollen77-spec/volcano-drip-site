@@ -1,3 +1,5 @@
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
 	darkMode: ['class'],
@@ -16,6 +18,20 @@ module.exports = {
 			},
 		},
 		extend: {
+			fontFamily: {
+				sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+				playfair: ['"Playfair Display"', 'Georgia', 'serif'],
+			},
+			fontSize: {
+				hero: [
+					'clamp(2.75rem,7vw,5.5rem)',
+					{ lineHeight: '0.95', letterSpacing: '-0.03em' },
+				],
+				'section-xl': [
+					'clamp(2rem,4vw,3rem)',
+					{ lineHeight: '1.1', letterSpacing: '-0.02em' },
+				],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',

@@ -12,7 +12,7 @@ function SuccessPage() {
   return (
     <>
       <Helmet>
-        <title>Order Confirmed - Volcano Drip</title>
+        <title>Order Confirmed | Volcano Drip</title>
       </Helmet>
       
       <div className="min-h-[80vh] flex flex-col items-center py-20 px-4 bg-stone-50">

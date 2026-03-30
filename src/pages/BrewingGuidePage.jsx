@@ -6,7 +6,7 @@ import { Clock, Droplet, Scale, Thermometer } from 'lucide-react';
 const BrewingGuidePage = () => {
   return <>
       <Helmet>
-        <title>Brewing Guide - Volcano Drip</title>
+        <title>Brewing Guides | Volcano Drip</title>
         <meta name="description" content="Master the art of brewing volcanic coffee." />
       </Helmet>
       

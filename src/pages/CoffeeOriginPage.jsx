@@ -16,6 +16,7 @@ import {
   ECWID_PERU_PRODUCT_URL,
   ECWID_PRODUCT_BY_ORIGIN,
 } from '@/config/ecwid';
+import { getSiteUrl } from '@/config/site';
 
 const originData = {
   'costa-rica': {
@@ -167,6 +168,23 @@ const CoffeeOriginPage = ({ originKey }) => {
           : originKey === 'honduras'
             ? hondurasGalleryImages
             : defaultGalleryImages;
+
+  const siteUrl = getSiteUrl();
+  const firstImageSrc = currentGalleryImages[0]?.src;
+  const productImageUrl =
+    firstImageSrc &&
+    (firstImageSrc.startsWith('http') ? firstImageSrc : `${siteUrl}${firstImageSrc}`);
+  const productPageUrl = siteUrl ? `${siteUrl}/origins/${originKey}` : '';
+  const productJsonLd = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: data.title,
+    description: data.description.slice(0, 500),
+    image: productImageUrl || undefined,
+    brand: { '@type': 'Brand', name: 'Volcano Drip' },
+    url: productPageUrl || undefined,
+    category: 'Coffee',
+  });
   
   const handleNotAvailable = () => {
     toast({
@@ -178,8 +196,9 @@ const CoffeeOriginPage = ({ originKey }) => {
   
   return <>
       <Helmet>
-        <title>{data.title} - Volcano Drip</title>
+        <title>{`${data.title} | Volcano Drip`}</title>
         <meta name="description" content={data.description} />
+        <script type="application/ld+json">{productJsonLd}</script>
       </Helmet>
       
       <div className="min-h-screen bg-stone-50 pb-20">

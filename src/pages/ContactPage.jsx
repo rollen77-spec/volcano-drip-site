@@ -110,7 +110,7 @@ const ContactPage = () => {
 
   return <>
       <Helmet>
-        <title>Contact Us - Volcano Drip</title>
+        <title>Contact | Volcano Drip</title>
         <meta name="description" content="Get in touch with the team and see where we'll be next." />
       </Helmet>
       

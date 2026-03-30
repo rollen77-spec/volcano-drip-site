@@ -5,7 +5,7 @@ import { Leaf, ShieldCheck, MapPin } from 'lucide-react';
 const SourcingPage = () => {
   return <>
       <Helmet>
-        <title>Sourcing & Sustainability - Volcano Drip</title>
+        <title>Sourcing & Sustainability | Volcano Drip</title>
         <meta name="description" content="Our commitment to the earth and the farmers who tend it." />
       </Helmet>
       

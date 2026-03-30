@@ -54,7 +54,7 @@ const SignatureDrinksPage = () => {
   return (
     <>
       <Helmet>
-        <title>Signature Drinks | Volcano Drip Coffee</title>
+        <title>Signature Drinks | Volcano Drip</title>
         <meta name="description" content="Discover Volcano Drip's signature coffee recipes including the Lava Shot, Eruption Pour, and Magma Cold Brew." />
       </Helmet>
 

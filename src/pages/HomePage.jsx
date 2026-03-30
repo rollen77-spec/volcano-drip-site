@@ -28,12 +28,19 @@ import {
 function ProductTileMedia({ to, src, alt, fit = 'cover', bagScale = 1 }) {
   const isContain = fit === 'contain';
   return (
-    <Link to={to} className="block relative aspect-square overflow-hidden bg-stone-950/80">
+    <Link
+      to={to}
+      className="relative block aspect-square overflow-hidden rounded-sm bg-stone-950/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-stone-900"
+    >
       {isContain ? (
         <div className="absolute inset-0 flex items-center justify-center p-2 sm:p-3">
           <img
             src={src}
             alt={alt}
+            width={800}
+            height={800}
+            loading="lazy"
+            decoding="async"
             className="max-h-full max-w-full object-contain object-center transition-transform duration-700 group-hover:scale-[1.02]"
           />
         </div>
@@ -42,6 +49,10 @@ function ProductTileMedia({ to, src, alt, fit = 'cover', bagScale = 1 }) {
           <img
             src={src}
             alt={alt}
+            width={800}
+            height={800}
+            loading="lazy"
+            decoding="async"
             className="h-auto w-full max-h-[82%] object-contain object-bottom"
             style={{
               transform: bagScale !== 1 ? `scale(${bagScale})` : undefined,
@@ -62,11 +73,11 @@ function SingleOriginTileCountryHeader({ country, organic }) {
       <div className="mb-3 flex min-h-[30px] items-center justify-center">
         {organic ? (
           <span
-            className="inline-flex items-center justify-center gap-1.5 text-stone-400"
+            className="inline-flex items-center justify-center gap-1.5 text-stone-300"
             aria-label="Organic coffee"
           >
             <Leaf className="h-4 w-4 shrink-0 text-emerald-600/85" strokeWidth={2} aria-hidden />
-            <span className="text-xs font-semibold tracking-wide text-stone-300">Organic</span>
+            <span className="text-xs font-semibold tracking-wide text-stone-200">Organic</span>
           </span>
         ) : null}
       </div>
@@ -117,7 +128,15 @@ const HomePage = () => {
         {/* Hero Section */}
         <section className="relative h-[90vh] flex items-center justify-center bg-stone-900 overflow-hidden">
           <div className="absolute inset-0 z-0">
-            <img alt="Active volcano erupting at night with lava" src="https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/05c61514a48c26a3970780f69c046190.png" className="w-full h-full object-cover object-[center_80%]" />
+            <img
+              alt="Active volcano erupting at night with lava"
+              src="https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/05c61514a48c26a3970780f69c046190.png"
+              width={1920}
+              height={1080}
+              fetchPriority="high"
+              decoding="async"
+              className="h-full w-full object-cover object-[center_80%]"
+            />
             <div className="absolute inset-0 bg-black/60 z-10" />
           </div>
           
@@ -134,7 +153,7 @@ const HomePage = () => {
               <span className="inline-block mb-6 px-4 py-1.5 border border-amber-500/30 rounded-full bg-amber-500/10 backdrop-blur-md text-amber-400 font-bold tracking-widest text-xs uppercase">
                 Est. 2025 • Small Batch Roasters
               </span>
-              <h1 className="text-5xl md:text-8xl font-black text-white tracking-tighter mb-8 leading-[0.9]">
+              <h1 className="font-black text-hero text-white mb-8">
                 FUEL YOUR <br />
                 <span className="text-amber-500">INNER FIRE.</span>
               </h1>
@@ -175,7 +194,15 @@ const HomePage = () => {
           }} transition={{
             duration: 0.6
           }} className="w-full max-w-7xl group">
-              <img src="https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/adb8ea4f717435f5de5f3b94549f48d4.png" alt="Volcano Drip Coffee product display showing 5 coffee bags" className="w-full h-auto rounded-xl shadow-lg transition-transform duration-500 group-hover:-translate-y-2 group-hover:shadow-xl bg-white p-2" />
+              <img
+                src="https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/adb8ea4f717435f5de5f3b94549f48d4.png"
+                alt="Volcano Drip Coffee product display showing 5 coffee bags"
+                width={1400}
+                height={788}
+                loading="lazy"
+                decoding="async"
+                className="h-auto w-full rounded-xl bg-white p-2 shadow-lg transition-transform duration-500 group-hover:-translate-y-2 group-hover:shadow-xl"
+              />
             </motion.div>
           </div>
         </section>
@@ -218,7 +245,7 @@ const HomePage = () => {
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
               <div className="max-w-2xl">
                 <span className="text-amber-600 font-bold tracking-widest text-xs uppercase mb-3 block">Coffee Shop</span>
-                <h2 className="text-4xl md:text-5xl font-black text-stone-900 tracking-tight leading-none mb-6">
+                <h2 className="font-black text-section-xl text-stone-900 mb-6 tracking-tight">
                   FRESH FROM <br />THE ROASTERY.
                 </h2>
                 <p className="text-stone-600 text-lg">Our master roaster carefully selects beans that showcase the unique mineral profiles of their volcanic origins.</p>
@@ -244,12 +271,12 @@ const HomePage = () => {
                     <Link to="/origins/guatemala" className="block group-hover:text-amber-500 transition-colors">
                       <h3 className="text-xl font-bold text-white mb-1 leading-tight">Antigua Ember</h3>
                     </Link>
-                    <p className="text-stone-400 text-sm">Antigua Valley</p>
+                    <p className="text-stone-300 text-sm">Antigua Valley</p>
                   </div>
                   
                   <div className="mb-6">
                     <h4 className="text-[10px] uppercase text-stone-500 font-bold mb-2 tracking-widest">Tasting Notes</h4>
-                    <div className="flex flex-wrap justify-center gap-x-2 gap-y-1 text-sm text-stone-300 font-medium">
+                    <div className="flex flex-wrap justify-center gap-x-2 gap-y-1 text-sm text-stone-200 font-medium">
                       <span>Cocoa •</span><span>Caramel •</span><span>Subtle Spice</span>
                     </div>
                   </div>
@@ -258,17 +285,17 @@ const HomePage = () => {
                      <div className="flex flex-col items-center text-center gap-1">
                         <Mountain className="w-4 h-4 text-amber-600 mb-1" />
                         <span className="text-[10px] text-stone-500 uppercase">Elevation</span>
-                        <span className="text-xs font-medium text-stone-300">1,500m</span>
+                        <span className="text-xs font-medium text-stone-200">1,500m</span>
                      </div>
                      <div className="flex flex-col items-center text-center gap-1 border-l border-stone-800">
                         <Flame className="w-4 h-4 text-amber-600 mb-1" />
                         <span className="text-[10px] text-stone-500 uppercase">Roast</span>
-                        <span className="text-xs font-medium text-stone-300">Medium</span>
+                        <span className="text-xs font-medium text-stone-200">Medium</span>
                      </div>
                      <div className="flex flex-col items-center text-center gap-1 border-l border-stone-800">
                         <Coffee className="w-4 h-4 text-amber-600 mb-1" />
                         <span className="text-[10px] text-stone-500 uppercase">Body</span>
-                        <span className="text-xs font-medium text-stone-300">Medium</span>
+                        <span className="text-xs font-medium text-stone-200">Medium</span>
                      </div>
                   </div>
 
@@ -276,7 +303,7 @@ const HomePage = () => {
                     <EcwidPurchaseButton
                       productId={ECWID_PRODUCT_BY_ORIGIN.guatemala}
                       productPageUrl={ECWID_GUATEMALA_PRODUCT_URL}
-                      label="View Details"
+                      label="Shop this roast"
                     />
                   </div>
                 </div>
@@ -301,12 +328,12 @@ const HomePage = () => {
                     <Link to="/origins/costa-rica" className="block group-hover:text-amber-500 transition-colors">
                       <h3 className="text-xl font-bold text-white mb-1 leading-tight">Primera Luz</h3>
                     </Link>
-                    <p className="text-stone-400 text-sm">Arenal Volcano</p>
+                    <p className="text-stone-300 text-sm">Arenal Volcano</p>
                   </div>
                   
                   <div className="mb-6">
                     <h4 className="text-[10px] uppercase text-stone-500 font-bold mb-2 tracking-widest">Tasting Notes</h4>
-                    <div className="flex flex-wrap justify-center gap-x-2 gap-y-1 text-sm text-stone-300 font-medium">
+                    <div className="flex flex-wrap justify-center gap-x-2 gap-y-1 text-sm text-stone-200 font-medium">
                       <span>Citrus •</span><span>Honey •</span><span>Milk Chocolate</span>
                     </div>
                   </div>
@@ -315,17 +342,17 @@ const HomePage = () => {
                      <div className="flex flex-col items-center text-center gap-1">
                         <Mountain className="w-4 h-4 text-amber-600 mb-1" />
                         <span className="text-[10px] text-stone-500 uppercase">Elevation</span>
-                        <span className="text-xs font-medium text-stone-300">1,400m</span>
+                        <span className="text-xs font-medium text-stone-200">1,400m</span>
                      </div>
                      <div className="flex flex-col items-center text-center gap-1 border-l border-stone-800">
                         <Flame className="w-4 h-4 text-amber-600 mb-1" />
                         <span className="text-[10px] text-stone-500 uppercase">Roast</span>
-                        <span className="text-xs font-medium text-stone-300">Light</span>
+                        <span className="text-xs font-medium text-stone-200">Light</span>
                      </div>
                      <div className="flex flex-col items-center text-center gap-1 border-l border-stone-800">
                         <Coffee className="w-4 h-4 text-amber-600 mb-1" />
                         <span className="text-[10px] text-stone-500 uppercase">Body</span>
-                        <span className="text-xs font-medium text-stone-300">Medium</span>
+                        <span className="text-xs font-medium text-stone-200">Medium</span>
                      </div>
                   </div>
 
@@ -334,12 +361,12 @@ const HomePage = () => {
                       <EcwidPurchaseButton
                         productId={ECWID_PRODUCT_BY_ORIGIN['costa-rica']}
                         productPageUrl={ECWID_COSTA_RICA_PRODUCT_URL}
-                        label="View Details"
+                        label="Shop this roast"
                       />
                     ) : (
                       <Link to="/origins/costa-rica" className="w-full">
                         <Button className="w-full bg-white hover:bg-stone-200 text-stone-900 font-bold h-10 rounded-none transition-colors">
-                          View Details
+                          Shop this roast
                         </Button>
                       </Link>
                     )}
@@ -365,12 +392,12 @@ const HomePage = () => {
                     <Link to="/origins/indonesia" className="block group-hover:text-amber-500 transition-colors">
                       <h3 className="text-xl font-bold text-white mb-1 leading-tight">Sumatra Black</h3>
                     </Link>
-                    <p className="text-stone-400 text-sm">Lake Toba</p>
+                    <p className="text-stone-300 text-sm">Lake Toba</p>
                   </div>
                   
                   <div className="mb-6">
                     <h4 className="text-[10px] uppercase text-stone-500 font-bold mb-2 tracking-widest">Tasting Notes</h4>
-                    <div className="flex flex-wrap justify-center gap-x-2 gap-y-1 text-sm text-stone-300 font-medium">
+                    <div className="flex flex-wrap justify-center gap-x-2 gap-y-1 text-sm text-stone-200 font-medium">
                       <span>Earthy •</span><span>Dark Chocolate •</span><span>Smoky</span>
                     </div>
                   </div>
@@ -379,17 +406,17 @@ const HomePage = () => {
                      <div className="flex flex-col items-center text-center gap-1">
                         <Mountain className="w-4 h-4 text-amber-600 mb-1" />
                         <span className="text-[10px] text-stone-500 uppercase">Elevation</span>
-                        <span className="text-xs font-medium text-stone-300">3,404m</span>
+                        <span className="text-xs font-medium text-stone-200">3,404m</span>
                      </div>
                      <div className="flex flex-col items-center text-center gap-1 border-l border-stone-800">
                         <Flame className="w-4 h-4 text-amber-600 mb-1" />
                         <span className="text-[10px] text-stone-500 uppercase">Roast</span>
-                        <span className="text-xs font-medium text-stone-300">Dark</span>
+                        <span className="text-xs font-medium text-stone-200">Dark</span>
                      </div>
                      <div className="flex flex-col items-center text-center gap-1 border-l border-stone-800">
                         <Coffee className="w-4 h-4 text-amber-600 mb-1" />
                         <span className="text-[10px] text-stone-500 uppercase">Body</span>
-                        <span className="text-xs font-medium text-stone-300">Full</span>
+                        <span className="text-xs font-medium text-stone-200">Full</span>
                      </div>
                   </div>
 
@@ -398,12 +425,12 @@ const HomePage = () => {
                       <EcwidPurchaseButton
                         productId={ECWID_PRODUCT_BY_ORIGIN.indonesia}
                         productPageUrl={ECWID_INDONESIA_PRODUCT_URL}
-                        label="View Details"
+                        label="Shop this roast"
                       />
                     ) : (
                       <Link to="/origins/indonesia" className="w-full">
                         <Button className="w-full bg-white hover:bg-stone-200 text-stone-900 font-bold h-10 rounded-none transition-colors">
-                          View Details
+                          Shop this roast
                         </Button>
                       </Link>
                     )}
@@ -430,12 +457,12 @@ const HomePage = () => {
                     <Link to="/origins/honduras" className="block group-hover:text-amber-500 transition-colors">
                       <h3 className="text-xl font-bold text-white mb-1 leading-tight">Copán Rise</h3>
                     </Link>
-                    <p className="text-stone-400 text-sm">Western Highlands</p>
+                    <p className="text-stone-300 text-sm">Western Highlands</p>
                   </div>
 
                   <div className="mb-6">
                     <h4 className="text-[10px] uppercase text-stone-500 font-bold mb-2 tracking-widest">Tasting Notes</h4>
-                    <div className="flex flex-wrap justify-center gap-x-2 gap-y-1 text-sm text-stone-300 font-medium">
+                    <div className="flex flex-wrap justify-center gap-x-2 gap-y-1 text-sm text-stone-200 font-medium">
                       <span>Citrus •</span><span>Stone Fruit •</span><span>Cocoa</span>
                     </div>
                   </div>
@@ -444,17 +471,17 @@ const HomePage = () => {
                     <div className="flex flex-col items-center text-center gap-1">
                       <Mountain className="w-4 h-4 text-amber-600 mb-1" />
                       <span className="text-[10px] text-stone-500 uppercase">Elevation</span>
-                      <span className="text-xs font-medium text-stone-300">1,400m</span>
+                      <span className="text-xs font-medium text-stone-200">1,400m</span>
                     </div>
                     <div className="flex flex-col items-center text-center gap-1 border-l border-stone-800">
                       <Flame className="w-4 h-4 text-amber-600 mb-1" />
                       <span className="text-[10px] text-stone-500 uppercase">Roast</span>
-                      <span className="text-xs font-medium text-stone-300">Med-Dark</span>
+                      <span className="text-xs font-medium text-stone-200">Med-Dark</span>
                     </div>
                     <div className="flex flex-col items-center text-center gap-1 border-l border-stone-800">
                       <Coffee className="w-4 h-4 text-amber-600 mb-1" />
                       <span className="text-[10px] text-stone-500 uppercase">Body</span>
-                      <span className="text-xs font-medium text-stone-300">Medium</span>
+                      <span className="text-xs font-medium text-stone-200">Medium</span>
                     </div>
                   </div>
 
@@ -462,7 +489,7 @@ const HomePage = () => {
                     <EcwidPurchaseButton
                       productId={ECWID_PRODUCT_BY_ORIGIN.honduras}
                       productPageUrl={ECWID_HONDURAS_PRODUCT_URL}
-                      label="View Details"
+                      label="Shop this roast"
                     />
                   </div>
                 </div>
@@ -487,12 +514,12 @@ const HomePage = () => {
                     <Link to="/origins/peru" className="block group-hover:text-amber-500 transition-colors">
                       <h3 className="text-xl font-bold text-white mb-1 leading-tight">Inca Ascent</h3>
                     </Link>
-                    <p className="text-stone-400 text-sm">Andes Volcanic Belt</p>
+                    <p className="text-stone-300 text-sm">Andes Volcanic Belt</p>
                   </div>
 
                   <div className="mb-6">
                     <h4 className="text-[10px] uppercase text-stone-500 font-bold mb-2 tracking-widest">Tasting Notes</h4>
-                    <div className="flex flex-wrap justify-center gap-x-2 gap-y-1 text-sm text-stone-300 font-medium">
+                    <div className="flex flex-wrap justify-center gap-x-2 gap-y-1 text-sm text-stone-200 font-medium">
                       <span>Soft Citrus •</span><span>Stone Fruit •</span><span>Subtle Cocoa</span>
                     </div>
                   </div>
@@ -501,17 +528,17 @@ const HomePage = () => {
                     <div className="flex flex-col items-center text-center gap-1">
                       <Mountain className="w-4 h-4 text-amber-600 mb-1" />
                       <span className="text-[10px] text-stone-500 uppercase">Elevation</span>
-                      <span className="text-xs font-medium text-stone-300">2,000m</span>
+                      <span className="text-xs font-medium text-stone-200">2,000m</span>
                     </div>
                     <div className="flex flex-col items-center text-center gap-1 border-l border-stone-800">
                       <Flame className="w-4 h-4 text-amber-600 mb-1" />
                       <span className="text-[10px] text-stone-500 uppercase">Roast</span>
-                      <span className="text-[11px] font-medium text-stone-300 leading-tight">Light-Med</span>
+                      <span className="text-[11px] font-medium text-stone-200 leading-tight">Light-Med</span>
                     </div>
                     <div className="flex flex-col items-center text-center gap-1 border-l border-stone-800">
                       <Coffee className="w-4 h-4 text-amber-600 mb-1" />
                       <span className="text-[10px] text-stone-500 uppercase">Body</span>
-                      <span className="text-xs font-medium text-stone-300">Medium</span>
+                      <span className="text-xs font-medium text-stone-200">Medium</span>
                     </div>
                   </div>
 
@@ -519,7 +546,7 @@ const HomePage = () => {
                     <EcwidPurchaseButton
                       productId={ECWID_PRODUCT_BY_ORIGIN.peru}
                       productPageUrl={ECWID_PERU_PRODUCT_URL}
-                      label="View Details"
+                      label="Shop this roast"
                     />
                   </div>
                 </div>
@@ -546,7 +573,7 @@ const HomePage = () => {
                     </Link>
                   </div>
 
-                  <p className="text-sm text-stone-300 leading-relaxed mb-6 flex-grow">
+                  <p className="text-sm text-stone-200 leading-relaxed mb-6 flex-grow">
                     <span className="font-bold text-white block mb-2">The Volcano Drip Subscription</span>
                     Explore the world&apos;s volcanic coffee regions with every delivery. Each box includes 4
                     freshly roasted coffees grown in mineral-rich volcanic soil—known for producing bold,
@@ -558,12 +585,12 @@ const HomePage = () => {
                       <EcwidPurchaseButton
                         productId={ECWID_SUBSCRIPTION_PRODUCT_ID}
                         productPageUrl={ECWID_SUBSCRIPTION_PRODUCT_URL}
-                        label="View Details"
+                        label="View subscription"
                       />
                     ) : (
                       <Link to="/subscription" className="w-full">
                         <Button className="w-full bg-white hover:bg-stone-200 text-stone-900 font-bold h-10 rounded-none transition-colors">
-                          View Details
+                          View subscription
                         </Button>
                       </Link>
                     )}

@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   :root {
     --background: 40 20% 97%; /* Stone-100ish/Cream */
     --foreground: 24 10% 10%; /* Stone-950/Black */
@@ -39,6 +43,23 @@
     --ring: 33 100% 50%; /* Focus rings use the accent orange */
     --radius: 0.5rem;
   }
+
+  a:focus-visible,
+  button:focus-visible,
+  [role='button']:focus-visible,
+  summary:focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+
+  input,
+  textarea {
+    @apply transition-colors duration-200 outline-none;
+  }
+
+  input:focus-visible,
+  textarea:focus-visible {
+    @apply border-orange-500 ring-2 ring-orange-500/20;
+  }
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&display=swap');
@@ -50,20 +71,11 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  @apply font-bold tracking-tight;
+  @apply font-bold tracking-tight text-balance;
 }
 
 .font-playfair {
   font-family: 'Playfair Display', serif;
-}
-
-/* Global Form Enhancements */
-input, textarea {
-  @apply transition-colors duration-200 outline-none;
-}
-
-input:focus, textarea:focus {
-  @apply border-orange-500 ring-2 ring-orange-500/20;
 }
 
 /* Responsive touch manipulation utilities */

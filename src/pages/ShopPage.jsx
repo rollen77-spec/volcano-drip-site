@@ -1,5 +1,6 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Helmet } from 'react-helmet';
+import { Loader2 } from 'lucide-react';
 import { useEcwid } from '@/context/EcwidContext';
 import { ECWID_DEFAULT_CATEGORY_ID } from '@/config/ecwid';
 
@@ -11,6 +12,7 @@ const CONTAINER_ID = 'ecwid-store';
 const ShopPage = () => {
   const { ready } = useEcwid();
   const initialized = useRef(false);
+  const [catalogMounted, setCatalogMounted] = useState(false);
 
   useEffect(() => {
     if (!ready || initialized.current) return;
@@ -27,6 +29,7 @@ const ShopPage = () => {
         window.xProductBrowser('categoriesPerRow=3', `id=${CONTAINER_ID}`);
       }
       initialized.current = true;
+      setCatalogMounted(true);
     };
 
     if (window.Ecwid?.OnAPILoaded) {
@@ -59,10 +62,25 @@ const ShopPage = () => {
           </p>
         </div>
 
-        <div
-          id={CONTAINER_ID}
-          className="max-w-7xl mx-auto min-h-[480px] bg-white rounded-lg border border-stone-200 p-4 md:p-8 shadow-sm"
-        />
+        <div className="relative max-w-7xl mx-auto">
+          {!catalogMounted && (
+            <div
+              className="absolute inset-0 z-10 flex min-h-[480px] flex-col items-center justify-center gap-3 rounded-lg border border-stone-200 bg-white/95 px-6 text-center shadow-sm backdrop-blur-sm"
+              role="status"
+              aria-live="polite"
+            >
+              <Loader2 className="h-10 w-10 animate-spin text-amber-600" aria-hidden />
+              <p className="text-sm font-medium text-stone-700">Loading catalog…</p>
+              <p className="max-w-sm text-xs text-stone-500">
+                If this takes a while, check that your store ID is set and the network allows Ecwid.
+              </p>
+            </div>
+          )}
+          <div
+            id={CONTAINER_ID}
+            className="min-h-[480px] rounded-lg border border-stone-200 bg-white p-4 shadow-sm md:p-8"
+          />
+        </div>
       </div>
     </>
   );

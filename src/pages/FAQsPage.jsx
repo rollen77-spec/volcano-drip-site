@@ -36,7 +36,7 @@ const FAQsPage = () => {
   return (
     <>
       <Helmet>
-        <title>FAQs | Volcano Drip Coffee</title>
+        <title>FAQs | Volcano Drip</title>
         <meta name="description" content="Frequently asked questions about Volcano Drip coffee, our sourcing, roasting, and brewing recommendations." />
       </Helmet>
 

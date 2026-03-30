@@ -29,7 +29,7 @@ const SubscriptionPage = () => {
   return (
     <>
       <Helmet>
-        <title>The Volcanic Origins Box - Coffee Subscription | Volcano Drip</title>
+        <title>Volcanic Origins Subscription | Volcano Drip</title>
         <meta
           name="description"
           content="Join the Volcanic Origins Club. Ignite your mornings with our monthly coffee subscription."

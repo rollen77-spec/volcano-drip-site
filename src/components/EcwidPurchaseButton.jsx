@@ -1,5 +1,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
+import { ToastAction } from '@/components/ui/toast';
+import { toast } from '@/components/ui/use-toast';
 import { cn } from '@/lib/utils';
 import { useEcwid } from '@/context/EcwidContext';
 
@@ -20,12 +22,12 @@ const EcwidPurchaseButton = ({
   productPageUrl = '',
   variant = 'home',
   className,
-  /** Home tiles often use "View Details"; origin pages use "Add to cart". */
+  /** Home tiles often use "Shop this roast"; origin pages use "Add to cart". */
   label,
 }) => {
   const baseClass =
     variant === 'origin' ? originPageClass : homeTileClass;
-  const { openProduct } = useEcwid();
+  const { openCart, openProduct } = useEcwid();
   const text = label ?? 'Add to cart';
 
   const merged = cn(baseClass, className);
@@ -41,7 +43,17 @@ const EcwidPurchaseButton = ({
   if (productPageUrl) {
     return (
       <Button asChild className={merged}>
-        <a href={productPageUrl} target="_blank" rel="noopener noreferrer">
+        <a
+          href={productPageUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => {
+            toast({
+              title: 'Opening our store',
+              description: 'Complete size and options in the new tab.',
+            });
+          }}
+        >
           {text}
         </a>
       </Button>
@@ -52,7 +64,18 @@ const EcwidPurchaseButton = ({
     <Button
       type="button"
       className={merged}
-      onClick={() => openProduct(productId)}
+      onClick={() => {
+        openProduct(productId);
+        toast({
+          title: 'Product opened',
+          description: 'Choose options in the store window, then add to cart.',
+          action: (
+            <ToastAction altText="Open shopping cart" onClick={() => openCart()}>
+              View cart
+            </ToastAction>
+          ),
+        });
+      }}
     >
       {text}
     </Button>

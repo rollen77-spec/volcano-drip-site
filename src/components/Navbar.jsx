@@ -44,7 +44,7 @@ const Navbar = () => {
   return <nav className="sticky top-0 z-40 w-full border-b border-stone-200 bg-white">
       <div className="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
         {/* Desktop Logo - on white background */}
-        <Link to="/" className="flex items-center gap-2 group transition-transform duration-300 hover:scale-105">
+        <Link to="/" className="flex items-center gap-2 rounded-sm group transition-transform duration-300 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
           <img src="https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/primary-logo-copy-wWYt4.png" alt="Volcano Drip Coffee Logo" className="h-[50px] w-auto mix-blend-multiply" />
         </Link>
 
@@ -52,7 +52,7 @@ const Navbar = () => {
         <div className="hidden md:flex items-center gap-8">
           
           <DropdownMenu>
-            <DropdownMenuTrigger className="flex items-center gap-1 text-sm font-medium text-stone-600 hover:text-stone-900 outline-none">
+            <DropdownMenuTrigger className="flex items-center gap-1 rounded-sm text-sm font-medium text-stone-600 outline-none hover:text-stone-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
               Shop <ChevronDown className="h-4 w-4 opacity-50" />
             </DropdownMenuTrigger>
             <DropdownMenuContent align="start" className="w-48 bg-white border-stone-200 p-2">
@@ -69,7 +69,7 @@ const Navbar = () => {
             </DropdownMenuContent>
           </DropdownMenu>
 
-          {mainLinks.map(link => <Link key={link.href} to={link.href} className={`text-sm font-medium ${link.href === '/subscription' ? 'text-amber-700 font-bold' : 'text-stone-600'} hover:text-stone-900 hover:underline underline-offset-4 transition-all`}>
+          {mainLinks.map(link => <Link key={link.href} to={link.href} className={`rounded-sm text-sm font-medium ${link.href === '/subscription' ? 'text-amber-700 font-bold' : 'text-stone-600'} transition-all hover:text-stone-900 hover:underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2`}>
               {link.label}
             </Link>)}
 
