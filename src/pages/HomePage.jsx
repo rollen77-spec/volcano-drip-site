@@ -6,6 +6,7 @@ import { Mountain, BookOpen, Quote, Star, Zap, Check, Flame, Coffee, ArrowRight,
 import { Button } from '@/components/ui/button';
 import WelcomeMessage from '@/components/WelcomeMessage';
 import CallToAction from '@/components/CallToAction';
+import PodcastShowcaseSection from '@/components/PodcastShowcaseSection';
 import { Link } from 'react-router-dom';
 import EcwidPurchaseButton from '@/components/EcwidPurchaseButton';
 import {
@@ -696,6 +697,8 @@ const HomePage = () => {
             </div>
           </div>
         </section>
+
+        <PodcastShowcaseSection />
 
         {/* Brewing Guide CTA */}
         <section className="py-24 bg-white border-b border-stone-200">
