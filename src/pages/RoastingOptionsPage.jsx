@@ -7,17 +7,13 @@ import { cn } from '@/lib/utils';
 
 const IMG = {
   roastingHero: '/images/roasting-hero.png',
-  roastBlends: '/images/coffee-roast-blends.png',
+  roastLight: '/images/roast-light.png',
+  roastMedium: '/images/roast-medium.png',
+  roastDark: '/images/roast-dark.png',
+  roastEspresso: '/images/roast-espresso.png',
 };
 
-/** Crops one quadrant from the 2×2 Volcano Drip roast comparison image. */
-function RoastQuadrant({ quadrant, alt, className }) {
-  const pos = {
-    tl: { left: 0, top: 0 },
-    tr: { left: '-100%', top: 0 },
-    bl: { left: 0, top: '-100%' },
-    br: { left: '-100%', top: '-100%' },
-  };
+function RoastFigure({ src, alt, className }) {
   return (
     <div
       className={cn(
@@ -25,21 +21,14 @@ function RoastQuadrant({ quadrant, alt, className }) {
         className
       )}
     >
-      <img
-        src={IMG.roastBlends}
-        alt={alt}
-        className="absolute h-[200%] w-[200%] max-w-none object-cover"
-        style={pos[quadrant]}
-        loading="lazy"
-        decoding="async"
-      />
+      <img src={src} alt={alt} className="h-full w-full object-cover" loading="lazy" decoding="async" />
     </div>
   );
 }
 
 const roastLevels = [
   {
-    quadrant: 'tl',
+    image: IMG.roastLight,
     imgAlt: 'Light roast coffee beans',
     title: 'Light Roast',
     subtitle: 'Light Brown • No Oils • Light Body',
@@ -51,7 +40,7 @@ const roastLevels = [
     ],
   },
   {
-    quadrant: 'tr',
+    image: IMG.roastMedium,
     imgAlt: 'Medium roast coffee beans',
     title: 'Medium Roast',
     subtitle: 'Medium Brown • Smooth • Balanced Body',
@@ -63,7 +52,7 @@ const roastLevels = [
     ],
   },
   {
-    quadrant: 'bl',
+    image: IMG.roastDark,
     imgAlt: 'Dark roast coffee beans',
     title: 'Dark Roast',
     subtitle: 'Dark Brown to Black • Oily Surface • Full Body',
@@ -146,21 +135,27 @@ const RoastingOptionsPage = () => {
           </motion.p>
         </div>
 
-        {/* Full brand comparison artwork */}
+        {/* Roast comparison — light through espresso */}
         <div className="mx-auto max-w-5xl px-6 pb-12 md:px-8">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="overflow-hidden rounded-2xl border border-stone-200 bg-white p-4 shadow-sm md:p-6"
+            className="grid grid-cols-2 gap-3 rounded-2xl border border-stone-200 bg-white p-4 shadow-sm sm:gap-4 md:p-6"
           >
-            <img
-              src={IMG.roastBlends}
-              alt="Volcano Drip roast comparison—light, medium, dark, and espresso"
-              className="h-auto w-full object-contain"
-              loading="lazy"
-              decoding="async"
-            />
+            {[
+              { src: IMG.roastLight, label: 'Light', alt: 'Light roast coffee beans' },
+              { src: IMG.roastMedium, label: 'Medium', alt: 'Medium roast coffee beans' },
+              { src: IMG.roastDark, label: 'Dark', alt: 'Dark roast coffee beans' },
+              { src: IMG.roastEspresso, label: 'Espresso', alt: 'Espresso roast coffee beans' },
+            ].map(({ src, label, alt }) => (
+              <figure key={label} className="overflow-hidden rounded-xl ring-1 ring-stone-200/80">
+                <img src={src} alt={alt} className="aspect-square w-full object-cover" loading="lazy" decoding="async" />
+                <figcaption className="bg-stone-50 px-3 py-2 text-center text-xs font-bold uppercase tracking-wide text-stone-600">
+                  {label}
+                </figcaption>
+              </figure>
+            ))}
           </motion.div>
         </div>
 
@@ -186,7 +181,7 @@ const RoastingOptionsPage = () => {
                 i % 2 === 1 && 'md:[&>div:first-child]:order-2'
               )}
             >
-              <RoastQuadrant quadrant={level.quadrant} alt={level.imgAlt} className="mx-auto w-full max-w-md" />
+              <RoastFigure src={level.image} alt={level.imgAlt} className="mx-auto w-full max-w-md" />
               <div>
                 <h2 className="font-playfair text-3xl font-bold tracking-tight text-stone-900 md:text-4xl">
                   {level.title}
@@ -205,16 +200,16 @@ const RoastingOptionsPage = () => {
             </motion.article>
           ))}
 
-          {/* Espresso — quadrant + copy */}
+          {/* Espresso — image + copy */}
           <motion.article
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="grid items-start gap-10 border-t border-stone-200 pt-20 md:grid-cols-2 md:gap-14"
           >
-            <RoastQuadrant
-              quadrant="br"
-              imgAlt="Espresso roast coffee beans"
+            <RoastFigure
+              src={IMG.roastEspresso}
+              alt="Espresso roast coffee beans"
               className="mx-auto w-full max-w-md md:order-2"
             />
             <div className="md:order-1">
