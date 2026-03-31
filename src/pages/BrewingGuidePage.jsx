@@ -1,9 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ArrowRight, Clock, Droplet, Flame, Scale, Thermometer } from 'lucide-react';
+import { Clock, Droplet, Scale, Thermometer } from 'lucide-react';
+
+/** Same asset as brew-method cards — restores photo hero from earlier Horizons build. */
+const BREWING_HERO_IMG =
+  'https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/generated-image-1773098695367-gP1kZ.jpeg';
 const BrewingGuidePage = () => {
   return <>
       <Helmet>
@@ -12,56 +15,29 @@ const BrewingGuidePage = () => {
       </Helmet>
       
       <div className="min-h-screen bg-stone-50">
-        <div className="bg-stone-900 text-white py-20 px-4 text-center">
-           <h1 className="text-4xl md:text-5xl font-bold mb-4">Master the Eruption</h1>
-           <p className="text-stone-400 max-w-xl mx-auto text-lg">
-             Volcanic beans are dense and complex. Brewing them requires patience and precision to unlock the full spectrum of flavor.
-           </p>
-        </div>
-
-        <div className="max-w-4xl mx-auto px-4 pt-12 pb-0">
-          <p className="text-center text-xs font-bold uppercase tracking-widest text-amber-700 mb-4">
-            Before you brew
-          </p>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            <Link
-              to="/brewing/roasting-options"
-              className="group flex items-center justify-between gap-4 rounded-xl border border-stone-200 bg-white p-6 text-left shadow-sm transition-all hover:border-amber-300 hover:shadow-md"
-            >
-              <div className="flex items-start gap-3">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-amber-100 text-amber-800">
-                  <Flame className="h-5 w-5" aria-hidden />
-                </span>
-                <div>
-                  <h2 className="font-bold text-stone-900 group-hover:text-amber-900">Roasting options</h2>
-                  <p className="mt-1 text-sm text-stone-600">
-                    Light to dark—and how each level changes your cup.
-                  </p>
-                </div>
-              </div>
-              <ArrowRight className="h-5 w-5 shrink-0 text-stone-400 transition-transform group-hover:translate-x-0.5 group-hover:text-amber-700" aria-hidden />
-            </Link>
-            <Link
-              to="/brewing/grind-options"
-              className="group flex items-center justify-between gap-4 rounded-xl border border-stone-200 bg-white p-6 text-left shadow-sm transition-all hover:border-amber-300 hover:shadow-md"
-            >
-              <div className="flex items-start gap-3">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-stone-100 text-stone-800">
-                  <Scale className="h-5 w-5" aria-hidden />
-                </span>
-                <div>
-                  <h2 className="font-bold text-stone-900 group-hover:text-amber-900">Grind options</h2>
-                  <p className="mt-1 text-sm text-stone-600">
-                    Match grind size to your brew method—from whole bean to Turkish.
-                  </p>
-                </div>
-              </div>
-              <ArrowRight className="h-5 w-5 shrink-0 text-stone-400 transition-transform group-hover:translate-x-0.5 group-hover:text-amber-700" aria-hidden />
-            </Link>
+        <div className="relative flex min-h-[280px] items-center justify-center overflow-hidden bg-stone-900 py-20 text-center text-white md:min-h-[360px]">
+          <div className="absolute inset-0 z-0 opacity-55">
+            <img
+              alt="Coffee brewing — rich pour and aromatic cup"
+              className="h-full w-full object-cover object-center"
+              src={BREWING_HERO_IMG}
+              width={1920}
+              height={1080}
+              fetchPriority="high"
+              decoding="async"
+            />
+          </div>
+          <div className="absolute inset-0 z-10 bg-gradient-to-t from-stone-900 via-stone-900/55 to-stone-900/35" />
+          <div className="relative z-20 max-w-4xl px-4">
+            <h1 className="mb-4 text-4xl font-bold md:text-5xl">Master the Eruption</h1>
+            <p className="mx-auto max-w-xl text-lg text-stone-200">
+              Volcanic beans are dense and complex. Brewing them requires patience and precision to unlock the
+              full spectrum of flavor.
+            </p>
           </div>
         </div>
 
-        <div className="max-w-4xl mx-auto px-4 py-16">
+        <div className="mx-auto max-w-4xl px-4 py-16">
           
           <Tabs defaultValue="v60">
             <div className="flex justify-center mb-12">

@@ -11,6 +11,7 @@ const IMG = {
   wholeBean: '/images/grind-whole-bean.png',
   frenchPress: '/images/grind-french-press.png',
   pourOver: '/images/grind-pour-over.png',
+  flatBottom: '/images/grind-flat-bottom.png',
   aeropress: '/images/grind-aeropress.png',
   moka: '/images/grind-moka-pot.png',
   espresso: '/images/grind-espresso.png',
@@ -41,8 +42,7 @@ const grindItems = [
     title: 'Drip (Flat Bottom)',
     summary: 'Medium grind',
     body: 'Balanced extraction for standard coffee makers.',
-    image: IMG.pourOver,
-    objectPosition: '45% 42%',
+    image: IMG.flatBottom,
   },
   {
     title: 'Pour Over (Cone Filter)',
