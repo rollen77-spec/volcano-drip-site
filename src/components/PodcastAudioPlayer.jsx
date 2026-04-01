@@ -26,14 +26,15 @@ export default function PodcastAudioPlayer({ src, label, className = '' }) {
     <div className={className}>
       <span className="sr-only">Play audio: {label}</span>
       <audio
+        key={src}
         controls
         preload="metadata"
         className="h-11 w-full max-w-xl rounded-lg bg-stone-100 ring-1 ring-stone-200/80"
         aria-label={`Play podcast: ${label}`}
         onError={onError}
       >
-        <source src={src} type="audio/mpeg" />
-        <source src={src} type="audio/mp4" />
+        {/* Single source avoids duplicate decode attempts; path must match a file under public/audio/ */}
+        <source src={src} />
         Your browser does not support embedded audio.
       </audio>
     </div>
