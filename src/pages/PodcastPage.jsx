@@ -2,8 +2,9 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Headphones, Play, ArrowLeft } from 'lucide-react';
+import { ExternalLink, Headphones, Play, ArrowLeft } from 'lucide-react';
 import { PODCAST_EPISODES, PODCAST_LOGO_URL, PODCAST_NAME } from '@/config/podcast';
+import PodcastAudioPlayer from '@/components/PodcastAudioPlayer';
 
 const PodcastPage = () => {
   return (
@@ -79,21 +80,30 @@ const PodcastPage = () => {
                     <p className="text-xs font-bold uppercase tracking-widest text-amber-800">Episode {i + 1}</p>
                     <h2 className="mt-2 font-playfair text-2xl font-bold text-stone-900 md:text-3xl">{ep.title}</h2>
                     <p className="mt-3 text-base leading-relaxed text-stone-600">{ep.description}</p>
+
+                    {ep.audioSrc ? (
+                      <PodcastAudioPlayer src={ep.audioSrc} label={ep.title} className="mt-6" />
+                    ) : null}
+
                     {ep.listenUrl ? (
                       <a
                         href={ep.listenUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="mt-6 inline-flex items-center gap-2 rounded-full bg-stone-900 px-6 py-3 text-sm font-bold text-white transition hover:bg-stone-800"
+                        className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-amber-900 underline-offset-4 hover:text-amber-700 hover:underline"
                       >
-                        <Play className="h-4 w-4 fill-current" aria-hidden />
-                        Listen
+                        <ExternalLink className="h-4 w-4 shrink-0" aria-hidden />
+                        Also listen elsewhere (opens in a new tab)
                       </a>
-                    ) : (
+                    ) : null}
+
+                    {!ep.audioSrc && !ep.listenUrl ? (
                       <p className="mt-6 text-sm text-stone-500">
-                        Search your podcast app for this episode title or for &quot;Volcano Drip&quot;—direct links can be added when you publish the feed.
+                        Add your MP3 under <code className="rounded bg-stone-100 px-1">public/audio/</code> or set{' '}
+                        <code className="rounded bg-stone-100 px-1">VITE_PODCAST_AUDIO_*</code> in{' '}
+                        <code className="rounded bg-stone-100 px-1">.env</code>.
                       </p>
-                    )}
+                    ) : null}
                   </div>
                 </div>
               </motion.li>
@@ -101,7 +111,7 @@ const PodcastPage = () => {
           </ul>
 
           <p className="mt-12 text-center text-sm text-stone-500">
-            Prefer your app? Search for &quot;{PODCAST_NAME}&quot; or &quot;Volcano Drip&quot; where you get podcasts.
+            Prefer a podcast app? Search for &quot;{PODCAST_NAME}&quot; or &quot;Volcano Drip&quot; where you get podcasts.
           </p>
 
           <div className="mt-10 flex justify-center border-t border-stone-200 pt-10">

@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Headphones, Mic } from 'lucide-react';
 import { PODCAST_EPISODES, PODCAST_LOGO_URL, PODCAST_NAME } from '@/config/podcast';
+import PodcastAudioPlayer from '@/components/PodcastAudioPlayer';
 
 /**
  * Home-page banner for The Daily Grind Podcast — maroon/amber palette to match footer & brand.
@@ -70,11 +71,14 @@ export default function PodcastShowcaseSection() {
                     {ep.title}
                   </h3>
                   <p className="mt-2 line-clamp-3 text-sm text-stone-400">{ep.description}</p>
+                  {ep.audioSrc ? (
+                    <PodcastAudioPlayer src={ep.audioSrc} label={ep.title} className="mt-4" />
+                  ) : null}
                   <Link
                     to={`/podcast#episode-${ep.id}`}
-                    className="mt-4 inline-flex text-xs font-bold uppercase tracking-wide text-amber-500 transition group-hover:text-amber-400"
+                    className="mt-3 inline-flex text-xs font-bold uppercase tracking-wide text-amber-500 transition group-hover:text-amber-400"
                   >
-                    Open episode →
+                    Full episode page →
                   </Link>
                 </motion.li>
               ))}
