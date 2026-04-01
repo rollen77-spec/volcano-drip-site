@@ -18,42 +18,46 @@ const PodcastPage = () => {
       </Helmet>
 
       <div className="min-h-screen bg-stone-50 font-sans">
-        <section className="relative overflow-hidden border-b border-amber-900/20 bg-gradient-to-br from-[#1A0F0A] via-[#2c1810] to-[#1A0F0A] px-4 py-16 text-white md:py-20">
-          <div className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-amber-600/10 blur-3xl" />
-          <div className="pointer-events-none absolute -bottom-16 -left-16 h-48 w-48 rounded-full bg-orange-500/10 blur-3xl" />
+        {/* Match home podcast strip + Subscription hero scale / sans typography */}
+        <section className="relative overflow-hidden border-b border-amber-200/80 bg-gradient-to-br from-stone-100 via-amber-50/90 to-orange-50/70 px-4 py-16 md:py-24">
+          <div className="pointer-events-none absolute inset-0 opacity-[0.35]">
+            <div className="absolute -left-16 top-10 h-64 w-64 rounded-full bg-amber-200/60 blur-[90px]" />
+            <div className="absolute -bottom-8 right-0 h-48 w-48 rounded-full bg-orange-200/50 blur-[70px]" />
+          </div>
 
-          <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
+          <div className="relative z-10 mx-auto mt-6 flex max-w-4xl flex-col items-center px-4 text-center">
             <motion.img
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               src={PODCAST_LOGO_URL}
               alt="Volcano Drip"
-              className="mb-8 h-auto w-[min(280px,85vw)] object-contain drop-shadow-lg"
-              width={280}
-              height={120}
+              className="mb-8 h-16 w-auto max-w-[180px] object-contain opacity-95 sm:h-[4.5rem] sm:max-w-[200px]"
+              width={200}
+              height={88}
             />
             <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.05 }}
-              className="mb-3 inline-flex items-center gap-2 rounded-full border border-amber-500/40 bg-amber-500/10 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-amber-300"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
+              className="mb-4 inline-flex items-center gap-2 rounded-full border border-amber-500/50 bg-amber-500/10 px-4 py-1 text-xs font-bold uppercase tracking-widest text-amber-800 backdrop-blur-md"
             >
               <Headphones className="h-3.5 w-3.5" aria-hidden />
               Podcast
             </motion.div>
             <motion.h1
-              initial={{ opacity: 0, y: 12 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              className="font-playfair text-4xl font-bold tracking-tight md:text-5xl"
+              transition={{ delay: 0.2 }}
+              className="mb-6 text-6xl font-bold tracking-tighter text-stone-900 md:text-8xl"
             >
-              {PODCAST_NAME}
+              {PODCAST_NAME.replace(/ Podcast$/, '')}{' '}
+              <span className="text-amber-500">Podcast</span>.
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.15 }}
-              className="mt-4 max-w-2xl text-lg text-stone-300"
+              transition={{ delay: 0.25 }}
+              className="max-w-2xl text-xl leading-relaxed text-stone-600"
             >
               Short listens on brewing well and digging into what makes volcanic-grown coffee unique.
             </motion.p>
@@ -78,8 +82,8 @@ const PodcastPage = () => {
                   </div>
                   <div className="min-w-0 flex-1">
                     <p className="text-xs font-bold uppercase tracking-widest text-amber-800">Episode {i + 1}</p>
-                    <h2 className="mt-2 font-playfair text-2xl font-bold text-stone-900 md:text-3xl">{ep.title}</h2>
-                    <p className="mt-3 text-base leading-relaxed text-stone-600">{ep.description}</p>
+                    <h2 className="mt-2 text-2xl font-bold text-stone-900 md:text-3xl">{ep.title}</h2>
+                    <p className="mt-3 text-base leading-relaxed text-stone-600 md:text-lg">{ep.description}</p>
 
                     {ep.audioSrc ? (
                       <PodcastAudioPlayer src={ep.audioSrc} label={ep.title} className="mt-6" />
