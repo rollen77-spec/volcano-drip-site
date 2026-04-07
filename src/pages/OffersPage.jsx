@@ -143,8 +143,11 @@ const OffersPage = () => {
   return (
     <div className="min-h-screen bg-stone-50 flex flex-col font-sans w-full relative">
       <Helmet>
-        <title>Exclusive Offers | Volcano Drip</title>
-        <meta name="description" content="Join the Volcano Drip list for exclusive offers, new coffee releases, brewing tips, and special promotions." />
+        <title>Newsletter &amp; Offers | Volcano Drip</title>
+        <meta
+          name="description"
+          content="Join the Volcano Drip newsletter for exclusive offers, new coffee releases, brewing tips, and special promotions."
+        />
       </Helmet>
 
       {/* Hero Section */}
@@ -161,7 +164,7 @@ const OffersPage = () => {
         <div className="relative z-10 container mx-auto px-4 flex flex-col items-center text-center mt-12">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
             <span className="inline-block mb-6 px-4 py-1.5 border border-amber-500/30 rounded-full bg-amber-500/10 backdrop-blur-md text-amber-400 font-bold tracking-widest text-xs uppercase">
-              Exclusive Access
+              Volcano Drip Newsletter
             </span>
             <h1 className="text-5xl md:text-8xl font-black text-white tracking-tighter mb-8 leading-[0.9]">
               BETTER COFFEE <br />
@@ -169,7 +172,7 @@ const OffersPage = () => {
             </h1>
 
             <p className="text-xl md:text-2xl text-stone-200 mb-10 max-w-2xl mx-auto font-medium leading-relaxed">
-              Join the Volcano Drip list for exclusive offers, new coffee releases, brewing tips, and special promotions.
+              Join the Volcano Drip newsletter for exclusive offers, new coffee releases, brewing tips, and special promotions.
             </p>
 
             <motion.div
@@ -196,7 +199,7 @@ const OffersPage = () => {
             className="w-full max-w-[560px] bg-white p-8 md:p-12 rounded-3xl shadow-xl border border-stone-100"
           >
             <div className="text-center mb-10">
-              <h2 className="text-3xl font-black text-stone-900 mb-3 tracking-tight">Subscribe & Save</h2>
+              <h2 className="text-3xl font-black text-stone-900 mb-3 tracking-tight">Join the Newsletter and Save</h2>
               <p className="text-stone-600 text-lg">Enter your details below to unlock your discount.</p>
             </div>
 

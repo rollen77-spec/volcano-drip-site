@@ -91,7 +91,7 @@ function MainLayout({ children }) {
               <li><Link to="/about" className="hover:text-[#FF8C00] transition-colors">Our story</Link></li>
               <li><Link to="/sourcing" className="hover:text-[#FF8C00] transition-colors">Sourcing</Link></li>
               <li><Link to="/signature-drinks" className="hover:text-[#FF8C00] transition-colors">Signature drinks</Link></li>
-              <li><Link to="/offers" className="hover:text-[#FF8C00] transition-colors">Exclusive offers</Link></li>
+              <li><Link to="/offers" className="hover:text-[#FF8C00] transition-colors">Offers</Link></li>
             </ul>
           </div>
           <div className="sm:col-span-2 lg:col-span-3">
