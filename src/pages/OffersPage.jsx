@@ -80,6 +80,9 @@ const OffersPage = () => {
 
   const validateForm = () => {
     const newErrors = {};
+    if (!formData.name.trim()) {
+      newErrors.name = 'First name is required';
+    }
     if (!formData.email.trim()) {
       newErrors.email = 'Email is required';
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
@@ -206,16 +209,20 @@ const OffersPage = () => {
             <form onSubmit={handleSubmit} className="space-y-6" noValidate>
               <div className="space-y-2 text-left">
                 <Label htmlFor="name" className="text-stone-800 font-bold text-sm">
-                  Name <span className="text-stone-400 font-normal">(Optional)</span>
+                  First name <span className="text-amber-600">*</span>
                 </Label>
                 <Input
                   id="name"
                   name="name"
+                  autoComplete="given-name"
                   value={formData.name}
                   onChange={handleInputChange}
-                  placeholder="Your Name"
-                  className="h-12 bg-stone-50 border-stone-200 focus-visible:ring-stone-900 transition-colors"
+                  placeholder="Your first name"
+                  className={`h-12 bg-stone-50 transition-colors ${
+                    errors.name ? 'border-red-500 focus-visible:ring-red-500' : 'border-stone-200 focus-visible:ring-stone-900'
+                  }`}
                 />
+                {errors.name && <p className="text-red-500 text-xs mt-1 font-medium">{errors.name}</p>}
               </div>
 
               <div className="space-y-2 text-left">

@@ -86,6 +86,9 @@ export default async function handler(req, res) {
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return res.status(400).json({ error: 'Valid email is required' });
   }
+  if (!name) {
+    return res.status(400).json({ error: 'First name is required' });
+  }
   if (consent !== true) {
     return res.status(400).json({ error: 'Consent is required' });
   }
