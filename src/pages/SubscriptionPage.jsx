@@ -1,17 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet';
-import { Flame, Coffee, Mountain, Truck, AlertCircle, Percent } from 'lucide-react';
+import { Flame, Coffee, Mountain, Truck, AlertCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import EcwidPurchaseButton from '@/components/EcwidPurchaseButton';
 import { ECWID_SUBSCRIPTION_PRODUCT_ID, ECWID_SUBSCRIPTION_PRODUCT_URL } from '@/config/ecwid';
 
 const SubscriptionPage = () => {
   const membershipFeatures = [
-    {
-      icon: <Percent className="w-8 h-8 text-amber-500" />,
-      text: 'Save up to 15% on every bag in your monthly box',
-    },
     {
       icon: <Coffee className="w-8 h-8 text-amber-500" />,
       text: '4 rotating single-origin coffees each month',
@@ -36,7 +32,7 @@ const SubscriptionPage = () => {
         <title>Volcanic Origins Subscription | Volcano Drip</title>
         <meta
           name="description"
-          content="Build your custom 4-bag Volcanic Origins box—region, roast, grind—and save up to 15% on every bag. Fresh coffee delivered monthly."
+          content="Subscribe to the Volcanic Origins Box and save up to 15%. Build your custom 4-bag box—region, roast, and grind. Fresh coffee delivered monthly."
         />
       </Helmet>
 
@@ -84,23 +80,21 @@ const SubscriptionPage = () => {
             </h2>
 
             <div className="w-full mb-16">
-              <p className="text-xl text-stone-600 mb-8 text-center max-w-2xl mx-auto leading-relaxed">
-                We&apos;re giving you full control to build a custom 4-bag coffee box—crafted exactly to your taste.
-                Select your region, select your roast level and your grind preference or use our recommendation. Enjoy
-                freshly roasted coffee, delivered right to your door.
+              <p className="text-xl text-stone-600 mb-10 text-center max-w-2xl mx-auto leading-relaxed">
+                We&apos;re giving you full control to build a custom 4-bag coffee box. Select your coffee region,
+                roast level and grind preference. Or use our recommendation. Enjoy freshly roasted coffee, delivered
+                right to your door.
               </p>
 
               <motion.div
                 initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="max-w-xl mx-auto mb-12 rounded-2xl border border-amber-500/40 bg-gradient-to-br from-amber-50 to-amber-100/80 px-6 py-5 shadow-sm text-center"
+                className="w-full max-w-3xl mx-auto mb-12 rounded-2xl border-2 border-amber-500 bg-stone-900 px-8 py-10 md:px-12 md:py-12 shadow-xl text-center"
               >
-                <p className="text-lg font-bold text-amber-950 tracking-tight">
-                  Save up to 15% on every bag
-                </p>
-                <p className="text-sm text-stone-700 mt-2 leading-relaxed">
-                  Member pricing applies to your Volcanic Origins Box—more flavour for less, every month.
+                <p className="text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight tracking-tight">
+                  Subscribe to the Volcanic Origins Box and{' '}
+                  <span className="text-amber-400">save up to 15%</span>
                 </p>
               </motion.div>
 
