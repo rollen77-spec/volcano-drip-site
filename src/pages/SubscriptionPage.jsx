@@ -1,13 +1,17 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet';
-import { Flame, Coffee, Mountain, Truck, AlertCircle } from 'lucide-react';
+import { Flame, Coffee, Mountain, Truck, AlertCircle, Percent } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import EcwidPurchaseButton from '@/components/EcwidPurchaseButton';
 import { ECWID_SUBSCRIPTION_PRODUCT_ID, ECWID_SUBSCRIPTION_PRODUCT_URL } from '@/config/ecwid';
 
 const SubscriptionPage = () => {
   const membershipFeatures = [
+    {
+      icon: <Percent className="w-8 h-8 text-amber-500" />,
+      text: 'Save up to 15% on every bag in your monthly box',
+    },
     {
       icon: <Coffee className="w-8 h-8 text-amber-500" />,
       text: '4 rotating single-origin coffees each month',
@@ -32,7 +36,7 @@ const SubscriptionPage = () => {
         <title>Volcanic Origins Subscription | Volcano Drip</title>
         <meta
           name="description"
-          content="Join the Volcanic Origins Club. Ignite your mornings with our monthly coffee subscription."
+          content="Build your custom 4-bag Volcanic Origins box—region, roast, grind—and save up to 15% on every bag. Fresh coffee delivered monthly."
         />
       </Helmet>
 
@@ -75,14 +79,30 @@ const SubscriptionPage = () => {
             viewport={{ once: true }}
             className="flex flex-col items-center"
           >
-            <h2 className="text-4xl font-bold text-stone-900 mb-6 text-center">
-              Join the Volcanic Origins Club
+            <h2 className="text-4xl md:text-5xl font-bold text-stone-900 mb-6 text-center tracking-tight">
+              Your coffee, your way.
             </h2>
 
             <div className="w-full mb-16">
-              <p className="text-xl text-stone-600 mb-10 text-center max-w-2xl mx-auto leading-relaxed">
-                Discover four exceptional single-origin coffees every month, roasted fresh and delivered to your door.
+              <p className="text-xl text-stone-600 mb-8 text-center max-w-2xl mx-auto leading-relaxed">
+                We&apos;re giving you full control to build a custom 4-bag coffee box—crafted exactly to your taste.
+                Select your region, select your roast level and your grind preference or use our recommendation. Enjoy
+                freshly roasted coffee, delivered right to your door.
               </p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="max-w-xl mx-auto mb-12 rounded-2xl border border-amber-500/40 bg-gradient-to-br from-amber-50 to-amber-100/80 px-6 py-5 shadow-sm text-center"
+              >
+                <p className="text-lg font-bold text-amber-950 tracking-tight">
+                  Save up to 15% on every bag
+                </p>
+                <p className="text-sm text-stone-700 mt-2 leading-relaxed">
+                  Member pricing applies to your Volcanic Origins Box—more flavour for less, every month.
+                </p>
+              </motion.div>
 
               <div className="flex items-center justify-center gap-4 mb-8">
                 <div className="h-px bg-stone-200 flex-1 max-w-[100px]" />

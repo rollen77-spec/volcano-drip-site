@@ -670,7 +670,7 @@ const HomePage = () => {
                 <ul className="space-y-4 mb-10">
                   <li className="flex items-center gap-3 font-bold text-stone-800">
                     <div className="bg-amber-100 p-1 rounded-full"><Check className="w-4 h-4 text-amber-600" /></div>
-                    Save up to 20% on every bag
+                    Save up to 15% on every bag
                   </li>
                   <li className="flex items-center gap-3 font-bold text-stone-800">
                     <div className="bg-amber-100 p-1 rounded-full"><Check className="w-4 h-4 text-amber-600" /></div>
