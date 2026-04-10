@@ -5,8 +5,19 @@ import { Flame, Coffee, Mountain, Truck, AlertCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import EcwidPurchaseButton from '@/components/EcwidPurchaseButton';
 import { ECWID_SUBSCRIPTION_PRODUCT_ID, ECWID_SUBSCRIPTION_PRODUCT_URL } from '@/config/ecwid';
-
-const SUBSCRIPTION_IMG = '/images/subscription';
+import {
+  img6148,
+  img6155,
+  img6160,
+  img6164,
+  img6188,
+  img6189,
+  img6201,
+  img6247,
+  img6527,
+  nathanDumlao,
+  zarakKhan,
+} from '@/assets/subscription';
 
 const membershipFeatures = [
   {
@@ -29,53 +40,53 @@ const membershipFeatures = [
 
 const galleryItems = [
   {
-    file: 'nathan-dumlao-Y3AqmbmtLQI-unsplash-b74af9bf-a29a-46ba-a7cd-1f7d3062df11.png',
+    src: nathanDumlao,
     alt: 'Three portafilters with whole beans, ground coffee, and a finished espresso—bean to cup',
     grid: 'col-span-2 md:col-span-3 row-span-1 min-h-[200px] md:min-h-[240px]',
   },
   {
-    file: 'zarak-khan-69ilqMz0p1s-unsplash-e92bf631-0da2-414e-afef-c00c20965b0a.png',
+    src: zarakKhan,
     alt: 'Two portafilters showing whole beans and freshly ground coffee',
     grid: 'col-span-2 md:col-span-3 row-span-1 min-h-[200px] md:min-h-[240px]',
   },
   {
-    file: 'IMG_6527-264c7bd9-8d99-41df-9cdd-2f7cc0080e8c.png',
+    src: img6527,
     alt: 'Volcano Drip coffee jar, branded shipping box, and bag of Primera Luz Costa Rica coffee',
     grid: 'col-span-2 md:col-span-2 min-h-[220px]',
   },
   {
-    file: 'IMG_6201-93cf56a5-b177-4fbc-8635-74fc8aecbec9.png',
+    src: img6201,
     alt: 'Three Volcano Drip single-origin bags: Antigua Ember, Sumatra Black, and Primera Luz',
     grid: 'col-span-2 md:col-span-2 min-h-[220px]',
   },
   {
-    file: 'IMG_6189-5e47c4ce-9ad4-453a-9d19-9cb60612b75c.png',
+    src: img6189,
     alt: 'Five Volcano Drip coffee bags showcasing origins from Honduras to Costa Rica',
     grid: 'col-span-2 md:col-span-4 min-h-[200px] md:min-h-[260px]',
   },
   {
-    file: 'IMG_6148-e0d1a469-6868-423c-8ca6-f10736a65d8b.png',
+    src: img6148,
     alt: 'Burlap sacks of green coffee stacked in the warehouse',
     grid: 'col-span-2 md:col-span-3 min-h-[220px]',
   },
   {
-    file: 'IMG_6247-453adfab-e888-498e-b961-fdaafe1701bf.png',
+    src: img6247,
     alt: 'Volcano Drip branded burlap sacks of green coffee',
     grid: 'col-span-2 md:col-span-3 min-h-[220px]',
   },
   {
-    file: 'IMG_6164-e3c7a345-c31c-4139-b095-a1e6620900a7.png',
+    src: img6164,
     alt: 'Volcano Drip bag on a precision scale at the roastery',
     grid: 'col-span-2 md:col-span-2 min-h-[260px]',
   },
   {
-    file: 'IMG_6160-80b500ee-a749-4198-9dc3-941ecb3e06ef.png',
+    src: img6160,
     alt: 'Close-up of unroasted green coffee beans',
     grid: 'col-span-2 md:col-span-2 min-h-[260px]',
   },
 ];
 
-function GalleryTile({ file, alt, grid, index }) {
+function GalleryTile({ src, alt, grid, index }) {
   return (
     <motion.figure
       initial={{ opacity: 0, y: 16 }}
@@ -85,7 +96,7 @@ function GalleryTile({ file, alt, grid, index }) {
       className={`relative overflow-hidden rounded-2xl border border-stone-200/80 bg-stone-200 shadow-sm group ${grid}`}
     >
       <img
-        src={`${SUBSCRIPTION_IMG}/${file}`}
+        src={src}
         alt={alt}
         loading="lazy"
         decoding="async"
@@ -164,7 +175,7 @@ const SubscriptionPage = () => {
               className="relative aspect-[4/5] max-h-[520px] mx-auto lg:mx-0 w-full rounded-2xl overflow-hidden shadow-xl border border-stone-200/80"
             >
               <img
-                src={`${SUBSCRIPTION_IMG}/IMG_6188-6702052f-9ea8-404e-91e9-200d895ad1b1.png`}
+                src={img6188}
                 alt="Four Volcano Drip coffee bags—Inca Ascent, Antigua Ember, Sumatra Black, and Primera Luz—on the roastery bench"
                 className="absolute inset-0 h-full w-full object-cover"
               />
@@ -185,7 +196,7 @@ const SubscriptionPage = () => {
 
           <div className="relative rounded-2xl overflow-hidden mb-16 md:mb-20 min-h-[200px] md:min-h-[280px] border border-stone-200/80 shadow-md">
             <img
-              src={`${SUBSCRIPTION_IMG}/IMG_6155-95c0c4fb-56b3-462b-ae20-d4f03e60a9b2.png`}
+              src={img6155}
               alt=""
               className="absolute inset-0 h-full w-full object-cover"
               aria-hidden
@@ -205,7 +216,7 @@ const SubscriptionPage = () => {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-6 gap-3 md:gap-4 mb-20 md:mb-24 auto-rows-fr">
             {galleryItems.map((item, index) => (
-              <GalleryTile key={item.file} {...item} index={index} />
+              <GalleryTile key={item.src} {...item} index={index} />
             ))}
           </div>
 
