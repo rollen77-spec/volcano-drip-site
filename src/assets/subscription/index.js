@@ -1,4 +1,4 @@
 import bagOnScale from './bag-on-scale.png';
-import fourOriginLineup from './four-origin-lineup.png';
+import subscriptionBoxDelivered from './subscription-box-delivered.png';
 
-export { bagOnScale, fourOriginLineup };
+export { bagOnScale, subscriptionBoxDelivered };

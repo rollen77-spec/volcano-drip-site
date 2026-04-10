@@ -5,7 +5,7 @@ import { Flame, Coffee, Mountain, Truck, AlertCircle, Sparkles, ArrowDown } from
 import { Link } from 'react-router-dom';
 import EcwidPurchaseButton from '@/components/EcwidPurchaseButton';
 import { ECWID_SUBSCRIPTION_PRODUCT_ID, ECWID_SUBSCRIPTION_PRODUCT_URL } from '@/config/ecwid';
-import { bagOnScale, fourOriginLineup } from '@/assets/subscription';
+import { bagOnScale, subscriptionBoxDelivered } from '@/assets/subscription';
 
 const lineup = [
   { name: 'Inca Ascent', origin: 'Peru', roast: 'Medium', note: 'Fairtrade Organic · Citrus, apricot, cocoa' },
@@ -162,15 +162,15 @@ const SubscriptionPage = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="rounded-2xl overflow-hidden border border-stone-200 bg-white shadow-lg mb-4"
+            className="mx-auto w-[75%] rounded-2xl overflow-hidden border border-stone-200 bg-white shadow-lg mb-4"
           >
             <img
-              src={fourOriginLineup}
-              alt="Four Volcano Drip coffees: Inca Ascent, Antigua Ember, Sumatra Black, and Primera Luz"
+              src={subscriptionBoxDelivered}
+              alt="Volcano Drip subscription box on a porch with four single-origin coffee bags and a thank-you card"
               className="w-full h-auto object-cover"
             />
             <figcaption className="px-4 py-3 text-sm text-stone-500 text-center bg-stone-50 border-t border-stone-100">
-              A sample of single origins you can mix into your box—labels and roasts may rotate with the season.
+              Your Volcanic Origins Box, delivered—origins and labels may rotate with the season.
             </figcaption>
           </motion.figure>
 
