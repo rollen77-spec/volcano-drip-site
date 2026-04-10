@@ -5,11 +5,12 @@ import { Flame, Coffee, Mountain, Truck, AlertCircle, Sparkles, ArrowDown } from
 import { Link } from 'react-router-dom';
 import EcwidPurchaseButton from '@/components/EcwidPurchaseButton';
 import { ECWID_SUBSCRIPTION_PRODUCT_ID, ECWID_SUBSCRIPTION_PRODUCT_URL } from '@/config/ecwid';
-import { bagOnScale, subscriptionBoxDelivered } from '@/assets/subscription';
+import { roasterySmallBatch, subscriptionBoxDelivered } from '@/assets/subscription';
 
 const lineup = [
   { name: 'Inca Ascent', origin: 'Peru', roast: 'Medium', note: 'Fairtrade Organic · Citrus, apricot, cocoa' },
   { name: 'Antigua Ember', origin: 'Guatemala', roast: 'Medium', note: 'Cocoa, caramel, cinnamon' },
+  { name: 'Copán Rise', origin: 'Honduras', roast: 'Medium', note: 'Fairtrade Organic · Citrus, cocoa, peach' },
   { name: 'Sumatra Black', origin: 'Indonesia', roast: 'Dark', note: 'Dark chocolate, cedar, tobacco' },
   { name: 'Primera Luz', origin: 'Costa Rica', roast: 'Light', note: 'Cocoa, caramel, apricot' },
 ];
@@ -178,11 +179,14 @@ const SubscriptionPage = () => {
             <h3 className="text-center text-sm font-bold tracking-widest uppercase text-stone-400 mb-6">
               Origins in the family
             </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <p className="text-center text-stone-500 text-sm max-w-xl mx-auto mb-8">
+              Pick four bags each cycle from favourites like these—rotate or stick with what you love.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4 max-w-5xl mx-auto">
               {lineup.map((item) => (
                 <div
                   key={item.name}
-                  className="rounded-xl border border-stone-200 bg-white p-5 shadow-sm hover:border-amber-200/80 hover:shadow-md transition-all"
+                  className="w-[min(100%,20rem)] rounded-xl border border-stone-200 bg-white p-5 sm:p-6 shadow-sm hover:border-amber-200/80 hover:shadow-md transition-all text-center"
                 >
                   <p className="font-bold text-stone-900 text-lg">{item.name}</p>
                   <p className="text-amber-700 font-medium text-sm mt-1">
@@ -194,40 +198,31 @@ const SubscriptionPage = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center mb-20">
+          <div className="mb-20">
+            <div className="text-center max-w-2xl mx-auto mb-10">
+              <h3 className="text-2xl md:text-3xl font-bold text-stone-900 mb-4">Small-batch roasted for you</h3>
+              <p className="text-stone-600 leading-relaxed">
+                Every bag is roasted in-house, weighed, and sealed so what shows up at your door matches what we stand
+                behind—volcanic-soil origins, roasted in Canada.
+              </p>
+            </div>
             <motion.div
-              initial={{ opacity: 0, x: -12 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="order-2 lg:order-1 rounded-2xl overflow-hidden border border-stone-200 shadow-md bg-stone-100"
+              className="rounded-2xl overflow-hidden border border-stone-200 shadow-lg bg-stone-900 mb-10"
             >
               <img
-                src={bagOnScale}
-                alt="Volcano Drip coffee bag on a precision scale at the roastery"
+                src={roasterySmallBatch}
+                alt="Volcano Drip roastery: coffee bags on the counter and small-batch roasting in progress"
                 className="w-full h-auto object-cover"
               />
             </motion.div>
-            <div className="order-1 lg:order-2">
-              <h3 className="text-2xl md:text-3xl font-bold text-stone-900 mb-4">Roasted and packed for you</h3>
-              <p className="text-stone-600 leading-relaxed mb-6">
-                Every bag is small-batch roasted, weighed, and sealed so what shows up at your door matches what we
-                stand behind—volcanic-soil origins, roasted in Canada.
-              </p>
-              <ul className="space-y-3 text-stone-700">
-                <li className="flex gap-2">
-                  <span className="text-amber-600 font-bold">·</span>
-                  100% Arabica single origins
-                </li>
-                <li className="flex gap-2">
-                  <span className="text-amber-600 font-bold">·</span>
-                  Roasted and packaged in Canada
-                </li>
-                <li className="flex gap-2">
-                  <span className="text-amber-600 font-bold">·</span>
-                  12 oz (340 g) bags in your monthly box
-                </li>
-              </ul>
-            </div>
+            <ul className="space-y-3 text-stone-700 text-center max-w-md mx-auto">
+              <li>100% Arabica single origins</li>
+              <li>Roasted and packaged in Canada</li>
+              <li>12 oz (340 g) bags in your monthly box</li>
+            </ul>
           </div>
 
           <div className="mb-14">

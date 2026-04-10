@@ -1,4 +1,4 @@
-import bagOnScale from './bag-on-scale.png';
+import roasterySmallBatch from './roastery-small-batch.png';
 import subscriptionBoxDelivered from './subscription-box-delivered.png';
 
-export { bagOnScale, subscriptionBoxDelivered };
+export { roasterySmallBatch, subscriptionBoxDelivered };
