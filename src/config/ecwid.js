@@ -80,3 +80,14 @@ export const ECWID_SUBSCRIPTION_PRODUCT_ID =
   import.meta.env.VITE_ECWID_SUBSCRIPTION_PRODUCT_ID ||
   import.meta.env.VITE_ECWID_VOLCANIC_ORIGINS_BOX ||
   '825519010';
+
+/**
+ * Volcano Drip Coffee Gift Card (home promo + optional deep links).
+ * Default 828942467 (`volcano-drip-gift-card`); override with env.
+ */
+export const ECWID_GIFT_CARD_PRODUCT_ID =
+  import.meta.env.VITE_ECWID_GIFT_CARD_PRODUCT_ID || '828942467';
+
+/** Optional: open Ecwid gift card product in a new tab instead of in-site product view. */
+export const ECWID_GIFT_CARD_PRODUCT_URL =
+  import.meta.env.VITE_ECWID_GIFT_CARD_PRODUCT_URL || '';

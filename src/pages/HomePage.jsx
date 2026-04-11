@@ -2,7 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet';
-import { Mountain, BookOpen, Quote, Star, Zap, Check, Flame, Coffee, ArrowRight, Leaf } from 'lucide-react';
+import { Mountain, BookOpen, Quote, Star, Zap, Check, Flame, Coffee, ArrowRight, Leaf, Gift } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import WelcomeMessage from '@/components/WelcomeMessage';
 import CallToAction from '@/components/CallToAction';
@@ -18,6 +18,8 @@ import {
   ECWID_PRODUCT_BY_ORIGIN,
   ECWID_SUBSCRIPTION_PRODUCT_ID,
   ECWID_SUBSCRIPTION_PRODUCT_URL,
+  ECWID_GIFT_CARD_PRODUCT_ID,
+  ECWID_GIFT_CARD_PRODUCT_URL,
 } from '@/config/ecwid';
 
 /**
@@ -596,6 +598,72 @@ const HomePage = () => {
                       </Link>
                     )}
                   </div>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* Gift card — below subscription tile */}
+        <section className="py-16 md:py-24 bg-black text-white border-t border-stone-900 overflow-hidden">
+          <div className="container mx-auto px-4">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center max-w-6xl mx-auto">
+              <motion.div
+                initial={{ opacity: 0, x: -40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="order-2 lg:order-1"
+              >
+                <div className="rounded-3xl overflow-hidden border border-stone-800 shadow-2xl bg-stone-950">
+                  <img
+                    src="/volcano-drip-gift-card-promo.png"
+                    alt="Person holding a Volcano Drip gift card beside a laptop showing VolcanoDrip.com checkout"
+                    className="w-full h-full object-cover"
+                    width={1200}
+                    height={900}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: 40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="order-1 lg:order-2 flex flex-col"
+              >
+                <span className="text-amber-500 font-bold tracking-widest text-xs uppercase mb-4 flex items-center gap-2">
+                  <Gift className="w-4 h-4" aria-hidden />
+                  Gift cards
+                </span>
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter mb-6 leading-[0.95]">
+                  Give the Gift of Coffee
+                </h2>
+                <div className="space-y-5 text-stone-400 text-lg leading-relaxed mb-8">
+                  <p className="text-stone-200 font-medium">
+                    Not sure which roast they&apos;ll love? Let them choose.
+                  </p>
+                  <p>
+                    Our Coffee Gift Cards are the perfect way to treat friends, family, or colleagues to freshly
+                    roasted, premium coffee.
+                  </p>
+                  <p className="text-white font-semibold">
+                    Available in $50, $100, $200 and $400
+                  </p>
+                  <ul className="list-none space-y-2 text-stone-300 text-base">
+                    <li>No expiration date</li>
+                    <li>Unused balance carries forward until fully redeemed</li>
+                  </ul>
+                  <p>Simple to send. Even better to receive.</p>
+                  <p className="text-stone-200">Fuel their mornings with something they&apos;ll actually enjoy.</p>
+                </div>
+                <div className="mt-2 w-full max-w-md">
+                  <EcwidPurchaseButton
+                    productId={ECWID_GIFT_CARD_PRODUCT_ID}
+                    productPageUrl={ECWID_GIFT_CARD_PRODUCT_URL}
+                    label="Buy a Gift Card"
+                  />
                 </div>
               </motion.div>
             </div>
