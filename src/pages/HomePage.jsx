@@ -217,7 +217,9 @@ const HomePage = () => {
         <section className="py-20 bg-stone-50 border-y border-stone-200">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-black text-stone-900 mb-4 tracking-tight">Crafted by nature. Powered by volcanoes.</h2>
+              <h2 className="text-4xl md:text-6xl font-black text-stone-900 tracking-tighter mb-4 leading-[0.9]">
+                Crafted by nature. Powered by volcanoes.
+              </h2>
               <p className="text-lg text-stone-600 max-w-2xl mx-auto">Volcanic soil fuels exceptional coffee—rich minerals, high elevations, and bold flavor in every brew.</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
@@ -248,7 +250,7 @@ const HomePage = () => {
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
               <div className="max-w-2xl">
                 <span className="text-amber-600 font-bold tracking-widest text-xs uppercase mb-3 block">Coffee Shop</span>
-                <h2 className="font-black text-section-xl text-stone-900 mb-6 tracking-tight">
+                <h2 className="text-4xl md:text-6xl font-black text-stone-900 tracking-tighter mb-6 uppercase leading-[0.9]">
                   FRESH FROM <br />THE ROASTERY.
                 </h2>
                 <p className="text-stone-600 text-lg">Our master roaster carefully selects beans that showcase the unique mineral profiles of their volcanic origins.</p>
@@ -633,14 +635,15 @@ const HomePage = () => {
                 viewport={{ once: true }}
                 className="order-1 lg:order-2 flex flex-col"
               >
-                <span className="text-amber-500 font-bold tracking-widest text-xs uppercase mb-4 flex items-center gap-2">
-                  <Gift className="w-4 h-4" aria-hidden />
+                <span className="text-amber-500 font-bold tracking-widest text-xs uppercase mb-4 inline-flex items-center gap-2">
+                  <Gift className="w-4 h-4 shrink-0" aria-hidden />
                   Gift cards
                 </span>
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter mb-6 leading-[0.95]">
-                  Give the Gift of Coffee
+                <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-8 uppercase leading-[0.9]">
+                  Give the Gift of <br />
+                  Coffee
                 </h2>
-                <div className="space-y-5 text-stone-400 text-lg leading-relaxed mb-8">
+                <div className="space-y-6 text-stone-400 text-lg leading-relaxed mb-8">
                   <p className="text-stone-200 font-medium">
                     Not sure which roast they&apos;ll love? Let them choose.
                   </p>
@@ -729,7 +732,7 @@ const HomePage = () => {
             <div className="bg-white rounded-3xl shadow-xl overflow-hidden flex flex-col lg:flex-row">
               <div className="lg:w-1/2 p-12 md:p-16 flex flex-col justify-center">
                 <span className="text-amber-600 font-bold tracking-widest text-xs uppercase mb-4 block">Membership</span>
-                <h2 className="text-4xl md:text-5xl font-black text-stone-900 tracking-tight mb-6">
+                <h2 className="text-4xl md:text-6xl font-black text-stone-900 tracking-tighter mb-8 uppercase leading-[0.9]">
                   THE VOLCANIC <br />ORIGINS CLUB.
                 </h2>
                 <p className="text-stone-600 text-lg mb-8 leading-relaxed">
@@ -773,7 +776,9 @@ const HomePage = () => {
           <div className="container mx-auto px-4 text-center">
             <div className="max-w-3xl mx-auto">
               <BookOpen className="w-12 h-12 text-amber-500 mx-auto mb-6" />
-              <h2 className="text-4xl font-black text-stone-900 mb-6">Master the Ritual</h2>
+              <h2 className="text-4xl md:text-6xl font-black text-stone-900 tracking-tighter mb-6 leading-[0.9]">
+                Master the Ritual
+              </h2>
               <p className="text-stone-600 text-lg mb-10">Great beans deserve great preparation. Explore our detailed brewing guides for Chemex, V60, and Espresso to unlock the full potential of your volcanic coffee.</p>
               <Button asChild variant="outline" className="border-stone-900 text-stone-900 hover:bg-stone-900 hover:text-white font-bold px-8 rounded-full">
                 <Link to="/brewing">Brewing Guides</Link>
@@ -786,7 +791,9 @@ const HomePage = () => {
         <section className="py-24 bg-stone-50">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
-              <h2 className="text-3xl font-black text-stone-900 mb-4">Loved by the Community</h2>
+              <h2 className="text-4xl md:text-6xl font-black text-stone-900 tracking-tighter mb-4 leading-[0.9]">
+                Loved by the Community
+              </h2>
               <div className="flex justify-center gap-1">
                 {[1, 2, 3, 4, 5].map(i => <Star key={i} className="w-5 h-5 fill-amber-500 text-amber-500" />)}
               </div>
