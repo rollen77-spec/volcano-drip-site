@@ -36,17 +36,17 @@ export default function PodcastShowcaseSection() {
               </div>
 
               <div className="min-w-0 flex-1 text-center sm:text-left">
-                <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-amber-700/20 bg-white/80 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-amber-900/90 shadow-sm">
-                  <Mic className="h-3 w-3" aria-hidden />
+                <span className="text-amber-600 font-bold tracking-widest text-xs uppercase mb-3 inline-flex items-center gap-2">
+                  <Mic className="h-3.5 w-3.5 shrink-0" aria-hidden />
                   Listen in
                 </span>
                 <h2
                   id="podcast-showcase-heading"
-                  className="font-playfair text-3xl font-bold leading-tight text-stone-900 md:text-[2rem]"
+                  className="mb-8 text-4xl md:text-6xl font-black text-stone-900 tracking-tighter uppercase leading-[0.9]"
                 >
                   {PODCAST_NAME}
                 </h2>
-                <p className="mt-3 max-w-sm text-sm leading-relaxed text-stone-600 sm:max-w-none">
+                <p className="max-w-2xl text-lg text-stone-600 leading-relaxed sm:max-w-none">
                   Tips, stories, and a closer look at volcanic-grown coffee—new episodes to sip along with your brew.
                 </p>
                 <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="mt-8 sm:inline-block">
@@ -73,12 +73,12 @@ export default function PodcastShowcaseSection() {
                   transition={{ delay: i * 0.08 }}
                   className="group flex h-full min-h-0 flex-col rounded-2xl border border-stone-200/90 bg-white/95 p-5 shadow-md ring-1 ring-stone-100 transition hover:border-amber-300/70 hover:shadow-lg"
                 >
-                  <p className="text-[10px] font-bold uppercase tracking-widest text-amber-800/90">Episode {i + 1}</p>
-                  <h3 className="mt-2 font-playfair text-lg font-bold leading-snug text-stone-900 md:text-xl">
+                  <p className="text-[10px] font-bold uppercase tracking-widest text-stone-500">Episode {i + 1}</p>
+                  <h3 className="mt-2 text-xl font-bold leading-tight text-stone-900">
                     {ep.title}
                   </h3>
                   <div className="min-h-[4.5rem] flex-1">
-                    <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-stone-600">{ep.description}</p>
+                    <p className="mt-2 line-clamp-3 text-base leading-relaxed text-stone-600">{ep.description}</p>
                   </div>
 
                   <div className="mt-auto border-t border-stone-200/90 pt-4">
@@ -91,7 +91,7 @@ export default function PodcastShowcaseSection() {
                     ) : null}
                     <Link
                       to={`/podcast#episode-${ep.id}`}
-                      className="mt-3 inline-flex text-xs font-bold uppercase tracking-wide text-amber-800 transition hover:text-amber-600"
+                      className="mt-3 inline-flex text-sm font-semibold text-amber-700 transition hover:text-amber-600"
                     >
                       Full episode page →
                     </Link>

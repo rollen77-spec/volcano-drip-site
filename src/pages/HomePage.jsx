@@ -217,10 +217,13 @@ const HomePage = () => {
         <section className="py-20 bg-stone-50 border-y border-stone-200">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-6xl font-black text-stone-900 tracking-tighter mb-4 leading-[0.9]">
-                Crafted by nature. Powered by volcanoes.
+              <h2 className="text-4xl md:text-6xl font-black text-stone-900 tracking-tighter mb-8 uppercase leading-[0.9]">
+                Crafted by nature. <br />
+                Powered by volcanoes.
               </h2>
-              <p className="text-lg text-stone-600 max-w-2xl mx-auto">Volcanic soil fuels exceptional coffee—rich minerals, high elevations, and bold flavor in every brew.</p>
+              <p className="text-lg text-stone-600 leading-relaxed max-w-2xl mx-auto">
+                Volcanic soil fuels exceptional coffee—rich minerals, high elevations, and bold flavor in every brew.
+              </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
               {features.map((feature, index) => <motion.div key={index} initial={{
@@ -238,7 +241,7 @@ const HomePage = () => {
                     {feature.icon}
                   </div>
                   <h3 className="text-xl font-bold text-stone-900 mb-3">{feature.title}</h3>
-                  <p className="text-stone-600 leading-relaxed max-w-xs">{feature.description}</p>
+                  <p className="text-base text-stone-600 leading-relaxed max-w-xs">{feature.description}</p>
                 </motion.div>)}
             </div>
           </div>
@@ -776,10 +779,14 @@ const HomePage = () => {
           <div className="container mx-auto px-4 text-center">
             <div className="max-w-3xl mx-auto">
               <BookOpen className="w-12 h-12 text-amber-500 mx-auto mb-6" />
-              <h2 className="text-4xl md:text-6xl font-black text-stone-900 tracking-tighter mb-6 leading-[0.9]">
-                Master the Ritual
+              <h2 className="text-4xl md:text-6xl font-black text-stone-900 tracking-tighter mb-8 uppercase leading-[0.9]">
+                Master the <br />
+                Ritual
               </h2>
-              <p className="text-stone-600 text-lg mb-10">Great beans deserve great preparation. Explore our detailed brewing guides for Chemex, V60, and Espresso to unlock the full potential of your volcanic coffee.</p>
+              <p className="text-lg text-stone-600 leading-relaxed mb-10 max-w-2xl mx-auto">
+                Great beans deserve great preparation. Explore our detailed brewing guides for Chemex, V60, and
+                Espresso to unlock the full potential of your volcanic coffee.
+              </p>
               <Button asChild variant="outline" className="border-stone-900 text-stone-900 hover:bg-stone-900 hover:text-white font-bold px-8 rounded-full">
                 <Link to="/brewing">Brewing Guides</Link>
               </Button>
@@ -791,8 +798,9 @@ const HomePage = () => {
         <section className="py-24 bg-stone-50">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-6xl font-black text-stone-900 tracking-tighter mb-4 leading-[0.9]">
-                Loved by the Community
+              <h2 className="text-4xl md:text-6xl font-black text-stone-900 tracking-tighter mb-8 uppercase leading-[0.9]">
+                Loved by the <br />
+                Community
               </h2>
               <div className="flex justify-center gap-1">
                 {[1, 2, 3, 4, 5].map(i => <Star key={i} className="w-5 h-5 fill-amber-500 text-amber-500" />)}
