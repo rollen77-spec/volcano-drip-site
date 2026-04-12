@@ -21,6 +21,7 @@ Shipped UX, SEO, and Ecwid polish, then **committed and pushed** to `main`.
 3. **Images:** Compress / WebP large PNGs in `public/` (biggest remaining perf win).
 4. **Lint:** Fix `api/subscribe.js` ESLint `no-undef` for `Buffer` / `process` (Node env in eslint config).
 5. **Optional:** Route + SEO for `ProductDetailPage` if you use it; OG/Twitter meta; analytics; 404; sitemap/robots.
+6. **Hostinger exit:** Inventory + phased checklist — [`docs/hostinger-independent-migration.md`](docs/hostinger-independent-migration.md) (CDN URLs, ecommerce API, editor plugins).
 
 ---
 
