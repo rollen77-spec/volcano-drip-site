@@ -90,27 +90,28 @@ const originData = {
 /**
  * Each origin gallery: exactly four images in this order —
  * [0] front, [1] side, [2] three-quarter, [3] back.
- * Use local `/…-front.png` for the hero front to avoid CDN mix-ups between SKUs.
+ * Keep all four under `/public` so tiles never repeat another SKU from CDN cache mix-ups.
  */
 const costaRicaGalleryImages = [
   { src: '/primera-luz-front.png', alt: 'Primera Luz — front' },
-  { src: 'https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/411e9d119d8ab0564ed9ade25c9f83d5.png', alt: 'Primera Luz — side (volcano artwork)' },
-  { src: 'https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/06af6a885b40e55a21ac04a8cdd5b815.png', alt: 'Primera Luz — three-quarter view' },
-  { src: 'https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/5bf50b1e18a9d48bfbe35d0defb35294.png', alt: 'Primera Luz — back' },
+  { src: '/primera-luz-side.png', alt: 'Primera Luz — side (volcano artwork)' },
+  { src: '/primera-luz-three-quarter.png', alt: 'Primera Luz — three-quarter view' },
+  { src: '/primera-luz-back.png', alt: 'Primera Luz — back' },
 ];
 
+/** Fallback only — same shape as a full product set (Primera Luz). */
 const defaultGalleryImages = [
-  { src: 'https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/9c54b0318732594ba5bdff086a255122.png', alt: 'Coffee bag — front' },
-  { src: 'https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/411e9d119d8ab0564ed9ade25c9f83d5.png', alt: 'Coffee bag — side' },
-  { src: 'https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/06af6a885b40e55a21ac04a8cdd5b815.png', alt: 'Coffee bag — three-quarter' },
-  { src: 'https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/5bf50b1e18a9d48bfbe35d0defb35294.png', alt: 'Coffee bag — back' },
+  { src: '/primera-luz-front.png', alt: 'Coffee bag — front' },
+  { src: '/primera-luz-side.png', alt: 'Coffee bag — side' },
+  { src: '/primera-luz-three-quarter.png', alt: 'Coffee bag — three-quarter' },
+  { src: '/primera-luz-back.png', alt: 'Coffee bag — back' },
 ];
 
 const guatemalaGalleryImages = [
   { src: '/antigua-ember-front.png', alt: 'Antigua Ember — front' },
-  { src: 'https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/87bb12de7fca5a0144bb5f8633c7bf05.png', alt: 'Antigua Ember — side (volcano graphic)' },
-  { src: 'https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/7f6100f1b889eab99b21c62d7c06cef1.png', alt: 'Antigua Ember — three-quarter (tan label)' },
-  { src: 'https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/0d34ece396d1895e402c73d11f0a566c.png', alt: 'Antigua Ember — back' },
+  { src: '/antigua-ember-side.png', alt: 'Antigua Ember — side (volcano graphic)' },
+  { src: '/antigua-ember-three-quarter.png', alt: 'Antigua Ember — three-quarter (tan label)' },
+  { src: '/antigua-ember-back.png', alt: 'Antigua Ember — back' },
 ];
 
 /** Local assets only — matches Ecwid “product views” (front, side gusset, three-quarter, back). */
@@ -123,17 +124,16 @@ const indonesiaGalleryImages = [
 
 const peruGalleryImages = [
   { src: '/inca-ascent-front.png', alt: 'Inca Ascent — front' },
-  { src: 'https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/739b44385c1031f952fe30480becaf36.png', alt: 'Inca Ascent — side' },
-  { src: 'https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/d77b7a11209bdb80cf284f1cdd967e7d.png', alt: 'Inca Ascent — three-quarter' },
-  { src: 'https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/3ffe7793b209d3738d5c264a6b48eb06.png', alt: 'Inca Ascent — back / detail' },
+  { src: '/inca-ascent-side.png', alt: 'Inca Ascent — side' },
+  { src: '/inca-ascent-three-quarter.png', alt: 'Inca Ascent — three-quarter' },
+  { src: '/inca-ascent-back.png', alt: 'Inca Ascent — back / detail' },
 ];
 
-/** Copán Rise only — drop duplicate “front” CDN and generic gradient bottle that showed other SKUs. */
 const hondurasGalleryImages = [
   { src: '/copan-rise-front.png', alt: 'Copán Rise — front' },
-  { src: 'https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/3f2132c122fff3c0f1bc7982e72fcbfe.png', alt: 'Copán Rise — side' },
-  { src: 'https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/0a7b694158eaebf3da40563c01636036.png', alt: 'Copán Rise — three-quarter' },
-  { src: 'https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/5a85e75d76ff01955d54aaefd721005b.png', alt: 'Copán Rise — back' },
+  { src: '/copan-rise-side.png', alt: 'Copán Rise — side' },
+  { src: '/copan-rise-three-quarter.png', alt: 'Copán Rise — three-quarter' },
+  { src: '/copan-rise-back.png', alt: 'Copán Rise — back' },
 ];
 
 const getHeroImage = key => {
