@@ -113,11 +113,12 @@ const guatemalaGalleryImages = [
   { src: 'https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/0d34ece396d1895e402c73d11f0a566c.png', alt: 'Antigua Ember — back' },
 ];
 
+/** Local assets only — matches Ecwid “product views” (front, side gusset, three-quarter, back). */
 const indonesiaGalleryImages = [
   { src: '/sumatra-black-front.png', alt: 'Sumatra Black — front' },
-  { src: 'https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/24917196317ac6f5bba04e662092a757.png', alt: 'Sumatra Black — side profile' },
-  { src: 'https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/7636b73b436367dfe1557ecf77904e1e.png', alt: 'Sumatra Black — three-quarter (logo + panel)' },
-  { src: 'https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/09a7af04d7d4691367261ff6b6677d5a.png', alt: 'Sumatra Black — back (brand story)' },
+  { src: '/sumatra-black-side.png', alt: 'Sumatra Black — side (gusset artwork)' },
+  { src: '/sumatra-black-three-quarter.png', alt: 'Sumatra Black — three-quarter (logo + panel)' },
+  { src: '/sumatra-black-back.png', alt: 'Sumatra Black — back (brand story)' },
 ];
 
 const peruGalleryImages = [
