@@ -23,6 +23,7 @@ import CookiesPolicyPage from '@/pages/CookiesPolicyPage';
 import SignatureDrinksPage from '@/pages/SignatureDrinksPage';
 import FAQsPage from '@/pages/FAQsPage';
 import ScrollToTop from '@/components/ScrollToTop';
+import GoogleAnalyticsRouteListener from '@/components/GoogleAnalyticsRouteListener';
 import ThanksPage from '@/pages/ThanksPage';
 import ShopPage from '@/pages/ShopPage';
 import PodcastPage from '@/pages/PodcastPage';
@@ -125,6 +126,7 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
+      <GoogleAnalyticsRouteListener />
       <MainLayout>
         <Routes>
           <Route path="/" element={<HomePage />} />
