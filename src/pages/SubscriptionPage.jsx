@@ -5,6 +5,7 @@ import { Flame, Coffee, Mountain, Truck, AlertCircle, Sparkles, ArrowDown } from
 import { Link } from 'react-router-dom';
 import EcwidPurchaseButton from '@/components/EcwidPurchaseButton';
 import { ECWID_SUBSCRIPTION_PRODUCT_ID, ECWID_SUBSCRIPTION_PRODUCT_URL } from '@/config/ecwid';
+import { PRICE_SUBSCRIPTION_MONTHLY_DISPLAY } from '@/config/pricing';
 import { roasterySmallBatch, subscriptionBoxDelivered } from '@/assets/subscription';
 
 const lineup = [
@@ -41,6 +42,9 @@ const PurchaseCard = () => (
     </div>
     <div className="relative z-10">
       <h3 className="text-2xl font-bold text-white mb-2 text-center">The Volcanic Origins Box</h3>
+      <p className="text-amber-400 font-bold text-lg text-center tabular-nums mb-1">
+        {PRICE_SUBSCRIPTION_MONTHLY_DISPLAY} / month
+      </p>
       <p className="text-stone-400 text-sm text-center mb-8">Subscribe monthly · change or cancel anytime</p>
 
       {ECWID_SUBSCRIPTION_PRODUCT_ID || ECWID_SUBSCRIPTION_PRODUCT_URL ? (
@@ -115,6 +119,14 @@ const SubscriptionPage = () => {
               Your custom 4-bag box,{' '}
               <span className="text-amber-500">delivered monthly</span>
             </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.15 }}
+              className="text-2xl md:text-3xl font-bold text-amber-400 tabular-nums mb-6"
+            >
+              {PRICE_SUBSCRIPTION_MONTHLY_DISPLAY} / month
+            </motion.p>
             <motion.p
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}

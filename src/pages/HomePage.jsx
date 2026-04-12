@@ -21,6 +21,7 @@ import {
   ECWID_GIFT_CARD_PRODUCT_ID,
   ECWID_GIFT_CARD_PRODUCT_URL,
 } from '@/config/ecwid';
+import { PRICE_BAG_DISPLAY, PRICE_SUBSCRIPTION_MONTHLY_DISPLAY } from '@/config/pricing';
 
 /**
  * Square media frame.
@@ -279,7 +280,7 @@ const HomePage = () => {
                     <Link to="/origins/guatemala" className="block group-hover:text-amber-500 transition-colors">
                       <h3 className="text-xl font-bold text-white mb-1 leading-tight">Antigua Ember</h3>
                     </Link>
-                    <p className="text-stone-300 text-sm">Antigua Valley</p>
+                    <p className="text-amber-400 font-bold text-base tabular-nums">{PRICE_BAG_DISPLAY}</p>
                   </div>
                   
                   <div className="mb-6">
@@ -336,7 +337,7 @@ const HomePage = () => {
                     <Link to="/origins/costa-rica" className="block group-hover:text-amber-500 transition-colors">
                       <h3 className="text-xl font-bold text-white mb-1 leading-tight">Primera Luz</h3>
                     </Link>
-                    <p className="text-stone-300 text-sm">Arenal Volcano</p>
+                    <p className="text-amber-400 font-bold text-base tabular-nums">{PRICE_BAG_DISPLAY}</p>
                   </div>
                   
                   <div className="mb-6">
@@ -400,7 +401,7 @@ const HomePage = () => {
                     <Link to="/origins/indonesia" className="block group-hover:text-amber-500 transition-colors">
                       <h3 className="text-xl font-bold text-white mb-1 leading-tight">Sumatra Black</h3>
                     </Link>
-                    <p className="text-stone-300 text-sm">Lake Toba</p>
+                    <p className="text-amber-400 font-bold text-base tabular-nums">{PRICE_BAG_DISPLAY}</p>
                   </div>
                   
                   <div className="mb-6">
@@ -465,7 +466,7 @@ const HomePage = () => {
                     <Link to="/origins/honduras" className="block group-hover:text-amber-500 transition-colors">
                       <h3 className="text-xl font-bold text-white mb-1 leading-tight">Copán Rise</h3>
                     </Link>
-                    <p className="text-stone-300 text-sm">Western Highlands</p>
+                    <p className="text-amber-400 font-bold text-base tabular-nums">{PRICE_BAG_DISPLAY}</p>
                   </div>
 
                   <div className="mb-6">
@@ -522,7 +523,7 @@ const HomePage = () => {
                     <Link to="/origins/peru" className="block group-hover:text-amber-500 transition-colors">
                       <h3 className="text-xl font-bold text-white mb-1 leading-tight">Inca Ascent</h3>
                     </Link>
-                    <p className="text-stone-300 text-sm">Andes Volcanic Belt</p>
+                    <p className="text-amber-400 font-bold text-base tabular-nums">{PRICE_BAG_DISPLAY}</p>
                   </div>
 
                   <div className="mb-6">
@@ -579,6 +580,9 @@ const HomePage = () => {
                     <Link to="/subscription" className="block group-hover:text-amber-500 transition-colors">
                       <h3 className="text-xl font-bold text-white mb-1 leading-tight">Volcanic Origins</h3>
                     </Link>
+                    <p className="text-amber-400 font-bold text-base tabular-nums">
+                      {PRICE_SUBSCRIPTION_MONTHLY_DISPLAY} a month
+                    </p>
                   </div>
 
                   <p className="text-sm text-stone-200 leading-relaxed mb-6 flex-grow">

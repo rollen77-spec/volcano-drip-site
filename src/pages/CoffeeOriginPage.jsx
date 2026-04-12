@@ -16,6 +16,7 @@ import {
   ECWID_PERU_PRODUCT_URL,
   ECWID_PRODUCT_BY_ORIGIN,
 } from '@/config/ecwid';
+import { PRICE_BAG_DISPLAY } from '@/config/pricing';
 import { getSiteUrl } from '@/config/site';
 
 const originData = {
@@ -175,6 +176,7 @@ const CoffeeOriginPage = ({ originKey }) => {
     firstImageSrc &&
     (firstImageSrc.startsWith('http') ? firstImageSrc : `${siteUrl}${firstImageSrc}`);
   const productPageUrl = siteUrl ? `${siteUrl}/origins/${originKey}` : '';
+  const offerPrice = PRICE_BAG_DISPLAY.replace(/[^\d.]/g, '') || '19.99';
   const productJsonLd = JSON.stringify({
     '@context': 'https://schema.org',
     '@type': 'Product',
@@ -184,6 +186,12 @@ const CoffeeOriginPage = ({ originKey }) => {
     brand: { '@type': 'Brand', name: 'Volcano Drip' },
     url: productPageUrl || undefined,
     category: 'Coffee',
+    offers: {
+      '@type': 'Offer',
+      price: offerPrice,
+      priceCurrency: 'USD',
+      availability: 'https://schema.org/InStock',
+    },
   });
   
   const handleNotAvailable = () => {
@@ -229,6 +237,14 @@ const CoffeeOriginPage = ({ originKey }) => {
           }} className="text-5xl md:text-7xl font-bold mb-4">
               {data.title}
             </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="text-2xl md:text-3xl font-bold text-amber-400 tabular-nums"
+            >
+              {PRICE_BAG_DISPLAY}
+            </motion.p>
           </div>
         </div>
 
@@ -267,6 +283,11 @@ const CoffeeOriginPage = ({ originKey }) => {
                   <span className="font-semibold text-stone-900">{data.process}</span>
                 </div>
               </div>
+            </div>
+
+            <div className="mb-8 rounded-sm border border-stone-200 bg-stone-50 px-6 py-5 text-center">
+              <p className="text-3xl font-black text-amber-600 tabular-nums tracking-tight">{PRICE_BAG_DISPLAY}</p>
+              <p className="mt-1 text-sm font-medium text-stone-600">12 oz (340 g) bag · price before tax &amp; shipping</p>
             </div>
 
             <OriginProductGallery images={currentGalleryImages} />
