@@ -129,11 +129,12 @@ const peruGalleryImages = [
   { src: '/inca-ascent-back.png', alt: 'Inca Ascent — back / detail' },
 ];
 
+/** Local assets — front, gusset side, three-quarter, back (matches Ecwid product views). */
 const hondurasGalleryImages = [
   { src: '/copan-rise-front.png', alt: 'Copán Rise — front' },
-  { src: '/copan-rise-side.png', alt: 'Copán Rise — side' },
-  { src: '/copan-rise-three-quarter.png', alt: 'Copán Rise — three-quarter' },
-  { src: '/copan-rise-back.png', alt: 'Copán Rise — back' },
+  { src: '/copan-rise-side.png', alt: 'Copán Rise — side (gusset artwork)' },
+  { src: '/copan-rise-three-quarter.png', alt: 'Copán Rise — three-quarter (logo + panel)' },
+  { src: '/copan-rise-back.png', alt: 'Copán Rise — back (brand story)' },
 ];
 
 const getHeroImage = key => {
