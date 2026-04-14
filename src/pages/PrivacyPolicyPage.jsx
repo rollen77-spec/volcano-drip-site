@@ -149,7 +149,6 @@ const PrivacyPolicyPage = () => {
                 <div className="bg-stone-50 p-6 rounded-md border border-stone-200 text-stone-800 shadow-inner">
                   <p className="font-bold mb-2 text-amber-700">Volcano Drip Coffee Company</p>
                   <p>Email: <a href="mailto:hello@volcanodrip.com" className="hover:text-amber-600 hover:underline">hello@volcanodrip.com</a></p>
-                  <p>Phone: 1-800-VOLCANO</p>
                 </div>
               </AccordionContent>
             </AccordionItem>

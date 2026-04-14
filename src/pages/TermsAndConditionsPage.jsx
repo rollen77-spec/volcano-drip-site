@@ -91,7 +91,7 @@ const TermsAndConditionsPage = () => {
             <AccordionItem value="contact" className="border border-stone-200 rounded-lg px-4 overflow-hidden shadow-sm data-[state=open]:border-amber-500 transition-colors">
               <AccordionTrigger className="text-lg font-bold text-stone-900 hover:text-amber-600 py-4 hover:no-underline">Contact</AccordionTrigger>
               <AccordionContent className="text-stone-600 pb-4 leading-relaxed">
-                Questions about our Terms and Conditions should be sent to us at hello@volcanodrip.com or by calling 1-800-VOLCANO.
+                Questions about our Terms and Conditions should be sent to us at orders@volcanodrip.com.
               </AccordionContent>
             </AccordionItem>
           </Accordion>
@@ -224,7 +224,7 @@ const TermsAndConditionsPage = () => {
             <AccordionItem value="how-to-cancel" className="border border-stone-200 rounded-lg px-4 overflow-hidden shadow-sm data-[state=open]:border-amber-500 transition-colors">
               <AccordionTrigger className="text-lg font-bold text-stone-900 hover:text-amber-600 py-4 hover:no-underline">How to Cancel</AccordionTrigger>
               <AccordionContent className="text-stone-600 pb-4 leading-relaxed">
-                To request an order cancellation, please reply to your order confirmation email immediately, or contact our support team at support@volcanodrip.com with your order number in the subject line.
+                To request an order cancellation, please reply to your order confirmation email immediately, or contact our team at orders@volcanodrip.com with your order number in the subject line.
               </AccordionContent>
             </AccordionItem>
 
