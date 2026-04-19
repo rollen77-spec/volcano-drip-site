@@ -4,6 +4,8 @@ date: 2026-04-19
 excerpt: Volcanic soil is why many of the world’s best coffees grow near volcanoes. Here’s the science behind the minerals, altitude, and flavour—and what it means in your cup.
 ---
 
+![Ripe coffee cherries on the branch with terraced slopes and volcanic peaks beyond](/blog/volcanic-cherries-hero.png)
+
 Most of the world’s most celebrated coffees—from Guatemala’s Antigua Valley, to Indonesia’s Sumatra highlands, to Peru’s Andean foothills—share one thing in common: **they grow in volcanic soil**. That’s not a coincidence. When a volcano erupts, it deposits a mineral-dense layer of material called *tephra* across the surrounding land. Over thousands of years, that material breaks down into some of the most nutrient-rich, well-drained agricultural soil on earth. For coffee plants, it’s essentially the ideal growing environment.
 
 Here’s what the science actually says—and why it shows up in your cup.
@@ -23,6 +25,8 @@ Beyond mineral content, volcanic soil has **excellent drainage**. Coffee plants 
 ## How those minerals shape the flavour in your cup
 
 The link between soil chemistry and flavour in coffee is indirect but well documented. It works through a concept borrowed from wine: **terroir**—the idea that the place a crop grows leaves a fingerprint on the final product.
+
+![Rows of coffee shrubs toward a mist-shrouded volcano, sun over the ridge](/blog/volcanic-plantation-hero.png)
 
 When coffee plants grown in mineral-rich volcanic soil produce cherries, those cherries tend to be:
 
@@ -53,6 +57,8 @@ Yes—and the best way to understand this is to **compare**. Try a volcanic-soil
 That’s the premise behind Volcano Drip. We focus on **[single origins](/shop)** from volcanic regions—Costa Rica, Guatemala, Indonesia, Honduras, and Peru—because that’s where many of the most distinctive, complex coffees consistently come from. Not because of marketing alone—because of **geology**, **climate**, and **careful roasting**.
 
 For a lighter, Fairtrade Organic take on Andean volcanic highlands, try **[Inca Ascent](/origins/peru)**. For recurring deliveries of volcanic-origin coffees, see **[Volcanic Origins](/subscription)**.
+
+![Dark roasted whole-bean coffee](/blog/volcanic-soil-beans.png)
 
 ## The takeaway
 

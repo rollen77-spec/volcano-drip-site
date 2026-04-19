@@ -112,6 +112,16 @@ const BlogPostPage = () => {
                     </a>
                   );
                 },
+                img: ({ src, alt, ...props }) => (
+                  <img
+                    {...props}
+                    src={src}
+                    alt={alt || ''}
+                    loading="lazy"
+                    decoding="async"
+                    className="my-8 w-full max-h-[28rem] rounded-xl border border-stone-200 bg-stone-100 object-cover shadow-sm"
+                  />
+                ),
               }}
             >
               {post.body}
