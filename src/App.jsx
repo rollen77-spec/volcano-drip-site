@@ -27,6 +27,8 @@ import GoogleAnalyticsRouteListener from '@/components/GoogleAnalyticsRouteListe
 import ThanksPage from '@/pages/ThanksPage';
 import ShopPage from '@/pages/ShopPage';
 import PodcastPage from '@/pages/PodcastPage';
+import BlogIndexPage from '@/pages/BlogIndexPage';
+import BlogPostPage from '@/pages/BlogPostPage';
 
 const ORG_LOGO_URL =
   'https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/primary-logo-copy-wWYt4.png';
@@ -92,6 +94,7 @@ function MainLayout({ children }) {
               <li><Link to="/about" className="hover:text-[#FF8C00] transition-colors">Our story</Link></li>
               <li><Link to="/sourcing" className="hover:text-[#FF8C00] transition-colors">Sourcing</Link></li>
               <li><Link to="/signature-drinks" className="hover:text-[#FF8C00] transition-colors">Signature drinks</Link></li>
+              <li><Link to="/blog" className="hover:text-[#FF8C00] transition-colors">Blog</Link></li>
               <li><Link to="/offers" className="hover:text-[#FF8C00] transition-colors">Offers</Link></li>
             </ul>
           </div>
@@ -138,6 +141,8 @@ function App() {
           <Route path="/origins/peru" element={<CoffeeOriginPage originKey="peru" />} />
           <Route path="/origins/honduras" element={<CoffeeOriginPage originKey="honduras" />} />
           
+          <Route path="/blog" element={<BlogIndexPage />} />
+          <Route path="/blog/:slug" element={<BlogPostPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/sourcing" element={<SourcingPage />} />
           <Route path="/brewing" element={<BrewingGuidePage />} />

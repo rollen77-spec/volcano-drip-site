@@ -1,17 +1,18 @@
 ## Pages
 - [| Volcano Drip](/podcast): Listen to The Daily Grind Podcast—brewing tips and volcanic coffee stories from Volcano Drip.
 - [| Volcano Drip](/productdetail): No description available
-- [| Volcano Drip`}](/coffeeorigin): No description available
+- [| Volcano Drip`}](/origins/honduras): No description available
 - [About Us | Volcano Drip](/about): Discover how Volcano Drip was born from a passion for volcanic soil coffee and sustainable sourcing.
-- [Cookies & Data Policy | Volcano Drip](/cookiespolicy): Cookies and Data Policy for Volcano Drip Coffee Company. Learn how we use cookies, collect data, and manage your preferences.
+- [Blog | Volcano Drip](/blog): Roasting notes, brewing tips, and stories from Volcano Drip Coffee—small-batch single-origin coffee from volcanic soil.
+- [Cookies & Data Policy | Volcano Drip](/cookies): Cookies and Data Policy for Volcano Drip Coffee Company. Learn how we use cookies, collect data, and manage your preferences.
 - [FAQs | Volcano Drip](/faqs): Frequently asked questions about Volcano Drip coffee, our sourcing, roasting, and brewing recommendations.
-- [Grind Options | Volcano Drip](/grindoptions): How grind size affects extraction—from whole bean to Turkish. Match your grind to French press, drip, pour over, AeroPress, moka, and espresso.
+- [Grind Options | Volcano Drip](/brewing/grind-options): How grind size affects extraction—from whole bean to Turkish. Match your grind to French press, drip, pour over, AeroPress, moka, and espresso.
 - [Newsletter & Offers | Volcano Drip](/offers): Join the Volcano Drip newsletter for exclusive offers, new coffee releases, brewing tips, and special promotions.
 - [Order Confirmed | Volcano Drip](/success): No description available
-- [Privacy Policy | Volcano Drip](/privacypolicy): Privacy Policy for Volcano Drip Coffee Company. Learn how we collect, use, and protect your information.
-- [Roasting Options | Volcano Drip](/roastingoptions): Light to dark roast levels at Volcano Drip—how heat unlocks flavor from volcanic-soil coffee, and how to choose your roast.
+- [Privacy Policy | Volcano Drip](/privacy-policy): Privacy Policy for Volcano Drip Coffee Company. Learn how we collect, use, and protect your information.
+- [Roasting Options | Volcano Drip](/brewing/roasting-options): Light to dark roast levels at Volcano Drip—how heat unlocks flavor from volcanic-soil coffee, and how to choose your roast.
 - [Shop | Volcano Drip](/shop): Browse Volcano Drip coffee — single-origin roasts from volcanic soil.
 - [Sourcing & Sustainability | Volcano Drip](/sourcing): Our commitment to the earth and the farmers who tend it.
-- [Terms and Conditions | Volcano Drip](/termsandconditions): Terms and Conditions, Shipping, Return, and Cancellation policies for Volcano Drip Coffee Company.
+- [Terms and Conditions | Volcano Drip](/terms-and-conditions): Terms and Conditions, Shipping, Return, and Cancellation policies for Volcano Drip Coffee Company.
 - [Thank You! | Volcano Drip](/thanks): Thank you for subscribing to Volcano Drip exclusive offers.
 - [Volcanic Origins Subscription | Volcano Drip](/subscription): Subscribe to the Volcanic Origins Box and save up to 15%. Build your custom 4-bag box—region, roast, and grind. Fresh coffee delivered monthly.
