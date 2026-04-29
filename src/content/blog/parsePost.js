@@ -8,6 +8,19 @@
  * ---
  */
 
+/** Supports full watch/share URLs or a bare ID. Returns '' if invalid. */
+export function normalizeYoutubeEmbedId(raw) {
+  if (!raw || typeof raw !== 'string') return '';
+  const s = raw.trim();
+  const fromUrl =
+    s.match(/youtu\.be\/([a-zA-Z0-9_-]+)/i)?.[1] ||
+    s.match(/[?&]v=([a-zA-Z0-9_-]+)/i)?.[1] ||
+    s.match(/youtube\.com\/embed\/([a-zA-Z0-9_-]+)/i)?.[1];
+  if (fromUrl) return fromUrl;
+  if (/^[a-zA-Z0-9_-]{6,}$/.test(s)) return s;
+  return '';
+}
+
 export function parsePostFile(raw, slug) {
   const text = String(raw).replace(/^\uFEFF/, '').trim();
   if (!text.startsWith('---')) {
@@ -16,6 +29,7 @@ export function parsePostFile(raw, slug) {
       title: humanizeSlug(slug),
       date: '',
       excerpt: '',
+      youtubeId: '',
       body: text,
     };
   }
@@ -27,6 +41,7 @@ export function parsePostFile(raw, slug) {
       title: humanizeSlug(slug),
       date: '',
       excerpt: '',
+      youtubeId: '',
       body: text,
     };
   }
@@ -52,6 +67,7 @@ export function parsePostFile(raw, slug) {
     title: meta.title || humanizeSlug(slug),
     date: meta.date || '',
     excerpt: meta.excerpt || '',
+    youtubeId: normalizeYoutubeEmbedId(meta.youtube_id || ''),
     body,
   };
 }

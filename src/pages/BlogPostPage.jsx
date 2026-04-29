@@ -95,6 +95,21 @@ const BlogPostPage = () => {
             {post.title}
           </h1>
 
+          {post.youtubeId ? (
+            <div className="mb-10 w-full overflow-hidden rounded-xl border border-stone-200 bg-stone-950 shadow-sm">
+              <div className="relative aspect-video w-full">
+                <iframe
+                  className="absolute inset-0 h-full w-full"
+                  src={`https://www.youtube-nocookie.com/embed/${post.youtubeId}`}
+                  title={`Video — ${post.title}`}
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
+              </div>
+            </div>
+          ) : null}
+
           <div className="prose prose-stone prose-lg max-w-none prose-headings:font-playfair prose-headings:text-stone-900 prose-a:text-amber-700 prose-a:no-underline hover:prose-a:underline prose-strong:text-stone-900">
             <ReactMarkdown
               components={{

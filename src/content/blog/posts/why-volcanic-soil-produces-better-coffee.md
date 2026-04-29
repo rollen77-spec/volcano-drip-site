@@ -2,6 +2,7 @@
 title: Why Volcanic Soil Produces Better Coffee (And Why It Matters in Your Cup)
 date: 2026-04-19
 excerpt: Volcanic soil is why many of the world’s best coffees grow near volcanoes. Here’s the science behind the minerals, altitude, and flavour—and what it means in your cup.
+youtube_id: https://youtu.be/hy__cSOlahE
 ---
 
 ![Ripe coffee cherries on the branch with terraced slopes and volcanic peaks beyond](/blog/volcanic-cherries-hero.png)
