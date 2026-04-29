@@ -6,6 +6,8 @@ excerpt: Why elevation, minerals, and climate around volcanoes translate into di
 
 Coffee is an agricultural product. Where it grows—and **what is in the soil**—shows up in the cup more often than people expect.
 
+![Rows of coffee shrubs toward a mist-shrouded volcano, sun over the ridge](/blog/volcanic-plantation-hero.png)
+
 ## Minerals and maturation
 
 Volcanic regions tend to combine **mineral-rich soils** with **sharp day–night temperature swings** at elevation. That combination can slow cherry maturation and help develop complexity in the bean.

@@ -40,7 +40,7 @@ const BlogIndexPage = () => {
         <img
           src="/blog/blog-header-hero.png"
           alt=""
-          className="h-auto w-full max-h-[min(26rem,50vh)] object-cover object-[center_35%] md:max-h-[min(30rem,55vh)]"
+          className="h-auto w-full max-h-[min(30rem,55vh)] object-cover object-top md:max-h-[min(34rem,60vh)]"
           width={1600}
           height={600}
           fetchPriority="high"

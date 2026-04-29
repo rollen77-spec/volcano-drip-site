@@ -27,8 +27,6 @@ Beyond mineral content, volcanic soil has **excellent drainage**. Coffee plants 
 
 The link between soil chemistry and flavour in coffee is indirect but well documented. It works through a concept borrowed from wine: **terroir**—the idea that the place a crop grows leaves a fingerprint on the final product.
 
-![Rows of coffee shrubs toward a mist-shrouded volcano, sun over the ridge](/blog/volcanic-plantation-hero.png)
-
 When coffee plants grown in mineral-rich volcanic soil produce cherries, those cherries tend to be:
 
 - **Denser** — a harder, denser bean retains more of the complex aromatic compounds that develop during roasting.
