@@ -1,4 +1,4 @@
-/** Event & pop-up photography for the About page gallery (public/about/gallery). */
+/** Event & pop-up photography for the Contact page gallery (public/about/gallery). */
 export const aboutEventGallery = [
   {
     src: '/about/gallery/event-01-piaggio-display.png',

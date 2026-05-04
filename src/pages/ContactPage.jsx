@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -7,6 +8,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Mail, Calendar, MapPin, Loader2 } from 'lucide-react';
 import { useToast } from '@/components/ui/use-toast';
 import { upcomingAppearances } from '@/data/appearances';
+import { aboutEventGallery } from '@/data/aboutEventGallery';
 
 const ContactPage = () => {
   const { toast } = useToast();
@@ -240,6 +242,45 @@ const ContactPage = () => {
                  </form>
               </div>
            </div>
+
+           <section className="mt-16 md:mt-20 max-w-5xl mx-auto">
+             <motion.div
+               initial={{ opacity: 0, y: 12 }}
+               whileInView={{ opacity: 1, y: 0 }}
+               viewport={{ once: true }}
+               transition={{ duration: 0.4 }}
+               className="text-center mb-10"
+             >
+               <h2 className="text-2xl md:text-3xl font-black text-stone-900 tracking-tight mb-2">
+                 Pop-ups &amp; events
+               </h2>
+               <p className="text-stone-600 max-w-2xl mx-auto leading-relaxed">
+                 Photos from our outdoor setups—mobile truck, tasting crates, and the crew behind the bar.
+               </p>
+             </motion.div>
+             <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+               {aboutEventGallery.map((item, index) => (
+                 <motion.div
+                   key={item.src}
+                   initial={{ opacity: 0, y: 8 }}
+                   whileInView={{ opacity: 1, y: 0 }}
+                   viewport={{ once: true }}
+                   transition={{ duration: 0.35, delay: Math.min(index * 0.03, 0.24) }}
+                   className="group relative aspect-[3/4] overflow-hidden rounded-xl border border-stone-200 bg-white shadow-sm"
+                 >
+                   <img
+                     src={item.src}
+                     alt={item.alt}
+                     loading="lazy"
+                     decoding="async"
+                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                     width={800}
+                     height={1067}
+                   />
+                 </motion.div>
+               ))}
+             </div>
+           </section>
         </div>
       </div>
     </>;
