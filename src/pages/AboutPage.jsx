@@ -1,10 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet';
-import { Flame, Mountain, Users, Zap } from 'lucide-react';
+import { Flame, Mountain, Users, Zap, Calendar, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import HeroImage from '@/components/HeroImage';
+import { upcomingAppearances } from '@/data/appearances';
+import { aboutEventGallery } from '@/data/aboutEventGallery';
 
 const AboutPage = () => {
   return <>
@@ -211,6 +213,106 @@ const AboutPage = () => {
                 <p className="text-stone-600 leading-relaxed">Direct trade means more money goes back to the hands that harvest the beans.</p>
               </motion.div>
             </div>
+          </div>
+        </section>
+
+        {/* Appearances + event gallery */}
+        <section className="py-24 bg-stone-100 border-t border-stone-200">
+          <div className="container mx-auto px-4 max-w-5xl">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.45 }}
+              className="text-center mb-12"
+            >
+              <span className="text-amber-600 font-bold tracking-widest text-xs uppercase mb-3 block">
+                On the road
+              </span>
+              <h2 className="text-3xl md:text-4xl font-black text-stone-900 tracking-tight mb-4">
+                Upcoming appearances
+              </h2>
+              <p className="text-stone-600 max-w-2xl mx-auto leading-relaxed">
+                Catch Volcano Drip at markets and festivals across the GTA. Say hello, taste a pour, and take a bag home.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.05 }}
+              className="bg-stone-900 text-white rounded-2xl border border-stone-900 p-8 md:p-10 mb-14"
+            >
+              <div className="flex items-center gap-3 mb-8">
+                <Calendar className="text-amber-500 h-6 w-6 shrink-0" aria-hidden />
+                <h3 className="text-xl font-bold">Where we&apos;ll be next</h3>
+              </div>
+              <ul className="space-y-6 list-none p-0 m-0">
+                {upcomingAppearances.map((ev) => (
+                  <li
+                    key={ev.id}
+                    className={`border-l-2 pl-4 ${ev.highlight ? 'border-amber-500' : 'border-stone-700'}`}
+                  >
+                    <span
+                      className={`text-xs font-bold uppercase tracking-wider block mb-1 ${
+                        ev.highlight ? 'text-amber-500' : 'text-stone-400'
+                      }`}
+                    >
+                      {ev.dateLabel}
+                    </span>
+                    <h4 className="font-bold text-lg">{ev.title}</h4>
+                    <div className="flex items-center gap-2 text-stone-400 text-sm mt-1">
+                      <MapPin className="h-3 w-3 shrink-0" aria-hidden />
+                      <span>{ev.location}</span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+              <p className="text-stone-400 text-sm mt-8">
+                Questions about an event or booking?{' '}
+                <Link to="/contact" className="text-amber-400 font-semibold hover:text-amber-300 underline-offset-2 hover:underline">
+                  Contact us
+                </Link>
+                .
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.1 }}
+            >
+              <h3 className="text-2xl md:text-3xl font-black text-stone-900 tracking-tight mb-2 text-center">
+                Pop-ups &amp; events
+              </h3>
+              <p className="text-stone-600 text-center max-w-2xl mx-auto mb-10 leading-relaxed">
+                Photos from our outdoor setups—mobile truck, tasting crates, and the crew behind the bar.
+              </p>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+                {aboutEventGallery.map((item, index) => (
+                  <motion.div
+                    key={item.src}
+                    initial={{ opacity: 0, y: 8 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.35, delay: Math.min(index * 0.03, 0.24) }}
+                    className="group relative aspect-[3/4] overflow-hidden rounded-xl border border-stone-200 bg-white shadow-sm"
+                  >
+                    <img
+                      src={item.src}
+                      alt={item.alt}
+                      loading="lazy"
+                      decoding="async"
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                      width={800}
+                      height={1067}
+                    />
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
           </div>
         </section>
 

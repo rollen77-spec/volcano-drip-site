@@ -6,6 +6,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Mail, Calendar, MapPin, Loader2 } from 'lucide-react';
 import { useToast } from '@/components/ui/use-toast';
+import { upcomingAppearances } from '@/data/appearances';
 
 const ContactPage = () => {
   const { toast } = useToast();
@@ -142,32 +143,25 @@ const ContactPage = () => {
                     </div>
                     
                     <div className="space-y-6">
-                       <div className="border-l-2 border-amber-500 pl-4">
-                          <span className="text-amber-500 text-xs font-bold uppercase tracking-wider block mb-1">April 17, 2026</span>
-                          <h4 className="font-bold text-lg">T.O. Food and Drink Fest</h4>
-                          <div className="flex items-center gap-2 text-stone-400 text-sm mt-1">
-                             <MapPin className="h-3 w-3" />
-                             <span>Toronto, Ontario</span>
-                          </div>
-                       </div>
-
-                       <div className="border-l-2 border-stone-700 pl-4">
-                          <span className="text-stone-400 text-xs font-bold uppercase tracking-wider block mb-1">May 03, 2026</span>
-                          <h4 className="font-bold text-lg">Walk So Kids Can Talk</h4>
-                          <div className="flex items-center gap-2 text-stone-400 text-sm mt-1">
-                             <MapPin className="h-3 w-3" />
-                             <span>Toronto, Ontario - Main Stage</span>
-                          </div>
-                       </div>
-
-                       <div className="border-l-2 border-stone-700 pl-4">
-                          <span className="text-stone-400 text-xs font-bold uppercase tracking-wider block mb-1">May 09, 2026</span>
-                          <h4 className="font-bold text-lg">Restaurants Canada Show</h4>
-                          <div className="flex items-center gap-2 text-stone-400 text-sm mt-1">
-                             <MapPin className="h-3 w-3" />
-                             <span>Toronto, Ontario - Pavilion A</span>
-                          </div>
-                       </div>
+                       {upcomingAppearances.map((ev) => (
+                         <div
+                           key={ev.id}
+                           className={`border-l-2 pl-4 ${ev.highlight ? 'border-amber-500' : 'border-stone-700'}`}
+                         >
+                           <span
+                             className={`text-xs font-bold uppercase tracking-wider block mb-1 ${
+                               ev.highlight ? 'text-amber-500' : 'text-stone-400'
+                             }`}
+                           >
+                             {ev.dateLabel}
+                           </span>
+                           <h4 className="font-bold text-lg">{ev.title}</h4>
+                           <div className="flex items-center gap-2 text-stone-400 text-sm mt-1">
+                             <MapPin className="h-3 w-3 shrink-0" aria-hidden />
+                             <span>{ev.location}</span>
+                           </div>
+                         </div>
+                       ))}
                     </div>
                  </div>
               </div>
