@@ -3,6 +3,7 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Play } from 'lucide-react';
+import { VIDEO_TILE_POSTERS } from '@/data/eventsMedia';
 
 const SIZE_CLASS = {
   tall: 'aspect-[3/4]',
@@ -26,7 +27,7 @@ function videoMimeFromUrl(url) {
 }
 
 const DEFAULT_VIDEO_POSTER =
-  'https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/primary-logo-copy-wWYt4.png';
+  VIDEO_TILE_POSTERS[0] ?? '/events/images/video-placeholder-logo-full-color.png';
 
 const MediaItem = ({ item, className, showVideoBadge = false, variant = 'grid' }) => {
   const videoRef = useRef(null);
@@ -66,11 +67,28 @@ const MediaItem = ({ item, className, showVideoBadge = false, variant = 'grid' }
   // In the modal we render the actual <video>.
   if (item.type === 'video' && variant === 'grid') {
     const poster = item.posterUrl || DEFAULT_VIDEO_POSTER;
+    const lightTileBg = poster.includes('video-placeholder-logo-blue-transparent');
+
+    const tileBgClass = lightTileBg ? 'bg-stone-100' : 'bg-stone-950';
+    const badgeClass = lightTileBg
+      ? 'bg-stone-900/80 text-white'
+      : 'bg-black/55 text-white';
+
     return (
-      <div className={`${className} relative overflow-hidden`}>
-        <img src={poster} alt={item.title} className="h-full w-full object-cover" loading="lazy" decoding="async" />
+      <div className={`${className} relative overflow-hidden ${tileBgClass}`}>
+        <div className="absolute inset-0 flex min-h-0 items-center justify-center p-[clamp(0.625rem,5.5vmin,2rem)] sm:p-[clamp(0.75rem,6vmin,2.5rem)]">
+          <img
+            src={poster}
+            alt={`${item.title} (video thumbnail)`}
+            className="h-auto max-h-[92%] w-auto max-w-[94%] object-contain object-center"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
         {showVideoBadge ? (
-          <span className="absolute left-3 top-3 inline-flex items-center gap-1 rounded-full bg-black/55 px-2 py-1 text-[10px] font-semibold uppercase tracking-wider text-white">
+          <span
+            className={`absolute left-3 top-3 inline-flex items-center gap-1 rounded-full px-2 py-1 text-[10px] font-semibold uppercase tracking-wider ${badgeClass}`}
+          >
             <Play className="h-3 w-3" aria-hidden />
             Video
           </span>
@@ -205,7 +223,7 @@ const MasonryCard = ({ item, index, onOpen }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.25, delay: Math.min(index * 0.02, 0.2) }}
-      className="mb-4 break-inside-avoid"
+      className="shrink-0"
     >
       <button
         type="button"
@@ -324,11 +342,39 @@ const InteractiveBentoGallery = ({ mediaItems, title, description }) => {
             mediaItems={items}
           />
         ) : (
-          <div className="columns-1 gap-4 sm:columns-2 lg:columns-3">
-            {items.map((item, index) => (
-              <MasonryCard key={item.id} item={item} index={index} onOpen={setSelectedItem} />
-            ))}
-          </div>
+          <>
+            <div className="flex flex-col gap-4 sm:hidden">
+              {items.map((item, index) => (
+                <MasonryCard key={item.id} item={item} index={index} onOpen={setSelectedItem} />
+              ))}
+            </div>
+
+            <div className="hidden gap-4 sm:flex sm:flex-row sm:items-start lg:hidden">
+              {[0, 1].map((col) => (
+                <div key={`gal-sm-${col}`} className="flex min-h-0 min-w-0 flex-1 flex-col gap-4">
+                  {items
+                    .map((item, i) => ({ item, i }))
+                    .filter(({ i }) => i % 2 === col)
+                    .map(({ item, i }) => (
+                      <MasonryCard key={item.id} item={item} index={i} onOpen={setSelectedItem} />
+                    ))}
+                </div>
+              ))}
+            </div>
+
+            <div className="hidden gap-4 lg:flex lg:flex-row lg:items-start">
+              {[0, 1, 2].map((col) => (
+                <div key={`gal-lg-${col}`} className="flex min-h-0 min-w-0 flex-1 flex-col gap-4">
+                  {items
+                    .map((item, i) => ({ item, i }))
+                    .filter(({ i }) => i % 3 === col)
+                    .map(({ item, i }) => (
+                      <MasonryCard key={item.id} item={item} index={i} onOpen={setSelectedItem} />
+                    ))}
+                </div>
+              ))}
+            </div>
+          </>
         )}
       </AnimatePresence>
     </div>

@@ -4,7 +4,11 @@ import { Helmet } from 'react-helmet';
 import { Calendar, MapPin, HeartHandshake } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { upcomingAppearances } from '@/data/appearances';
-import { eventGalleryImages, eventGalleryVideos } from '@/data/eventsMedia';
+import {
+  eventGalleryImages,
+  eventGalleryVideos,
+  VIDEO_TILE_POSTERS,
+} from '@/data/eventsMedia';
 import InteractiveBentoGallery from '@/components/ui/interactive-bento-gallery';
 
 const supportPartners = [
@@ -29,6 +33,7 @@ const galleryMediaItems = [
     title: item.title,
     desc: item.desc,
     url: item.url,
+    posterUrl: item.posterUrl ?? VIDEO_TILE_POSTERS[index % VIDEO_TILE_POSTERS.length],
     size: item.size || gallerySizePattern[index % gallerySizePattern.length],
   })),
   ...uniqueEventGalleryImages.map((item, index) => ({
