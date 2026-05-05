@@ -121,18 +121,6 @@ export const eventGalleryVideos = [
     url: '/events/videos/IMG_8556%202.MP4',
     size: 'wide',
   },
-  {
-    title: 'Volcano Drip Event Reel',
-    desc: 'Outdoor setup highlights and on-site moments.',
-    url: 'https://cdn.pixabay.com/video/2020/05/25/40130-424930032_large.mp4',
-    size: 'wide',
-  },
-  {
-    title: 'Community Atmosphere',
-    desc: 'A feel-good moment from a busy outdoor event.',
-    url: 'https://cdn.pixabay.com/video/2024/07/24/222837_large.mp4',
-    size: 'tall',
-  },
 
   // Example local MP4 entry:
   // {
