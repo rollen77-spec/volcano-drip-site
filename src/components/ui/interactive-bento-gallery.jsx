@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Play } from 'lucide-react';
 
@@ -25,77 +25,58 @@ function videoMimeFromUrl(url) {
   }
 }
 
-const MediaItem = ({ item, className, onClick, showVideoBadge = false }) => {
+const DEFAULT_VIDEO_POSTER = '/events/images/event-10-truck-event-wide.png';
+
+const MediaItem = ({ item, className, showVideoBadge = false, variant = 'grid' }) => {
   const videoRef = useRef(null);
-  const [isInView, setIsInView] = useState(false);
-  const [isBuffering, setIsBuffering] = useState(true);
+  const [isBuffering, setIsBuffering] = useState(variant === 'modal' && item.type === 'video');
 
   useEffect(() => {
-    const options = {
-      root: null,
-      rootMargin: '50px',
-      threshold: 0.1,
-    };
+    if (variant !== 'modal' || item.type !== 'video') return;
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        setIsInView(entry.isIntersecting);
-      });
-    }, options);
+    const el = videoRef.current;
+    if (!el) return;
 
-    if (videoRef.current) {
-      observer.observe(videoRef.current);
-    }
-
-    return () => {
-      if (videoRef.current) {
-        observer.unobserve(videoRef.current);
-      }
-    };
-  }, []);
-
-  useEffect(() => {
     let mounted = true;
+    setIsBuffering(true);
 
-    const handleVideoPlay = async () => {
-      if (!videoRef.current || !isInView || !mounted) return;
-
+    const handleCanPlay = async () => {
+      if (!mounted) return;
+      setIsBuffering(false);
       try {
-        if (videoRef.current.readyState >= 3) {
-          setIsBuffering(false);
-          await videoRef.current.play();
-        } else {
-          setIsBuffering(true);
-          await new Promise((resolve) => {
-            if (videoRef.current) {
-              videoRef.current.oncanplay = resolve;
-            }
-          });
-          if (mounted) {
-            setIsBuffering(false);
-            await videoRef.current.play();
-          }
-        }
+        await el.play();
       } catch (error) {
+        // Autoplay can be blocked depending on browser; user can still press play.
+        // eslint-disable-next-line no-console
         console.warn('Video playback failed:', error);
       }
     };
 
-    if (item.type === 'video') {
-      if (isInView) {
-        handleVideoPlay();
-      } else if (videoRef.current) {
-        videoRef.current.pause();
-      }
-    }
-
+    el.addEventListener('canplay', handleCanPlay);
     return () => {
       mounted = false;
-      if (videoRef.current) {
-        videoRef.current.pause();
-      }
+      el.removeEventListener('canplay', handleCanPlay);
+      el.pause();
     };
-  }, [isInView, item.type]);
+  }, [item.type, item.url, variant]);
+
+  // Performance optimization:
+  // In the grid we render *no* real <video> tags to avoid background fetching.
+  // In the modal we render the actual <video>.
+  if (item.type === 'video' && variant === 'grid') {
+    const poster = item.posterUrl || DEFAULT_VIDEO_POSTER;
+    return (
+      <div className={`${className} relative overflow-hidden`}>
+        <img src={poster} alt={item.title} className="h-full w-full object-cover" loading="lazy" decoding="async" />
+        {showVideoBadge ? (
+          <span className="absolute left-3 top-3 inline-flex items-center gap-1 rounded-full bg-black/55 px-2 py-1 text-[10px] font-semibold uppercase tracking-wider text-white">
+            <Play className="h-3 w-3" aria-hidden />
+            Video
+          </span>
+        ) : null}
+      </div>
+    );
+  }
 
   if (item.type === 'video') {
     return (
@@ -103,7 +84,6 @@ const MediaItem = ({ item, className, onClick, showVideoBadge = false }) => {
         <video
           ref={videoRef}
           className="w-full h-full object-cover"
-          onClick={onClick}
           playsInline
           muted
           loop
@@ -132,16 +112,7 @@ const MediaItem = ({ item, className, onClick, showVideoBadge = false }) => {
     );
   }
 
-  return (
-    <img
-      src={item.url}
-      alt={item.title}
-      className={`${className} object-cover cursor-pointer`}
-      onClick={onClick}
-      loading="lazy"
-      decoding="async"
-    />
-  );
+  return <img src={item.url} alt={item.title} className={`${className} object-cover`} loading="lazy" decoding="async" />;
 };
 
 const GalleryModal = ({ selectedItem, isOpen, onClose, setSelectedItem, mediaItems }) => {
@@ -174,6 +145,7 @@ const GalleryModal = ({ selectedItem, isOpen, onClose, setSelectedItem, mediaIte
                 item={selectedItem}
                 className="h-[75vh] w-full object-contain"
                 showVideoBadge={false}
+                variant="modal"
               />
             </div>
             <div className="flex items-center justify-between gap-3 border-t border-white/10 bg-stone-950/90 px-4 py-3">
@@ -252,7 +224,65 @@ const MasonryCard = ({ item, index, onOpen }) => {
 
 const InteractiveBentoGallery = ({ mediaItems, title, description }) => {
   const [selectedItem, setSelectedItem] = useState(null);
-  const items = mediaItems;
+  const items = useMemo(() => {
+    const list = mediaItems || [];
+
+    const hashStringToSeed = (str) => {
+      let seed = 0;
+      for (let i = 0; i < str.length; i++) seed = (seed * 31 + str.charCodeAt(i)) >>> 0;
+      return seed >>> 0;
+    };
+
+    const xorshift32 = (seed) => {
+      let s = seed >>> 0;
+      return () => {
+        s ^= s << 13;
+        s ^= s >>> 17;
+        s ^= s << 5;
+        return (s >>> 0) / 4294967296;
+      };
+    };
+
+    const shuffleWithSeed = (arr, seed) => {
+      const out = [...arr];
+      const rand = xorshift32(seed);
+      for (let i = out.length - 1; i > 0; i--) {
+        const j = Math.floor(rand() * (i + 1));
+        [out[i], out[j]] = [out[j], out[i]];
+      }
+      return out;
+    };
+
+    // Split, shuffle within each group, then interleave deterministically.
+    const seedSource = list.map((i) => i.id ?? i.url ?? i.title).join('|');
+    const seedBase = hashStringToSeed(seedSource);
+
+    const videos = list.filter((i) => i.type === 'video');
+    const images = list.filter((i) => i.type !== 'video');
+
+    const videosShuffled = shuffleWithSeed(videos, seedBase ^ 0x9e3779b9);
+    const imagesShuffled = shuffleWithSeed(images, seedBase ^ 0x7f4a7c15);
+
+    const out = [];
+    let vi = 0;
+    let ii = 0;
+
+    // Pick which type starts based on the seed (deterministic).
+    const startWithVideo = (seedBase & 1) === 0;
+    let takeVideo = startWithVideo;
+
+    while (vi < videosShuffled.length || ii < imagesShuffled.length) {
+      if (takeVideo) {
+        if (vi < videosShuffled.length) out.push(videosShuffled[vi++]);
+        takeVideo = false;
+      } else {
+        if (ii < imagesShuffled.length) out.push(imagesShuffled[ii++]);
+        takeVideo = true;
+      }
+    }
+
+    return out;
+  }, [mediaItems]);
 
   return (
     <div className="container mx-auto px-0 py-2 max-w-6xl">
