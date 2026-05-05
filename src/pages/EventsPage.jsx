@@ -51,6 +51,21 @@ const galleryMediaItems = [
 ];
 
 const EventsPage = () => {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  const timelineEvents = [...upcomingAppearances]
+    .map((ev) => {
+      const eventDate = ev.dateIso ? new Date(`${ev.dateIso}T00:00:00`) : null;
+      const isPast = eventDate ? eventDate < today : false;
+      return { ...ev, isPast, eventDate };
+    })
+    .sort((a, b) => {
+      if (a.isPast !== b.isPast) return a.isPast ? 1 : -1;
+      if (!a.eventDate || !b.eventDate) return 0;
+      return a.eventDate - b.eventDate;
+    });
+
   return (
     <>
       <Helmet>
@@ -108,19 +123,30 @@ const EventsPage = () => {
                 <h2 className="text-2xl font-bold">Events we are attending</h2>
               </div>
               <ul className="space-y-6">
-                {upcomingAppearances.map((ev) => (
+                {timelineEvents.map((ev) => (
                   <li
                     key={ev.id}
-                    className={`border-l-2 pl-4 ${ev.highlight ? 'border-amber-500' : 'border-stone-700'}`}
+                    className={`border-l-2 pl-4 ${ev.isPast ? 'border-stone-700 opacity-75' : ev.highlight ? 'border-amber-500' : 'border-stone-600'}`}
                   >
                     <span
                       className={`block text-xs font-bold uppercase tracking-wider ${
-                        ev.highlight ? 'text-amber-400' : 'text-stone-400'
+                        ev.isPast ? 'text-stone-500' : ev.highlight ? 'text-amber-400' : 'text-stone-300'
                       }`}
                     >
                       {ev.dateLabel}
                     </span>
-                    <h3 className="mt-1 text-lg font-bold">{ev.title}</h3>
+                    <div className="mt-1 flex items-center gap-2">
+                      <h3 className={`text-lg font-bold ${ev.isPast ? 'text-stone-300' : 'text-white'}`}>{ev.title}</h3>
+                      {ev.isPast ? (
+                        <span className="inline-flex items-center rounded-full border border-stone-600 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-stone-400">
+                          Passed
+                        </span>
+                      ) : (
+                        <span className="inline-flex items-center rounded-full border border-amber-500/40 bg-amber-500/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-amber-300">
+                          Upcoming
+                        </span>
+                      )}
+                    </div>
                     <div className="mt-1 flex items-center gap-2 text-sm text-stone-300">
                       <MapPin className="h-3 w-3 shrink-0" aria-hidden />
                       <span>{ev.location}</span>
@@ -140,30 +166,27 @@ const EventsPage = () => {
               <div className="rounded-2xl border border-amber-200 bg-amber-50 p-6">
                 <div className="mb-3 flex items-center gap-2 text-amber-700">
                   <HeartHandshake className="h-5 w-5" aria-hidden />
-                  <p className="text-sm font-bold uppercase tracking-[0.18em]">Community support</p>
+                  <p className="text-sm font-bold uppercase tracking-[0.18em]">
+                    We are a proud supporter and participant of the following events
+                  </p>
                 </div>
-                <h3 className="text-2xl font-black tracking-tight text-stone-900">
+                <h3 className="text-2xl font-black tracking-tight text-stone-900 mb-4">
                   Proud Support of the BMO walk so kids can talk
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-stone-700">
-                  We are proud to support initiatives focused on youth wellbeing, with additional
-                  community partners to be featured here over time.
-                </p>
+                {supportPartners.map((partner) => (
+                  <div
+                    key={partner.id}
+                    className="flex items-center justify-center rounded-xl border border-amber-200/80 bg-white/80 p-4"
+                  >
+                    <img
+                      src={partner.logo}
+                      alt={`${partner.name} logo`}
+                      className="h-12 w-auto object-contain"
+                      loading="lazy"
+                    />
+                  </div>
+                ))}
               </div>
-
-              {supportPartners.map((partner) => (
-                <div
-                  key={partner.id}
-                  className="flex items-center justify-center rounded-2xl border border-stone-200 bg-white p-5"
-                >
-                  <img
-                    src={partner.logo}
-                    alt={`${partner.name} logo`}
-                    className="h-12 w-auto object-contain"
-                    loading="lazy"
-                  />
-                </div>
-              ))}
             </motion.div>
           </div>
         </section>
