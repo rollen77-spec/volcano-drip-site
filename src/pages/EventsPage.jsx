@@ -18,6 +18,10 @@ const supportPartners = [
 
 const gallerySizePattern = ['portrait', 'wide', 'tall', 'square', 'landscape'];
 
+const uniqueEventGalleryImages = Array.from(
+  new Map(eventGalleryImages.map((item) => [item.url, item])).values(),
+);
+
 const galleryMediaItems = [
   ...eventGalleryVideos.map((item, index) => ({
     id: index + 1,
@@ -27,7 +31,7 @@ const galleryMediaItems = [
     url: item.url,
     size: item.size || gallerySizePattern[index % gallerySizePattern.length],
   })),
-  ...eventGalleryImages.map((item, index) => ({
+  ...uniqueEventGalleryImages.map((item, index) => ({
     id: eventGalleryVideos.length + index + 1,
     type: 'image',
     title: item.title,

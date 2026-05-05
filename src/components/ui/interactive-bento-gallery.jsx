@@ -25,7 +25,8 @@ function videoMimeFromUrl(url) {
   }
 }
 
-const DEFAULT_VIDEO_POSTER = '/events/images/event-10-truck-event-wide.png';
+const DEFAULT_VIDEO_POSTER =
+  'https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/primary-logo-copy-wWYt4.png';
 
 const MediaItem = ({ item, className, showVideoBadge = false, variant = 'grid' }) => {
   const videoRef = useRef(null);
@@ -79,15 +80,21 @@ const MediaItem = ({ item, className, showVideoBadge = false, variant = 'grid' }
   }
 
   if (item.type === 'video') {
+    const poster = item.posterUrl || DEFAULT_VIDEO_POSTER;
     return (
       <div className={`${className} relative overflow-hidden`}>
         <video
           ref={videoRef}
           className="w-full h-full object-cover"
+          controls={variant === 'modal'}
+          autoPlay={variant === 'modal'}
           playsInline
-          muted
-          loop
+          muted={variant !== 'modal'}
+          loop={variant !== 'modal'}
           preload="metadata"
+          poster={poster}
+          onLoadedData={() => setIsBuffering(false)}
+          onError={() => setIsBuffering(false)}
           style={{
             opacity: isBuffering ? 0.8 : 1,
             transition: 'opacity 0.2s',
@@ -103,7 +110,7 @@ const MediaItem = ({ item, className, showVideoBadge = false, variant = 'grid' }
             Video
           </span>
         ) : null}
-        {isBuffering && (
+        {isBuffering && variant !== 'grid' && (
           <div className="absolute inset-0 flex items-center justify-center bg-black/10">
             <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin" />
           </div>

@@ -6,6 +6,8 @@
  * 2) Drop video files in `public/events/videos/` (or use external mp4 URLs)
  * 3) Add an entry below (title/desc/url) and optional `posterUrl` for videos
  */
+const VOLCANO_DRIP_LOGO_PLACEHOLDER =
+  'https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/primary-logo-copy-wWYt4.png';
 
 export const eventGalleryImages = [
   {
@@ -105,7 +107,7 @@ export const eventGalleryVideos = [
     title: 'Event video — IMG_6809',
     desc: 'Local clip from public/events/videos.',
     url: '/events/videos/IMG_6809.MOV',
-    posterUrl: '/events/images/IMG_6792.jpeg',
+    posterUrl: VOLCANO_DRIP_LOGO_PLACEHOLDER,
     size: 'portrait',
   },
   {
@@ -113,21 +115,21 @@ export const eventGalleryVideos = [
     desc: 'Local clip from public/events/videos.',
     /** Space in filename: use %20 in the URL path (or rename the file on disk). */
     url: '/events/videos/IMG_8556%202.MP4',
-    posterUrl: '/events/images/IMG_6793.jpeg',
+    posterUrl: VOLCANO_DRIP_LOGO_PLACEHOLDER,
     size: 'wide',
   },
   {
     title: 'Volcano Drip Event Reel',
     desc: 'Outdoor setup highlights and on-site moments.',
     url: 'https://cdn.pixabay.com/video/2020/05/25/40130-424930032_large.mp4',
-    posterUrl: '/events/images/event-10-truck-event-wide.png',
+    posterUrl: VOLCANO_DRIP_LOGO_PLACEHOLDER,
     size: 'wide',
   },
   {
     title: 'Community Atmosphere',
     desc: 'A feel-good moment from a busy outdoor event.',
     url: 'https://cdn.pixabay.com/video/2024/07/24/222837_large.mp4',
-    posterUrl: '/events/images/event-16-truck-staff-dog.png',
+    posterUrl: VOLCANO_DRIP_LOGO_PLACEHOLDER,
     size: 'tall',
   },
 
