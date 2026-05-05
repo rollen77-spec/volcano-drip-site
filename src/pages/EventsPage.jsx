@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet';
 import { Calendar, MapPin, HeartHandshake } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { upcomingAppearances } from '@/data/appearances';
-import { aboutEventGallery } from '@/data/aboutEventGallery';
+import { eventGalleryImages, eventGalleryVideos } from '@/data/eventsMedia';
 import InteractiveBentoGallery from '@/components/ui/interactive-bento-gallery';
 
 const supportPartners = [
@@ -19,30 +19,22 @@ const supportPartners = [
 const gallerySizePattern = ['portrait', 'wide', 'tall', 'square', 'landscape'];
 
 const galleryMediaItems = [
-  {
-    id: 1,
+  ...eventGalleryVideos.map((item, index) => ({
+    id: index + 1,
     type: 'video',
-    title: 'Volcano Drip Event Reel',
-    desc: 'Outdoor setup highlights and on-site moments.',
-    url: 'https://cdn.pixabay.com/video/2020/05/25/40130-424930032_large.mp4',
-    size: 'wide',
-  },
-  ...aboutEventGallery.map((item, index) => ({
-    id: index + 2,
+    title: item.title,
+    desc: item.desc,
+    url: item.url,
+    size: item.size || gallerySizePattern[index % gallerySizePattern.length],
+  })),
+  ...eventGalleryImages.map((item, index) => ({
+    id: eventGalleryVideos.length + index + 1,
     type: 'image',
-    title: `Event Photo ${index + 1}`,
-    desc: 'Volcano Drip at community events and pop-ups.',
-    url: item.src,
+    title: item.title,
+    desc: item.desc,
+    url: item.url,
     size: gallerySizePattern[index % gallerySizePattern.length],
   })),
-  {
-    id: aboutEventGallery.length + 2,
-    type: 'video',
-    title: 'Community Atmosphere',
-    desc: 'A feel-good moment from a busy outdoor event.',
-    url: 'https://cdn.pixabay.com/video/2024/07/24/222837_large.mp4',
-    size: 'tall',
-  },
 ];
 
 const EventsPage = () => {
@@ -74,7 +66,7 @@ const EventsPage = () => {
       <div className="min-h-screen bg-stone-50">
         <header className="relative h-[60vh] min-h-[24rem] overflow-hidden bg-stone-900">
           <img
-            src="/about/gallery/event-10-truck-event-wide.png"
+            src="/events/images/event-10-truck-event-wide.png"
             alt="Volcano Drip event setup outdoors"
             className="absolute inset-0 h-full w-full object-cover"
             fetchPriority="high"
