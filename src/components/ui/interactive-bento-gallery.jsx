@@ -12,6 +12,19 @@ const SIZE_CLASS = {
   landscape: 'aspect-[5/3]',
 };
 
+function videoMimeFromUrl(url) {
+  try {
+    const path = decodeURIComponent(url.split('?')[0].split('#')[0]);
+    const ext = path.split('.').pop()?.toLowerCase() || '';
+    if (ext === 'mov') return 'video/quicktime';
+    if (ext === 'webm') return 'video/webm';
+    if (ext === 'ogv' || ext === 'ogg') return 'video/ogg';
+    return 'video/mp4';
+  } catch {
+    return 'video/mp4';
+  }
+}
+
 const MediaItem = ({ item, className, onClick, showVideoBadge = false }) => {
   const videoRef = useRef(null);
   const [isInView, setIsInView] = useState(false);
@@ -102,7 +115,7 @@ const MediaItem = ({ item, className, onClick, showVideoBadge = false }) => {
             willChange: 'transform',
           }}
         >
-          <source src={item.url} type="video/mp4" />
+          <source src={item.url} type={videoMimeFromUrl(item.url)} />
         </video>
         {showVideoBadge ? (
           <span className="absolute left-3 top-3 inline-flex items-center gap-1 rounded-full bg-black/55 px-2 py-1 text-[10px] font-semibold uppercase tracking-wider text-white">

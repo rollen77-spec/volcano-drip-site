@@ -88,9 +88,32 @@ export const eventGalleryImages = [
     desc: 'Volcano Drip at community events and pop-ups.',
     url: '/events/images/event-16-truck-staff-dog.png',
   },
+  {
+    title: 'Event Photo 17',
+    desc: 'Recently added event photo.',
+    url: '/events/images/IMG_6792.jpeg',
+  },
+  {
+    title: 'Event Photo 18',
+    desc: 'Recently added event photo.',
+    url: '/events/images/IMG_6793.jpeg',
+  },
 ];
 
 export const eventGalleryVideos = [
+  {
+    title: 'Event video — IMG_6809',
+    desc: 'Local clip from public/events/videos.',
+    url: '/events/videos/IMG_6809.MOV',
+    size: 'portrait',
+  },
+  {
+    title: 'Event video — IMG_8556',
+    desc: 'Local clip from public/events/videos.',
+    /** Space in filename: use %20 in the URL path (or rename the file on disk). */
+    url: '/events/videos/IMG_8556%202.MP4',
+    size: 'wide',
+  },
   {
     title: 'Volcano Drip Event Reel',
     desc: 'Outdoor setup highlights and on-site moments.',
@@ -104,7 +127,7 @@ export const eventGalleryVideos = [
     size: 'tall',
   },
 
-  // Example local video entry:
+  // Example local MP4 entry:
   // {
   //   title: 'Booth Walkthrough',
   //   desc: 'Quick look at our event setup.',
