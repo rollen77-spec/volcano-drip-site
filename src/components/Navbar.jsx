@@ -41,6 +41,9 @@ const Navbar = () => {
     href: '/brewing',
     label: 'Brewing'
   }, {
+    href: '/events',
+    label: 'Events'
+  }, {
     href: '/blog',
     label: 'Blog'
   }, {

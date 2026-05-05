@@ -29,6 +29,7 @@ import ShopPage from '@/pages/ShopPage';
 import PodcastPage from '@/pages/PodcastPage';
 import BlogIndexPage from '@/pages/BlogIndexPage';
 import BlogPostPage from '@/pages/BlogPostPage';
+import EventsPage from '@/pages/EventsPage';
 
 const ORG_LOGO_URL =
   'https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/primary-logo-copy-wWYt4.png';
@@ -94,6 +95,7 @@ function MainLayout({ children }) {
               <li><Link to="/about" className="hover:text-[#FF8C00] transition-colors">Our story</Link></li>
               <li><Link to="/sourcing" className="hover:text-[#FF8C00] transition-colors">Sourcing</Link></li>
               <li><Link to="/signature-drinks" className="hover:text-[#FF8C00] transition-colors">Signature drinks</Link></li>
+              <li><Link to="/events" className="hover:text-[#FF8C00] transition-colors">Events</Link></li>
               <li><Link to="/blog" className="hover:text-[#FF8C00] transition-colors">Blog</Link></li>
               <li><Link to="/offers" className="hover:text-[#FF8C00] transition-colors">Offers</Link></li>
             </ul>
@@ -149,6 +151,7 @@ function App() {
           <Route path="/brewing/roasting-options" element={<RoastingOptionsPage />} />
           <Route path="/brewing/grind-options" element={<GrindOptionsPage />} />
           <Route path="/podcast" element={<PodcastPage />} />
+          <Route path="/events" element={<EventsPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/subscription" element={<SubscriptionPage />} />
           <Route path="/signature-drinks" element={<SignatureDrinksPage />} />
