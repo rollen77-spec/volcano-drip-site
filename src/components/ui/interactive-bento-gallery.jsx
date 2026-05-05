@@ -2,9 +2,17 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X } from 'lucide-react';
+import { X, Play } from 'lucide-react';
 
-const MediaItem = ({ item, className, onClick }) => {
+const SIZE_CLASS = {
+  tall: 'aspect-[3/4]',
+  wide: 'aspect-[16/10]',
+  square: 'aspect-square',
+  portrait: 'aspect-[4/5]',
+  landscape: 'aspect-[5/3]',
+};
+
+const MediaItem = ({ item, className, onClick, showVideoBadge = false }) => {
   const videoRef = useRef(null);
   const [isInView, setIsInView] = useState(false);
   const [isBuffering, setIsBuffering] = useState(true);
@@ -96,6 +104,12 @@ const MediaItem = ({ item, className, onClick }) => {
         >
           <source src={item.url} type="video/mp4" />
         </video>
+        {showVideoBadge ? (
+          <span className="absolute left-3 top-3 inline-flex items-center gap-1 rounded-full bg-black/55 px-2 py-1 text-[10px] font-semibold uppercase tracking-wider text-white">
+            <Play className="h-3 w-3" aria-hidden />
+            Video
+          </span>
+        ) : null}
         {isBuffering && (
           <div className="absolute inset-0 flex items-center justify-center bg-black/10">
             <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -118,123 +132,114 @@ const MediaItem = ({ item, className, onClick }) => {
 };
 
 const GalleryModal = ({ selectedItem, isOpen, onClose, setSelectedItem, mediaItems }) => {
-  const [dockPosition, setDockPosition] = useState({ x: 0, y: 0 });
-
   if (!isOpen) return null;
+
+  const currentIndex = mediaItems.findIndex((item) => item.id === selectedItem.id);
+  const prevItem = mediaItems[(currentIndex - 1 + mediaItems.length) % mediaItems.length];
+  const nextItem = mediaItems[(currentIndex + 1) % mediaItems.length];
 
   return (
     <>
       <motion.div
-        initial={{ scale: 0.98 }}
-        animate={{ scale: 1 }}
-        exit={{ scale: 0.98 }}
-        transition={{
-          type: 'spring',
-          stiffness: 400,
-          damping: 30,
-        }}
-        className="fixed inset-0 w-full min-h-screen backdrop-blur-lg rounded-none overflow-hidden z-50"
+        className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        onClick={onClose}
       >
-        <div className="h-full flex flex-col">
-          <div className="flex-1 p-2 sm:p-3 md:p-4 flex items-center justify-center bg-gray-50/50">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={selectedItem.id}
-                className="relative w-full aspect-[16/9] max-w-[95%] sm:max-w-[85%] md:max-w-3xl h-auto max-h-[70vh] rounded-lg overflow-hidden shadow-md"
-                initial={{ y: 20, scale: 0.97 }}
-                animate={{
-                  y: 0,
-                  scale: 1,
-                  transition: {
-                    type: 'spring',
-                    stiffness: 500,
-                    damping: 30,
-                    mass: 0.5,
-                  },
-                }}
-                exit={{
-                  y: 20,
-                  scale: 0.97,
-                  transition: { duration: 0.15 },
-                }}
-              >
-                <MediaItem item={selectedItem} className="w-full h-full object-contain bg-gray-900/20" />
-                <div className="absolute bottom-0 left-0 right-0 p-2 sm:p-3 md:p-4 bg-gradient-to-t from-black/50 to-transparent">
-                  <h3 className="text-white text-base sm:text-lg md:text-xl font-semibold">{selectedItem.title}</h3>
-                  <p className="text-white/80 text-xs sm:text-sm mt-1">{selectedItem.desc}</p>
-                </div>
-              </motion.div>
-            </AnimatePresence>
-          </div>
+        <div className="flex h-full items-center justify-center p-4" onClick={(e) => e.stopPropagation()}>
+          <motion.div
+            key={selectedItem.id}
+            className="relative w-full max-w-5xl overflow-hidden rounded-2xl border border-white/15 bg-black shadow-2xl"
+            initial={{ y: 14, scale: 0.98, opacity: 0 }}
+            animate={{ y: 0, scale: 1, opacity: 1 }}
+            exit={{ y: 10, scale: 0.98, opacity: 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            <div className="relative max-h-[75vh] w-full bg-black">
+              <MediaItem
+                item={selectedItem}
+                className="h-[75vh] w-full object-contain"
+                showVideoBadge={false}
+              />
+            </div>
+            <div className="flex items-center justify-between gap-3 border-t border-white/10 bg-stone-950/90 px-4 py-3">
+              <div>
+                <p className="text-sm font-semibold text-white">{selectedItem.title}</p>
+                <p className="text-xs text-stone-300">{selectedItem.desc}</p>
+              </div>
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => setSelectedItem(prevItem)}
+                  className="rounded-full border border-white/20 px-3 py-1 text-xs font-semibold text-white hover:bg-white/10"
+                >
+                  Prev
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setSelectedItem(nextItem)}
+                  className="rounded-full border border-white/20 px-3 py-1 text-xs font-semibold text-white hover:bg-white/10"
+                >
+                  Next
+                </button>
+              </div>
+            </div>
+          </motion.div>
         </div>
 
         <motion.button
-          className="absolute top-2 sm:top-2.5 md:top-3 right-2 sm:right-2.5 md:right-3 p-2 rounded-full bg-gray-200/80 text-gray-700 hover:bg-gray-300/80 text-xs sm:text-sm backdrop-blur-sm"
+          type="button"
+          className="absolute right-4 top-4 rounded-full bg-white/90 p-2 text-stone-900 hover:bg-white"
           onClick={onClose}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
+          whileHover={{ scale: 1.08 }}
+          whileTap={{ scale: 0.94 }}
         >
-          <X className="w-3 h-3" />
+          <X className="h-4 w-4" />
         </motion.button>
-      </motion.div>
-
-      <motion.div
-        drag
-        dragMomentum={false}
-        dragElastic={0.1}
-        initial={false}
-        animate={{ x: dockPosition.x, y: dockPosition.y }}
-        onDragEnd={(_, info) => {
-          setDockPosition((prev) => ({
-            x: prev.x + info.offset.x,
-            y: prev.y + info.offset.y,
-          }));
-        }}
-        className="fixed z-[60] left-1/2 bottom-4 -translate-x-1/2 touch-none"
-      >
-        <motion.div className="relative rounded-xl bg-sky-400/20 backdrop-blur-xl border border-blue-400/30 shadow-lg cursor-grab active:cursor-grabbing">
-          <div className="flex items-center -space-x-2 px-3 py-2">
-            {mediaItems.map((item, index) => (
-              <motion.div
-                key={item.id}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setSelectedItem(item);
-                }}
-                style={{
-                  zIndex: selectedItem.id === item.id ? 30 : mediaItems.length - index,
-                }}
-                className={`relative group w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 flex-shrink-0 rounded-lg overflow-hidden cursor-pointer hover:z-20 ${
-                  selectedItem.id === item.id ? 'ring-2 ring-white/70 shadow-lg' : 'hover:ring-2 hover:ring-white/30'
-                }`}
-                initial={{ rotate: index % 2 === 0 ? -15 : 15 }}
-                animate={{
-                  scale: selectedItem.id === item.id ? 1.2 : 1,
-                  rotate: selectedItem.id === item.id ? 0 : index % 2 === 0 ? -15 : 15,
-                  y: selectedItem.id === item.id ? -8 : 0,
-                }}
-                whileHover={{
-                  scale: 1.3,
-                  rotate: 0,
-                  y: -10,
-                  transition: { type: 'spring', stiffness: 400, damping: 25 },
-                }}
-              >
-                <MediaItem item={item} className="w-full h-full" onClick={() => setSelectedItem(item)} />
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/5 to-white/20" />
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
       </motion.div>
     </>
   );
 };
 
+const MasonryCard = ({ item, index, onOpen }) => {
+  const fallbackSizes = ['portrait', 'wide', 'tall', 'square', 'landscape'];
+  const size = item.size || fallbackSizes[index % fallbackSizes.length];
+  const sizeClass = SIZE_CLASS[size] || SIZE_CLASS.portrait;
+
+  return (
+    <motion.article
+      initial={{ opacity: 0, y: 10 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.25, delay: Math.min(index * 0.02, 0.2) }}
+      className="mb-4 break-inside-avoid"
+    >
+      <button
+        type="button"
+        onClick={() => onOpen(item)}
+        className="group block w-full overflow-hidden rounded-2xl border border-stone-200 bg-white text-left shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg"
+      >
+        <div className={`relative w-full ${sizeClass}`}>
+          <MediaItem
+            item={item}
+            className="absolute inset-0 h-full w-full"
+            showVideoBadge={item.type === 'video'}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+          <div className="absolute inset-x-0 bottom-0 p-3 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+            <p className="text-xs font-semibold text-white line-clamp-1">{item.title}</p>
+            <p className="text-[11px] text-white/80 line-clamp-1">{item.desc}</p>
+          </div>
+        </div>
+      </button>
+    </motion.article>
+  );
+};
+
 const InteractiveBentoGallery = ({ mediaItems, title, description }) => {
   const [selectedItem, setSelectedItem] = useState(null);
-  const [items, setItems] = useState(mediaItems);
-  const [isDragging, setIsDragging] = useState(false);
+  const items = mediaItems;
 
   return (
     <div className="container mx-auto px-0 py-2 max-w-6xl">
@@ -269,78 +274,11 @@ const InteractiveBentoGallery = ({ mediaItems, title, description }) => {
             mediaItems={items}
           />
         ) : (
-          <motion.div
-            className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-3 auto-rows-[60px]"
-            initial="hidden"
-            animate="visible"
-            exit="hidden"
-            variants={{
-              hidden: { opacity: 0 },
-              visible: {
-                opacity: 1,
-                transition: { staggerChildren: 0.1 },
-              },
-            }}
-          >
+          <div className="columns-1 gap-4 sm:columns-2 lg:columns-3">
             {items.map((item, index) => (
-              <motion.div
-                key={item.id}
-                layoutId={`media-${item.id}`}
-                className={`relative overflow-hidden rounded-xl cursor-move ${item.span}`}
-                onClick={() => !isDragging && setSelectedItem(item)}
-                variants={{
-                  hidden: { y: 50, scale: 0.9, opacity: 0 },
-                  visible: {
-                    y: 0,
-                    scale: 1,
-                    opacity: 1,
-                    transition: {
-                      type: 'spring',
-                      stiffness: 350,
-                      damping: 25,
-                      delay: index * 0.05,
-                    },
-                  },
-                }}
-                whileHover={{ scale: 1.02 }}
-                drag
-                dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
-                dragElastic={1}
-                onDragStart={() => setIsDragging(true)}
-                onDragEnd={(_, info) => {
-                  setIsDragging(false);
-                  const moveDistance = info.offset.x + info.offset.y;
-                  if (Math.abs(moveDistance) > 50) {
-                    const newItems = [...items];
-                    const draggedItem = newItems[index];
-                    const targetIndex =
-                      moveDistance > 0 ? Math.min(index + 1, items.length - 1) : Math.max(index - 1, 0);
-                    newItems.splice(index, 1);
-                    newItems.splice(targetIndex, 0, draggedItem);
-                    setItems(newItems);
-                  }
-                }}
-              >
-                <MediaItem item={item} className="absolute inset-0 w-full h-full" />
-                <motion.div
-                  className="absolute inset-0 flex flex-col justify-end p-2 sm:p-3 md:p-4"
-                  initial={{ opacity: 0 }}
-                  whileHover={{ opacity: 1 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <div className="absolute inset-0 flex flex-col justify-end p-2 sm:p-3 md:p-4">
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-                    <h3 className="relative text-white text-xs sm:text-sm md:text-base font-medium line-clamp-1">
-                      {item.title}
-                    </h3>
-                    <p className="relative text-white/70 text-[10px] sm:text-xs md:text-sm mt-0.5 line-clamp-2">
-                      {item.desc}
-                    </p>
-                  </div>
-                </motion.div>
-              </motion.div>
+              <MasonryCard key={item.id} item={item} index={index} onOpen={setSelectedItem} />
             ))}
-          </motion.div>
+          </div>
         )}
       </AnimatePresence>
     </div>

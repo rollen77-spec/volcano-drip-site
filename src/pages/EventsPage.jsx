@@ -16,12 +16,7 @@ const supportPartners = [
   },
 ];
 
-const gallerySpanPattern = [
-  'md:col-span-1 md:row-span-3 sm:col-span-1 sm:row-span-2',
-  'md:col-span-2 md:row-span-2 sm:col-span-2 sm:row-span-2',
-  'md:col-span-1 md:row-span-3 sm:col-span-2 sm:row-span-2',
-  'md:col-span-2 md:row-span-2 sm:col-span-1 sm:row-span-2',
-];
+const gallerySizePattern = ['portrait', 'wide', 'tall', 'square', 'landscape'];
 
 const galleryMediaItems = [
   {
@@ -30,7 +25,7 @@ const galleryMediaItems = [
     title: 'Volcano Drip Event Reel',
     desc: 'Outdoor setup highlights and on-site moments.',
     url: 'https://cdn.pixabay.com/video/2020/05/25/40130-424930032_large.mp4',
-    span: 'md:col-span-2 md:row-span-2 col-span-1 sm:col-span-2 sm:row-span-2',
+    size: 'wide',
   },
   ...aboutEventGallery.map((item, index) => ({
     id: index + 2,
@@ -38,7 +33,7 @@ const galleryMediaItems = [
     title: `Event Photo ${index + 1}`,
     desc: 'Volcano Drip at community events and pop-ups.',
     url: item.src,
-    span: gallerySpanPattern[index % gallerySpanPattern.length],
+    size: gallerySizePattern[index % gallerySizePattern.length],
   })),
   {
     id: aboutEventGallery.length + 2,
@@ -46,7 +41,7 @@ const galleryMediaItems = [
     title: 'Community Atmosphere',
     desc: 'A feel-good moment from a busy outdoor event.',
     url: 'https://cdn.pixabay.com/video/2024/07/24/222837_large.mp4',
-    span: 'md:col-span-1 md:row-span-3 sm:col-span-1 sm:row-span-2',
+    size: 'tall',
   },
 ];
 
