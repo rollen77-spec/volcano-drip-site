@@ -166,17 +166,14 @@ const EventsPage = () => {
               <div className="rounded-2xl border border-amber-200 bg-amber-50 p-6">
                 <div className="mb-3 flex items-center gap-2 text-amber-700">
                   <HeartHandshake className="h-5 w-5" aria-hidden />
-                  <p className="text-sm font-bold uppercase tracking-[0.18em]">
+                  <p className="text-2xl font-black tracking-tight text-stone-900 leading-tight">
                     We are a proud supporter and participant of the following events
                   </p>
                 </div>
-                <h3 className="text-2xl font-black tracking-tight text-stone-900 mb-4">
-                  Proud Support of the BMO walk so kids can talk
-                </h3>
                 {supportPartners.map((partner) => (
                   <div
                     key={partner.id}
-                    className="flex items-center justify-center rounded-xl border border-amber-200/80 bg-white/80 p-4"
+                    className="mt-4 flex items-center justify-center rounded-xl border border-amber-200/80 bg-white/80 p-4"
                   >
                     <img
                       src={partner.logo}
