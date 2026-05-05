@@ -1,10 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet';
-import { Calendar, MapPin, HeartHandshake, ArrowUpRight } from 'lucide-react';
+import { Calendar, MapPin, HeartHandshake } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { upcomingAppearances } from '@/data/appearances';
 import { aboutEventGallery } from '@/data/aboutEventGallery';
+import InteractiveBentoGallery from '@/components/ui/interactive-bento-gallery';
 
 const supportPartners = [
   {
@@ -15,28 +16,38 @@ const supportPartners = [
   },
 ];
 
-const videoCards = [
-  {
-    id: 'events-story-motion',
-    title: 'Volcano Drip Story Reel',
-    embedUrl: 'https://www.youtube-nocookie.com/embed/_9IEJytr05g',
-  },
-  {
-    id: 'events-roast-story',
-    title: 'Volcanic Soil Feature',
-    embedUrl: 'https://www.youtube-nocookie.com/embed/hy__cSOlahE',
-  },
+const gallerySpanPattern = [
+  'md:col-span-1 md:row-span-3 sm:col-span-1 sm:row-span-2',
+  'md:col-span-2 md:row-span-2 sm:col-span-2 sm:row-span-2',
+  'md:col-span-1 md:row-span-3 sm:col-span-2 sm:row-span-2',
+  'md:col-span-2 md:row-span-2 sm:col-span-1 sm:row-span-2',
 ];
 
-const bentoSpans = [
-  'md:col-span-8 md:row-span-2',
-  'md:col-span-4 md:row-span-1',
-  'md:col-span-4 md:row-span-1',
-  'md:col-span-4 md:row-span-2',
-  'md:col-span-8 md:row-span-1',
-  'md:col-span-4 md:row-span-1',
-  'md:col-span-4 md:row-span-1',
-  'md:col-span-8 md:row-span-2',
+const galleryMediaItems = [
+  {
+    id: 1,
+    type: 'video',
+    title: 'Volcano Drip Event Reel',
+    desc: 'Outdoor setup highlights and on-site moments.',
+    url: 'https://cdn.pixabay.com/video/2020/05/25/40130-424930032_large.mp4',
+    span: 'md:col-span-2 md:row-span-2 col-span-1 sm:col-span-2 sm:row-span-2',
+  },
+  ...aboutEventGallery.map((item, index) => ({
+    id: index + 2,
+    type: 'image',
+    title: `Event Photo ${index + 1}`,
+    desc: 'Volcano Drip at community events and pop-ups.',
+    url: item.src,
+    span: gallerySpanPattern[index % gallerySpanPattern.length],
+  })),
+  {
+    id: aboutEventGallery.length + 2,
+    type: 'video',
+    title: 'Community Atmosphere',
+    desc: 'A feel-good moment from a busy outdoor event.',
+    url: 'https://cdn.pixabay.com/video/2024/07/24/222837_large.mp4',
+    span: 'md:col-span-1 md:row-span-3 sm:col-span-1 sm:row-span-2',
+  },
 ];
 
 const EventsPage = () => {
@@ -76,10 +87,9 @@ const EventsPage = () => {
                 comes to life.
               </h1>
               <p className="text-base leading-relaxed text-stone-100 md:text-lg">
-                Coffee is meant to be shared-and so are the moments around it.
-                From community gatherings to corporate events, Volcano Drip shows up with bold
-                flavour and even bolder energy. Explore the experiences, people, and stories
-                brewed at every event we&apos;re part of.
+                Born of fire. Driven by purpose.
+                <br />
+                We support youth, communities, and those facing homelessness-along with women&apos;s shelters, Indigenous initiatives and reconciliation, and causes focused on mental health, food access, and sustainability.
               </p>
             </motion.div>
           </div>
@@ -136,18 +146,15 @@ const EventsPage = () => {
                   Proud Support of the BMO walk so kids can talk
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-stone-700">
-                  We are proud to support initiatives focused on youth wellbeing, starting with
-                  BMO Walk so Kids Can Talk. More community partners will be added over time.
+                  We are proud to support initiatives focused on youth wellbeing, with additional
+                  community partners to be featured here over time.
                 </p>
               </div>
 
               {supportPartners.map((partner) => (
-                <a
+                <div
                   key={partner.id}
-                  href={partner.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center justify-between gap-4 rounded-2xl border border-stone-200 bg-white p-5 hover:border-amber-400 hover:shadow-md"
+                  className="flex items-center justify-center rounded-2xl border border-stone-200 bg-white p-5"
                 >
                   <img
                     src={partner.logo}
@@ -155,11 +162,7 @@ const EventsPage = () => {
                     className="h-12 w-auto object-contain"
                     loading="lazy"
                   />
-                  <span className="inline-flex items-center gap-1 text-sm font-semibold text-stone-700 group-hover:text-amber-700">
-                    Learn more
-                    <ArrowUpRight className="h-4 w-4" aria-hidden />
-                  </span>
-                </a>
+                </div>
               ))}
             </motion.div>
           </div>
@@ -167,72 +170,11 @@ const EventsPage = () => {
 
         <section className="py-16 md:py-20">
           <div className="mx-auto max-w-6xl px-4">
-            <motion.div
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="mb-10 text-center"
-            >
-              <h2 className="text-3xl font-black tracking-tight text-stone-900 md:text-4xl">
-                Event gallery
-              </h2>
-              <p className="mx-auto mt-3 max-w-2xl text-stone-600 leading-relaxed">
-                A bento-style showcase of event photos and videos from markets, pop-ups, and
-                community activations.
-              </p>
-            </motion.div>
-
-            <div className="grid auto-rows-[180px] grid-cols-1 gap-3 md:grid-cols-12 md:auto-rows-[140px]">
-              {videoCards.map((video, idx) => (
-                <motion.article
-                  key={video.id}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.35, delay: idx * 0.04 }}
-                  className={`overflow-hidden rounded-2xl border border-stone-200 bg-black shadow-sm ${
-                    idx === 0 ? 'md:col-span-8 md:row-span-3' : 'md:col-span-4 md:row-span-2'
-                  }`}
-                >
-                  <div className="relative h-full w-full">
-                    <iframe
-                      className="absolute inset-0 h-full w-full"
-                      src={video.embedUrl}
-                      title={video.title}
-                      loading="lazy"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                      allowFullScreen
-                    />
-                  </div>
-                </motion.article>
-              ))}
-
-              {aboutEventGallery.map((item, index) => (
-                <motion.figure
-                  key={item.src}
-                  initial={{ opacity: 0, y: 8 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.3, delay: Math.min(index * 0.025, 0.2) }}
-                  className={`group relative overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm ${
-                    bentoSpans[index % bentoSpans.length]
-                  }`}
-                >
-                  <img
-                    src={item.src}
-                    alt={item.alt}
-                    loading="lazy"
-                    decoding="async"
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                    width={1200}
-                    height={900}
-                  />
-                  <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-3 text-xs text-white/90 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                    {item.alt}
-                  </figcaption>
-                </motion.figure>
-              ))}
-            </div>
+            <InteractiveBentoGallery
+              mediaItems={galleryMediaItems}
+              title="Event gallery"
+              description=""
+            />
           </div>
         </section>
 
