@@ -18,6 +18,7 @@ import {
 } from '@/config/ecwid';
 import { PRICE_BAG_DISPLAY } from '@/config/pricing';
 import { getSiteUrl } from '@/config/site';
+import PageHero from '@/components/PageHero';
 
 const originData = {
   'costa-rica': {
@@ -212,43 +213,18 @@ const CoffeeOriginPage = ({ originKey }) => {
       </Helmet>
       
       <div className="min-h-screen bg-stone-50 pb-20">
-        {/* Hero Header */}
-        <div className="relative h-[60vh] bg-stone-900 overflow-hidden">
-          <div className="absolute inset-0 opacity-60">
-             {getHeroImage(originKey)}
-          </div>
-          <div className="absolute inset-0 bg-gradient-to-t from-stone-900 via-transparent to-stone-900/50" />
-          <div className="relative h-full max-w-7xl mx-auto px-4 flex flex-col justify-center items-start text-white">
-            <motion.span initial={{
-            opacity: 0,
-            y: 20
-          }} animate={{
-            opacity: 1,
-            y: 0
-          }} className="text-amber-500 font-bold tracking-widest uppercase mb-2">
-              {data.country}
-            </motion.span>
-            <motion.h1 initial={{
-            opacity: 0,
-            y: 20
-          }} animate={{
-            opacity: 1,
-            y: 0
-          }} transition={{
-            delay: 0.1
-          }} className="text-5xl md:text-7xl font-bold mb-4">
-              {data.title}
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="text-2xl md:text-3xl font-bold text-amber-400 tabular-nums"
-            >
-              {PRICE_BAG_DISPLAY}
-            </motion.p>
-          </div>
-        </div>
+        <PageHero
+          kicker={data.country}
+          title={data.title}
+          size="about"
+          contentMaxWidthClassName="max-w-5xl"
+          imageWrapperClassName="absolute inset-0 z-0 opacity-[0.6]"
+          overlayClassName="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-stone-900 via-transparent to-stone-900/50"
+          disableAnimation
+          background={getHeroImage(originKey)}
+        >
+          <p className="text-2xl font-bold text-amber-400 tabular-nums md:text-3xl">{PRICE_BAG_DISPLAY}</p>
+        </PageHero>
 
         <div className="max-w-5xl mx-auto px-4 -mt-20 relative z-10">
           <motion.div initial={{

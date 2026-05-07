@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet';
 import { Loader2 } from 'lucide-react';
 import { useEcwid } from '@/context/EcwidContext';
 import { ECWID_DEFAULT_CATEGORY_ID } from '@/config/ecwid';
+import PageHero from '@/components/PageHero';
 
 const CONTAINER_ID = 'ecwid-store';
 
@@ -49,20 +50,29 @@ const ShopPage = () => {
         />
       </Helmet>
 
-      <div className="bg-stone-50 min-h-screen pt-8 pb-20 px-4">
-        <div className="max-w-7xl mx-auto mb-10 text-center">
-          <p className="text-amber-600 font-bold tracking-widest text-xs uppercase mb-2">
-            Coffee Shop
-          </p>
-          <h1 className="text-4xl md:text-5xl font-black text-stone-900 tracking-tight">
-            Shop all roasts
-          </h1>
-          <p className="text-stone-600 mt-4 max-w-2xl mx-auto">
+      <div className="min-h-screen bg-stone-50 pb-20 pt-0">
+        <PageHero
+          kicker="Coffee shop"
+          title={
+            <>
+              SHOP ALL
+              <br />
+              ROASTS.
+            </>
+          }
+          imageSrc="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&q=80&w=2000"
+          imageAlt="Coffee beans"
+          overlayClassName="pointer-events-none absolute inset-0 z-10 bg-black/60"
+          size="compact"
+          sectionClassName="py-16 md:py-20 min-h-[280px]"
+        >
+          <p className="mx-auto max-w-2xl text-lg text-stone-200">
             Checkout, shipping, and payments are handled securely by Ecwid.
           </p>
-        </div>
+        </PageHero>
 
-        <div className="relative max-w-7xl mx-auto">
+        <div className="px-4 pt-10">
+        <div className="relative mx-auto max-w-7xl">
           {!catalogMounted && (
             <div
               className="absolute inset-0 z-10 flex min-h-[480px] flex-col items-center justify-center gap-3 rounded-lg border border-stone-200 bg-white/95 px-6 text-center shadow-sm backdrop-blur-sm"
@@ -80,6 +90,7 @@ const ShopPage = () => {
             id={CONTAINER_ID}
             className="min-h-[480px] rounded-lg border border-stone-200 bg-white p-4 shadow-sm md:p-8"
           />
+        </div>
         </div>
       </div>
     </>

@@ -2,9 +2,10 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ExternalLink, Headphones, Play, ArrowLeft } from 'lucide-react';
+import { ExternalLink, Play, ArrowLeft } from 'lucide-react';
 import { PODCAST_EPISODES, PODCAST_LOGO_URL, PODCAST_NAME } from '@/config/podcast';
 import PodcastAudioPlayer from '@/components/PodcastAudioPlayer';
+import PageHero from '@/components/PageHero';
 
 const PodcastPage = () => {
   return (
@@ -18,51 +19,35 @@ const PodcastPage = () => {
       </Helmet>
 
       <div className="min-h-screen bg-stone-50 font-sans">
-        {/* Match home podcast strip + Subscription hero scale / sans typography */}
-        <section className="relative overflow-hidden border-b border-amber-200/80 bg-gradient-to-br from-stone-100 via-amber-50/90 to-orange-50/70 px-4 py-16 md:py-24">
-          <div className="pointer-events-none absolute inset-0 opacity-[0.35]">
-            <div className="absolute -left-16 top-10 h-64 w-64 rounded-full bg-amber-200/60 blur-[90px]" />
-            <div className="absolute -bottom-8 right-0 h-48 w-48 rounded-full bg-orange-200/50 blur-[70px]" />
-          </div>
-
-          <div className="relative z-10 mx-auto mt-6 flex max-w-4xl flex-col items-center px-4 text-center">
-            <motion.img
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
+        <PageHero
+          leading={
+            <img
               src={PODCAST_LOGO_URL}
-              alt="Volcano Drip"
-              className="mb-8 h-16 w-auto max-w-[180px] object-contain opacity-95 sm:h-[4.5rem] sm:max-w-[200px]"
+              alt=""
               width={200}
               height={88}
+              className="h-16 w-auto max-w-[180px] object-contain opacity-95 sm:h-[4.5rem] sm:max-w-[200px]"
             />
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-              className="mb-4 inline-flex items-center gap-2 rounded-full border border-amber-500/50 bg-amber-500/10 px-4 py-1 text-xs font-bold uppercase tracking-widest text-amber-800 backdrop-blur-md"
-            >
-              <Headphones className="h-3.5 w-3.5" aria-hidden />
-              Podcast
-            </motion.div>
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="mb-6 text-6xl font-bold tracking-tighter text-stone-900 md:text-8xl"
-            >
-              {PODCAST_NAME.replace(/ Podcast$/, '')}{' '}
-              <span className="text-amber-500">Podcast</span>.
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.25 }}
-              className="max-w-2xl text-xl leading-relaxed text-stone-600"
-            >
-              Short listens on brewing well and digging into what makes volcanic-grown coffee unique.
-            </motion.p>
-          </div>
-        </section>
+          }
+          kicker="Podcast"
+          title={
+            <>
+              THE DAILY GRIND
+              <br />
+              PODCAST.
+            </>
+          }
+          imageSrc="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?auto=format&fit=crop&q=80&w=2000"
+          imageAlt=""
+          overlayClassName="pointer-events-none absolute inset-0 z-10 bg-black/60"
+          size="custom"
+          sectionClassName="py-16 md:py-24"
+          titleClassName="text-6xl md:text-8xl"
+        >
+          <p className="mx-auto max-w-2xl text-xl leading-relaxed text-stone-200">
+            Short listens on brewing well and digging into what makes volcanic-grown coffee unique.
+          </p>
+        </PageHero>
 
         <div className="mx-auto max-w-3xl px-4 py-12 md:py-16">
           <ul className="space-y-10">

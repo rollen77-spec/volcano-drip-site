@@ -10,6 +10,7 @@ import {
   VIDEO_TILE_POSTERS,
 } from '@/data/eventsMedia';
 import InteractiveBentoGallery from '@/components/ui/interactive-bento-gallery';
+import PageHero from '@/components/PageHero';
 
 const supportPartners = [
   {
@@ -73,38 +74,32 @@ const EventsPage = () => {
       </Helmet>
 
       <div className="min-h-screen bg-stone-50">
-        <header className="relative h-[60vh] min-h-[24rem] overflow-hidden bg-stone-900">
-          <img
-            src="/events/images/event-10-truck-event-wide.png"
-            alt="Volcano Drip event setup outdoors"
-            className="absolute inset-0 h-full w-full object-cover"
-            fetchPriority="high"
-          />
-          <div className="absolute inset-0 bg-black/60" />
-
-          <div className="relative z-10 mx-auto flex h-full max-w-6xl items-end px-4 pb-12 md:pb-16">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55 }}
-              className="max-w-3xl"
-            >
-              <span className="mb-4 block text-xs font-bold uppercase tracking-[0.22em] text-amber-400">
-                Events
-              </span>
-              <h1 className="mb-6 text-4xl font-black leading-tight text-white md:text-6xl">
-                Where Volcano Drip
-                <br />
-                comes to life.
-              </h1>
-              <p className="text-base leading-relaxed text-stone-100 md:text-lg">
-                Born of fire. Driven by purpose.
-                <br />
-                We support youth, communities, and those facing homelessness-along with women&apos;s shelters, Indigenous initiatives and reconciliation, and causes focused on mental health, food access, and sustainability.
-              </p>
-            </motion.div>
-          </div>
-        </header>
+        <PageHero
+          size="custom"
+          kicker="Events"
+          title={
+            <>
+              WHERE VOLCANO DRIP
+              <br />
+              COMES TO LIFE.
+            </>
+          }
+          imageSrc="/events/images/event-10-truck-event-wide.png"
+          imageAlt="Volcano Drip event setup outdoors"
+          fetchPriority="high"
+          imageWrapperExtraClassName="opacity-100"
+          overlayClassName="pointer-events-none absolute inset-0 z-10 bg-black/60"
+          sectionClassName="h-[60vh] min-h-[24rem]"
+          contentMaxWidthClassName="max-w-4xl"
+        >
+          <p className="mx-auto max-w-2xl text-base leading-relaxed text-stone-200 md:text-lg">
+            Born of fire. Driven by purpose.
+            <br />
+            We support youth, communities, and those facing homelessness—along with women&apos;s shelters,
+            Indigenous initiatives and reconciliation, and causes focused on mental health, food access, and
+            sustainability.
+          </p>
+        </PageHero>
 
         <section className="border-b border-stone-200 bg-white py-14">
           <div className="mx-auto grid max-w-6xl gap-8 px-4 lg:grid-cols-[1.3fr_1fr] lg:items-start">

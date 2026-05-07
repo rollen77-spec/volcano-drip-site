@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/components/ui/use-toast';
+import PageHero from '@/components/PageHero';
 
 const CookieBanner = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -153,43 +154,38 @@ const OffersPage = () => {
         />
       </Helmet>
 
-      {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-stone-900">
-        <div className="absolute inset-0 z-0">
-          <img
-            src="https://images.unsplash.com/photo-1597949332421-25f2b66056de?w=1600&h=900&fit=crop"
-            alt="Coffee and newsletter aesthetic"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-black/50" />
-        </div>
+      <PageHero
+        size="custom"
+        sectionClassName="min-h-[90vh]"
+        kicker="Volcano Drip newsletter"
+        title={
+          <>
+            BETTER COFFEE
+            <br />
+            STARTS HERE.
+          </>
+        }
+        imageSrc="https://images.unsplash.com/photo-1597949332421-25f2b66056de?w=1600&h=900&fit=crop"
+        imageAlt="Coffee and newsletter aesthetic"
+        imageWrapperExtraClassName="opacity-100"
+        imageClassName="h-full w-full object-cover"
+        overlayClassName="pointer-events-none absolute inset-0 z-10 bg-black/50"
+        contentMaxWidthClassName="max-w-5xl"
+      >
+        <p className="mx-auto mb-10 max-w-2xl text-xl font-medium leading-relaxed text-stone-200 md:text-2xl">
+          Join the Volcano Drip newsletter for exclusive offers, new coffee releases, brewing tips, and special promotions.
+        </p>
 
-        <div className="relative z-10 container mx-auto px-4 flex flex-col items-center text-center mt-12">
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            <span className="inline-block mb-6 px-4 py-1.5 border border-amber-500/30 rounded-full bg-amber-500/10 backdrop-blur-md text-amber-400 font-bold tracking-widest text-xs uppercase">
-              Volcano Drip Newsletter
-            </span>
-            <h1 className="text-5xl md:text-8xl font-black text-white tracking-tighter mb-8 leading-[0.9]">
-              BETTER COFFEE <br />
-              <span className="text-amber-500">STARTS HERE.</span>
-            </h1>
-
-            <p className="text-xl md:text-2xl text-stone-200 mb-10 max-w-2xl mx-auto font-medium leading-relaxed">
-              Join the Volcano Drip newsletter for exclusive offers, new coffee releases, brewing tips, and special promotions.
-            </p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4, ease: 'easeOut' }}
-              className="inline-flex items-center justify-center gap-2 bg-amber-600 text-white px-6 py-4 rounded-full font-bold shadow-xl shadow-amber-900/20 text-lg"
-            >
-              <Tag className="w-5 h-5" />
-              Special offer! Get 20% off your first purchase.
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4, ease: 'easeOut' }}
+          className="inline-flex items-center justify-center gap-2 rounded-full bg-amber-600 px-6 py-4 text-lg font-bold text-white shadow-xl shadow-amber-900/20"
+        >
+          <Tag className="h-5 w-5" />
+          Special offer! Get 20% off your first purchase.
+        </motion.div>
+      </PageHero>
 
       {/* Main Content Area */}
       <section className="flex-grow py-24 px-4 bg-stone-50">

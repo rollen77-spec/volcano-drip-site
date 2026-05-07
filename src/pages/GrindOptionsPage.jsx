@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import PageHero from '@/components/PageHero';
 
 const IMG = {
   heroTray: '/images/grind-hero-tray.png',
@@ -112,41 +113,23 @@ const GrindOptionsPage = () => {
       </Helmet>
 
       <div className="min-h-screen bg-stone-50 font-sans">
-        {/* Hero — match Subscription page: sans display title scale + overlay */}
-        <section className="relative flex h-[min(70vh,820px)] min-h-[360px] items-center justify-center overflow-hidden bg-stone-900 text-white">
-          <div className="absolute inset-0 z-0 opacity-50">
-            <img
-              alt="Cooling tray with whole beans and a range of grind sizes"
-              className="h-full w-full object-cover object-center"
-              src={IMG.heroTray}
-              width={1920}
-              height={1080}
-              fetchPriority="high"
-              decoding="async"
-            />
-          </div>
-          <div className="absolute inset-0 z-10 bg-gradient-to-t from-stone-900 via-stone-900/40 to-transparent" />
-
-          <div className="relative z-20 mt-10 max-w-5xl px-4 text-center">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-              className="mb-4 inline-block rounded-full border border-amber-500/50 bg-amber-500/10 px-4 py-1 text-xs font-bold uppercase tracking-widest text-amber-400 backdrop-blur-md"
-            >
-              Grind types
-            </motion.div>
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="mb-6 text-6xl font-bold tracking-tighter md:text-8xl"
-            >
-              Choose the Right Grind for{' '}
-              <span className="text-amber-500">Your Brew</span>.
-            </motion.h1>
-          </div>
-        </section>
+        <PageHero
+          kicker="Grind types"
+          title={
+            <>
+              CHOOSE THE RIGHT GRIND
+              <br />
+              FOR YOUR BREW.
+            </>
+          }
+          imageSrc={IMG.heroTray}
+          imageAlt="Cooling tray with whole beans and a range of grind sizes"
+          fetchPriority="high"
+          decoding="async"
+          imageWrapperExtraClassName="opacity-50"
+          overlayClassName="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-stone-900 via-stone-900/40 to-transparent"
+          contentMaxWidthClassName="max-w-5xl"
+        />
 
         <div className="mx-auto max-w-3xl px-6 py-16 md:px-8">
           <motion.div

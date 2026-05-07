@@ -5,6 +5,7 @@ import { Flame, Mountain, Users, Zap } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import HeroImage from '@/components/HeroImage';
+import PageHero from '@/components/PageHero';
 
 const AboutPage = () => {
   return <>
@@ -14,33 +15,17 @@ const AboutPage = () => {
       </Helmet>
 
       <div className="flex flex-col w-full overflow-hidden">
-        {/* Hero Section */}
-        <section className="relative h-[70vh] flex items-center justify-center bg-stone-900 overflow-hidden">
-          <div className="absolute inset-0 z-0">
-            <HeroImage alt="Volcanic landscape" src="https://images.unsplash.com/photo-1551197933-8fdac28d53f6" />
-            <div className="absolute inset-0 bg-black/60 z-10" />
-          </div>
-          
-          <div className="relative z-20 text-center px-4 max-w-4xl mx-auto">
-            <motion.div initial={{
-            opacity: 0,
-            y: 20
-          }} animate={{
-            opacity: 1,
-            y: 0
-          }} transition={{
-            duration: 0.6
-          }}>
-              <span className="text-amber-500 font-bold tracking-widest text-xs uppercase mb-4 block">Our Story</span>
-              <h1 className="text-5xl md:text-8xl font-black text-white tracking-tighter mb-8 leading-[0.9]">
-                BORN FROM <br />THE FIRE.
-              </h1>
-              <p className="text-xl text-stone-200 max-w-3xl mx-auto leading-relaxed">
-                We don't just roast coffee. We harness the raw, explosive power of nature to bring you a cup that defies the ordinary. Volcano Drip began with a shared passion for great coffee and the belief that the best cups bring people together.
-              </p>
-            </motion.div>
-          </div>
-        </section>
+        <PageHero
+          size="about"
+          kicker="Our Story"
+          title={<>BORN FROM <br />THE FIRE.</>}
+          imageWrapperClassName="absolute inset-0 z-0"
+          background={<HeroImage alt="Volcanic landscape" src="https://images.unsplash.com/photo-1551197933-8fdac28d53f6" />}
+        >
+          <p className="text-xl text-stone-200 max-w-3xl mx-auto leading-relaxed">
+            We don't just roast coffee. We harness the raw, explosive power of nature to bring you a cup that defies the ordinary. Volcano Drip began with a shared passion for great coffee and the belief that the best cups bring people together.
+          </p>
+        </PageHero>
 
         {/* Video Section */}
         <section className="py-16 bg-stone-950 text-white">

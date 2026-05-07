@@ -88,7 +88,7 @@ function SingleOriginTileCountryHeader({ country, organic }) {
       <p className="text-2xl font-black tracking-tight text-white sm:text-3xl">{country}</p>
     </div>
   );
-}
+}import PageHero from '@/components/PageHero';
 
 const HomePage = () => {
   const features = [{
@@ -129,60 +129,45 @@ const HomePage = () => {
       </Helmet>
 
       <div className="flex flex-col w-full overflow-hidden">
-        {/* Hero Section */}
-        <section className="relative h-[90vh] flex items-center justify-center bg-stone-900 overflow-hidden">
-          <div className="absolute inset-0 z-0">
-            <img
-              alt="Active volcano erupting at night with lava"
-              src="https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/05c61514a48c26a3970780f69c046190.png"
-              width={1920}
-              height={1080}
-              fetchPriority="high"
-              decoding="async"
-              className="h-full w-full object-cover object-[center_80%]"
-            />
-            <div className="absolute inset-0 bg-black/60 z-10" />
+        <PageHero
+          size="tall"
+          kicker="Est. 2025 • Small batch roasters"
+          title={
+            <>
+              FUEL YOUR <br />
+              INNER FIRE.
+            </>
+          }
+          imageSrc="https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/05c61514a48c26a3970780f69c046190.png"
+          imageAlt="Active volcano erupting at night with lava"
+          fetchPriority="high"
+          decoding="async"
+          imageWrapperExtraClassName="opacity-100"
+          imageClassName="h-full w-full object-cover object-[center_80%]"
+          overlayClassName="pointer-events-none absolute inset-0 z-10 bg-black/60"
+          contentMaxWidthClassName="max-w-5xl"
+          sectionClassName="pt-20"
+          footerSlot={
+            <div className="absolute bottom-10 left-1/2 z-30 hidden -translate-x-1/2 md:block">
+              <motion.div
+                animate={{ y: [0, 10, 0] }}
+                transition={{ repeat: Infinity, duration: 2 }}
+                className="flex h-10 w-6 justify-center rounded-full border-2 border-white/30 p-2"
+              >
+                <div className="h-2 w-1 rounded-full bg-amber-500" />
+              </motion.div>
+            </div>
+          }
+        >
+          <p className="mx-auto mb-10 max-w-2xl text-xl font-medium leading-relaxed text-stone-200 md:text-2xl">
+            Exceptional single-origin coffee sourced from the world's most nutrient-rich volcanic soils.
+          </p>
+          <div className="mb-10 flex flex-col items-center justify-center gap-4 pb-32 sm:flex-row">
+            <Button className="h-auto rounded-full bg-amber-600 px-8 py-4 text-base font-bold text-white shadow-xl shadow-amber-900/20 transition-all hover:bg-amber-500" asChild>
+              <a href="#products">Explore Roasts</a>
+            </Button>
           </div>
-          
-          <div className="relative z-20 text-center px-4 max-w-5xl mx-auto pt-20">
-            <motion.div initial={{
-            opacity: 0,
-            y: 30
-          }} animate={{
-            opacity: 1,
-            y: 0
-          }} transition={{
-            duration: 0.8
-          }}>
-              <span className="inline-block mb-6 px-4 py-1.5 border border-amber-500/30 rounded-full bg-amber-500/10 backdrop-blur-md text-amber-400 font-bold tracking-widest text-xs uppercase">
-                Est. 2025 • Small Batch Roasters
-              </span>
-              <h1 className="font-black text-hero text-white mb-8">
-                FUEL YOUR <br />
-                <span className="text-amber-500">INNER FIRE.</span>
-              </h1>
-              <p className="text-xl md:text-2xl text-stone-200 mb-10 max-w-2xl mx-auto font-medium leading-relaxed">
-                Exceptional single-origin coffee sourced from the world's most nutrient-rich volcanic soils.
-              </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pb-32 mb-10">
-                <Button asChild className="bg-amber-600 hover:bg-amber-500 text-white font-bold px-8 py-4 text-base rounded-full h-auto transition-all shadow-xl shadow-amber-900/20">
-                  <a href="#products">Explore Roasts</a>
-                </Button>
-              </div>
-            </motion.div>
-          </div>
-          
-          <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 hidden md:block">
-            <motion.div animate={{
-            y: [0, 10, 0]
-          }} transition={{
-            repeat: Infinity,
-            duration: 2
-          }} className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center p-2">
-              <div className="w-1 h-2 bg-amber-500 rounded-full" />
-            </motion.div>
-          </div>
-        </section>
+        </PageHero>
 
         {/* Coffee Product Image Section */}
         <section className="bg-stone-50 py-10 px-4 flex justify-center relative z-30 -mt-10">

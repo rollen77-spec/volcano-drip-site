@@ -9,6 +9,7 @@ import { getProduct, getProductQuantities } from '@/api/EcommerceApi';
 import { Helmet } from 'react-helmet';
 import GrindSelector from '@/components/GrindSelector';
 import GiftToggle from '@/components/GiftToggle';
+import PageHero from '@/components/PageHero';
 
 const formatDescription = (content) => {
   if (!content) return { type: 'empty' };
@@ -225,13 +226,24 @@ const ProductDetailPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-stone-50 pt-20 pb-12">
+    <div className="min-h-screen bg-stone-50 pb-12">
       <Helmet>
         <title>{product.title} | Volcano Drip</title>
         <meta name="description" content={product.description || `Buy ${product.title} from Volcano Drip.`} />
       </Helmet>
 
-      <div className="max-w-7xl mx-auto px-4">
+      <PageHero
+        size="compact"
+        kicker="Shop"
+        title={product.title}
+        titleClassName="!normal-case text-3xl !leading-tight md:text-5xl md:!leading-[1.05]"
+        imageSrc={product.image || 'https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&q=80&w=1600'}
+        imageAlt=""
+        overlayClassName="pointer-events-none absolute inset-0 z-10 bg-black/60"
+        sectionClassName="py-12 md:py-16"
+      />
+
+      <div className="max-w-7xl mx-auto px-4 pt-10">
         <Button 
           variant="ghost" 
           onClick={() => navigate(-1)} 
@@ -256,8 +268,7 @@ const ProductDetailPage = () => {
             </div>
           </div>
 
-          <div className="flex flex-col">
-            <h1 className="text-3xl md:text-4xl font-bold text-stone-900 mb-2">{product.title}</h1>
+            <div className="flex flex-col">
             <div className="flex items-baseline gap-4 mb-6">
               {originalPrice && (
                 <span className="text-xl text-stone-400 line-through">{originalPrice}</span>

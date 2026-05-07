@@ -1,35 +1,47 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { ShieldCheck, Lock } from 'lucide-react';
+import { Lock } from 'lucide-react';
 import {
   Accordion,
   AccordionItem,
   AccordionTrigger,
   AccordionContent,
 } from "@/components/ui/accordion";
+import PageHero from '@/components/PageHero';
 
 const PrivacyPolicyPage = () => {
   return (
-    <div className="min-h-screen bg-stone-50 py-16 px-4 md:py-24">
+    <div className="min-h-screen bg-stone-50">
       <Helmet>
         <title>Privacy Policy | Volcano Drip</title>
         <meta name="description" content="Privacy Policy for Volcano Drip Coffee Company. Learn how we collect, use, and protect your information." />
       </Helmet>
 
-      <div className="max-w-4xl mx-auto space-y-16">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center justify-center p-4 bg-amber-100 rounded-full mb-6 shadow-sm">
-            <ShieldCheck className="w-8 h-8 text-amber-600" />
-          </div>
-          <h1 className="text-5xl md:text-7xl font-black text-stone-900 tracking-tight mb-6">Privacy Policy</h1>
-          <p className="text-stone-500 text-lg max-w-2xl mx-auto mb-2">
-            At Volcano Drip Coffee Company, we are committed to protecting your privacy and ensuring you have a positive experience on our website.
-          </p>
-          <p className="text-stone-400 text-sm font-medium uppercase tracking-widest">Last Updated: Jan 3, 2026</p>
-        </div>
+      <PageHero
+        size="compact"
+        kicker="Legal"
+        title={
+          <>
+            PRIVACY
+            <br />
+            POLICY.
+          </>
+        }
+        imageSrc="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=2000&auto=format&fit=crop"
+        imageAlt=""
+        overlayClassName="pointer-events-none absolute inset-0 z-10 bg-black/65"
+        titleClassName="text-5xl md:text-7xl md:!leading-[0.95]"
+      >
+        <p className="mx-auto max-w-2xl text-lg text-stone-200">
+          At Volcano Drip Coffee Company, we are committed to protecting your privacy and ensuring you have a positive
+          experience on our website.
+        </p>
+        <p className="mt-4 text-xs font-medium uppercase tracking-widest text-stone-400">
+          Last Updated: Jan 3, 2026
+        </p>
+      </PageHero>
 
-        {/* Accordion Section */}
+      <div className="mx-auto max-w-4xl space-y-16 px-4 pb-16 pt-12 md:pb-24 md:pt-16">
         <section className="bg-white p-8 md:p-12 rounded-xl shadow-sm border border-stone-200">
           <div className="flex items-center gap-4 mb-6 pb-6 border-b border-stone-100">
             <Lock className="w-8 h-8 text-amber-600" />

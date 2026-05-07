@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { getAllBlogPosts } from '@/content/blog/loadPosts';
 import { getSiteUrl } from '@/config/site';
+import PageHero from '@/components/PageHero';
 
 function formatPostDate(iso) {
   if (!iso) return '';
@@ -23,44 +24,45 @@ const BlogIndexPage = () => {
   const headerImageAbsolute = siteUrl ? `${siteUrl}/blog/blog-header-hero.png` : '';
 
   return (
-    <div className="min-h-screen bg-stone-50 flex flex-col">
-      <Helmet>
-        <title>Blog | Volcano Drip</title>
-        <meta
-          name="description"
-          content="Roasting notes, brewing tips, and stories from Volcano Drip Coffee—small-batch single-origin coffee from volcanic soil."
-        />
-        {headerImageAbsolute ? (
-          <meta property="og:image" content={headerImageAbsolute} />
-        ) : null}
-      </Helmet>
+      <div className="min-h-screen bg-stone-50 flex flex-col">
+        <Helmet>
+          <title>Blog | Volcano Drip</title>
+          <meta
+            name="description"
+            content="Roasting notes, brewing tips, and stories from Volcano Drip Coffee—small-batch single-origin coffee from volcanic soil."
+          />
+          {headerImageAbsolute ? (
+            <meta property="og:image" content={headerImageAbsolute} />
+          ) : null}
+        </Helmet>
 
-      <header className="relative w-full shrink-0 border-b border-stone-200 bg-stone-900">
-        <h1 className="sr-only">Blog</h1>
-        <img
-          src="/blog/blog-header-hero.png"
-          alt=""
-          className="h-auto w-full max-h-[min(30rem,55vh)] object-cover object-top md:max-h-[min(34rem,60vh)]"
-          width={1600}
-          height={600}
+        <PageHero
+          size="custom"
+          sectionClassName="border-b border-stone-800"
+          kicker="From the roastery"
+          title={
+            <>
+              STORIES &amp;
+              <br />
+              BREWING NOTES.
+            </>
+          }
+          imageSrc="/blog/blog-header-hero.png"
+          imageAlt="Volcano Drip blog"
           fetchPriority="high"
           decoding="async"
-        />
-      </header>
+          imageWrapperExtraClassName="opacity-75"
+          imageClassName="h-full w-full object-cover object-top"
+          overlayClassName="pointer-events-none absolute inset-0 z-10 bg-black/55"
+          sectionClassName="border-b border-stone-800 py-12 md:py-16 min-h-[min(22rem,42vh)] md:min-h-[min(28rem,52vh)]"
+        >
+          <p className="mx-auto max-w-xl text-lg leading-relaxed text-stone-200">
+            Updates on sourcing, roasting, and brewing—plus practical tips for your daily cup.
+          </p>
+        </PageHero>
 
-      <div className="flex-1 px-4 py-12 md:py-16">
+        <div className="flex-1 px-4 py-12 md:py-16">
         <div className="max-w-3xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.45 }}
-            className="text-center mb-12"
-          >
-            <p className="text-amber-700 font-bold tracking-widest text-xs uppercase mb-3">From the roastery</p>
-            <p className="text-stone-600 text-lg leading-relaxed max-w-xl mx-auto">
-              Updates on sourcing, roasting, and brewing—plus practical tips for your daily cup.
-            </p>
-          </motion.div>
 
           <ul className="space-y-5">
             {posts.map((post, index) => (

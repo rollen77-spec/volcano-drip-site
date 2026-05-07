@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet';
 import { Coffee, Droplets, Sparkles } from 'lucide-react';
+import PageHero from '@/components/PageHero';
 
 const SignatureDrinksPage = () => {
   const drinks = [
@@ -58,24 +59,26 @@ const SignatureDrinksPage = () => {
         <meta name="description" content="Discover Volcano Drip's signature coffee recipes including the Lava Shot, Eruption Pour, and Magma Cold Brew." />
       </Helmet>
 
-      <div className="pt-24 pb-20 bg-stone-50 min-h-screen">
-        {/* Hero Section */}
-        <section className="container mx-auto px-4 py-16 text-center">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <span className="text-[#FF8C00] font-bold tracking-widest text-xs uppercase mb-4 block">Crafted Recipes</span>
-            <h1 className="text-5xl md:text-8xl font-black text-stone-900 tracking-tighter mb-8 leading-[0.9]">
-              SIGNATURE <br /> DRINKS
-            </h1>
-            <p className="text-xl text-stone-600 max-w-2xl mx-auto leading-relaxed">
-              Unleash the full potential of volcanic coffee with our signature recipes. 
-              Bold flavors, explosive blooms, and magma-inspired creations to fuel your day.
-            </p>
-          </motion.div>
-        </section>
+      <div className="bg-stone-50 min-h-screen pb-20 pt-0">
+        <PageHero
+          kicker="Crafted recipes"
+          title={
+            <>
+              SIGNATURE
+              <br />
+              DRINKS.
+            </>
+          }
+          imageSrc="https://images.unsplash.com/photo-1554393335-7eb00f0525f4?auto=format&fit=crop&q=80&w=1600"
+          imageAlt="Espresso drink preparation"
+          overlayClassName="pointer-events-none absolute inset-0 z-10 bg-black/60"
+          contentMaxWidthClassName="max-w-4xl"
+        >
+          <p className="mx-auto max-w-2xl text-xl leading-relaxed text-stone-200">
+            Unleash the full potential of volcanic coffee with our signature recipes. Bold flavors, explosive blooms,
+            and magma-inspired creations to fuel your day.
+          </p>
+        </PageHero>
 
         {/* Recipes Grid */}
         <section className="container mx-auto px-4 py-12">

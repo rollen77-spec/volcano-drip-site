@@ -1,34 +1,43 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { Scale, FileText, RefreshCcw, Truck, XCircle } from 'lucide-react';
+import { FileText, RefreshCcw, Truck, XCircle } from 'lucide-react';
 import {
   Accordion,
   AccordionItem,
   AccordionTrigger,
   AccordionContent,
 } from "@/components/ui/accordion";
+import PageHero from '@/components/PageHero';
 
 const TermsAndConditionsPage = () => {
   return (
-    <div className="min-h-screen bg-stone-50 py-16 px-4 md:py-24">
+    <div className="min-h-screen bg-stone-50">
       <Helmet>
         <title>Terms and Conditions | Volcano Drip</title>
         <meta name="description" content="Terms and Conditions, Shipping, Return, and Cancellation policies for Volcano Drip Coffee Company." />
       </Helmet>
 
-      <div className="max-w-4xl mx-auto space-y-16">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center justify-center p-4 bg-amber-100 rounded-full mb-6 shadow-sm">
-            <Scale className="w-8 h-8 text-amber-600" />
-          </div>
-          <h1 className="text-5xl md:text-7xl font-black text-stone-900 tracking-tight mb-6">Terms & Policies</h1>
-          <p className="text-stone-500 text-lg max-w-2xl mx-auto">
-            Everything you need to know about purchasing, shipping, and returning products from Volcano Drip Coffee Company.
-          </p>
-        </div>
+      <PageHero
+        size="compact"
+        kicker="Legal"
+        title={
+          <>
+            TERMS &amp;
+            <br />
+            POLICIES.
+          </>
+        }
+        imageSrc="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=2000"
+        imageAlt=""
+        overlayClassName="pointer-events-none absolute inset-0 z-10 bg-black/65"
+      >
+        <p className="mx-auto max-w-2xl text-lg text-stone-200">
+          Everything you need to know about purchasing, shipping, and returning products from Volcano Drip Coffee
+          Company.
+        </p>
+      </PageHero>
 
-        {/* General Terms and Conditions */}
+      <div className="mx-auto max-w-4xl space-y-16 px-4 pb-16 pt-12 md:pb-24 md:pt-16">
         <section className="bg-white p-8 md:p-12 rounded-xl shadow-sm border border-stone-200">
           <div className="flex items-center gap-4 mb-6 pb-6 border-b border-stone-100">
             <FileText className="w-8 h-8 text-amber-600" />

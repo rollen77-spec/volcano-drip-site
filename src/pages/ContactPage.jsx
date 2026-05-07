@@ -7,6 +7,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Mail, Loader2 } from 'lucide-react';
 import { useToast } from '@/components/ui/use-toast';
+import PageHero from '@/components/PageHero';
 
 const ContactPage = () => {
   const { toast } = useToast();
@@ -114,16 +115,29 @@ const ContactPage = () => {
         />
       </Helmet>
 
-      <div className="min-h-screen bg-stone-50 py-20 px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-14">
-            <h1 className="text-4xl md:text-5xl font-bold text-stone-900 mb-4">Make Contact</h1>
-            <p className="text-stone-500 text-lg max-w-2xl mx-auto">
-              Questions about your order, wholesale opportunities, or booking Volcano Drip?
-              We&apos;re listening.
-            </p>
-          </div>
+      <div className="min-h-screen bg-stone-50">
+        <PageHero
+          kicker="Contact"
+          title={
+            <>
+              MAKE
+              <br />
+              CONTACT.
+            </>
+          }
+          imageSrc="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&q=80&w=2000"
+          imageAlt="Coffee bar and conversation"
+          overlayClassName="pointer-events-none absolute inset-0 z-10 bg-black/60"
+          size="compact"
+          sectionClassName="py-14 md:py-20"
+        >
+          <p className="mx-auto max-w-2xl text-lg text-stone-200 md:text-xl">
+            Questions about your order, wholesale opportunities, or booking Volcano Drip? We&apos;re listening.
+          </p>
+        </PageHero>
 
+        <div className="px-4 py-14">
+        <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             <div className="space-y-8">
               <div className="bg-white p-8 border border-stone-200">
@@ -239,6 +253,7 @@ const ContactPage = () => {
               </form>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </>

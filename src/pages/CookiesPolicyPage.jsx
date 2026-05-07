@@ -7,31 +7,40 @@ import {
   AccordionTrigger,
   AccordionContent,
 } from "@/components/ui/accordion";
+import PageHero from '@/components/PageHero';
 
 const CookiesPolicyPage = () => {
   return (
-    <div className="min-h-screen bg-[#faf8f5] py-16 px-4 md:py-24 text-stone-800">
+    <div className="min-h-screen bg-[#faf8f5] text-stone-800">
       <Helmet>
         <title>Cookies & Data Policy | Volcano Drip</title>
         <meta name="description" content="Cookies and Data Policy for Volcano Drip Coffee Company. Learn how we use cookies, collect data, and manage your preferences." />
       </Helmet>
 
-      <div className="max-w-4xl mx-auto space-y-12">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center justify-center p-5 bg-[#D4A574]/20 rounded-full mb-8 shadow-sm">
-            <Cookie className="w-12 h-12 text-[#8B6F47]" />
-          </div>
-          <h1 className="text-5xl md:text-6xl font-black text-stone-900 tracking-tight mb-6 font-playfair">
-            Cookies & Data Policy
-          </h1>
-          <p className="text-stone-600 text-xl max-w-3xl mx-auto mb-4 leading-relaxed">
-            Transparency is a core value of our business. This policy explains what cookies are, how we use them across our platform, and the choices you have regarding your privacy and data.
-          </p>
-          <p className="text-stone-400 text-sm font-bold uppercase tracking-widest mt-6">Last Updated: March 2026</p>
-        </div>
+      <PageHero
+        size="compact"
+        kicker="Legal"
+        title={
+          <>
+            COOKIES &amp;
+            <br />
+            DATA POLICY.
+          </>
+        }
+        imageSrc="https://images.unsplash.com/photo-1453614512568-c4024d13c247?auto=format&fit=crop&q=80&w=2000"
+        imageAlt=""
+        overlayClassName="pointer-events-none absolute inset-0 z-10 bg-black/65"
+      >
+        <p className="mx-auto max-w-3xl text-lg text-stone-200 xl:text-xl">
+          Transparency is a core value of our business. This policy explains what cookies are, how we use them across our
+          platform, and the choices you have regarding your privacy and data.
+        </p>
+        <p className="mt-6 text-xs font-bold uppercase tracking-widest text-stone-400">
+          Last Updated: March 2026
+        </p>
+      </PageHero>
 
-        {/* Accordion Section */}
+      <div className="mx-auto max-w-4xl space-y-12 px-4 pb-16 pt-12 md:pb-24 md:pt-16">
         <section className="bg-white p-6 md:p-12 rounded-3xl shadow-xl border border-stone-200">
           <div className="flex items-center gap-5 mb-8 pb-6 border-b border-stone-100">
             <div className="p-3 bg-[#8B6F47]/10 rounded-xl">

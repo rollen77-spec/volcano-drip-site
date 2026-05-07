@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { ArrowLeft } from 'lucide-react';
 import { getBlogPostBySlug } from '@/content/blog/loadPosts';
 import { getSiteUrl } from '@/config/site';
+import PageHero from '@/components/PageHero';
 
 function formatPostDate(iso) {
   if (!iso) return '';
@@ -60,7 +61,7 @@ const BlogPostPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-stone-50 py-16 px-4 md:py-24">
+    <div className="min-h-screen bg-stone-50">
       <Helmet>
         <title>{post.title} | Volcano Drip</title>
         <meta name="description" content={post.excerpt || post.title} />
@@ -68,7 +69,18 @@ const BlogPostPage = () => {
         {jsonLd ? <script type="application/ld+json">{jsonLd}</script> : null}
       </Helmet>
 
-      <article className="max-w-3xl mx-auto">
+      <PageHero
+        size="compact"
+        kicker={post.date ? formatPostDate(post.date) : 'Blog'}
+        title={post.title}
+        imageSrc="/blog/blog-header-hero.png"
+        imageAlt=""
+        overlayClassName="pointer-events-none absolute inset-0 z-10 bg-black/60"
+        titleClassName="text-4xl normal-case tracking-tight md:text-6xl md:leading-[1.05]"
+        kickerClassName="normal-case tracking-wider text-amber-400/95"
+      />
+
+      <article className="max-w-3xl mx-auto px-4 py-12 md:py-16">
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -81,19 +93,6 @@ const BlogPostPage = () => {
             <ArrowLeft className="w-4 h-4" aria-hidden />
             All posts
           </Link>
-
-          {post.date ? (
-            <time
-              dateTime={post.date}
-              className="text-xs font-bold uppercase tracking-wider text-stone-400 block mb-3"
-            >
-              {formatPostDate(post.date)}
-            </time>
-          ) : null}
-
-          <h1 className="text-4xl md:text-5xl font-black text-stone-900 tracking-tight mb-8 font-playfair leading-tight">
-            {post.title}
-          </h1>
 
           {post.youtubeId ? (
             <div className="mb-10 w-full overflow-hidden rounded-xl border border-stone-200 bg-stone-950 shadow-sm">

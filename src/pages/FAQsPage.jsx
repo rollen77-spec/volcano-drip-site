@@ -8,6 +8,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import PageHero from '@/components/PageHero';
 
 const FAQsPage = () => {
   const faqs = [
@@ -41,30 +42,27 @@ const FAQsPage = () => {
       </Helmet>
 
       <div className="flex flex-col w-full overflow-hidden min-h-screen bg-stone-50">
-        {/* Hero Section */}
-        <section className="relative py-24 bg-stone-900 overflow-hidden">
-          <div className="absolute inset-0 z-0 opacity-40">
-            <img 
-              src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=2000&auto=format&fit=crop" 
-              alt="Coffee beans background" 
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }} 
-              animate={{ opacity: 1, y: 0 }} 
-              transition={{ duration: 0.6 }}
-            >
-              <h1 className="text-4xl md:text-6xl font-black text-white tracking-tighter mb-6">
-                FREQUENTLY ASKED <span className="text-amber-500">QUESTIONS</span>
-              </h1>
-              <p className="text-xl text-stone-300 max-w-2xl mx-auto">
-                Everything you need to know about our volcanic coffee, subscriptions, and more.
-              </p>
-            </motion.div>
-          </div>
-        </section>
+        <PageHero
+          kicker="Support"
+          title={
+            <>
+              FREQUENTLY ASKED
+              <br />
+              QUESTIONS.
+            </>
+          }
+          imageSrc="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=2000&auto=format&fit=crop"
+          imageAlt="Coffee beans background"
+          imageWrapperExtraClassName="opacity-40"
+          overlayClassName="pointer-events-none absolute inset-0 z-10 bg-black/50"
+          size="custom"
+          sectionClassName="py-24"
+          contentMaxWidthClassName="max-w-4xl"
+        >
+          <p className="mx-auto max-w-2xl text-xl text-stone-200">
+            Everything you need to know about our volcanic coffee, subscriptions, and more.
+          </p>
+        </PageHero>
 
         {/* FAQs Section */}
         <section className="py-20 px-4">

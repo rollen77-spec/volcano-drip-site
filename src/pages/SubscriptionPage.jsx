@@ -1,12 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet';
-import { Flame, Coffee, Mountain, Truck, AlertCircle, Sparkles, ArrowDown } from 'lucide-react';
+import { Flame, Coffee, Mountain, Truck, AlertCircle, ArrowDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import EcwidPurchaseButton from '@/components/EcwidPurchaseButton';
 import { ECWID_SUBSCRIPTION_PRODUCT_ID, ECWID_SUBSCRIPTION_PRODUCT_URL } from '@/config/ecwid';
 import { PRICE_SUBSCRIPTION_MONTHLY_DISPLAY } from '@/config/pricing';
 import { roasterySmallBatch, subscriptionBoxDelivered } from '@/assets/subscription';
+import PageHero from '@/components/PageHero';
 
 const lineup = [
   { name: 'Inca Ascent', origin: 'Peru', roast: 'Medium', note: 'Fairtrade Organic · Citrus, apricot, cocoa' },
@@ -90,63 +91,35 @@ const SubscriptionPage = () => {
       </Helmet>
 
       <div className="min-h-screen bg-stone-50">
-        <section className="relative min-h-[55vh] md:min-h-[60vh] flex flex-col items-center justify-center overflow-hidden bg-stone-900 text-white pb-16 pt-24">
-          <div className="absolute inset-0 z-0 opacity-45">
-            <img
-              alt=""
-              className="w-full h-full object-cover"
-              src="https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/origins-club---no-title---final-vXhJs.jpeg"
-            />
-          </div>
-          <div className="absolute inset-0 z-10 bg-gradient-to-b from-stone-900/80 via-stone-900/70 to-stone-900" />
-
-          <div className="relative z-20 text-center max-w-3xl px-4">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.45 }}
-              className="inline-flex items-center gap-2 mb-5 px-4 py-1.5 border border-amber-500/50 rounded-full bg-amber-500/10 backdrop-blur-md text-amber-400 font-bold tracking-widest text-xs uppercase"
-            >
-              <Sparkles className="w-3.5 h-3.5" />
-              Save up to 15% as a member
-            </motion.div>
-            <motion.h1
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-5 leading-tight"
-            >
-              Your custom 4-bag box,{' '}
-              <span className="text-amber-500">delivered monthly</span>
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.15 }}
-              className="text-2xl md:text-3xl font-bold text-amber-400 tabular-nums mb-6"
-            >
-              {PRICE_SUBSCRIPTION_MONTHLY_DISPLAY} / month
-            </motion.p>
-            <motion.p
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="text-lg md:text-xl text-stone-300 mb-10 max-w-2xl mx-auto leading-relaxed"
-            >
-              Choose region, roast, and grind—or trust our picks. Fresh Volcano Drip single origins, roasted when you
-              order.
-            </motion.p>
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.35 }}>
-              <a
-                href="#subscribe-box"
-                className="inline-flex items-center gap-2 rounded-full bg-amber-500 px-8 py-3.5 text-stone-950 font-bold text-base hover:bg-amber-400 transition-colors shadow-lg shadow-amber-900/30"
-              >
-                Get the Volcanic Origins Box
-                <ArrowDown className="w-5 h-5" aria-hidden />
-              </a>
-            </motion.div>
-          </div>
-        </section>
+        <PageHero
+          kicker="Save up to 15% as a member"
+          title={
+            <>
+              YOUR CUSTOM 4-BAG BOX,
+              <br />
+              DELIVERED MONTHLY.
+            </>
+          }
+          imageSrc="https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/origins-club---no-title---final-vXhJs.jpeg"
+          imageAlt="Volcano Drip Volcanic Origins subscription assortment"
+          imageWrapperExtraClassName="opacity-[0.45]"
+          overlayClassName="pointer-events-none absolute inset-0 z-10 bg-gradient-to-b from-stone-900/80 via-stone-900/70 to-stone-900"
+          sectionClassName="min-h-[55vh] flex-col justify-center pb-16 pt-24 md:min-h-[60vh]"
+          contentMaxWidthClassName="max-w-3xl"
+        >
+          <p className="mb-6 text-2xl font-bold text-amber-400 tabular-nums md:text-3xl">{PRICE_SUBSCRIPTION_MONTHLY_DISPLAY} / month</p>
+          <p className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-stone-300 md:text-xl">
+            Choose region, roast, and grind—or trust our picks. Fresh Volcano Drip single origins, roasted when you
+            order.
+          </p>
+          <a
+            href="#subscribe-box"
+            className="inline-flex items-center gap-2 rounded-full bg-amber-500 px-8 py-3.5 text-base font-bold text-stone-950 shadow-lg shadow-amber-900/30 transition-colors hover:bg-amber-400"
+          >
+            Get the Volcanic Origins Box
+            <ArrowDown className="h-5 w-5" aria-hidden />
+          </a>
+        </PageHero>
 
         <section className="relative z-30 -mt-10 px-4 pb-20 max-w-5xl mx-auto">
           <motion.div

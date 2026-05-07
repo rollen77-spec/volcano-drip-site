@@ -2,6 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet';
 import { Leaf, ShieldCheck, MapPin } from 'lucide-react';
+import PageHero from '@/components/PageHero';
+
 const SourcingPage = () => {
   return <>
       <Helmet>
@@ -10,18 +12,16 @@ const SourcingPage = () => {
       </Helmet>
       
       <div className="min-h-screen bg-stone-50">
-        {/* Hero */}
-        <div className="relative h-[60vh] md:h-[80vh] bg-stone-900 overflow-hidden">
-           <div className="absolute inset-0 opacity-80">
-             <img alt="Coffee farmer holding fresh red coffee cherries" className="w-full h-full object-cover" src="https://images.unsplash.com/photo-1670758611084-e216510c5433" />
-           </div>
-           <div className="absolute inset-0 bg-black/40" />
-           <div className="relative h-full flex items-center justify-center">
-             <h1 className="text-5xl md:text-7xl font-bold text-white tracking-tight text-center px-4">
-               Rooted in Respect
-             </h1>
-           </div>
-        </div>
+        <PageHero
+          kicker="Sourcing"
+          title="Rooted in Respect"
+          imageSrc="https://images.unsplash.com/photo-1670758611084-e216510c5433"
+          imageAlt="Coffee farmer holding fresh red coffee cherries"
+          imageWrapperExtraClassName="opacity-90"
+          overlayClassName="pointer-events-none absolute inset-0 z-10 bg-black/50"
+          sectionClassName="min-h-0 md:min-h-0 md:h-[80vh] h-[60vh]"
+          contentMaxWidthClassName="max-w-5xl"
+        />
 
         {/* Introduction */}
         <section className="py-20 px-4 max-w-4xl mx-auto text-center">

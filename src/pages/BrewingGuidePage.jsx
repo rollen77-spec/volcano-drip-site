@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Clock, Droplet, Scale, Thermometer } from 'lucide-react';
+import PageHero from '@/components/PageHero';
 
 /** Same asset as brew-method cards — restores photo hero from earlier Horizons build. */
 const BREWING_HERO_IMG =
@@ -15,27 +16,28 @@ const BrewingGuidePage = () => {
       </Helmet>
       
       <div className="min-h-screen bg-stone-50">
-        <div className="relative flex min-h-[280px] items-center justify-center overflow-hidden bg-stone-900 py-20 text-center text-white md:min-h-[360px]">
-          <div className="absolute inset-0 z-0 opacity-55">
-            <img
-              alt="Coffee brewing — rich pour and aromatic cup"
-              className="h-full w-full object-cover object-center"
-              src={BREWING_HERO_IMG}
-              width={1920}
-              height={1080}
-              fetchPriority="high"
-              decoding="async"
-            />
-          </div>
-          <div className="absolute inset-0 z-10 bg-gradient-to-t from-stone-900 via-stone-900/55 to-stone-900/35" />
-          <div className="relative z-20 max-w-4xl px-4">
-            <h1 className="mb-4 text-4xl font-bold md:text-5xl">Master the Eruption</h1>
-            <p className="mx-auto max-w-xl text-lg text-stone-200">
-              Volcanic beans are dense and complex. Brewing them requires patience and precision to unlock the
-              full spectrum of flavor.
-            </p>
-          </div>
-        </div>
+        <PageHero
+          kicker="Brewing"
+          title={
+            <>
+              MASTER THE
+              <br />
+              ERUPTION.
+            </>
+          }
+          imageSrc={BREWING_HERO_IMG}
+          imageAlt="Coffee brewing — rich pour and aromatic cup"
+          fetchPriority="high"
+          decoding="async"
+          imageWrapperExtraClassName="opacity-[0.55]"
+          overlayClassName="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-stone-900 via-stone-900/55 to-stone-900/35"
+          sectionClassName="min-h-[280px] py-14 md:min-h-[360px]"
+        >
+          <p className="mx-auto max-w-xl text-lg leading-relaxed text-stone-200 md:text-xl">
+            Volcanic beans are dense and complex. Brewing them requires patience and precision to unlock the
+            full spectrum of flavor.
+          </p>
+        </PageHero>
 
         <div className="mx-auto max-w-4xl px-4 py-16">
           
