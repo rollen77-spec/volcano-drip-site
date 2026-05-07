@@ -79,9 +79,9 @@ const EventsPage = () => {
           kicker="Events"
           title={
             <>
-              WHERE VOLCANO DRIP
+              BORN OF FIRE.
               <br />
-              COMES TO LIFE.
+              DRIVEN BY PURPOSE.
             </>
           }
           imageSrc="/events/images/event-10-truck-event-wide.png"
@@ -89,20 +89,20 @@ const EventsPage = () => {
           fetchPriority="high"
           imageWrapperExtraClassName="opacity-100"
           overlayClassName="pointer-events-none absolute inset-0 z-10 bg-black/60"
-          sectionClassName="h-[60vh] min-h-[24rem]"
+          sectionClassName="h-[min(40vh,380px)] min-h-[220px] py-10 md:h-[min(44vh,440px)] md:min-h-[260px] md:py-12"
           contentMaxWidthClassName="max-w-4xl"
-        >
-          <p className="mx-auto max-w-2xl text-base leading-relaxed text-stone-200 md:text-lg">
-            Born of fire. Driven by purpose.
-            <br />
-            We support youth, communities, and those facing homelessness—along with women&apos;s shelters,
-            Indigenous initiatives and reconciliation, and causes focused on mental health, food access, and
-            sustainability.
-          </p>
-        </PageHero>
+          titleClassName="text-4xl md:text-6xl lg:text-7xl"
+        />
 
-        <section className="border-b border-stone-200 bg-white py-14">
-          <div className="mx-auto grid max-w-6xl gap-8 px-4 lg:grid-cols-[1.3fr_1fr] lg:items-start">
+        <section className="border-b border-stone-200 bg-white">
+          <div className="mx-auto max-w-3xl px-4 pb-10 pt-12 text-center md:pb-12 md:pt-14">
+            <p className="text-lg leading-relaxed text-stone-600 md:text-xl">
+              We support youth, communities, and those facing homelessness—along with women&apos;s shelters,
+              Indigenous initiatives and reconciliation, and causes focused on mental health, food access, and
+              sustainability.
+            </p>
+          </div>
+          <div className="mx-auto grid max-w-6xl gap-8 px-4 pb-14 lg:grid-cols-[1.3fr_1fr] lg:items-start">
             <motion.div
               initial={{ opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}

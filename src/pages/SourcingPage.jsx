@@ -14,7 +14,13 @@ const SourcingPage = () => {
       <div className="min-h-screen bg-stone-50">
         <PageHero
           kicker="Sourcing"
-          title="Rooted in Respect"
+          title={
+            <>
+              ROOTED IN
+              <br />
+              RESPECT.
+            </>
+          }
           imageSrc="https://images.unsplash.com/photo-1670758611084-e216510c5433"
           imageAlt="Coffee farmer holding fresh red coffee cherries"
           imageWrapperExtraClassName="opacity-90"
