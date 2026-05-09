@@ -21,7 +21,7 @@ function formatPostDate(iso) {
 const BlogIndexPage = () => {
   const posts = getAllBlogPosts();
   const siteUrl = getSiteUrl();
-  const headerImageAbsolute = siteUrl ? `${siteUrl}/blog/blog-header-hero.png` : '';
+  const headerImageAbsolute = siteUrl ? `${siteUrl}/blog/blog-index-hero.png` : '';
 
   return (
       <div className="min-h-screen bg-stone-50 flex flex-col">
@@ -38,7 +38,6 @@ const BlogIndexPage = () => {
 
         <PageHero
           size="custom"
-          sectionClassName="border-b border-stone-800"
           kicker="From the roastery"
           title={
             <>
@@ -47,14 +46,14 @@ const BlogIndexPage = () => {
               BREWING NOTES.
             </>
           }
-          imageSrc="/blog/blog-header-hero.png"
-          imageAlt="Volcano Drip blog"
+          imageSrc="/blog/blog-index-hero.png"
+          imageAlt="Volcano Drip blog — latte art and roastery stories"
           fetchPriority="high"
           decoding="async"
-          imageWrapperExtraClassName="opacity-75"
-          imageClassName="h-full w-full object-cover object-top"
-          overlayClassName="pointer-events-none absolute inset-0 z-10 bg-black/55"
-          sectionClassName="border-b border-stone-800 py-12 md:py-16 min-h-[min(22rem,42vh)] md:min-h-[min(28rem,52vh)]"
+          imageWrapperExtraClassName="opacity-90"
+          imageClassName="h-full w-full object-cover object-center"
+          overlayClassName="pointer-events-none absolute inset-0 z-10 bg-black/50"
+          sectionClassName="border-b border-stone-800 min-h-0 w-full py-10 md:py-14 h-[clamp(15rem,36vw,26rem)] md:h-[clamp(17rem,32vw,30rem)]"
         >
           <p className="mx-auto max-w-xl text-lg leading-relaxed text-stone-200">
             Updates on sourcing, roasting, and brewing—plus practical tips for your daily cup.
