@@ -7,6 +7,7 @@ import { ArrowLeft } from 'lucide-react';
 import { getBlogPostBySlug } from '@/content/blog/loadPosts';
 import { getSiteUrl } from '@/config/site';
 import PageHero from '@/components/PageHero';
+import { cn } from '@/lib/utils';
 
 function formatPostDate(iso) {
   if (!iso) return '';
@@ -60,21 +61,34 @@ const BlogPostPage = () => {
     );
   }
 
+  const defaultHeroImage = '/blog/blog-header-hero.png';
+  const heroImageSrc = post.heroImage?.trim() || defaultHeroImage;
+  const useBannerHero = Boolean(post.heroImage?.trim());
+
   return (
     <div className="min-h-screen bg-stone-50">
       <Helmet>
         <title>{post.title} | Volcano Drip</title>
         <meta name="description" content={post.excerpt || post.title} />
         {canonical ? <link rel="canonical" href={canonical} /> : null}
+        {post.heroImage?.trim() && siteUrl ? (
+          <meta property="og:image" content={`${siteUrl}${post.heroImage.trim()}`} />
+        ) : null}
         {jsonLd ? <script type="application/ld+json">{jsonLd}</script> : null}
       </Helmet>
 
       <PageHero
-        size="compact"
+        size={useBannerHero ? 'custom' : 'compact'}
+        sectionClassName={cn(
+          useBannerHero &&
+            'min-h-0 w-full py-8 md:py-10 h-[clamp(14rem,34vw,26rem)] md:h-[clamp(16rem,30vw,30rem)]',
+        )}
         kicker={post.date ? formatPostDate(post.date) : 'Blog'}
         title={post.title}
-        imageSrc="/blog/blog-header-hero.png"
-        imageAlt=""
+        imageSrc={heroImageSrc}
+        imageAlt={post.heroImageAlt || ''}
+        imageClassName="h-full w-full object-cover object-center"
+        imageWrapperExtraClassName={useBannerHero ? 'opacity-95' : undefined}
         overlayClassName="pointer-events-none absolute inset-0 z-10 bg-black/60"
         titleClassName="text-4xl normal-case tracking-tight md:text-6xl md:leading-[1.05]"
         kickerClassName="normal-case tracking-wider text-amber-400/95"

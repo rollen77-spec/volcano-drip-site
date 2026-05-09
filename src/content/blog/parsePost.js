@@ -30,6 +30,8 @@ export function parsePostFile(raw, slug) {
       date: '',
       excerpt: '',
       youtubeId: '',
+      heroImage: '',
+      heroImageAlt: '',
       body: text,
     };
   }
@@ -42,6 +44,8 @@ export function parsePostFile(raw, slug) {
       date: '',
       excerpt: '',
       youtubeId: '',
+      heroImage: '',
+      heroImageAlt: '',
       body: text,
     };
   }
@@ -68,6 +72,8 @@ export function parsePostFile(raw, slug) {
     date: meta.date || '',
     excerpt: meta.excerpt || '',
     youtubeId: normalizeYoutubeEmbedId(meta.youtube_id || ''),
+    heroImage: (meta.hero_image || '').trim(),
+    heroImageAlt: (meta.hero_image_alt || '').trim(),
     body,
   };
 }

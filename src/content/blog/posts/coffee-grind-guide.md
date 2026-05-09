@@ -4,6 +4,8 @@ date: 2026-05-07
 excerpt: Whole bean, French press, pour over, espresso, Turkish — which coffee grind is right for you? A complete guide to every grind size and the brew method it serves.
 category: Brewing Guides
 keywords: coffee grind guide, which coffee grind should I use, coffee grind sizes, best grind for French press, whole bean vs ground coffee, coffee grind chart, made to order coffee
+hero_image: /blog/coffee-grind-guide-banner.png
+hero_image_alt: Volcano Drip logo with spoons of whole bean, coarse, and fine grind coffee on marble
 ---
 
 Here is a fact most coffee drinkers do not know: **the grind is often more important than the bean.** You can start with exceptional single-origin coffee — grown in volcanic soil, roasted with care, shipped fresh — and ruin it entirely with the wrong grind size. Over-extract with a grind that is too fine and you get bitterness. Under-extract with one that is too coarse and you get sour, weak, flat coffee.
