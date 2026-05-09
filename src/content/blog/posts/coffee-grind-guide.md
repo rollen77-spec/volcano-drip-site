@@ -10,6 +10,8 @@ Here is a fact most coffee drinkers do not know: **the grind is often more impor
 
 At Volcano Drip, we roast every order to order — which means you also choose your grind. Here is everything you need to know to make the right call. (You can also jump straight to our [Grind Options page](/brewing/grind-options) if you already know your brew method.)
 
+![Volcano Drip espresso prep with portafilters and fresh beans](/blog/coffee-grind-guide-featured.png)
+
 ![Volcano Drip Coffee Grind Size Guide infographic — coarse to extra fine paired with brew methods](/blog/coffee-grind-guide-infographic.png)
 
 ## Why grind size matters so much
