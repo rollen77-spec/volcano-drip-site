@@ -228,6 +228,7 @@ const MasonryCard = ({ item, index, onOpen }) => {
       <button
         type="button"
         onClick={() => onOpen(item)}
+        aria-label={`View full size: ${item.title}${item.desc ? `. ${item.desc}` : ''}`}
         className="group block w-full overflow-hidden rounded-2xl border border-stone-200 bg-white text-left shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg"
       >
         <div className={`relative w-full ${sizeClass}`}>
@@ -236,11 +237,6 @@ const MasonryCard = ({ item, index, onOpen }) => {
             className="absolute inset-0 h-full w-full"
             showVideoBadge={item.type === 'video'}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-          <div className="absolute inset-x-0 bottom-0 p-3 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-            <p className="text-xs font-semibold text-white line-clamp-1">{item.title}</p>
-            <p className="text-[11px] text-white/80 line-clamp-1">{item.desc}</p>
-          </div>
         </div>
       </button>
     </motion.article>

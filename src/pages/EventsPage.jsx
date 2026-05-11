@@ -4,12 +4,7 @@ import { Helmet } from 'react-helmet';
 import { Calendar, MapPin, HeartHandshake } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { upcomingAppearances } from '@/data/appearances';
-import {
-  communityEventHighlights,
-  eventGalleryImages,
-  eventGalleryVideos,
-  VIDEO_TILE_POSTERS,
-} from '@/data/eventsMedia';
+import { eventGalleryImages, eventGalleryVideos, VIDEO_TILE_POSTERS } from '@/data/eventsMedia';
 import InteractiveBentoGallery from '@/components/ui/interactive-bento-gallery';
 import PageHero from '@/components/PageHero';
 
@@ -177,39 +172,6 @@ const EventsPage = () => {
                 ))}
               </div>
             </motion.div>
-          </div>
-        </section>
-
-        <section className="border-b border-stone-200 bg-stone-100 py-12 md:py-16">
-          <div className="mx-auto max-w-6xl px-4">
-            <div className="mb-10 text-center">
-              <h2 className="text-2xl font-bold text-stone-900 md:text-3xl">Community snapshots</h2>
-              <p className="mx-auto mt-2 max-w-2xl text-stone-600 md:text-lg">
-                Recent festival and outdoor moments — tastings, partnerships, and our mobile setups.
-              </p>
-            </div>
-            <div className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-5">
-              {communityEventHighlights.map((photo) => (
-                <figure
-                  key={photo.url}
-                  className="overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm"
-                >
-                  <img
-                    src={photo.url}
-                    alt={photo.title}
-                    width={800}
-                    height={1000}
-                    loading="lazy"
-                    decoding="async"
-                    className="aspect-[4/5] w-full object-cover"
-                  />
-                  <figcaption className="border-t border-stone-100 p-3 text-left">
-                    <p className="text-sm font-semibold text-stone-900">{photo.title}</p>
-                    <p className="mt-1 text-xs leading-snug text-stone-600">{photo.desc}</p>
-                  </figcaption>
-                </figure>
-              ))}
-            </div>
           </div>
         </section>
 
