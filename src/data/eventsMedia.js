@@ -14,6 +14,57 @@ export const VIDEO_TILE_POSTERS = [
   '/events/images/video-placeholder-logo-blue-transparent.png',
 ];
 
+/**
+ * Shown above the interactive gallery — easy to scan (not mixed into shuffle layout).
+ */
+export const communityEventHighlights = [
+  {
+    title: 'Outdoor tasting — Sumatra Black',
+    desc: 'Guest with Sumatra Black and a cup at a park festival.',
+    url: '/events/images/event-outdoor-sumatra-guest.png',
+  },
+  {
+    title: 'Antigua Ember — Guatemala',
+    desc: 'Community event with Antigua Ember bags.',
+    url: '/events/images/event-antigua-ember-two-guests.png',
+  },
+  {
+    title: 'Samples on the field',
+    desc: 'Pouring samples with partners at an outdoor gathering.',
+    url: '/events/images/event-bmo-sumatra-sample-cup.png',
+  },
+  {
+    title: 'Coffee samples tray',
+    desc: 'Serving Volcano Drip samples from the tray at a park event.',
+    url: '/events/images/event-sample-tray-park.png',
+  },
+  {
+    title: 'Pop-up booth team',
+    desc: 'Team at the Volcano Drip tent — free samples and spin-to-win.',
+    url: '/events/images/event-booth-team-volcano-drip.png',
+  },
+  {
+    title: 'Sumatra Black at the booth',
+    desc: 'Guest sharing Sumatra Black from Indonesia.',
+    url: '/events/images/event-sumatra-guest-harvard-cap.png',
+  },
+  {
+    title: 'Community partnership event',
+    desc: 'Volcano Drip with Kids Help Phone at a festival.',
+    url: '/events/images/event-sumatra-kids-help-phone.png',
+  },
+  {
+    title: 'Piaggio mobile cafe',
+    desc: 'Branded truck — weddings and events rental.',
+    url: '/events/images/event-piaggio-mobile-rental.png',
+  },
+  {
+    title: 'Piaggio setup — bean sacks',
+    desc: 'Mobile display with Volcano Drip burlap sacks.',
+    url: '/events/images/event-piaggio-burlap-sacks.png',
+  },
+];
+
 export const eventGalleryImages = [
   {
     title: 'Event Photo 1',
@@ -104,51 +155,6 @@ export const eventGalleryImages = [
     title: 'Event Photo 18',
     desc: 'Recently added event photo.',
     url: '/events/images/IMG_6793.jpeg',
-  },
-  {
-    title: 'Outdoor tasting — Sumatra Black',
-    desc: 'Guest with Sumatra Black and a cup at a park festival.',
-    url: '/events/images/event-outdoor-sumatra-guest.png',
-  },
-  {
-    title: 'Antigua Ember — Guatemala',
-    desc: 'Community event with Antigua Ember bags.',
-    url: '/events/images/event-antigua-ember-two-guests.png',
-  },
-  {
-    title: 'Samples on the field',
-    desc: 'Pouring samples with partners at an outdoor gathering.',
-    url: '/events/images/event-bmo-sumatra-sample-cup.png',
-  },
-  {
-    title: 'Coffee samples tray',
-    desc: 'Serving Volcano Drip samples from the tray at a park event.',
-    url: '/events/images/event-sample-tray-park.png',
-  },
-  {
-    title: 'Pop-up booth team',
-    desc: 'Team at the Volcano Drip tent — free samples and spin-to-win.',
-    url: '/events/images/event-booth-team-volcano-drip.png',
-  },
-  {
-    title: 'Sumatra Black at the booth',
-    desc: 'Guest sharing Sumatra Black from Indonesia.',
-    url: '/events/images/event-sumatra-guest-harvard-cap.png',
-  },
-  {
-    title: 'Community partnership event',
-    desc: 'Volcano Drip with Kids Help Phone at a festival.',
-    url: '/events/images/event-sumatra-kids-help-phone.png',
-  },
-  {
-    title: 'Piaggio mobile cafe',
-    desc: 'Branded truck — weddings and events rental.',
-    url: '/events/images/event-piaggio-mobile-rental.png',
-  },
-  {
-    title: 'Piaggio setup — bean sacks',
-    desc: 'Mobile display with Volcano Drip burlap sacks.',
-    url: '/events/images/event-piaggio-burlap-sacks.png',
   },
 ];
 

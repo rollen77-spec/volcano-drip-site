@@ -296,14 +296,22 @@ const InteractiveBentoGallery = ({ mediaItems, title, description }) => {
     const startWithVideo = (seedBase & 1) === 0;
     let takeVideo = startWithVideo;
 
+    // Interleave deterministically without “empty” turns — always drains whichever side still has media.
     while (vi < videosShuffled.length || ii < imagesShuffled.length) {
       if (takeVideo) {
-        if (vi < videosShuffled.length) out.push(videosShuffled[vi++]);
-        takeVideo = false;
+        if (vi < videosShuffled.length) {
+          out.push(videosShuffled[vi++]);
+        } else if (ii < imagesShuffled.length) {
+          out.push(imagesShuffled[ii++]);
+        }
       } else {
-        if (ii < imagesShuffled.length) out.push(imagesShuffled[ii++]);
-        takeVideo = true;
+        if (ii < imagesShuffled.length) {
+          out.push(imagesShuffled[ii++]);
+        } else if (vi < videosShuffled.length) {
+          out.push(videosShuffled[vi++]);
+        }
       }
+      takeVideo = !takeVideo;
     }
 
     return out;
