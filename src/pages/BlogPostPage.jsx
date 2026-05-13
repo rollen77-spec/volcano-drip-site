@@ -33,6 +33,9 @@ const BlogPostPage = () => {
           headline: post.title,
           description: post.excerpt || post.title,
           datePublished: post.date || undefined,
+          ...(post.ogImage || post.heroImage
+            ? { image: `${siteUrl}${(post.ogImage || post.heroImage).trim()}` }
+            : {}),
           author: { '@type': 'Organization', name: 'Volcano Drip' },
           publisher: { '@type': 'Organization', name: 'Volcano Drip' },
           mainEntityOfPage: { '@type': 'WebPage', '@id': canonical },
@@ -71,8 +74,11 @@ const BlogPostPage = () => {
         <title>{post.title} | Volcano Drip</title>
         <meta name="description" content={post.excerpt || post.title} />
         {canonical ? <link rel="canonical" href={canonical} /> : null}
-        {post.heroImage?.trim() && siteUrl ? (
-          <meta property="og:image" content={`${siteUrl}${post.heroImage.trim()}`} />
+        {(post.ogImage || post.heroImage)?.trim() && siteUrl ? (
+          <meta
+            property="og:image"
+            content={`${siteUrl}${(post.ogImage || post.heroImage).trim()}`}
+          />
         ) : null}
         {jsonLd ? <script type="application/ld+json">{jsonLd}</script> : null}
       </Helmet>
@@ -140,16 +146,26 @@ const BlogPostPage = () => {
                     </a>
                   );
                 },
-                img: ({ src, alt, ...props }) => (
-                  <img
-                    {...props}
-                    src={src}
-                    alt={alt || ''}
-                    loading="lazy"
-                    decoding="async"
-                    className="my-8 w-full max-h-[28rem] rounded-xl border border-stone-200 bg-stone-100 object-cover shadow-sm"
-                  />
-                ),
+                img: ({ src, alt, ...props }) => {
+                  const a = String(alt || '');
+                  const s = String(src || '');
+                  const wideGraphic = /infographic|timeline/i.test(a) || /infographic|timeline/i.test(s);
+                  return (
+                    <img
+                      {...props}
+                      src={src}
+                      alt={alt || ''}
+                      loading="lazy"
+                      decoding="async"
+                      className={cn(
+                        'my-8 w-full rounded-xl border border-stone-200 bg-stone-100 shadow-sm',
+                        wideGraphic
+                          ? 'max-h-[min(32rem,90vh)] object-contain object-left md:object-center'
+                          : 'max-h-[28rem] object-cover',
+                      )}
+                    />
+                  );
+                },
               }}
             >
               {post.body}

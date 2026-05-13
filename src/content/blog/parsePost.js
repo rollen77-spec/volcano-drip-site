@@ -5,6 +5,8 @@
  * title: My title
  * date: 2026-02-10
  * excerpt: One line summary
+ * hero_image: optional banner path under /public
+ * og_image: optional share image (Open Graph) when hero_image is not set or differs from in-article art
  * ---
  */
 
@@ -32,6 +34,7 @@ export function parsePostFile(raw, slug) {
       youtubeId: '',
       heroImage: '',
       heroImageAlt: '',
+      ogImage: '',
       body: text,
     };
   }
@@ -46,6 +49,7 @@ export function parsePostFile(raw, slug) {
       youtubeId: '',
       heroImage: '',
       heroImageAlt: '',
+      ogImage: '',
       body: text,
     };
   }
@@ -74,6 +78,8 @@ export function parsePostFile(raw, slug) {
     youtubeId: normalizeYoutubeEmbedId(meta.youtube_id || ''),
     heroImage: (meta.hero_image || '').trim(),
     heroImageAlt: (meta.hero_image_alt || '').trim(),
+    /** Optional Open Graph image when hero_image is unset or different from in-article art. */
+    ogImage: (meta.og_image || '').trim(),
     body,
   };
 }
