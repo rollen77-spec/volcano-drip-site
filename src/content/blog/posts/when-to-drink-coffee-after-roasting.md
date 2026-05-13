@@ -4,7 +4,7 @@ date: 2026-05-10
 excerpt: Brew coffee too soon after roasting and you'll ruin it. Here's the science of degassing, channeling, and the peak flavour window—from Volcano Drip's head roaster.
 category: Coffee Science
 keywords: when to drink coffee after roasting, coffee degassing, coffee rest period, fresh roasted coffee, coffee freshness window, coffee channeling, roasted on date
-og_image: /blog/coffee-freshness-timeline-infographic.png
+og_image: /blog/coffee-freshness-timeline.svg
 ---
 
 Here's something most coffee drinkers get completely wrong: freshly roasted coffee is not always ready to brew. Buy a bag roasted this morning, brew it the moment you get home, and you'll likely end up with a sharp, sour, oddly hollow cup — one that doesn't represent the bean at all.
@@ -17,7 +17,7 @@ We covered this in depth on [The Daily Grind podcast](/podcast#episode-coffee-fr
 > Host Leo sits down with Bill, head roaster at Volcano Drip, to break down degassing, rest, and flavour.  
 > [Listen now on The Daily Grind →](/podcast#episode-coffee-freshness-demystified)
 
-![Coffee freshness timeline infographic — from roast date to peak flavour, degassing through staling](/blog/coffee-freshness-timeline-infographic.png)
+![Coffee freshness timeline infographic — from roast date to peak flavour, degassing through staling](/blog/coffee-freshness-timeline.svg)
 
 ## Why you shouldn't brew coffee immediately after roasting
 

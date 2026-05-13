@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 780" width="1280" height="780" role="img" aria-labelledby="ttl sub">
+  <title id="ttl">Coffee Freshness Timeline</title>
+  <desc id="sub">From roast date to your cup &#8212; when coffee tastes its best, from degassing through staling.</desc>
+  <defs>
+    <linearGradient id="bgwash" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3d2818"/>
+      <stop offset="1" stop-color="#1a0f0a"/>
+    </linearGradient>
+    <style type="text/css"><![CDATA[
+      .t { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+      .title { font-size: 36px; font-weight: 800; letter-spacing: 0.04em; fill: #faf6f0; }
+      .sub { font-size: 16px; font-weight: 500; fill: #d4c4b0; }
+      .barlab { font-size: 13px; font-weight: 700; }
+      .bardays { font-size: 11px; font-weight: 600; }
+      .ct { font-size: 14px; font-weight: 800; letter-spacing: 0.06em; fill: #faf6f0; }
+      .cd { font-size: 11px; font-weight: 600; fill: #c4a882; }
+      .cb { font-size: 12px; font-weight: 450; fill: #e8ddd0; }
+      .foot { font-size: 11px; font-weight: 600; fill: #9a8a78; letter-spacing: 0.02em; }
+    ]]></style>
+  </defs>
+  <rect width="100%" height="100%" fill="#24150e"/>
+  <rect width="100%" height="100%" fill="url(#bgwash)" opacity="0.4"/>
+
+  <text class="t title" x="640" y="52" text-anchor="middle">COFFEE FRESHNESS TIMELINE</text>
+  <text class="t sub" x="640" y="82" text-anchor="middle">From roast date to your cup &#8212; understanding when coffee tastes its best.</text>
+
+  <g transform="translate(48,102)">
+    <text class="t bardays" x="0" y="-6" fill="#c4a882">ROAST DATE (Day 0)</text>
+    <rect x="0" y="4" width="1184" height="44" rx="6" fill="#1a100c"/>
+    <rect x="4" y="8" width="108" height="36" rx="4" fill="#c9783a"/>
+    <rect x="116" y="8" width="268" height="36" rx="4" fill="#2f8f5a"/>
+    <rect x="388" y="8" width="288" height="36" rx="4" fill="#5cb87e"/>
+    <rect x="680" y="8" width="360" height="36" rx="4" fill="#e0a545"/>
+    <rect x="1044" y="8" width="136" height="36" rx="4" fill="#a84a3a"/>
+    <text class="t barlab" x="58" y="32" text-anchor="middle" fill="#2a1810">Degassing</text>
+    <text class="t bardays" x="58" y="46" text-anchor="middle" fill="#3d2418">Days 1&#8211;2</text>
+    <text class="t barlab" x="250" y="32" text-anchor="middle" fill="#f0fff5">Peak Freshness</text>
+    <text class="t bardays" x="250" y="46" text-anchor="middle" fill="#d8f5e5">Days 3&#8211;14</text>
+    <text class="t barlab" x="532" y="32" text-anchor="middle" fill="#0d2818">Still Great</text>
+    <text class="t bardays" x="532" y="46" text-anchor="middle" fill="#143d24">Days 15&#8211;28</text>
+    <text class="t barlab" x="860" y="32" text-anchor="middle" fill="#3d2918">Fading</text>
+    <text class="t bardays" x="860" y="46" text-anchor="middle" fill="#4a3520">Days 29&#8211;60</text>
+    <text class="t barlab" x="1112" y="32" text-anchor="middle" fill="#fff5f0">Going Stale</text>
+    <text class="t bardays" x="1112" y="46" text-anchor="middle" fill="#ffe8e0">60+ Days</text>
+  </g>
+
+  <g transform="translate(36,188)">
+    <g>
+      <rect width="232" height="520" rx="10" fill="#2e1c14" stroke="#c9783a" stroke-width="2"/>
+      <rect width="232" height="5" rx="2" fill="#c9783a"/>
+      <rect x="96" y="28" width="40" height="40" rx="4" fill="none" stroke="#e8b878" stroke-width="2.5"/>
+      <text class="t ct" x="116" y="104" text-anchor="middle">JUST ROASTED</text>
+      <text class="t cd" x="116" y="128" text-anchor="middle">Days 1&#8211;2</text>
+      <text class="t cb" x="18" y="158">
+        <tspan x="18" dy="0">CO&#8322; is actively degassing</tspan>
+        <tspan x="18" dy="18">from the bean. Brewing too</tspan>
+        <tspan x="18" dy="18">soon = flat, under-extracted</tspan>
+        <tspan x="18" dy="18">coffee. Let it rest.</tspan>
+      </text>
+    </g>
+    <g transform="translate(248,0)">
+      <rect width="232" height="520" rx="10" fill="#2e1c14" stroke="#3d8f5f" stroke-width="2"/>
+      <rect width="232" height="5" rx="2" fill="#3d8f5f"/>
+      <polygon transform="translate(96,28)" fill="#a8e6c0" points="20,2 24,16 38,16 28,24 32,38 20,30 8,38 12,24 2,16 16,16"/>
+      <text class="t ct" x="116" y="104" text-anchor="middle">SWEET SPOT</text>
+      <text class="t cd" x="116" y="128" text-anchor="middle">Days 3&#8211;14</text>
+      <text class="t cb" x="18" y="158">
+        <tspan x="18" dy="0">CO&#8322; has settled. Aromatics</tspan>
+        <tspan x="18" dy="18">are at their peak. This is</tspan>
+        <tspan x="18" dy="18">when your coffee tastes its</tspan>
+        <tspan x="18" dy="18">best. Brew it during this</tspan>
+        <tspan x="18" dy="18">window.</tspan>
+      </text>
+    </g>
+    <g transform="translate(496,0)">
+      <rect width="232" height="520" rx="10" fill="#2e1c14" stroke="#5cb87e" stroke-width="2"/>
+      <rect width="232" height="5" rx="2" fill="#5cb87e"/>
+      <circle cx="116" cy="48" r="18" fill="none" stroke="#b8f0d0" stroke-width="2.5"/>
+      <circle cx="116" cy="48" r="5" fill="#b8f0d0"/>
+      <text class="t ct" x="116" y="104" text-anchor="middle">STILL GOOD</text>
+      <text class="t cd" x="116" y="128" text-anchor="middle">Days 15&#8211;28</text>
+      <text class="t cb" x="18" y="158">
+        <tspan x="18" dy="0">Flavour is full but brightness</tspan>
+        <tspan x="18" dy="18">starts to soften. Still an</tspan>
+        <tspan x="18" dy="18">excellent cup. Store in an</tspan>
+        <tspan x="18" dy="18">airtight container away from</tspan>
+        <tspan x="18" dy="18">light.</tspan>
+      </text>
+    </g>
+    <g transform="translate(744,0)">
+      <rect width="232" height="520" rx="10" fill="#2e1c14" stroke="#e0a545" stroke-width="2"/>
+      <rect width="232" height="5" rx="2" fill="#e0a545"/>
+      <path fill="#f5d78a" d="M116 30 L134 62 L98 62 Z"/>
+      <text class="t ct" x="116" y="104" text-anchor="middle">FADING</text>
+      <text class="t cd" x="116" y="128" text-anchor="middle">Days 29&#8211;60</text>
+      <text class="t cb" x="18" y="158">
+        <tspan x="18" dy="0">Oxidation sets in. Delicate</tspan>
+        <tspan x="18" dy="18">top notes begin to fade.</tspan>
+        <tspan x="18" dy="18">Drinkable but noticeably less</tspan>
+        <tspan x="18" dy="18">complex. Great for espresso</tspan>
+        <tspan x="18" dy="18">or milk drinks.</tspan>
+      </text>
+    </g>
+    <g transform="translate(992,0)">
+      <rect width="232" height="520" rx="10" fill="#2e1c14" stroke="#a84a3a" stroke-width="2"/>
+      <rect width="232" height="5" rx="2" fill="#a84a3a"/>
+      <path stroke="#f0a090" stroke-width="3.5" stroke-linecap="round" d="M98 34 L134 62 M134 34 L98 62"/>
+      <text class="t ct" x="116" y="104" text-anchor="middle">STALE</text>
+      <text class="t cd" x="116" y="128" text-anchor="middle">60+ Days</text>
+      <text class="t cb" x="18" y="158">
+        <tspan x="18" dy="0">Oils oxidised. Flavour is flat</tspan>
+        <tspan x="18" dy="18">and papery. Time to reorder.</tspan>
+        <tspan x="18" dy="18">Fresh-roasted beans make all</tspan>
+        <tspan x="18" dy="18">the difference.</tspan>
+      </text>
+    </g>
+  </g>
+
+  <text class="t foot" x="640" y="758" text-anchor="middle">volcanodrip.com &#8212; roasted to order, shipped fresh</text>
+</svg>
