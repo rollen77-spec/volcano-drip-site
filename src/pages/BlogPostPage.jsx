@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link, useParams } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import { motion } from 'framer-motion';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, X } from 'lucide-react';
 import { getBlogPostBySlug } from '@/content/blog/loadPosts';
 import { getSiteUrl } from '@/config/site';
 import PageHero from '@/components/PageHero';
@@ -18,6 +18,100 @@ function formatPostDate(iso) {
     month: 'long',
     day: 'numeric',
   });
+}
+
+/** Timeline / infographic images: larger inline preview + tap or click to open full-screen lightbox. */
+function BlogEnlargeableImage({ src, alt, wideGraphic, ...rest }) {
+  const [open, setOpen] = useState(false);
+  const close = useCallback(() => setOpen(false), []);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = e => {
+      if (e.key === 'Escape') close();
+    };
+    document.addEventListener('keydown', onKey);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [open, close]);
+
+  const label = alt || 'Diagram';
+
+  const standardImgClass =
+    'my-8 w-full max-h-[28rem] rounded-xl border border-stone-200 bg-stone-100 object-cover shadow-sm';
+
+  const wideInlineImgClass =
+    'my-0 w-full max-h-[min(82vh,52rem)] cursor-zoom-in rounded-lg border border-stone-300 bg-stone-200 object-contain object-center shadow-sm ring-1 ring-stone-200/90 transition group-hover:border-amber-300/70 group-hover:ring-amber-200/50';
+
+  if (!wideGraphic) {
+    return (
+      <img
+        {...rest}
+        src={src}
+        alt={label}
+        loading="lazy"
+        decoding="async"
+        className={standardImgClass}
+      />
+    );
+  }
+
+  return (
+    <>
+      <span className="not-prose relative left-1/2 z-0 my-8 block w-[min(calc(100vw-2rem),72rem)] max-w-none -translate-x-1/2">
+        <button
+          type="button"
+          onClick={() => setOpen(true)}
+          className="group block w-full rounded-2xl border border-dashed border-stone-300/80 bg-stone-100/80 p-2 sm:p-3 text-left shadow-sm transition hover:border-amber-400/50 hover:bg-amber-50/30"
+          aria-label={`Enlarge: ${label}`}
+        >
+          <img
+            {...rest}
+            src={src}
+            alt={label}
+            loading="lazy"
+            decoding="async"
+            className={wideInlineImgClass}
+          />
+          <span className="mt-2 block text-center text-sm font-semibold text-amber-900/90 group-hover:text-amber-800">
+            Click or tap to enlarge
+          </span>
+        </button>
+      </span>
+
+      {open ? (
+        <div
+          className="fixed inset-0 z-[200] flex items-center justify-center bg-black/95 p-3 sm:p-6"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Expanded diagram"
+          onClick={close}
+        >
+          <button
+            type="button"
+            onClick={close}
+            className="absolute right-3 top-3 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-white/15 text-white backdrop-blur-sm transition hover:bg-white/25"
+            aria-label="Close enlarged image"
+          >
+            <X className="h-6 w-6" strokeWidth={2.5} aria-hidden />
+          </button>
+          <img
+            src={src}
+            alt={label}
+            className="max-h-[min(94vh,96vw)] max-w-[min(96vw,120rem)] w-auto object-contain"
+            onClick={e => e.stopPropagation()}
+          />
+          <p className="pointer-events-none absolute bottom-4 left-0 right-0 text-center text-xs text-stone-400">
+            Click outside or press Esc to close
+          </p>
+        </div>
+      ) : null}
+    </>
+  );
 }
 
 const BlogPostPage = () => {
@@ -100,7 +194,7 @@ const BlogPostPage = () => {
         kickerClassName="normal-case tracking-wider text-amber-400/95"
       />
 
-      <article className="max-w-3xl mx-auto px-4 py-12 md:py-16">
+      <article className="mx-auto max-w-3xl overflow-x-hidden px-4 py-12 md:py-16">
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -151,19 +245,7 @@ const BlogPostPage = () => {
                   const s = String(src || '');
                   const wideGraphic = /infographic|timeline/i.test(a) || /infographic|timeline/i.test(s);
                   return (
-                    <img
-                      {...props}
-                      src={src}
-                      alt={alt || ''}
-                      loading="lazy"
-                      decoding="async"
-                      className={cn(
-                        'my-8 w-full rounded-xl border border-stone-200 bg-stone-100 shadow-sm',
-                        wideGraphic
-                          ? 'max-h-[min(32rem,90vh)] object-contain object-left md:object-center'
-                          : 'max-h-[28rem] object-cover',
-                      )}
-                    />
+                    <BlogEnlargeableImage src={src} alt={alt} wideGraphic={wideGraphic} {...props} />
                   );
                 },
               }}
