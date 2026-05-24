@@ -15,11 +15,7 @@ That image is now almost completely obsolete. The coffee event scene has undergo
 
 Toronto is right at the centre of this shift. And what's happening here is a preview of where coffee culture is heading everywhere.
 
-We go deeper on this shift on [The Daily Grind podcast](/podcast#episode-coffee-festivals-new-social-scene) in **Coffee Festivals: The New Social Scene** — Toronto's flagship festivals, day parties, morning raves, and what it means for small roasters. Prefer audio? [Listen to the episode here](/podcast#episode-coffee-festivals-new-social-scene).
-
-> **Listen: Coffee Festivals — The New Social Scene**  
-> Why coffee festivals are the new night out — daytime music, specialty roasters, dog-friendly vibes, and the event boom taking over Toronto and beyond.  
-> [Listen now on The Daily Grind →](/podcast#episode-coffee-festivals-new-social-scene)
+We cover this topic in more detail on our podcast, [*The Daily Grind*](/podcast)—in [*Coffee Festivals: The New Social Scene*](/podcast#episode-coffee-festivals-new-social-scene).
 
 ## From trade show to cultural destination
 
@@ -102,5 +98,3 @@ At Volcano Drip, we source exclusively from volcanic regions — [Guatemala](/or
 The coffee festival scene isn't just a Toronto story. Cities across Canada, the United States, Europe, and beyond are seeing the same shift — daytime events, community markets, and coffee-centred experiences popping up in neighbourhoods and parks every summer. If you're a coffee lover, it's worth searching for events in your own city. You may be surprised what's already happening nearby.
 
 In the meantime, explore our range in the [shop](/shop) — or build a recurring box with the [Volcanic Origins subscription](/subscription) and taste what Toronto's coffee culture has become.
-
-For the full audio take on Toronto's festival scene, [listen to Coffee Festivals: The New Social Scene on The Daily Grind](/podcast#episode-coffee-festivals-new-social-scene).
