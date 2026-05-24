@@ -24,4 +24,12 @@ export const upcomingAppearances = [
     location: 'Toronto, Ontario - Pavilion A',
     highlight: false,
   },
+  {
+    id: 'oakville-pop-up-2026',
+    dateIso: '2026-06-05',
+    dateLabel: 'June 5, 2026 · 11am–5pm',
+    title: 'Oakville Pop-Up',
+    location: 'Downtown Oakville, Ontario',
+    highlight: true,
+  },
 ];
