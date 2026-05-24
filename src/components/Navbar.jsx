@@ -100,11 +100,22 @@ const Navbar = () => {
                 <Menu className="h-6 w-6" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="bg-white w-full sm:w-[350px] border-l border-stone-200 flex flex-col">
-              <div className="flex flex-col gap-8 mt-10 px-2 flex-grow">
+            <SheetContent
+              side="right"
+              className="flex h-full max-h-[100dvh] w-full flex-col overflow-hidden border-l border-stone-200 bg-white p-6 sm:w-[350px]"
+            >
+              <div className="flex min-h-0 flex-1 flex-col gap-8 overflow-y-auto overscroll-y-contain px-2 pb-4 [-webkit-overflow-scrolling:touch]">
                 {/* Mobile Logo */}
-                <Link to="/" onClick={() => window.scrollTo(0, 0)} className="flex items-center transition-transform duration-300 hover:scale-105 self-start">
-                   <img src="https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/79bc2e736d21c7618f2910ac600f1d5e.png" alt="Volcano Drip Coffee Logo" className="h-[120px] w-auto mix-blend-multiply" />
+                <Link
+                  to="/"
+                  onClick={() => window.scrollTo(0, 0)}
+                  className="mt-4 flex shrink-0 items-center self-start transition-transform duration-300 hover:scale-105"
+                >
+                  <img
+                    src="https://horizons-cdn.hostinger.com/a60a47d3-e50a-4efb-b68d-75c5629e9afd/79bc2e736d21c7618f2910ac600f1d5e.png"
+                    alt="Volcano Drip Coffee Logo"
+                    className="h-20 w-auto mix-blend-multiply sm:h-24"
+                  />
                 </Link>
                 
                 <div className="space-y-4">
@@ -133,10 +144,9 @@ const Navbar = () => {
                         </SheetClose>)}
                    </div>
                 </div>
-              </div>
-              
-              {/* Mobile Footer Nav */}
-              <div className="mt-auto pt-8 pb-4 px-2 border-t border-stone-200 flex flex-col gap-3">
+
+                {/* Mobile Footer Nav — inside scroll area so all links are reachable on small screens */}
+                <div className="mt-4 flex flex-col gap-3 border-t border-stone-200 pt-6">
                 <SheetClose asChild>
                   <Link to="/privacy-policy" onClick={() => window.scrollTo(0, 0)} className="text-sm text-stone-500 hover:text-stone-900 font-medium">
                     Privacy Policy
@@ -152,6 +162,7 @@ const Navbar = () => {
                     Cookies & Data Policy
                   </Link>
                 </SheetClose>
+                </div>
               </div>
             </SheetContent>
           </Sheet>
