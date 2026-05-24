@@ -8,7 +8,7 @@ export const PODCAST_NAME = 'The Daily Grind Podcast';
 /**
  * Self-hosted audio: place MP3 files in `public/audio/` (served as `/audio/...`).
  * Optional `.env` overrides if you use different filenames or a CDN URL:
- *   VITE_PODCAST_AUDIO_BREWING, VITE_PODCAST_AUDIO_VOLCANIC, VITE_PODCAST_AUDIO_FRESHNESS
+ *   VITE_PODCAST_AUDIO_BREWING, VITE_PODCAST_AUDIO_VOLCANIC, VITE_PODCAST_AUDIO_FRESHNESS, VITE_PODCAST_AUDIO_FESTIVALS
  * External `listenUrl` is optional (e.g. Wondercraft) — shown as a secondary link when set.
  */
 export const PODCAST_EPISODES = [
@@ -39,5 +39,15 @@ export const PODCAST_EPISODES = [
       import.meta.env.VITE_PODCAST_AUDIO_FRESHNESS?.trim() ||
       '/audio/podcast-coffee-freshness-demystified.mp3',
     listenUrl: import.meta.env.VITE_PODCAST_EPISODE_FRESHNESS_URL ?? '',
+  },
+  {
+    id: 'coffee-festivals-new-social-scene',
+    title: 'Coffee Festivals: The New Social Scene',
+    description:
+      'From Toronto Coffee Festival and The Coffee Party to morning raves — how coffee events became the new way to go out.',
+    audioSrc:
+      import.meta.env.VITE_PODCAST_AUDIO_FESTIVALS?.trim() ||
+      '/audio/podcast-coffee-festivals-new-social-scene.mp3',
+    listenUrl: import.meta.env.VITE_PODCAST_EPISODE_FESTIVALS_URL ?? '',
   },
 ];
