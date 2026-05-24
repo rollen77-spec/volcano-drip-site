@@ -15,7 +15,7 @@ That image is now almost completely obsolete. The coffee event scene has undergo
 
 Toronto is right at the centre of this shift. And what's happening here is a preview of where coffee culture is heading everywhere.
 
-We cover this topic in more detail on our podcast, [*The Daily Grind*](/podcast)—in [*Coffee Festivals: The New Social Scene*](/podcast#episode-coffee-festivals-new-social-scene).
+We cover this topic in more detail on [*The Daily Grind*](/podcast#episode-coffee-festivals-new-social-scene).
 
 ## From trade show to cultural destination
 
