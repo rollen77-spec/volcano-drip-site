@@ -44,7 +44,7 @@ export const PODCAST_EPISODES = [
     id: 'coffee-festivals-new-social-scene',
     title: 'Coffee Festivals: The New Social Scene',
     description:
-      'From Toronto Coffee Festival and The Coffee Party to morning raves — how coffee events became the new way to go out.',
+      'Why Coffee Festivals Are the New Night Out: Daytime music, specialty roasters, dog-friendly vibes — inside the coffee event boom taking over Toronto and beyond.',
     audioSrc:
       import.meta.env.VITE_PODCAST_AUDIO_FESTIVALS?.trim() ||
       '/audio/podcast-coffee-festivals-new-social-scene.mp3',

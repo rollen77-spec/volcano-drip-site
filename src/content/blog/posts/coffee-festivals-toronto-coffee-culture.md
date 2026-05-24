@@ -4,8 +4,9 @@ date: 2026-05-13
 excerpt: From Harbourfront festivals to morning coffee raves, Toronto's event scene is changing what it means to go out. Here's what's happening and why it matters.
 category: Coffee Culture
 keywords: coffee festival Toronto, coffee culture events, Toronto coffee festival, coffee events Canada, specialty coffee community, coffee lifestyle, The Coffee Party Toronto
-hero_image: /events/images/event-booth-team-volcano-drip.png
-hero_image_alt: Volcano Drip team at an outdoor coffee festival booth in Toronto
+hero_image: /blog/coffee-festivals-caffeine-rave-hero.png
+hero_image_alt: Crowd at a caffeine rave-style coffee music festival with neon stage signage and reusable cups raised in the air
+og_image: /blog/coffee-festivals-caffeine-rave-hero.png
 ---
 
 Not long ago, if you said you were going to a coffee event, people pictured a trade floor. Rows of espresso machines. B2B conversations. The kind of thing you attend if you're in the industry, not if you simply love a great cup.
@@ -17,7 +18,7 @@ Toronto is right at the centre of this shift. And what's happening here is a pre
 We go deeper on this shift on [The Daily Grind podcast](/podcast#episode-coffee-festivals-new-social-scene) in **Coffee Festivals: The New Social Scene** — Toronto's flagship festivals, day parties, morning raves, and what it means for small roasters. Prefer audio? [Listen to the episode here](/podcast#episode-coffee-festivals-new-social-scene).
 
 > **Listen: Coffee Festivals — The New Social Scene**  
-> How coffee events became the new way to go out — from trade floors to STACKT day parties and sober morning raves.  
+> Why coffee festivals are the new night out — daytime music, specialty roasters, dog-friendly vibes, and the event boom taking over Toronto and beyond.  
 > [Listen now on The Daily Grind →](/podcast#episode-coffee-festivals-new-social-scene)
 
 ## From trade show to cultural destination
