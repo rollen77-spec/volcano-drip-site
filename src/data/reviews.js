@@ -55,15 +55,49 @@ export const curatedReviews = [
  * @type {Review[]}
  */
 export const googleReviews = [
-  // Example:
-  // {
-  //   id: 'google-2025-01',
-  //   name: 'Alex M.',
-  //   location: 'Google review',
-  //   content: 'Great coffee and fast shipping!',
-  //   rating: 5,
-  //   source: 'google',
-  // },
+  {
+    id: 'google-cheryl-castator',
+    name: 'Cheryl Castator',
+    location: 'Google review',
+    content:
+      "We purchased the Primera Luz blend and absolutely loved it — delicious and perfectly balanced, with a smooth, rich flavour that tastes exceptionally well-crafted. We'll definitely buy more!!",
+    rating: 5,
+    source: 'google',
+  },
+  {
+    id: 'google-anita',
+    name: 'Anita',
+    location: 'Google review',
+    content:
+      "I ordered two bags of Volcano Drip Coffee's Inca Ascent Percolator Medium Roast—one for home and one to keep at work. The online ordering process was simple and smooth, and my coffee arrived quickly. At work, my colleagues really enjoyed the coffee too. Overall, a great experience from start to finish. I'd definitely order again and recommend giving them a try.",
+    rating: 5,
+    source: 'google',
+  },
+  {
+    id: 'google-a-l',
+    name: 'A L',
+    location: 'Google review',
+    content:
+      "Honestly one of the best coffees I've ever had. It is now our staple coffee for the family. Super fresh and rich and bold flavours. Love it!!!",
+    rating: 5,
+    source: 'google',
+  },
+  {
+    id: 'google-eejenee',
+    name: 'eejenee',
+    location: 'Google review',
+    content: 'Best coffee in town!! Would recommend it to all coffee lovers',
+    rating: 5,
+    source: 'google',
+  },
+  {
+    id: 'google-trinity',
+    name: 'Trinity',
+    location: 'Google review',
+    content: 'Delicious coffee! 🙌',
+    rating: 5,
+    source: 'google',
+  },
 ];
 
 export function getAllDisplayReviews() {
