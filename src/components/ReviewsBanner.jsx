@@ -1,10 +1,21 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect, useMemo, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { GOOGLE_MAPS_REVIEWS_URL } from '@/config/googleReviews';
 import { getAllDisplayReviews } from '@/data/reviews';
 import { cn } from '@/lib/utils';
+
+const GROUP_SIZE = 3;
+const ROTATE_MS = 7000;
+
+function chunkReviews(reviews, size) {
+  const groups = [];
+  for (let i = 0; i < reviews.length; i += size) {
+    groups.push(reviews.slice(i, i + size));
+  }
+  return groups;
+}
 
 function ReviewStar({ filled }) {
   return (
@@ -73,10 +84,9 @@ function ReviewAvatar({ review }) {
 function TestimonialCard({ review, index }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: index * 0.08 }}
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: index * 0.06, duration: 0.35 }}
       className="w-full max-w-xs rounded-xl bg-white p-6 shadow-md shadow-stone-200/60"
     >
       <div className="flex items-center gap-3">
@@ -97,6 +107,26 @@ function TestimonialCard({ review, index }) {
 
 export default function ReviewsBanner() {
   const reviews = getAllDisplayReviews();
+  const groups = useMemo(() => chunkReviews(reviews, GROUP_SIZE), [reviews]);
+  const [groupIndex, setGroupIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  const activeGroup = groups[groupIndex] ?? [];
+  const canRotate = groups.length > 1;
+
+  useEffect(() => {
+    setGroupIndex(0);
+  }, [reviews.length]);
+
+  useEffect(() => {
+    if (!canRotate || isPaused) return;
+
+    const timer = window.setInterval(() => {
+      setGroupIndex((current) => (current + 1) % groups.length);
+    }, ROTATE_MS);
+
+    return () => window.clearInterval(timer);
+  }, [canRotate, isPaused, groups.length]);
 
   if (reviews.length === 0) return null;
 
@@ -125,13 +155,59 @@ export default function ReviewsBanner() {
           </p>
         </motion.div>
 
-        <div className="mb-6 mt-16 flex flex-wrap items-stretch justify-center gap-6 md:mt-20">
-          {reviews.map((review, index) => (
-            <TestimonialCard key={review.id} review={review} index={index} />
-          ))}
+        <div
+          className="relative mb-2 mt-16 w-full md:mt-20"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          onFocusCapture={() => setIsPaused(true)}
+          onBlurCapture={() => setIsPaused(false)}
+        >
+          <div
+            className="flex min-h-[280px] flex-wrap items-stretch justify-center gap-6 md:min-h-[300px]"
+            aria-live="polite"
+            aria-atomic="true"
+          >
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={groupIndex}
+                initial={{ opacity: 0, x: 24 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -24 }}
+                transition={{ duration: 0.4 }}
+                className="flex w-full flex-wrap items-stretch justify-center gap-6"
+              >
+                {activeGroup.map((review, index) => (
+                  <TestimonialCard key={review.id} review={review} index={index} />
+                ))}
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {canRotate ? (
+            <div
+              className="mt-8 flex justify-center gap-2"
+              role="tablist"
+              aria-label="Testimonial groups"
+            >
+              {groups.map((_, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  role="tab"
+                  aria-selected={i === groupIndex}
+                  aria-label={`Show reviews group ${i + 1} of ${groups.length}`}
+                  className={cn(
+                    'h-2 rounded-full transition-all',
+                    i === groupIndex ? 'w-8 bg-amber-600' : 'w-2 bg-stone-300 hover:bg-stone-400',
+                  )}
+                  onClick={() => setGroupIndex(i)}
+                />
+              ))}
+            </div>
+          ) : null}
         </div>
 
-        <Button variant="outline" className="border-stone-300 bg-white" asChild>
+        <Button variant="outline" className="mt-4 border-stone-300 bg-white" asChild>
           <a
             href={GOOGLE_MAPS_REVIEWS_URL}
             target="_blank"
