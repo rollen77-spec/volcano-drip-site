@@ -1,28 +1,31 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import {
-  HOME_POPUP_DELAY_MS,
+  getPopupDelayMs,
+  getSubsequentShowChance,
   HOME_PATHS,
-  MAX_POPUP_IMPRESSIONS,
-  OTHER_PAGE_POPUP_DELAY_MS,
-  SUBSEQUENT_PAGE_SHOW_CHANCE,
   isPopupPathEligible,
+  MAX_POPUP_IMPRESSIONS,
 } from '@/config/newsletterPopup';
-import { readNewsletterPopupState } from '@/lib/newsletterPopupStorage';
+import {
+  hasShownOnPage,
+  normalizePopupPath,
+  readNewsletterPopupState,
+} from '@/lib/newsletterPopupStorage';
 
-function shouldSchedulePopup(pathname) {
+function canScheduleForPath(path) {
   const state = readNewsletterPopupState();
   if (state.subscribed || state.impressionCount >= MAX_POPUP_IMPRESSIONS) return false;
-  if (!isPopupPathEligible(pathname)) return false;
-  if (state.pagesShown.includes(pathname)) return false;
+  if (!isPopupPathEligible(path)) return false;
+  if (hasShownOnPage(path)) return false;
 
   if (state.impressionCount === 0) {
-    return HOME_PATHS.has(pathname);
+    return HOME_PATHS.has(path);
   }
 
-  if (HOME_PATHS.has(pathname)) return false;
+  if (HOME_PATHS.has(path)) return false;
 
-  return Math.random() < SUBSEQUENT_PAGE_SHOW_CHANCE;
+  return true;
 }
 
 /**
@@ -31,40 +34,79 @@ function shouldSchedulePopup(pathname) {
  */
 export function useNewsletterPopupTrigger() {
   const { pathname } = useLocation();
+  const path = normalizePopupPath(pathname);
   const [open, setOpen] = useState(false);
   const [messageIndex, setMessageIndex] = useState(0);
-  const firedRef = useRef(false);
+  const timerRef = useRef(null);
+  const pathRef = useRef(path);
 
   const close = useCallback(() => setOpen(false), []);
 
-  useEffect(() => {
-    setOpen(false);
-    firedRef.current = false;
+  const tryOpen = useCallback(() => {
+    const latest = readNewsletterPopupState();
+    if (latest.subscribed || latest.impressionCount >= MAX_POPUP_IMPRESSIONS) return;
+    if (hasShownOnPage(pathRef.current)) return;
 
-    if (!shouldSchedulePopup(pathname)) return undefined;
+    const isFirstHome = latest.impressionCount === 0 && HOME_PATHS.has(pathRef.current);
+    if (latest.impressionCount === 0 && !isFirstHome) return;
+    if (latest.impressionCount > 0 && HOME_PATHS.has(pathRef.current)) return;
+
+    if (latest.impressionCount > 0 && Math.random() >= getSubsequentShowChance()) {
+      return;
+    }
+
+    setMessageIndex(latest.impressionCount);
+    setOpen(true);
+  }, []);
+
+  const schedulePopup = useCallback(() => {
+    if (timerRef.current) {
+      window.clearTimeout(timerRef.current);
+      timerRef.current = null;
+    }
+
+    if (!canScheduleForPath(pathRef.current)) return;
+
+    const state = readNewsletterPopupState();
+    const isFirstHome = state.impressionCount === 0 && HOME_PATHS.has(pathRef.current);
+    const delayMs = getPopupDelayMs(isFirstHome);
+
+    timerRef.current = window.setTimeout(() => {
+      timerRef.current = null;
+      if (document.visibilityState === 'hidden') return;
+      tryOpen();
+    }, delayMs);
+  }, [tryOpen]);
+
+  useEffect(() => {
+    pathRef.current = path;
+
+    if (!canScheduleForPath(path)) {
+      if (timerRef.current) {
+        window.clearTimeout(timerRef.current);
+        timerRef.current = null;
+      }
+      return undefined;
+    }
 
     const state = readNewsletterPopupState();
     setMessageIndex(state.impressionCount);
+    schedulePopup();
 
-    const isFirstHome = state.impressionCount === 0 && HOME_PATHS.has(pathname);
-    const delayMs = isFirstHome ? HOME_POPUP_DELAY_MS : OTHER_PAGE_POPUP_DELAY_MS;
+    const onVisible = () => {
+      if (document.visibilityState !== 'visible') return;
+      schedulePopup();
+    };
+    document.addEventListener('visibilitychange', onVisible);
 
-    const timer = window.setTimeout(() => {
-      if (firedRef.current) return;
+    return () => {
+      if (timerRef.current) {
+        window.clearTimeout(timerRef.current);
+        timerRef.current = null;
+      }
+      document.removeEventListener('visibilitychange', onVisible);
+    };
+  }, [path, schedulePopup]);
 
-      const latest = readNewsletterPopupState();
-      if (latest.subscribed || latest.impressionCount >= MAX_POPUP_IMPRESSIONS) return;
-      if (latest.pagesShown.includes(pathname)) return;
-      if (latest.impressionCount === 0 && !HOME_PATHS.has(pathname)) return;
-      if (latest.impressionCount > 0 && HOME_PATHS.has(pathname)) return;
-
-      firedRef.current = true;
-      setMessageIndex(latest.impressionCount);
-      setOpen(true);
-    }, delayMs);
-
-    return () => window.clearTimeout(timer);
-  }, [pathname]);
-
-  return { open, setOpen, close, messageIndex, pathname };
+  return { open, setOpen, close, messageIndex, pathname: path };
 }

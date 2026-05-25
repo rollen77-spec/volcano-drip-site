@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Loader2, Tag } from 'lucide-react';
 import {
@@ -28,22 +28,26 @@ import { cn } from '@/lib/utils';
 export default function NewsletterPromoPopup() {
   const { toast } = useToast();
   const navigate = useNavigate();
-  const { open, setOpen, close, messageIndex, pathname } = useNewsletterPopupTrigger();
+  const { open, close, messageIndex, pathname } = useNewsletterPopupTrigger();
 
   const message = getPopupMessage(messageIndex);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({ name: '', email: '', consent: false });
   const [errors, setErrors] = useState({});
+  const recordedRef = useRef(false);
 
   useEffect(() => {
-    if (open && pathname) {
-      recordPopupImpression(pathname);
+    if (!open) {
+      recordedRef.current = false;
+      return;
     }
+    if (recordedRef.current || !pathname) return;
+    recordedRef.current = true;
+    recordPopupImpression(pathname);
   }, [open, pathname]);
 
   const handleOpenChange = (next) => {
     if (!next) close();
-    else setOpen(true);
   };
 
   const handleInputChange = (e) => {
@@ -93,10 +97,18 @@ export default function NewsletterPromoPopup() {
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogContent
+        overlayClassName="z-[100] bg-black/70"
         className={cn(
-          'z-[60] flex max-h-[min(92vh,720px)] w-[calc(100%-2rem)] max-w-lg flex-col gap-0 overflow-hidden border-stone-200 p-0',
-          '[&>button]:right-3 [&>button]:top-3 [&>button]:rounded-full [&>button]:bg-black/50 [&>button]:text-white',
-          '[&>button]:opacity-90 [&>button]:ring-1 [&>button]:ring-white/30 [&>button]:hover:bg-black/70 [&>button]:hover:opacity-100',
+          'z-[100] flex max-h-[92dvh] w-[calc(100%-1rem)] max-w-lg flex-col gap-0 overflow-hidden border-stone-200 p-0',
+          'max-md:fixed max-md:inset-x-0 max-md:bottom-0 max-md:left-0 max-md:top-auto',
+          'max-md:max-h-[92dvh] max-md:w-full max-md:max-w-none max-md:translate-x-0 max-md:translate-y-0',
+          'max-md:rounded-b-none max-md:rounded-t-2xl',
+          'max-md:data-[state=open]:slide-in-from-bottom max-md:data-[state=closed]:slide-out-to-bottom',
+          'sm:left-[50%] sm:top-[50%] sm:translate-x-[-50%] sm:translate-y-[-50%] sm:rounded-lg',
+          '[&>button]:right-3 [&>button]:top-3 [&>button]:z-10 [&>button]:h-10 [&>button]:w-10',
+          '[&>button]:rounded-full [&>button]:bg-black/50 [&>button]:text-white',
+          '[&>button]:opacity-90 [&>button]:ring-1 [&>button]:ring-white/30',
+          '[&>button]:hover:bg-black/70 [&>button]:hover:opacity-100',
         )}
       >
         <div className="relative shrink-0">
@@ -105,7 +117,7 @@ export default function NewsletterPromoPopup() {
             alt="Volcano Drip latte and Primera Luz coffee bag on a café table"
             width={1024}
             height={571}
-            className="aspect-[16/9] w-full object-cover object-center"
+            className="aspect-[2/1] w-full object-cover object-center max-md:aspect-[16/9]"
             loading="eager"
             decoding="async"
           />
@@ -113,18 +125,18 @@ export default function NewsletterPromoPopup() {
             className="pointer-events-none absolute inset-0 bg-gradient-to-t from-stone-900/75 via-stone-900/15 to-stone-900/25"
             aria-hidden
           />
-          <div className="absolute bottom-3 left-4 right-12">
-            <div className="mb-2 inline-flex items-center gap-2 rounded-full bg-amber-500 px-3 py-1 text-xs font-bold uppercase tracking-wider text-white shadow-md">
+          <div className="absolute bottom-2 left-3 right-14 sm:bottom-3 sm:left-4 sm:right-12">
+            <div className="mb-1.5 inline-flex items-center gap-2 rounded-full bg-amber-500 px-3 py-1 text-xs font-bold uppercase tracking-wider text-white shadow-md">
               <Tag className="h-3.5 w-3.5" aria-hidden />
               20% off first order
             </div>
-            <p className="text-lg font-black leading-tight tracking-tight text-white drop-shadow-sm">
+            <p className="text-base font-black leading-tight tracking-tight text-white drop-shadow-sm sm:text-lg">
               {message.headline}
             </p>
           </div>
         </div>
 
-        <div className="min-h-0 flex-1 overflow-y-auto overscroll-y-contain px-5 py-5 sm:px-6 sm:py-6">
+        <div className="min-h-0 flex-1 overflow-y-auto overscroll-y-contain px-4 py-4 [-webkit-overflow-scrolling:touch] sm:px-6 sm:py-6">
           <DialogHeader className="space-y-2 text-left">
             <DialogTitle className="sr-only">{message.headline}</DialogTitle>
             <DialogDescription className="text-base leading-relaxed text-stone-600">
@@ -147,7 +159,7 @@ export default function NewsletterPromoPopup() {
                 value={formData.name}
                 onChange={handleInputChange}
                 placeholder="Your first name"
-                className={`h-12 bg-stone-50 ${errors.name ? 'border-red-500' : 'border-stone-200'}`}
+                className={`h-12 bg-stone-50 text-base ${errors.name ? 'border-red-500' : 'border-stone-200'}`}
               />
               {errors.name ? <p className="text-xs font-medium text-red-500">{errors.name}</p> : null}
             </div>
@@ -160,23 +172,24 @@ export default function NewsletterPromoPopup() {
                 id="popup-email"
                 name="email"
                 type="email"
+                inputMode="email"
                 autoComplete="email"
                 value={formData.email}
                 onChange={handleInputChange}
                 placeholder="your@email.com"
-                className={`h-12 bg-stone-50 ${errors.email ? 'border-red-500' : 'border-stone-200'}`}
+                className={`h-12 bg-stone-50 text-base ${errors.email ? 'border-red-500' : 'border-stone-200'}`}
               />
               {errors.email ? <p className="text-xs font-medium text-red-500">{errors.email}</p> : null}
             </div>
 
-            <div className="flex items-start gap-3 rounded-xl border border-stone-100 bg-stone-50 p-4 text-left">
+            <div className="flex items-start gap-3 rounded-xl border border-stone-100 bg-stone-50 p-3 text-left sm:p-4">
               <input
                 type="checkbox"
                 id="popup-consent"
                 name="consent"
                 checked={formData.consent}
                 onChange={handleInputChange}
-                className="mt-1 h-4 w-4 shrink-0 cursor-pointer rounded border-stone-300"
+                className="mt-1 h-5 w-5 shrink-0 cursor-pointer rounded border-stone-300"
               />
               <div className="space-y-1">
                 <Label

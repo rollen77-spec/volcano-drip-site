@@ -4,14 +4,17 @@ export const NEWSLETTER_POPUP_IMAGE = '/images/newsletter-popup-hero.png';
 
 export const MAX_POPUP_IMPRESSIONS = 3;
 
-/** First popup on home after dwell + light engagement. */
+/** First popup on home after dwell. */
 export const HOME_POPUP_DELAY_MS = 5000;
+export const HOME_POPUP_DELAY_MOBILE_MS = 3500;
 
 /** Later popups on other pages (after dismiss). */
 export const OTHER_PAGE_POPUP_DELAY_MS = 6000;
+export const OTHER_PAGE_POPUP_DELAY_MOBILE_MS = 4000;
 
-/** Chance to show on a new eligible page (impressions 2–3). */
+/** Chance to show on a new eligible page (impressions 2–3) — higher on mobile. */
 export const SUBSEQUENT_PAGE_SHOW_CHANCE = 0.45;
+export const SUBSEQUENT_PAGE_SHOW_CHANCE_MOBILE = 0.85;
 
 export const POPUP_EXCLUDED_PATHS = new Set([
   '/offers',
@@ -49,6 +52,23 @@ export function getPopupMessage(impressionIndex) {
 }
 
 export function isPopupPathEligible(pathname) {
-  if (!pathname || POPUP_EXCLUDED_PATHS.has(pathname)) return false;
+  if (!pathname) return false;
+  const path = pathname.replace(/\/+$/, '') || '/';
+  if (POPUP_EXCLUDED_PATHS.has(path)) return false;
   return true;
+}
+
+export function isMobileViewport() {
+  if (typeof window === 'undefined') return false;
+  return window.matchMedia('(max-width: 767px)').matches;
+}
+
+export function getPopupDelayMs(isFirstHome) {
+  const mobile = isMobileViewport();
+  if (isFirstHome) return mobile ? HOME_POPUP_DELAY_MOBILE_MS : HOME_POPUP_DELAY_MS;
+  return mobile ? OTHER_PAGE_POPUP_DELAY_MOBILE_MS : OTHER_PAGE_POPUP_DELAY_MS;
+}
+
+export function getSubsequentShowChance() {
+  return isMobileViewport() ? SUBSEQUENT_PAGE_SHOW_CHANCE_MOBILE : SUBSEQUENT_PAGE_SHOW_CHANCE;
 }

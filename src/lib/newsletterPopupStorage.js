@@ -6,6 +6,13 @@ const DEFAULT_STATE = {
   pagesShown: [],
 };
 
+/** Normalize paths so `/` and trailing slashes match consistently (mobile routers). */
+export function normalizePopupPath(pathname) {
+  if (!pathname || pathname === '/') return '/';
+  const trimmed = pathname.replace(/\/+$/, '');
+  return trimmed || '/';
+}
+
 export function readNewsletterPopupState() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
@@ -14,7 +21,9 @@ export function readNewsletterPopupState() {
     return {
       impressionCount: Number(parsed.impressionCount) || 0,
       subscribed: Boolean(parsed.subscribed),
-      pagesShown: Array.isArray(parsed.pagesShown) ? parsed.pagesShown : [],
+      pagesShown: Array.isArray(parsed.pagesShown)
+        ? parsed.pagesShown.map(normalizePopupPath)
+        : [],
     };
   } catch {
     return { ...DEFAULT_STATE };
@@ -23,7 +32,13 @@ export function readNewsletterPopupState() {
 
 export function writeNewsletterPopupState(state) {
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify({
+        ...state,
+        pagesShown: state.pagesShown.map(normalizePopupPath),
+      }),
+    );
   } catch {
     /* private mode / quota */
   }
@@ -35,13 +50,17 @@ export function markNewsletterSubscribed() {
 }
 
 export function recordPopupImpression(pathname) {
+  const path = normalizePopupPath(pathname);
   const state = readNewsletterPopupState();
-  const pagesShown = state.pagesShown.includes(pathname)
-    ? state.pagesShown
-    : [...state.pagesShown, pathname];
+  const pagesShown = state.pagesShown.includes(path) ? state.pagesShown : [...state.pagesShown, path];
   writeNewsletterPopupState({
     ...state,
     impressionCount: state.impressionCount + 1,
     pagesShown,
   });
+}
+
+export function hasShownOnPage(pathname) {
+  const path = normalizePopupPath(pathname);
+  return readNewsletterPopupState().pagesShown.includes(path);
 }
