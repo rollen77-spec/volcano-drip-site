@@ -1,190 +1,147 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Quote, Star } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from '@/components/ui/carousel';
 import { GOOGLE_MAPS_REVIEWS_URL } from '@/config/googleReviews';
 import { getAllDisplayReviews } from '@/data/reviews';
 import { cn } from '@/lib/utils';
 
-const AUTOPLAY_MS = 6000;
-
-function StarRating({ rating, className }) {
+function ReviewStar({ filled }) {
   return (
-    <div className={cn('flex gap-0.5', className)} aria-label={`${rating} out of 5 stars`}>
-      {[1, 2, 3, 4, 5].map((i) => (
-        <Star
-          key={i}
-          className={cn(
-            'h-4 w-4',
-            i <= rating ? 'fill-amber-500 text-amber-500' : 'fill-stone-200 text-stone-200',
-          )}
-        />
+    <svg
+      className="h-4 w-4 text-amber-400"
+      fill={filled ? 'currentColor' : 'none'}
+      stroke="currentColor"
+      strokeWidth="1.5"
+      viewBox="0 0 24 24"
+      aria-hidden
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M12 17.25l-6.16 3.73 1.64-7.03L2.5 9.77l7.19-.61L12 2.5l2.31 6.66 7.19.61-5 4.18 1.64 7.03z"
+      />
+    </svg>
+  );
+}
+
+function StarRating({ rating }) {
+  return (
+    <div className="mt-4 flex items-center gap-0.5" aria-label={`${rating} out of 5 stars`}>
+      {Array.from({ length: 5 }, (_, index) => (
+        <ReviewStar key={index} filled={rating > index} />
       ))}
     </div>
   );
 }
 
-function ReviewCard({ review }) {
-  const isGoogle = review.source === 'google';
+function ReviewAvatar({ review }) {
+  const initials = review.name
+    .replace(/[^a-zA-Z\s.]/g, '')
+    .split(/\s+/)
+    .filter(Boolean)
+    .map((part) => part[0])
+    .join('')
+    .slice(0, 2)
+    .toUpperCase();
+
+  if (review.image) {
+    return (
+      <img
+        className="h-12 w-12 shrink-0 rounded-full object-cover ring-2 ring-stone-100"
+        src={review.image}
+        alt=""
+      />
+    );
+  }
 
   return (
-    <div className="flex h-full min-h-[280px] flex-col justify-between rounded-2xl border border-stone-100 bg-white p-8 shadow-sm md:min-h-[300px]">
-      <div>
-        <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
-          <StarRating rating={review.rating} />
-          <span
-            className={cn(
-              'rounded-full px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wide',
-              isGoogle
-                ? 'bg-blue-50 text-blue-800'
-                : 'bg-amber-50 text-amber-900',
-            )}
-          >
-            {isGoogle ? 'Google' : 'Customer'}
-          </span>
-        </div>
-        <Quote className="mb-4 h-10 w-10 text-stone-100" aria-hidden />
-        <p className="text-lg italic leading-relaxed text-stone-700">&ldquo;{review.content}&rdquo;</p>
-      </div>
-      <div className="mt-6 border-t border-stone-100 pt-4">
-        <p className="font-bold text-stone-900">{review.name}</p>
-        {review.location ? (
-          <p className="text-sm text-stone-500">{review.location}</p>
-        ) : null}
-      </div>
+    <div
+      className={cn(
+        'flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-sm font-bold text-white ring-2 ring-stone-100',
+        review.source === 'google'
+          ? 'bg-gradient-to-br from-blue-500 to-blue-700'
+          : 'bg-gradient-to-br from-amber-500 to-amber-700',
+      )}
+      aria-hidden
+    >
+      {initials || '?'}
     </div>
+  );
+}
+
+function TestimonialCard({ review, index }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.08 }}
+      className="w-full max-w-xs rounded-xl bg-white p-6 shadow-md shadow-stone-200/60"
+    >
+      <div className="flex items-center gap-3">
+        <ReviewAvatar review={review} />
+        <div className="min-w-0">
+          <p className="font-playfair text-xl font-semibold text-stone-900">{review.name}</p>
+          <p className="text-sm text-stone-500">
+            {review.location}
+            {review.source === 'google' ? ' · Google' : null}
+          </p>
+        </div>
+      </div>
+      <StarRating rating={review.rating} />
+      <p className="mt-4 text-sm leading-relaxed text-stone-500">&ldquo;{review.content}&rdquo;</p>
+    </motion.div>
   );
 }
 
 export default function ReviewsBanner() {
   const reviews = getAllDisplayReviews();
-  const [api, setApi] = useState(null);
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-
-  const onSelect = useCallback(() => {
-    if (!api) return;
-    setActiveIndex(api.selectedScrollSnap());
-  }, [api]);
-
-  useEffect(() => {
-    if (!api) return;
-    onSelect();
-    api.on('select', onSelect);
-    api.on('reInit', onSelect);
-    return () => {
-      api.off('select', onSelect);
-      api.off('reInit', onSelect);
-    };
-  }, [api, onSelect]);
-
-  useEffect(() => {
-    if (!api || reviews.length < 2 || isPaused) return;
-
-    const timer = window.setInterval(() => {
-      if (api.canScrollNext()) {
-        api.scrollNext();
-      } else {
-        api.scrollTo(0);
-      }
-    }, AUTOPLAY_MS);
-
-    return () => window.clearInterval(timer);
-  }, [api, reviews.length, isPaused]);
 
   if (reviews.length === 0) return null;
 
   return (
-    <section className="bg-stone-50 py-24">
-      <div className="container mx-auto px-4">
+    <section className="bg-stone-50 px-6 py-20 md:px-16 md:py-24 lg:px-24">
+      <div className="mx-auto flex max-w-6xl flex-col items-center">
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-12 text-center"
+          className="flex max-w-2xl flex-col items-center text-center"
         >
-          <h2 className="mb-8 text-4xl font-black uppercase leading-[0.9] tracking-tighter text-stone-900 md:text-6xl">
-            Loved by the <br />
-            Community
-          </h2>
-          <div className="flex justify-center gap-1" aria-hidden>
-            {[1, 2, 3, 4, 5].map((i) => (
-              <Star key={i} className="h-5 w-5 fill-amber-500 text-amber-500" />
-            ))}
-          </div>
-        </motion.div>
-
-        <div
-          className="mx-auto max-w-3xl"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-          onFocusCapture={() => setIsPaused(true)}
-          onBlurCapture={() => setIsPaused(false)}
-        >
-          <Carousel
-            setApi={setApi}
-            opts={{ align: 'center', loop: reviews.length > 1 }}
-            className="w-full"
-          >
-            <CarouselContent>
-              {reviews.map((review) => (
-                <CarouselItem key={review.id}>
-                  <ReviewCard review={review} />
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            {reviews.length > 1 ? (
-              <>
-                <CarouselPrevious className="left-0 border-stone-200 bg-white md:-left-12" />
-                <CarouselNext className="right-0 border-stone-200 bg-white md:-right-12" />
-              </>
-            ) : null}
-          </Carousel>
-
-          {reviews.length > 1 ? (
-            <div
-              className="mt-6 flex justify-center gap-2"
-              role="tablist"
-              aria-label="Review slides"
-            >
-              {reviews.map((review, i) => (
-                <button
-                  key={review.id}
-                  type="button"
-                  role="tab"
-                  aria-selected={i === activeIndex}
-                  aria-label={`Show review ${i + 1} of ${reviews.length}`}
-                  className={cn(
-                    'h-2 rounded-full transition-all',
-                    i === activeIndex ? 'w-8 bg-amber-600' : 'w-2 bg-stone-300',
-                  )}
-                  onClick={() => api?.scrollTo(i)}
-                />
-              ))}
-            </div>
-          ) : null}
-        </div>
-
-        <div className="mt-10 flex justify-center">
-          <Button variant="outline" className="border-stone-300" asChild>
+          <h2 className="text-4xl font-bold text-stone-900 md:text-[40px]">Customer Testimonials</h2>
+          <p className="mt-2 max-w-[696px] text-sm text-stone-500 md:text-base">
+            Hear what coffee lovers across Canada say about Volcano Drip. Had a great experience?
+            We&apos;d love your feedback on{' '}
             <a
               href={GOOGLE_MAPS_REVIEWS_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2"
+              className="font-medium text-amber-700 underline-offset-2 hover:underline"
             >
-              Read all reviews on Google
-              <ExternalLink className="h-4 w-4" />
+              Google
             </a>
-          </Button>
+            .
+          </p>
+        </motion.div>
+
+        <div className="mb-6 mt-16 flex flex-wrap items-stretch justify-center gap-6 md:mt-20">
+          {reviews.map((review, index) => (
+            <TestimonialCard key={review.id} review={review} index={index} />
+          ))}
         </div>
+
+        <Button variant="outline" className="border-stone-300 bg-white" asChild>
+          <a
+            href={GOOGLE_MAPS_REVIEWS_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2"
+          >
+            Read all reviews on Google
+            <ExternalLink className="h-4 w-4" />
+          </a>
+        </Button>
       </div>
     </section>
   );

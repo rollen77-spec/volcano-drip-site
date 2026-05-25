@@ -1,5 +1,5 @@
 /**
- * Site reviews shown in the home page rotating banner.
+ * Site reviews shown in the home page testimonials section.
  *
  * To add a Google review: copy name, star rating, and text from your Maps listing,
  * then append an object to `googleReviews` below (set source: 'google').
@@ -12,7 +12,8 @@
  * @typedef {Object} Review
  * @property {string} id
  * @property {string} name
- * @property {string} [location] — city or "Google review"
+ * @property {string} [location] — city or region
+ * @property {string} [image] — optional avatar URL
  * @property {string} content
  * @property {number} rating — 1–5
  * @property {ReviewSource} source
@@ -50,7 +51,7 @@ export const curatedReviews = [
 ];
 
 /**
- * Paste Google reviews here when you want them on the homepage carousel.
+ * Paste Google reviews here when you want them on the homepage grid.
  * @type {Review[]}
  */
 export const googleReviews = [
