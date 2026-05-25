@@ -8,6 +8,8 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/components/ui/use-toast';
 import PageHero from '@/components/PageHero';
+import { NEWSLETTER_SUBSCRIBE_URL } from '@/config/newsletter';
+import { markNewsletterSubscribed } from '@/lib/newsletterPopupStorage';
 
 const CookieBanner = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -53,8 +55,6 @@ const CookieBanner = () => {
     </motion.div>
   );
 };
-
-const SUBSCRIBE_URL = import.meta.env.VITE_NEWSLETTER_API_URL || '/api/subscribe';
 
 const OffersPage = () => {
   const { toast } = useToast();
@@ -105,7 +105,7 @@ const OffersPage = () => {
     setIsSubmitting(true);
 
     try {
-      const res = await fetch(SUBSCRIBE_URL, {
+      const res = await fetch(NEWSLETTER_SUBSCRIBE_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -125,6 +125,8 @@ const OffersPage = () => {
             : 'There was a problem submitting your request.');
         throw new Error(msg);
       }
+
+      markNewsletterSubscribed();
 
       toast({
         title: 'Success!',

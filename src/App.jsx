@@ -24,6 +24,7 @@ import SignatureDrinksPage from '@/pages/SignatureDrinksPage';
 import FAQsPage from '@/pages/FAQsPage';
 import ScrollToTop from '@/components/ScrollToTop';
 import GoogleAnalyticsRouteListener from '@/components/GoogleAnalyticsRouteListener';
+import NewsletterPromoPopup from '@/components/NewsletterPromoPopup';
 import ThanksPage from '@/pages/ThanksPage';
 import ShopPage from '@/pages/ShopPage';
 import PodcastPage from '@/pages/PodcastPage';
@@ -132,6 +133,7 @@ function App() {
     <Router>
       <ScrollToTop />
       <GoogleAnalyticsRouteListener />
+      <NewsletterPromoPopup />
       <MainLayout>
         <Routes>
           <Route path="/" element={<HomePage />} />
