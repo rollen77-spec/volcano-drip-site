@@ -1,5 +1,7 @@
 /** Site-wide newsletter promo popup — copy, timing, and route rules. */
 
+export const NEWSLETTER_POPUP_IMAGE = '/images/newsletter-popup-hero.png';
+
 export const MAX_POPUP_IMPRESSIONS = 3;
 
 /** First popup on home after dwell + light engagement. */
