@@ -105,10 +105,12 @@ export default function NewsletterPromoPopup() {
           'max-md:rounded-b-none max-md:rounded-t-2xl',
           'max-md:data-[state=open]:slide-in-from-bottom max-md:data-[state=closed]:slide-out-to-bottom',
           'sm:left-[50%] sm:top-[50%] sm:translate-x-[-50%] sm:translate-y-[-50%] sm:rounded-lg',
-          '[&>button]:right-3 [&>button]:top-3 [&>button]:z-10 [&>button]:h-10 [&>button]:w-10',
+          '[&>button]:right-3 [&>button]:top-3 [&>button]:z-10',
+          '[&>button]:inline-flex [&>button]:h-10 [&>button]:w-10 [&>button]:items-center [&>button]:justify-center [&>button]:p-0',
           '[&>button]:rounded-full [&>button]:bg-black/50 [&>button]:text-white',
           '[&>button]:opacity-90 [&>button]:ring-1 [&>button]:ring-white/30',
           '[&>button]:hover:bg-black/70 [&>button]:hover:opacity-100',
+          '[&>button_svg]:h-5 [&>button_svg]:w-5 [&>button_svg]:shrink-0',
         )}
       >
         <div className="relative shrink-0">
@@ -126,9 +128,15 @@ export default function NewsletterPromoPopup() {
             aria-hidden
           />
           <div className="absolute bottom-2 left-3 right-14 sm:bottom-3 sm:left-4 sm:right-12">
-            <div className="mb-1.5 inline-flex items-center gap-2 rounded-full bg-amber-500 px-3 py-1 text-xs font-bold uppercase tracking-wider text-white shadow-md">
-              <Tag className="h-3.5 w-3.5" aria-hidden />
-              20% off first order
+            <div className="mb-2 flex flex-wrap items-center gap-2">
+              <div
+                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 px-4 py-2 text-sm font-extrabold uppercase tracking-wide text-white shadow-lg ring-2 ring-white/40 sm:px-5 sm:text-base"
+                role="status"
+              >
+                <Tag className="h-4 w-4 shrink-0 sm:h-5 sm:w-5" aria-hidden />
+                <span className="text-lg leading-none sm:text-xl">20%</span>
+                <span className="leading-tight">off your first order</span>
+              </div>
             </div>
             <p className="text-base font-black leading-tight tracking-tight text-white drop-shadow-sm sm:text-lg">
               {message.headline}
@@ -137,6 +145,14 @@ export default function NewsletterPromoPopup() {
         </div>
 
         <div className="min-h-0 flex-1 overflow-y-auto overscroll-y-contain px-4 py-4 [-webkit-overflow-scrolling:touch] sm:px-6 sm:py-6">
+          <div className="mb-4 rounded-xl border-2 border-amber-200 bg-gradient-to-r from-amber-50 to-amber-100/80 px-4 py-3 text-center">
+            <p className="text-xs font-bold uppercase tracking-widest text-amber-800">Exclusive offer</p>
+            <p className="mt-0.5 text-2xl font-black tracking-tight text-amber-700 sm:text-3xl">
+              20% off
+            </p>
+            <p className="text-sm font-semibold text-amber-900/90">your first order when you subscribe</p>
+          </div>
+
           <DialogHeader className="space-y-2 text-left">
             <DialogTitle className="sr-only">{message.headline}</DialogTitle>
             <DialogDescription className="text-base leading-relaxed text-stone-600">
