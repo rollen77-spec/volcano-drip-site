@@ -100,6 +100,13 @@ export const googleReviews = [
   },
 ];
 
+/** Interleave curated + Google for balanced rotating groups. */
 export function getAllDisplayReviews() {
-  return [...curatedReviews, ...googleReviews];
+  const mixed = [];
+  const max = Math.max(curatedReviews.length, googleReviews.length);
+  for (let i = 0; i < max; i += 1) {
+    if (i < curatedReviews.length) mixed.push(curatedReviews[i]);
+    if (i < googleReviews.length) mixed.push(googleReviews[i]);
+  }
+  return mixed;
 }

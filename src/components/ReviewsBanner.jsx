@@ -1,9 +1,9 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { GOOGLE_MAPS_REVIEWS_URL } from '@/config/googleReviews';
-import { getAllDisplayReviews } from '@/data/reviews';
+import { curatedReviews, googleReviews } from '@/data/reviews';
 import { cn } from '@/lib/utils';
 
 const GROUP_SIZE = 3;
@@ -16,6 +16,19 @@ function chunkReviews(reviews, size) {
   }
   return groups;
 }
+
+/** Mix curated + Google so each rotating group blends both sources. */
+function buildDisplayReviews() {
+  const mixed = [];
+  const max = Math.max(curatedReviews.length, googleReviews.length);
+  for (let i = 0; i < max; i += 1) {
+    if (i < curatedReviews.length) mixed.push(curatedReviews[i]);
+    if (i < googleReviews.length) mixed.push(googleReviews[i]);
+  }
+  return mixed;
+}
+
+const DISPLAY_REVIEWS = buildDisplayReviews();
 
 function ReviewStar({ filled }) {
   return (
@@ -68,16 +81,25 @@ function ReviewAvatar({ review }) {
 
   return (
     <div
-      className={cn(
-        'flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-sm font-bold text-white ring-2 ring-stone-100',
-        review.source === 'google'
-          ? 'bg-gradient-to-br from-blue-500 to-blue-700'
-          : 'bg-gradient-to-br from-amber-500 to-amber-700',
-      )}
+      className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-amber-500 to-amber-700 text-sm font-bold text-white ring-2 ring-stone-100"
       aria-hidden
     >
       {initials || '?'}
     </div>
+  );
+}
+
+function SourceBadge({ source }) {
+  const isGoogle = source === 'google';
+  return (
+    <span
+      className={cn(
+        'shrink-0 rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide',
+        isGoogle ? 'bg-blue-50 text-blue-800' : 'bg-amber-50 text-amber-900',
+      )}
+    >
+      {isGoogle ? 'Google' : 'Customer'}
+    </span>
   );
 }
 
@@ -89,14 +111,16 @@ function TestimonialCard({ review, index }) {
       transition={{ delay: index * 0.06, duration: 0.35 }}
       className="w-full max-w-xs rounded-xl bg-white p-6 shadow-md shadow-stone-200/60"
     >
-      <div className="flex items-center gap-3">
+      <div className="flex items-start gap-3">
         <ReviewAvatar review={review} />
-        <div className="min-w-0">
-          <p className="font-playfair text-xl font-semibold text-stone-900">{review.name}</p>
-          <p className="text-sm text-stone-500">
-            {review.location}
-            {review.source === 'google' ? ' · Google' : null}
-          </p>
+        <div className="min-w-0 flex-1">
+          <div className="flex flex-wrap items-center gap-2">
+            <p className="font-playfair text-xl font-semibold text-stone-900">{review.name}</p>
+            <SourceBadge source={review.source} />
+          </div>
+          {review.location && review.source !== 'google' ? (
+            <p className="text-sm text-stone-500">{review.location}</p>
+          ) : null}
         </div>
       </div>
       <StarRating rating={review.rating} />
@@ -106,32 +130,54 @@ function TestimonialCard({ review, index }) {
 }
 
 export default function ReviewsBanner() {
-  const reviews = getAllDisplayReviews();
-  const groups = useMemo(() => chunkReviews(reviews, GROUP_SIZE), [reviews]);
+  const groups = useMemo(() => chunkReviews(DISPLAY_REVIEWS, GROUP_SIZE), []);
   const [groupIndex, setGroupIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
+  const isPausedRef = useRef(false);
+  const sectionRef = useRef(null);
+  const [isInView, setIsInView] = useState(false);
 
   const activeGroup = groups[groupIndex] ?? [];
   const canRotate = groups.length > 1;
 
   useEffect(() => {
-    setGroupIndex(0);
-  }, [reviews.length]);
+    const node = sectionRef.current;
+    if (!node) return undefined;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsInView(entry.isIntersecting),
+      { threshold: 0.25 },
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
-    if (!canRotate || isPaused) return;
+    if (!canRotate || !isInView) return undefined;
 
-    const timer = window.setInterval(() => {
+    const tick = () => {
+      if (isPausedRef.current || document.hidden) return;
       setGroupIndex((current) => (current + 1) % groups.length);
-    }, ROTATE_MS);
+    };
 
+    const timer = window.setInterval(tick, ROTATE_MS);
     return () => window.clearInterval(timer);
-  }, [canRotate, isPaused, groups.length]);
+  }, [canRotate, isInView, groups.length]);
 
-  if (reviews.length === 0) return null;
+  const handlePointerEnter = (event) => {
+    if (event.pointerType === 'mouse') isPausedRef.current = true;
+  };
+
+  const handlePointerLeave = (event) => {
+    if (event.pointerType === 'mouse') isPausedRef.current = false;
+  };
+
+  if (DISPLAY_REVIEWS.length === 0) return null;
 
   return (
-    <section className="bg-stone-50 px-6 py-20 md:px-16 md:py-24 lg:px-24">
+    <section
+      ref={sectionRef}
+      className="bg-stone-50 px-6 py-20 md:px-16 md:py-24 lg:px-24"
+    >
       <div className="mx-auto flex max-w-6xl flex-col items-center">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
@@ -157,17 +203,15 @@ export default function ReviewsBanner() {
 
         <div
           className="relative mb-2 mt-16 w-full md:mt-20"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-          onFocusCapture={() => setIsPaused(true)}
-          onBlurCapture={() => setIsPaused(false)}
+          onPointerEnter={handlePointerEnter}
+          onPointerLeave={handlePointerLeave}
         >
           <div
             className="flex min-h-[280px] flex-wrap items-stretch justify-center gap-6 md:min-h-[300px]"
             aria-live="polite"
             aria-atomic="true"
           >
-            <AnimatePresence mode="wait">
+            <AnimatePresence mode="wait" initial={false}>
               <motion.div
                 key={groupIndex}
                 initial={{ opacity: 0, x: 24 }}
