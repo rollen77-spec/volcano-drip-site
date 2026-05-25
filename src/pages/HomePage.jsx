@@ -2,7 +2,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet';
-import { Mountain, BookOpen, Quote, Star, Zap, Check, Flame, Coffee, ArrowRight, Leaf, Gift } from 'lucide-react';
+import { Mountain, BookOpen, Star, Zap, Check, Flame, Coffee, ArrowRight, Leaf, Gift } from 'lucide-react';
+import ReviewsBanner from '@/components/ReviewsBanner';
 import { Button } from '@/components/ui/button';
 import WelcomeMessage from '@/components/WelcomeMessage';
 import CallToAction from '@/components/CallToAction';
@@ -105,23 +106,6 @@ const HomePage = () => {
     description: "Coffee is meant to be shared. Every cup is an invitation to slow down, connect, and enjoy the moment with others."
   }];
   
-  const testimonials = [{
-    name: "Santiago C.",
-    role: "Mississauga",
-    content: "I've tried a lot of small-batch coffees, but this one actually surprised me. The flavor is smooth but still bold, and it doesn't have that bitter aftertaste. You can tell there's real care behind it.",
-    rating: 5
-  }, {
-    name: "Siva.",
-    role: "Vancouver",
-    content: "I signed up for the newsletter just out of curiosity, but ended up ordering a bag—and now I'm hooked. It's become part of my morning routine.",
-    rating: 5
-  }, {
-    name: "Hailey S.",
-    role: "Toronto",
-    content: "What stood out to me was the balance. It's rich without being overpowering. Definitely one of the better coffees I've had in a while.",
-    rating: 5
-  }];
-
   return <>
       <Helmet>
         <title>Volcano Drip | Exceptional Volcanic Soil Coffee</title>
@@ -783,43 +767,7 @@ const HomePage = () => {
           </div>
         </section>
 
-        {/* Testimonials */}
-        <section className="py-24 bg-stone-50">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-6xl font-black text-stone-900 tracking-tighter mb-8 uppercase leading-[0.9]">
-                Loved by the <br />
-                Community
-              </h2>
-              <div className="flex justify-center gap-1">
-                {[1, 2, 3, 4, 5].map(i => <Star key={i} className="w-5 h-5 fill-amber-500 text-amber-500" />)}
-              </div>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {testimonials.map((t, i) => <motion.div key={i} initial={{
-              opacity: 0,
-              y: 20
-            }} whileInView={{
-              opacity: 1,
-              y: 0
-            }} viewport={{
-              once: true
-            }} transition={{
-              delay: i * 0.1
-            }} className="bg-white p-8 rounded-2xl shadow-sm border border-stone-100 flex flex-col justify-between">
-                  <div>
-                    <Quote className="w-10 h-10 text-stone-100 mb-4" />
-                    <p className="text-stone-700 italic mb-6 leading-relaxed">"{t.content}"</p>
-                  </div>
-                  <div>
-                    <p className="font-bold text-stone-900">{t.name}</p>
-                    <p className="text-stone-500 text-sm">{t.role}</p>
-                  </div>
-                </motion.div>)}
-            </div>
-          </div>
-        </section>
+        <ReviewsBanner />
 
         {/* Final CTA */}
         <CallToAction />
