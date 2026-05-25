@@ -8,8 +8,12 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/components/ui/use-toast';
 import PageHero from '@/components/PageHero';
-import { NEWSLETTER_SUBSCRIBE_URL } from '@/config/newsletter';
 import { markNewsletterSubscribed } from '@/lib/newsletterPopupStorage';
+import {
+  NEWSLETTER_CONSENT_LABEL,
+  submitNewsletterSignup,
+  validateNewsletterForm,
+} from '@/lib/newsletterSubscribe';
 
 const CookieBanner = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -79,52 +83,22 @@ const OffersPage = () => {
     }
   };
 
-  const validateForm = () => {
-    const newErrors = {};
-    if (!formData.name.trim()) {
-      newErrors.name = 'First name is required';
-    }
-    if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = 'Please enter a valid email address';
-    }
-    if (!formData.consent) {
-      newErrors.consent = 'You must agree to the terms to subscribe.';
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!validateForm()) return;
+    const validationErrors = validateNewsletterForm(formData);
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
 
     setIsSubmitting(true);
 
     try {
-      const res = await fetch(NEWSLETTER_SUBSCRIBE_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email: formData.email.trim(),
-          name: formData.name.trim(),
-          consent: formData.consent,
-        }),
+      await submitNewsletterSignup({
+        ...formData,
+        source: 'volcano-drip-offers',
       });
-
-      const data = await res.json().catch(() => ({}));
-
-      if (!res.ok) {
-        const msg =
-          data.error ||
-          (res.status === 501
-            ? 'Newsletter signup is not configured yet. Add server env vars in Vercel (see .env.example).'
-            : 'There was a problem submitting your request.');
-        throw new Error(msg);
-      }
 
       markNewsletterSubscribed();
 
@@ -252,7 +226,7 @@ const OffersPage = () => {
                 />
                 <div className="space-y-1">
                   <Label htmlFor="consent" className="text-xs text-stone-600 cursor-pointer leading-relaxed block font-medium">
-                    By subscribing, you consent to receive promotional emails from Volcano Drip including offers, updates, and coffee news. You may withdraw your consent at any time by clicking the unsubscribe link in our emails.{' '}
+                    {NEWSLETTER_CONSENT_LABEL}{' '}
                     <span className="text-amber-600">*</span>
                   </Label>
                   {errors.consent && <p className="text-red-500 text-xs mt-1 font-bold">{errors.consent}</p>}

@@ -79,7 +79,7 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { email: rawEmail, name: rawName, consent } = req.body || {};
+  const { email: rawEmail, name: rawName, consent, source: rawSource } = req.body || {};
   const email = String(rawEmail || '').trim().toLowerCase();
   const name = String(rawName || '').trim();
 
@@ -102,10 +102,13 @@ export default async function handler(req, res) {
     .map((s) => parseInt(s.trim(), 10))
     .filter((n) => !Number.isNaN(n));
 
+  const source =
+    typeof rawSource === 'string' && rawSource.trim() ? rawSource.trim() : 'volcano-drip-offers';
+
   const payload = {
     email,
     name,
-    source: 'volcano-drip-offers',
+    source,
     subscribedAt: new Date().toISOString(),
   };
 
