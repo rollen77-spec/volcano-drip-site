@@ -145,14 +145,6 @@ export default function NewsletterPromoPopup() {
         </div>
 
         <div className="min-h-0 flex-1 overflow-y-auto overscroll-y-contain px-4 py-4 [-webkit-overflow-scrolling:touch] sm:px-6 sm:py-6">
-          <div className="mb-4 rounded-xl border-2 border-amber-200 bg-gradient-to-r from-amber-50 to-amber-100/80 px-4 py-3 text-center">
-            <p className="text-xs font-bold uppercase tracking-widest text-amber-800">Exclusive offer</p>
-            <p className="mt-0.5 text-2xl font-black tracking-tight text-amber-700 sm:text-3xl">
-              20% off
-            </p>
-            <p className="text-sm font-semibold text-amber-900/90">your first order when you subscribe</p>
-          </div>
-
           <DialogHeader className="space-y-2 text-left">
             <DialogTitle className="sr-only">{message.headline}</DialogTitle>
             <DialogDescription className="text-base leading-relaxed text-stone-600">
