@@ -1,0 +1,15 @@
+---
+description: Remind user to use a new terminal for Git when dev server is running
+alwaysApply: true
+---
+
+# Terminal and Git on this project
+
+When the user needs to run **git** commands (`push`, `pull`, `fetch`, `status`, `commit`) or other shell tasks:
+
+1. **Remind them** to open **Terminal → New Terminal** (or the **+** tab) if they might have `npm run dev` / Vite running in another tab.
+2. A tab running the dev server is **not** at a shell prompt — pasted git commands will not run there.
+3. Tell them to run **one command at a time**, press Enter, wait for output.
+4. If `git push` hangs with no output, it is usually waiting for GitHub login — suggest Source Control push, `gh auth login`, or editing on GitHub in the browser.
+
+Keep reminders brief and friendly when giving terminal instructions.
