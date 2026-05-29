@@ -27,10 +27,11 @@ export const upcomingAppearances = [
   {
     id: 'oakville-pop-up-2026',
     dateIso: '2026-06-05',
-    dateLabel: 'June 5, 2026 · Morning (11am–5pm)',
+    dateLabel: 'June 5, 2026 · Morning',
     title: 'Oakville Pop-Up',
     location: 'Downtown Oakville, Ontario',
-    description: 'Pop-up in downtown Oakville—stop by for Volcano Drip coffee and say hello.',
+    description:
+      'Start your Saturday with us downtown—we’re pouring freshly roasted Volcano Drip, sampling seasonal origins, and sharing what’s new from the roastery.',
     highlight: true,
     sortOrder: 0,
   },
@@ -41,7 +42,7 @@ export const upcomingAppearances = [
     title: 'Outdoor Movie Night',
     location: 'Mississauga, Ontario — local school',
     description:
-      'We are supporting a local school with their Outdoor Movie Night. Our Vespa will be on site for pictures—we will be serving delicious Volcano Drip coffee and more. Stop by and say hello.',
+      'We’re supporting a local school’s Outdoor Movie Night. Our Vespa will be on the lawn for photos—grab a hot cup, meet the team, and settle in before the movie starts.',
     highlight: true,
     sortOrder: 1,
   },
@@ -52,7 +53,7 @@ export const upcomingAppearances = [
     title: 'Asado 2026',
     location: 'Assembly Park, Vaughan, Ontario',
     description:
-      'Join us in celebrating all things Latin culture. Our single-origin coffees from Costa Rica, Guatemala, Peru, and Honduras will be on full display. Stop by our booth and say hello.',
+      'Three days of Latin culture, music, and food at Assembly Park. Visit our booth to taste single-origin coffees from Costa Rica, Guatemala, Peru, and Honduras—brewed fresh all weekend.',
     infoUrl: 'https://torontolatinos.com',
     infoLinkLabel: 'More info at Toronto Latinos (Barrio)',
     imageUrl: '/events/images/asado-2026.png',
