@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet';
-import { Calendar, MapPin, HeartHandshake } from 'lucide-react';
+import { Calendar, ExternalLink, MapPin, HeartHandshake } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { upcomingAppearances } from '@/data/appearances';
 import { eventGalleryImages, eventGalleryVideos, VIDEO_TILE_POSTERS } from '@/data/eventsMedia';
@@ -56,7 +56,9 @@ const EventsPage = () => {
     .sort((a, b) => {
       if (a.isPast !== b.isPast) return a.isPast ? 1 : -1;
       if (!a.eventDate || !b.eventDate) return 0;
-      return a.eventDate - b.eventDate;
+      const byDate = a.eventDate - b.eventDate;
+      if (byDate !== 0) return byDate;
+      return (a.sortOrder ?? 0) - (b.sortOrder ?? 0);
     });
 
   return (
@@ -138,6 +140,28 @@ const EventsPage = () => {
                       <MapPin className="h-3 w-3 shrink-0" aria-hidden />
                       <span>{ev.location}</span>
                     </div>
+                    {ev.imageUrl ? (
+                      <img
+                        src={ev.imageUrl}
+                        alt={`${ev.title} event`}
+                        className="mt-4 w-full max-w-sm rounded-lg border border-stone-700 object-cover shadow-md"
+                        loading="lazy"
+                      />
+                    ) : null}
+                    {ev.description ? (
+                      <p className="mt-3 text-sm leading-relaxed text-stone-400">{ev.description}</p>
+                    ) : null}
+                    {ev.infoUrl ? (
+                      <a
+                        href={ev.infoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-amber-400 hover:text-amber-300"
+                      >
+                        {ev.infoLinkLabel || 'More info'}
+                        <ExternalLink className="h-3.5 w-3.5 shrink-0" aria-hidden />
+                      </a>
+                    ) : null}
                   </li>
                 ))}
               </ul>
