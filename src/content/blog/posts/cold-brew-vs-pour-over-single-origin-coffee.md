@@ -45,13 +45,11 @@ This is where darker, bolder roasts shine. Our [Sumatra Black](/origins/indonesi
 
 A useful general rule: **the lighter the roast, the more you benefit from pour over. The darker the roast, the more cold brew rewards you.** Here's how the Volcano Drip lineup lines up:
 
-| Coffee | Origin | Roast | Best method |
-|--------|--------|-------|-------------|
-| **Primera Luz** | Costa Rica | Light | Pour over — citrus and honey need heat to fully express |
-| **Inca Ascent** | Peru | Medium | Pour over first; versatile cold brew second |
-| **Antigua Ember** | Guatemala | Medium | Either — caramel base works beautifully hot or cold |
-| **Copán Rise** | Honduras | Medium | Either — balanced and smooth in both formats |
-| **Sumatra Black** | Indonesia | Dark | Cold brew — cold water keeps smokiness balanced |
+- **Primera Luz (Costa Rica, Light)** — Pour over. The citrus and honey notes need heat to fully express.
+- **Inca Ascent (Peru, Medium)** — Pour over first, cold brew second. Versatile, but complexity shines hot.
+- **Antigua Ember (Guatemala, Medium)** — Either method. The caramel base works beautifully cold or hot.
+- **Copán Rise (Honduras, Medium)** — Either method. Balanced and smooth in both formats.
+- **Sumatra Black (Indonesia, Dark)** — Cold brew. Heat can push the smokiness too far; cold water keeps it balanced.
 
 ## Grind matters too
 
