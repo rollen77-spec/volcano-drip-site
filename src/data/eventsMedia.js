@@ -150,6 +150,56 @@ export const eventGalleryImages = [
     desc: 'Mobile display with Volcano Drip burlap sacks.',
     url: '/events/images/event-piaggio-burlap-sacks.png',
   },
+  {
+    title: 'Oakville Pop-Up — display table',
+    desc: 'Volcano Drip setup at the June 5, 2026 Oakville Pop-Up — where coffee meets fashion.',
+    url: '/events/images/event-oakville-display-table.png',
+  },
+  {
+    title: 'Oakville Pop-Up — boutique coffee',
+    desc: 'Guest enjoying Volcano Drip coffee inside the pop-up boutique.',
+    url: '/events/images/event-oakville-boutique-coffee.png',
+  },
+  {
+    title: 'Oakville Pop-Up — coffee basket display',
+    desc: 'Single-origin bags on display at the Oakville Pop-Up.',
+    url: '/events/images/event-oakville-coffee-basket-display.png',
+  },
+  {
+    title: 'Oakville Pop-Up — Inca Ascent & Sumatra Black',
+    desc: 'Showcasing Inca Ascent and Sumatra Black at the Oakville Pop-Up.',
+    url: '/events/images/event-oakville-inca-sumatra-guest.png',
+  },
+  {
+    title: 'Oakville Pop-Up — Volcano Drip tote',
+    desc: 'Volcano Drip canvas tote at the Oakville Pop-Up patio.',
+    url: '/events/images/event-oakville-tote-bag-patio.png',
+  },
+  {
+    title: 'Oakville Pop-Up — origin bags outdoors',
+    desc: 'Inca Ascent and Sumatra Black on a sunny Oakville street.',
+    url: '/events/images/event-oakville-origin-bags-outdoors.png',
+  },
+  {
+    title: 'Oakville Pop-Up — street style',
+    desc: 'Coffee meets fashion — Volcano Drip tote on the streets of Oakville.',
+    url: '/events/images/event-oakville-street-fashion.png',
+  },
+  {
+    title: 'Oakville Pop-Up — street tote fashion',
+    desc: 'Volcano Drip at the Oakville Pop-Up — style and coffee culture together.',
+    url: '/events/images/event-oakville-street-tote-fashion.png',
+  },
+  {
+    title: 'Outdoor Movie Night — Piaggio display',
+    desc: 'Volcano Drip mobile display at a Mississauga school Outdoor Movie Night, June 5, 2026.',
+    url: '/events/images/event-movie-night-piaggio-display.png',
+  },
+  {
+    title: 'Outdoor Movie Night — on the lawn',
+    desc: 'Families settling in for movie night — proud to support the Mississauga community.',
+    url: '/events/images/event-movie-night-outdoor-screen.png',
+  },
 ];
 
 export const eventGalleryVideos = [
@@ -165,6 +215,12 @@ export const eventGalleryVideos = [
     /** Space in filename: use %20 in the URL path (or rename the file on disk). */
     url: '/events/videos/IMG_8556%202.MP4',
     size: 'wide',
+  },
+  {
+    title: 'Oakville Pop-Up — coffee meets fashion',
+    desc: 'Video from the June 5, 2026 Oakville Pop-Up in downtown Oakville.',
+    url: '/events/videos/oakville-pop-up-june-2026.MOV',
+    size: 'portrait',
   },
 
   // Example local MP4 entry:
