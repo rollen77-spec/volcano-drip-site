@@ -283,7 +283,6 @@ export const eventGalleryVideos = [
     url: '/events/videos/oakville-pop-up-june-2026.MOV',
     dateIso: '2026-06-05',
     group: 'oakville-pop-up-2026',
-    posterUrl: '/events/images/event-oakville-street-fashion.png',
     size: 'video',
   },
   {

@@ -39,9 +39,16 @@ const EventsPage = () => {
     .sort((a, b) => {
       if (a.isPast !== b.isPast) return a.isPast ? 1 : -1;
       if (!a.eventDate || !b.eventDate) return 0;
-      const byDate = a.eventDate - b.eventDate;
+      if (!a.isPast) {
+        // Upcoming: soonest first
+        const byDate = a.eventDate - b.eventDate;
+        if (byDate !== 0) return byDate;
+        return (a.sortOrder ?? 0) - (b.sortOrder ?? 0);
+      }
+      // Past: most recent first (Oakville, Movie Night, then older events)
+      const byDate = b.eventDate - a.eventDate;
       if (byDate !== 0) return byDate;
-      return (a.sortOrder ?? 0) - (b.sortOrder ?? 0);
+      return (b.sortOrder ?? 0) - (a.sortOrder ?? 0);
     });
 
   return (

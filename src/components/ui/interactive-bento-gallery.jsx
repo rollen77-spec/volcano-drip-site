@@ -67,33 +67,30 @@ const MediaItem = ({ item, className, showVideoBadge = false, variant = 'grid' }
   // In the grid we render *no* real <video> tags to avoid background fetching.
   // In the modal we render the actual <video>.
   if (item.type === 'video' && variant === 'grid') {
-    const poster = item.posterUrl || DEFAULT_VIDEO_POSTER;
-    const isLogoPoster = poster.includes('video-placeholder');
-    const lightTileBg = poster.includes('video-placeholder-logo-blue-transparent');
-
-    const tileBgClass = isLogoPoster ? (lightTileBg ? 'bg-stone-100' : 'bg-stone-950') : 'bg-stone-100';
-    const badgeClass = lightTileBg && isLogoPoster
-      ? 'bg-stone-900/80 text-white'
-      : 'bg-black/55 text-white';
+    const logo = DEFAULT_VIDEO_POSTER;
 
     return (
-      <div className={`${className} relative overflow-hidden ${tileBgClass}`}>
-        <div className="absolute inset-0 flex min-h-0 items-center justify-center p-2 sm:p-3">
+      <div className={`${className} relative overflow-hidden bg-stone-950`}>
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 p-6 sm:gap-4 sm:p-8">
           <img
-            src={poster}
-            alt={`${item.title} (video thumbnail)`}
-            className={`h-full w-full object-contain ${isLogoPoster ? 'object-center max-h-[92%] max-w-[94%] h-auto w-auto' : 'object-top'}`}
+            src={logo}
+            alt=""
+            aria-hidden
+            className="h-auto max-h-[42%] w-auto max-w-[72%] object-contain opacity-95"
             loading="lazy"
             decoding="async"
           />
-        </div>
-        {showVideoBadge ? (
-          <span
-            className={`absolute left-3 top-3 inline-flex items-center gap-1 rounded-full px-2 py-1 text-[10px] font-semibold uppercase tracking-wider ${badgeClass}`}
-          >
-            <Play className="h-3 w-3" aria-hidden />
+          <span className="rounded-full bg-black/55 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-white">
             Video
           </span>
+        </div>
+        <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+          <div className="flex h-[4.5rem] w-[4.5rem] items-center justify-center rounded-full bg-white/95 shadow-lg ring-4 ring-white/20 sm:h-20 sm:w-20">
+            <Play className="ml-1 h-9 w-9 fill-stone-900 text-stone-900 sm:h-10 sm:w-10" aria-hidden />
+          </div>
+        </div>
+        {showVideoBadge ? (
+          <span className="sr-only">Video: {item.title}</span>
         ) : null}
       </div>
     );
