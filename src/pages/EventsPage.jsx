@@ -5,6 +5,7 @@ import { Calendar, ExternalLink, MapPin, HeartHandshake } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { upcomingAppearances } from '@/data/appearances';
 import { eventGalleryImages, eventGalleryVideos, VIDEO_TILE_POSTERS } from '@/data/eventsMedia';
+import { arrangeGalleryMedia, buildGalleryMediaItems } from '@/lib/eventGalleryLayout';
 import InteractiveBentoGallery from '@/components/ui/interactive-bento-gallery';
 import PageHero from '@/components/PageHero';
 
@@ -17,31 +18,13 @@ const supportPartners = [
   },
 ];
 
-const gallerySizePattern = ['portrait', 'wide', 'tall', 'square', 'landscape'];
-
 const uniqueEventGalleryImages = Array.from(
   new Map(eventGalleryImages.map((item) => [item.url, item])).values(),
 );
 
-const galleryMediaItems = [
-  ...eventGalleryVideos.map((item, index) => ({
-    id: index + 1,
-    type: 'video',
-    title: item.title,
-    desc: item.desc,
-    url: item.url,
-    posterUrl: item.posterUrl ?? VIDEO_TILE_POSTERS[index % VIDEO_TILE_POSTERS.length],
-    size: item.size || gallerySizePattern[index % gallerySizePattern.length],
-  })),
-  ...uniqueEventGalleryImages.map((item, index) => ({
-    id: eventGalleryVideos.length + index + 1,
-    type: 'image',
-    title: item.title,
-    desc: item.desc,
-    url: item.url,
-    size: gallerySizePattern[index % gallerySizePattern.length],
-  })),
-];
+const galleryMediaItems = arrangeGalleryMedia(
+  buildGalleryMediaItems(uniqueEventGalleryImages, eventGalleryVideos, VIDEO_TILE_POSTERS),
+);
 
 const EventsPage = () => {
   const today = new Date();

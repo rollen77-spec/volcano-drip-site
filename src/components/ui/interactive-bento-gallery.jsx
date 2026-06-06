@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Play } from 'lucide-react';
 import { VIDEO_TILE_POSTERS } from '@/data/eventsMedia';
@@ -137,7 +137,7 @@ const MediaItem = ({ item, className, showVideoBadge = false, variant = 'grid' }
     );
   }
 
-  return <img src={item.url} alt={item.title} className={`${className} object-cover`} loading="lazy" decoding="async" />;
+  return <img src={item.url} alt={item.title} className={`${className} object-contain object-center`} loading="lazy" decoding="async" />;
 };
 
 const GalleryModal = ({ selectedItem, isOpen, onClose, setSelectedItem, mediaItems }) => {
@@ -231,7 +231,7 @@ const MasonryCard = ({ item, index, onOpen }) => {
         aria-label={`View full size: ${item.title}${item.desc ? `. ${item.desc}` : ''}`}
         className="group block w-full overflow-hidden rounded-2xl border border-stone-200 bg-white text-left shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg"
       >
-        <div className={`relative w-full ${sizeClass}`}>
+        <div className={`relative w-full ${sizeClass} bg-stone-100`}>
           <MediaItem
             item={item}
             className="absolute inset-0 h-full w-full"
@@ -245,73 +245,7 @@ const MasonryCard = ({ item, index, onOpen }) => {
 
 const InteractiveBentoGallery = ({ mediaItems, title, description }) => {
   const [selectedItem, setSelectedItem] = useState(null);
-  const items = useMemo(() => {
-    const list = mediaItems || [];
-
-    const hashStringToSeed = (str) => {
-      let seed = 0;
-      for (let i = 0; i < str.length; i++) seed = (seed * 31 + str.charCodeAt(i)) >>> 0;
-      return seed >>> 0;
-    };
-
-    const xorshift32 = (seed) => {
-      let s = seed >>> 0;
-      return () => {
-        s ^= s << 13;
-        s ^= s >>> 17;
-        s ^= s << 5;
-        return (s >>> 0) / 4294967296;
-      };
-    };
-
-    const shuffleWithSeed = (arr, seed) => {
-      const out = [...arr];
-      const rand = xorshift32(seed);
-      for (let i = out.length - 1; i > 0; i--) {
-        const j = Math.floor(rand() * (i + 1));
-        [out[i], out[j]] = [out[j], out[i]];
-      }
-      return out;
-    };
-
-    // Split, shuffle within each group, then interleave deterministically.
-    const seedSource = list.map((i) => i.id ?? i.url ?? i.title).join('|');
-    const seedBase = hashStringToSeed(seedSource);
-
-    const videos = list.filter((i) => i.type === 'video');
-    const images = list.filter((i) => i.type !== 'video');
-
-    const videosShuffled = shuffleWithSeed(videos, seedBase ^ 0x9e3779b9);
-    const imagesShuffled = shuffleWithSeed(images, seedBase ^ 0x7f4a7c15);
-
-    const out = [];
-    let vi = 0;
-    let ii = 0;
-
-    // Pick which type starts based on the seed (deterministic).
-    const startWithVideo = (seedBase & 1) === 0;
-    let takeVideo = startWithVideo;
-
-    // Interleave deterministically without “empty” turns — always drains whichever side still has media.
-    while (vi < videosShuffled.length || ii < imagesShuffled.length) {
-      if (takeVideo) {
-        if (vi < videosShuffled.length) {
-          out.push(videosShuffled[vi++]);
-        } else if (ii < imagesShuffled.length) {
-          out.push(imagesShuffled[ii++]);
-        }
-      } else {
-        if (ii < imagesShuffled.length) {
-          out.push(imagesShuffled[ii++]);
-        } else if (vi < videosShuffled.length) {
-          out.push(videosShuffled[vi++]);
-        }
-      }
-      takeVideo = !takeVideo;
-    }
-
-    return out;
-  }, [mediaItems]);
+  const items = mediaItems || [];
 
   return (
     <div className="container mx-auto px-0 py-2 max-w-6xl">
