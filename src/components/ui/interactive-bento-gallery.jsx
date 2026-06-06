@@ -11,6 +11,7 @@ const SIZE_CLASS = {
   square: 'aspect-square',
   portrait: 'aspect-[4/5]',
   landscape: 'aspect-[5/3]',
+  video: 'aspect-[9/16]',
 };
 
 function videoMimeFromUrl(url) {
@@ -67,20 +68,21 @@ const MediaItem = ({ item, className, showVideoBadge = false, variant = 'grid' }
   // In the modal we render the actual <video>.
   if (item.type === 'video' && variant === 'grid') {
     const poster = item.posterUrl || DEFAULT_VIDEO_POSTER;
+    const isLogoPoster = poster.includes('video-placeholder');
     const lightTileBg = poster.includes('video-placeholder-logo-blue-transparent');
 
-    const tileBgClass = lightTileBg ? 'bg-stone-100' : 'bg-stone-950';
-    const badgeClass = lightTileBg
+    const tileBgClass = isLogoPoster ? (lightTileBg ? 'bg-stone-100' : 'bg-stone-950') : 'bg-stone-100';
+    const badgeClass = lightTileBg && isLogoPoster
       ? 'bg-stone-900/80 text-white'
       : 'bg-black/55 text-white';
 
     return (
       <div className={`${className} relative overflow-hidden ${tileBgClass}`}>
-        <div className="absolute inset-0 flex min-h-0 items-center justify-center p-[clamp(0.625rem,5.5vmin,2rem)] sm:p-[clamp(0.75rem,6vmin,2.5rem)]">
+        <div className="absolute inset-0 flex min-h-0 items-center justify-center p-2 sm:p-3">
           <img
             src={poster}
             alt={`${item.title} (video thumbnail)`}
-            className="h-auto max-h-[92%] w-auto max-w-[94%] object-contain object-center"
+            className={`h-full w-full object-contain ${isLogoPoster ? 'object-center max-h-[92%] max-w-[94%] h-auto w-auto' : 'object-top'}`}
             loading="lazy"
             decoding="async"
           />
@@ -100,10 +102,10 @@ const MediaItem = ({ item, className, showVideoBadge = false, variant = 'grid' }
   if (item.type === 'video') {
     const poster = item.posterUrl || DEFAULT_VIDEO_POSTER;
     return (
-      <div className={`${className} relative overflow-hidden`}>
+      <div className={`${className} relative flex items-center justify-center overflow-hidden bg-black`}>
         <video
           ref={videoRef}
-          className="w-full h-full object-cover"
+          className="max-h-full max-w-full object-contain"
           controls={variant === 'modal'}
           autoPlay={variant === 'modal'}
           playsInline
@@ -137,7 +139,15 @@ const MediaItem = ({ item, className, showVideoBadge = false, variant = 'grid' }
     );
   }
 
-  return <img src={item.url} alt={item.title} className={`${className} object-contain object-center`} loading="lazy" decoding="async" />;
+  return (
+    <img
+      src={item.url}
+      alt={item.title}
+      className={`${className} object-contain object-top`}
+      loading="lazy"
+      decoding="async"
+    />
+  );
 };
 
 const GalleryModal = ({ selectedItem, isOpen, onClose, setSelectedItem, mediaItems }) => {
@@ -165,10 +175,10 @@ const GalleryModal = ({ selectedItem, isOpen, onClose, setSelectedItem, mediaIte
             exit={{ y: 10, scale: 0.98, opacity: 0 }}
             transition={{ duration: 0.2 }}
           >
-            <div className="relative max-h-[75vh] w-full bg-black">
+            <div className="relative flex min-h-[200px] max-h-[75vh] w-full items-center justify-center bg-black p-2">
               <MediaItem
                 item={selectedItem}
-                className="h-[75vh] w-full object-contain"
+                className="max-h-[calc(75vh-1rem)] w-full"
                 showVideoBadge={false}
                 variant="modal"
               />
@@ -214,7 +224,10 @@ const GalleryModal = ({ selectedItem, isOpen, onClose, setSelectedItem, mediaIte
 
 const MasonryCard = ({ item, index, onOpen }) => {
   const fallbackSizes = ['portrait', 'wide', 'tall', 'square', 'landscape'];
-  const size = item.size || fallbackSizes[index % fallbackSizes.length];
+  const size =
+    item.type === 'video'
+      ? 'video'
+      : item.size || fallbackSizes[index % fallbackSizes.length];
   const sizeClass = SIZE_CLASS[size] || SIZE_CLASS.portrait;
 
   return (

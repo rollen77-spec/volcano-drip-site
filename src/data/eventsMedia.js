@@ -47,6 +47,7 @@ export const eventGalleryImages = [
     url: '/events/images/event-oakville-boutique-coffee.png',
     dateIso: '2026-06-05',
     group: 'oakville-pop-up-2026',
+    size: 'portrait',
   },
   {
     title: 'Oakville Pop-Up — coffee basket display',
@@ -61,6 +62,7 @@ export const eventGalleryImages = [
     url: '/events/images/event-oakville-inca-sumatra-guest.png',
     dateIso: '2026-06-05',
     group: 'oakville-pop-up-2026',
+    size: 'portrait',
   },
   {
     title: 'Oakville Pop-Up — Volcano Drip tote',
@@ -68,6 +70,7 @@ export const eventGalleryImages = [
     url: '/events/images/event-oakville-tote-bag-patio.png',
     dateIso: '2026-06-05',
     group: 'oakville-pop-up-2026',
+    size: 'portrait',
   },
   {
     title: 'Oakville Pop-Up — origin bags outdoors',
@@ -75,6 +78,7 @@ export const eventGalleryImages = [
     url: '/events/images/event-oakville-origin-bags-outdoors.png',
     dateIso: '2026-06-05',
     group: 'oakville-product-shots',
+    size: 'portrait',
   },
   {
     title: 'Oakville Pop-Up — street style',
@@ -82,6 +86,7 @@ export const eventGalleryImages = [
     url: '/events/images/event-oakville-street-fashion.png',
     dateIso: '2026-06-05',
     group: 'oakville-street-style',
+    size: 'tall',
   },
   {
     title: 'Oakville Pop-Up — street tote fashion',
@@ -89,6 +94,7 @@ export const eventGalleryImages = [
     url: '/events/images/event-oakville-street-tote-fashion.png',
     dateIso: '2026-06-05',
     group: 'oakville-street-style',
+    size: 'tall',
   },
 
   // —— May 2026 — community festivals ——
@@ -112,6 +118,7 @@ export const eventGalleryImages = [
     url: '/events/images/event-booth-team-volcano-drip.png',
     dateIso: '2026-05-03',
     group: 'community-festival',
+    size: 'portrait',
   },
   {
     title: 'Outdoor tasting — Sumatra Black',
@@ -119,6 +126,7 @@ export const eventGalleryImages = [
     url: '/events/images/event-outdoor-sumatra-guest.png',
     dateIso: '2026-05-03',
     group: 'community-festival',
+    size: 'portrait',
   },
   {
     title: 'Antigua Ember — Guatemala',
@@ -126,6 +134,7 @@ export const eventGalleryImages = [
     url: '/events/images/event-antigua-ember-two-guests.png',
     dateIso: '2026-05-03',
     group: 'community-festival',
+    size: 'portrait',
   },
   {
     title: 'Coffee samples tray',
@@ -140,6 +149,7 @@ export const eventGalleryImages = [
     url: '/events/images/event-sumatra-guest-harvard-cap.png',
     dateIso: '2026-05-03',
     group: 'community-festival',
+    size: 'portrait',
   },
 
   // —— Archive (undated) ——
@@ -190,6 +200,7 @@ export const eventGalleryImages = [
     desc: 'Volcano Drip at community events and pop-ups.',
     url: '/events/images/event-16-truck-staff-dog.png',
     group: 'truck-event',
+    size: 'portrait',
   },
   {
     title: 'Event Photo 9',
@@ -273,13 +284,14 @@ export const eventGalleryVideos = [
     dateIso: '2026-06-05',
     group: 'oakville-pop-up-2026',
     posterUrl: '/events/images/event-oakville-street-fashion.png',
+    size: 'video',
   },
   {
     title: 'Event video — IMG_6809',
     desc: 'Local clip from public/events/videos.',
     url: '/events/videos/IMG_6809.MOV',
     group: 'archive-video-6809',
-    size: 'portrait',
+    size: 'video',
   },
   {
     title: 'Event video — IMG_8556',
@@ -287,7 +299,7 @@ export const eventGalleryVideos = [
     /** Space in filename: use %20 in the URL path (or rename the file on disk). */
     url: '/events/videos/IMG_8556%202.MP4',
     group: 'archive-video-8556',
-    size: 'wide',
+    size: 'video',
   },
 
   // Example local MP4 entry:
