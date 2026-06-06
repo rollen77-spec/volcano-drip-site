@@ -51,8 +51,8 @@ export function buildGalleryMediaItems(images, videos, posterFallbacks = []) {
   return [...videoItems, ...imageItems].sort((a, b) => {
     const dateCmp = dated(b.dateIso).localeCompare(dated(a.dateIso));
     if (dateCmp !== 0) return dateCmp;
-    // Same day: images before videos, then title
-    if (a.type !== b.type) return a.type === 'image' ? -1 : 1;
+    // Same day: videos before images so clips appear with that event's photos
+    if (a.type !== b.type) return a.type === 'video' ? -1 : 1;
     return a.title.localeCompare(b.title);
   });
 }
@@ -83,22 +83,28 @@ export function arrangeGalleryMedia(items, columns = 3) {
   return result;
 }
 
+function sameGroupConflict(a, b) {
+  if (!a?.group || !b?.group || a.group !== b.group) return false;
+  // A video and a photo from the same event can sit side-by-side.
+  if (a.type !== b.type) return false;
+  return true;
+}
+
 function canPlace(item, result, columns, relaxed) {
   if (!item.group || result.length === 0) return true;
 
   const prev = result[result.length - 1];
-  if (prev?.group === item.group) return false;
+  if (sameGroupConflict(item, prev)) return false;
 
   if (relaxed) return true;
 
   const rowStart = Math.floor(result.length / columns) * columns;
   const rowPeers = result.slice(rowStart);
-  if (rowPeers.some((peer) => peer.group === item.group)) return false;
+  if (rowPeers.some((peer) => sameGroupConflict(item, peer))) return false;
 
-  // Same group at column 0 and column 2 reads as side-by-side on wide layouts.
   if (columns >= 3 && result.length % columns === columns - 1) {
     const rowAnchor = result[rowStart];
-    if (rowAnchor?.group === item.group) return false;
+    if (sameGroupConflict(item, rowAnchor)) return false;
   }
 
   return true;
