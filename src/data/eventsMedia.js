@@ -6,7 +6,7 @@
  * 2) Drop video files in `public/events/videos/` (or use external mp4 URLs)
  * 3) Add an entry below with title, desc, url, dateIso (YYYY-MM-DD), and group
  *    — newest entries at the top of each section
- * 4) Optional: posterUrl / size / fit for videos and tile layout
+ * 4) Optional: posterUrl for videos (use a still from the clip), sectionId to override grouping
  */
 
 /** Alternate logos rotated on video tiles (full wordmark visible in art). */
@@ -272,7 +272,7 @@ export const eventGalleryVideos = [
     url: '/events/videos/oakville-pop-up-june-2026.MOV',
     dateIso: '2026-06-05',
     group: 'oakville-pop-up-2026',
-    size: 'portrait',
+    posterUrl: '/events/images/event-oakville-street-fashion.png',
   },
   {
     title: 'Event video — IMG_6809',
