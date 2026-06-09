@@ -104,8 +104,9 @@ const SubscriptionPage = () => {
           imageAlt="Volcano Drip Volcanic Origins subscription assortment"
           imageWrapperExtraClassName="opacity-[0.45]"
           overlayClassName="pointer-events-none absolute inset-0 z-10 bg-gradient-to-b from-stone-900/80 via-stone-900/70 to-stone-900"
-          sectionClassName="min-h-[55vh] flex-col justify-center pb-20 pt-24 md:min-h-[60vh] md:pb-24"
+          sectionClassName="flex-col justify-start overflow-visible px-4 pb-16 pt-28 md:min-h-[72vh] md:pb-20 md:pt-32"
           contentMaxWidthClassName="max-w-3xl"
+          titleClassName="text-4xl leading-[1.08] md:text-6xl lg:text-7xl"
         >
           <p className="mb-6 text-2xl font-bold text-amber-400 tabular-nums md:text-3xl">{PRICE_SUBSCRIPTION_MONTHLY_DISPLAY} / month</p>
           <p className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-stone-300 md:text-xl">
@@ -126,12 +127,10 @@ const SubscriptionPage = () => {
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="rounded-2xl border-2 border-amber-500 bg-stone-900 px-6 py-8 md:px-10 md:py-10 shadow-xl text-center mb-14 md:mb-16"
+            className="rounded-2xl border-2 border-amber-500 bg-stone-900 px-6 py-7 md:px-10 md:py-9 shadow-xl text-center mb-14 md:mb-16"
           >
-            <p className="text-xl md:text-2xl lg:text-3xl font-bold text-white leading-snug">
-              Subscribe to the Volcanic Origins Box and{' '}
-              <span className="text-amber-400">save up to 15%</span>
-              {' — '}built from the lineup below.
+            <p className="text-lg font-bold leading-relaxed text-white md:text-xl lg:text-2xl">
+              Save up to <span className="text-amber-400">15%</span> when subscribing to the Volcanic Origins Box
             </p>
           </motion.div>
 
