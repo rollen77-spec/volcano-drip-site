@@ -104,7 +104,7 @@ const SubscriptionPage = () => {
           imageAlt="Volcano Drip Volcanic Origins subscription assortment"
           imageWrapperExtraClassName="opacity-[0.45]"
           overlayClassName="pointer-events-none absolute inset-0 z-10 bg-gradient-to-b from-stone-900/80 via-stone-900/70 to-stone-900"
-          sectionClassName="min-h-[55vh] flex-col justify-center pb-16 pt-24 md:min-h-[60vh]"
+          sectionClassName="min-h-[55vh] flex-col justify-center pb-20 pt-24 md:min-h-[60vh] md:pb-24"
           contentMaxWidthClassName="max-w-3xl"
         >
           <p className="mb-6 text-2xl font-bold text-amber-400 tabular-nums md:text-3xl">{PRICE_SUBSCRIPTION_MONTHLY_DISPLAY} / month</p>
@@ -121,7 +121,7 @@ const SubscriptionPage = () => {
           </a>
         </PageHero>
 
-        <section className="relative z-30 -mt-10 px-4 pb-20 max-w-5xl mx-auto">
+        <section className="relative mx-auto max-w-5xl px-4 pb-20 pt-12 md:pt-14">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
