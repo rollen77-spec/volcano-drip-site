@@ -92,6 +92,7 @@ const SubscriptionPage = () => {
 
       <div className="min-h-screen bg-stone-50">
         <PageHero
+          size="custom"
           kicker="Save up to 15% as a member"
           title={
             <>
@@ -104,12 +105,12 @@ const SubscriptionPage = () => {
           imageAlt="Volcano Drip Volcanic Origins subscription assortment"
           imageWrapperExtraClassName="opacity-[0.45]"
           overlayClassName="pointer-events-none absolute inset-0 z-10 bg-gradient-to-b from-stone-900/80 via-stone-900/70 to-stone-900"
-          sectionClassName="flex-col justify-start overflow-visible px-4 pb-16 pt-28 md:min-h-[72vh] md:pb-20 md:pt-32"
+          sectionClassName="flex flex-col items-center justify-start px-4 pb-14 pt-28 md:pb-16 md:pt-32"
           contentMaxWidthClassName="max-w-3xl"
-          titleClassName="text-4xl leading-[1.08] md:text-6xl lg:text-7xl"
+          titleClassName="text-4xl leading-[1.1] md:text-5xl lg:text-6xl"
         >
-          <p className="mb-6 text-2xl font-bold text-amber-400 tabular-nums md:text-3xl">{PRICE_SUBSCRIPTION_MONTHLY_DISPLAY} / month</p>
-          <p className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-stone-300 md:text-xl">
+          <p className="mb-5 text-xl font-bold text-amber-400 tabular-nums md:text-2xl">{PRICE_SUBSCRIPTION_MONTHLY_DISPLAY} / month</p>
+          <p className="mx-auto mb-8 max-w-2xl text-base leading-relaxed text-stone-300 md:text-lg">
             Choose region, roast, and grind—or trust our picks. Fresh Volcano Drip single origins, roasted when you
             order.
           </p>
@@ -122,7 +123,7 @@ const SubscriptionPage = () => {
           </a>
         </PageHero>
 
-        <section className="relative mx-auto max-w-5xl px-4 pb-20 pt-12 md:pt-14">
+        <section className="relative mx-auto max-w-5xl px-4 pb-20 pt-10 md:pt-12">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
