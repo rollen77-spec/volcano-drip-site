@@ -187,7 +187,11 @@ const BlogPostPage = () => {
         title={post.title}
         imageSrc={heroImageSrc}
         imageAlt={post.heroImageAlt || ''}
-        imageClassName="h-full w-full object-cover object-center"
+        imageClassName={
+          heroImageSrc.includes('-banner') || heroImageSrc.includes('-hero.png')
+            ? 'h-full w-full object-contain object-center'
+            : 'h-full w-full object-cover object-center'
+        }
         imageWrapperExtraClassName={useBannerHero ? 'opacity-95' : undefined}
         overlayClassName="pointer-events-none absolute inset-0 z-10 bg-black/60"
         titleClassName="text-4xl normal-case tracking-tight md:text-6xl md:leading-[1.05]"
@@ -243,7 +247,7 @@ const BlogPostPage = () => {
                 img: ({ src, alt, ...props }) => {
                   const a = String(alt || '');
                   const s = String(src || '');
-                  const wideGraphic = /infographic|timeline/i.test(a) || /infographic|timeline/i.test(s);
+                  const wideGraphic = /infographic|timeline|banner/i.test(a) || /infographic|timeline|banner/i.test(s);
                   return (
                     <BlogEnlargeableImage src={src} alt={alt} wideGraphic={wideGraphic} {...props} />
                   );
