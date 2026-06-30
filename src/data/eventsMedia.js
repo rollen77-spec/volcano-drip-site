@@ -367,8 +367,8 @@ export const eventGalleryImages = [
 
 export const eventGalleryVideos = [
   {
-    title: 'Asado 2026 — Sumatra Black guests',
-    desc: 'Guests sharing Sumatra Black at Assembly Park during Asado 2026.',
+    title: 'Asado 2026 — Inca Ascent guest',
+    desc: 'Guest with Inca Ascent at the Volcano Drip booth during Asado 2026 at Assembly Park.',
     url: '/events/videos/assado-pickup-counter-2026.mp4',
     posterUrl: '/events/images/assado-pickup-counter-poster.jpg',
     dateIso: '2026-06-26',

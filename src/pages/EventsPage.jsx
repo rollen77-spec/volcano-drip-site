@@ -151,28 +151,26 @@ const EventsPage = () => {
               Indigenous initiatives and reconciliation, and causes focused on mental health, food access, and
               sustainability.
             </p>
-            <div className="mx-auto mt-10 w-full max-w-5xl border-t border-stone-200 pt-10">
-              <p className="text-base font-bold uppercase tracking-[0.2em] text-stone-700 md:text-lg">
+            <div className="mt-6 border-t border-stone-200 pt-5">
+              <p className="mb-3 text-center text-xs font-bold uppercase tracking-[0.18em] text-stone-500 md:text-sm">
                 Proud supporter &amp; participant
               </p>
-              <div className="mt-6">
-                {supportPartners.map((partner) => (
-                  <a
-                    key={partner.id}
-                    href={partner.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block overflow-hidden rounded-2xl border-2 border-amber-200 bg-gradient-to-b from-amber-50 via-white to-amber-50/50 p-4 shadow-md transition hover:border-amber-300 hover:shadow-lg md:p-6"
-                  >
-                    <img
-                      src={partner.logo}
-                      alt={`${partner.name} logo`}
-                      className="mx-auto w-full max-w-4xl object-contain"
-                      loading="lazy"
-                    />
-                  </a>
-                ))}
-              </div>
+              {supportPartners.map((partner) => (
+                <a
+                  key={partner.id}
+                  href={partner.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block transition hover:opacity-90"
+                >
+                  <img
+                    src={partner.logo}
+                    alt={`${partner.name} logo`}
+                    className="mx-auto w-full max-w-3xl rounded-xl"
+                    loading="lazy"
+                  />
+                </a>
+              ))}
             </div>
           </div>
 
