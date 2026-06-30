@@ -69,6 +69,7 @@ const MediaItem = ({ item, className, showVideoBadge = false, variant = 'grid' }
   if (item.type === 'video' && variant === 'grid') {
     const tilePoster = item.posterUrl || DEFAULT_VIDEO_POSTER;
     const usesEventPoster = Boolean(item.posterUrl);
+    const fitMode = item.fit === 'cover' ? 'cover' : 'contain';
 
     return (
       <div className={`${className} relative overflow-hidden bg-stone-950`}>
@@ -76,7 +77,10 @@ const MediaItem = ({ item, className, showVideoBadge = false, variant = 'grid' }
           src={tilePoster}
           alt=""
           aria-hidden
-          className={`absolute inset-0 h-full w-full ${usesEventPoster ? 'object-cover object-center' : 'object-contain p-6 opacity-95'}`}
+          className={`absolute inset-0 h-full w-full ${
+            fitMode === 'cover' ? 'object-cover' : 'object-contain'
+          } ${usesEventPoster ? '' : 'p-6 opacity-95'}`}
+          style={item.objectPosition ? { objectPosition: item.objectPosition } : undefined}
           loading="lazy"
           decoding="async"
         />
@@ -100,16 +104,25 @@ const MediaItem = ({ item, className, showVideoBadge = false, variant = 'grid' }
 
   if (item.type === 'video') {
     const poster = item.posterUrl || DEFAULT_VIDEO_POSTER;
+    const isModal = variant === 'modal';
     return (
-      <div className={`${className} relative flex items-center justify-center overflow-hidden bg-black`}>
+      <div
+        className={`${className} relative flex items-center justify-center overflow-hidden bg-black ${
+          isModal ? '' : ''
+        }`}
+      >
         <video
           ref={videoRef}
-          className="max-h-full max-w-full object-contain"
-          controls={variant === 'modal'}
-          autoPlay={variant === 'modal'}
+          className={
+            isModal
+              ? 'max-h-[calc(75vh-2rem)] w-auto max-w-full object-contain'
+              : 'max-h-full max-w-full object-contain'
+          }
+          controls={isModal}
+          autoPlay={isModal}
           playsInline
-          muted={variant !== 'modal'}
-          loop={variant !== 'modal'}
+          muted={!isModal}
+          loop={!isModal}
           preload="metadata"
           poster={poster}
           onLoadedData={() => setIsBuffering(false)}
@@ -117,8 +130,7 @@ const MediaItem = ({ item, className, showVideoBadge = false, variant = 'grid' }
           style={{
             opacity: isBuffering ? 0.8 : 1,
             transition: 'opacity 0.2s',
-            transform: 'translateZ(0)',
-            willChange: 'transform',
+            objectPosition: item.objectPosition || 'center center',
           }}
         >
           <source src={item.url} type={videoMimeFromUrl(item.url)} />
@@ -174,10 +186,10 @@ const GalleryModal = ({ selectedItem, isOpen, onClose, setSelectedItem, mediaIte
             exit={{ y: 10, scale: 0.98, opacity: 0 }}
             transition={{ duration: 0.2 }}
           >
-            <div className="relative flex min-h-[200px] max-h-[75vh] w-full items-center justify-center bg-black p-2">
+            <div className="relative flex min-h-[200px] max-h-[75vh] w-full items-center justify-center overflow-hidden bg-black p-2">
               <MediaItem
                 item={selectedItem}
-                className="max-h-[calc(75vh-1rem)] w-full"
+                className="max-h-[calc(75vh-1rem)] max-w-full"
                 showVideoBadge={false}
                 variant="modal"
               />

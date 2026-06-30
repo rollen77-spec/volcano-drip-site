@@ -373,7 +373,8 @@ export const eventGalleryVideos = [
     posterUrl: '/events/images/assado-pickup-counter-poster.jpg',
     dateIso: '2026-06-26',
     group: 'assado-2026-guests',
-    size: 'portrait',
+    size: 'video',
+    fit: 'contain',
   },
   {
     title: 'Oakville Pop-Up — coffee meets fashion',

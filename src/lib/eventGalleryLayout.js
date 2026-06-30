@@ -12,6 +12,7 @@
  * @property {string} [size]
  * @property {string} [posterUrl]
  * @property {'contain' | 'cover'} [fit] - grid tile fit; default contain for photos
+ * @property {string} [objectPosition] - CSS object-position for grid tiles
  */
 
 const GALLERY_SIZE_PATTERN = ['portrait', 'wide', 'tall', 'square', 'landscape'];
@@ -33,7 +34,8 @@ export function buildGalleryMediaItems(images, videos, posterFallbacks = []) {
     group: item.group,
     posterUrl: item.posterUrl ?? posterFallbacks[index % posterFallbacks.length],
     size: item.size || GALLERY_SIZE_PATTERN[index % GALLERY_SIZE_PATTERN.length],
-    fit: item.fit ?? 'contain',
+    fit: item.fit ?? (/** @type {const} */ ('contain')),
+    objectPosition: item.objectPosition,
   }));
 
   const imageItems = images.map((item, index) => ({
