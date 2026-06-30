@@ -1,8 +1,12 @@
 /**
  * Site reviews shown in the home page testimonials section.
  *
- * To add a Google review: copy name, star rating, and text from your Maps listing,
- * then append an object to `googleReviews` below (set source: 'google').
+ * Live Google reviews: when GOOGLE_PLACES_API_KEY is set on Vercel, the homepage
+ * fetches the newest reviews from `/api/google-reviews` and uses those instead of
+ * the static list below.
+ *
+ * Manual fallback: copy name, star rating, and text from your Maps listing,
+ * then append an object to `googleReviews` (set source: 'google').
  * Curated customer quotes stay in `curatedReviews`.
  */
 
@@ -56,6 +60,24 @@ export const curatedReviews = [
  */
 export const googleReviews = [
   {
+    id: 'google-sabrina-musilli',
+    name: 'Sabrina Musilli',
+    location: 'Google review',
+    content:
+      'Found my new morning coffee. Super fast shipping. Arrived in 2 days and got to enjoy it on my weekend morning. Ordered the Primera Luz. It was smooth with low acidity. An easy drinking coffee. A coffee that you can drink more than one cup for breakfast. Will order again.',
+    rating: 5,
+    source: 'google',
+  },
+  {
+    id: 'google-samantha-andrade',
+    name: 'Samantha Andrade',
+    location: 'Google review',
+    content:
+      "Absolutely fantastic coffee. Whether you like dark, medium, or light roast, they have something for everyone! This is that cup of coffee that doesn't need any sugar or milk. It's perfect on its own.",
+    rating: 5,
+    source: 'google',
+  },
+  {
     id: 'google-cheryl-castator',
     name: 'Cheryl Castator',
     location: 'Google review',
@@ -101,12 +123,16 @@ export const googleReviews = [
 ];
 
 /** Interleave curated + Google for balanced rotating groups. */
-export function getAllDisplayReviews() {
+export function mixDisplayReviews(curated = curatedReviews, google = googleReviews) {
   const mixed = [];
-  const max = Math.max(curatedReviews.length, googleReviews.length);
+  const max = Math.max(curated.length, google.length);
   for (let i = 0; i < max; i += 1) {
-    if (i < curatedReviews.length) mixed.push(curatedReviews[i]);
-    if (i < googleReviews.length) mixed.push(googleReviews[i]);
+    if (i < curated.length) mixed.push(curated[i]);
+    if (i < google.length) mixed.push(google[i]);
   }
   return mixed;
+}
+
+export function getAllDisplayReviews() {
+  return mixDisplayReviews();
 }

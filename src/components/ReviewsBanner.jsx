@@ -2,12 +2,13 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { GOOGLE_MAPS_REVIEWS_URL } from '@/config/googleReviews';
-import { curatedReviews, googleReviews } from '@/data/reviews';
+import { GOOGLE_MAPS_REVIEWS_URL, GOOGLE_REVIEWS_API_PATH } from '@/config/googleReviews';
+import { curatedReviews, googleReviews, mixDisplayReviews } from '@/data/reviews';
 import { cn } from '@/lib/utils';
 
 const GROUP_SIZE = 3;
 const ROTATE_MS = 7000;
+const REVIEWS_API_URL = import.meta.env.VITE_REVIEWS_API_URL || GOOGLE_REVIEWS_API_PATH;
 
 function chunkReviews(reviews, size) {
   const groups = [];
@@ -18,17 +19,9 @@ function chunkReviews(reviews, size) {
 }
 
 /** Mix curated + Google so each rotating group blends both sources. */
-function buildDisplayReviews() {
-  const mixed = [];
-  const max = Math.max(curatedReviews.length, googleReviews.length);
-  for (let i = 0; i < max; i += 1) {
-    if (i < curatedReviews.length) mixed.push(curatedReviews[i]);
-    if (i < googleReviews.length) mixed.push(googleReviews[i]);
-  }
-  return mixed;
+function buildDisplayReviews(activeGoogleReviews) {
+  return mixDisplayReviews(curatedReviews, activeGoogleReviews);
 }
-
-const DISPLAY_REVIEWS = buildDisplayReviews();
 
 function ReviewStar({ filled }) {
   return (
@@ -130,11 +123,36 @@ function TestimonialCard({ review, index }) {
 }
 
 export default function ReviewsBanner() {
-  const groups = useMemo(() => chunkReviews(DISPLAY_REVIEWS, GROUP_SIZE), []);
+  const [liveGoogleReviews, setLiveGoogleReviews] = useState(null);
+  const displayReviews = useMemo(
+    () => buildDisplayReviews(liveGoogleReviews ?? googleReviews),
+    [liveGoogleReviews],
+  );
+  const groups = useMemo(() => chunkReviews(displayReviews, GROUP_SIZE), [displayReviews]);
   const [groupIndex, setGroupIndex] = useState(0);
   const isPausedRef = useRef(false);
   const sectionRef = useRef(null);
   const [isInView, setIsInView] = useState(false);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    fetch(REVIEWS_API_URL)
+      .then((response) => (response.ok ? response.json() : null))
+      .then((payload) => {
+        if (cancelled || !payload?.reviews?.length) return;
+        setLiveGoogleReviews(payload.reviews);
+      })
+      .catch(() => {});
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  useEffect(() => {
+    setGroupIndex(0);
+  }, [groups.length]);
 
   const activeGroup = groups[groupIndex] ?? [];
   const canRotate = groups.length > 1;
@@ -171,7 +189,7 @@ export default function ReviewsBanner() {
     if (event.pointerType === 'mouse') isPausedRef.current = false;
   };
 
-  if (DISPLAY_REVIEWS.length === 0) return null;
+  if (displayReviews.length === 0) return null;
 
   return (
     <section

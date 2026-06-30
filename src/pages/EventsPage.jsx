@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet';
-import { Calendar, ExternalLink, MapPin, HeartHandshake } from 'lucide-react';
+import { Calendar, ExternalLink, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { upcomingAppearances } from '@/data/appearances';
 import { eventGalleryImages, eventGalleryVideos, VIDEO_TILE_POSTERS } from '@/data/eventsMedia';
@@ -14,7 +14,7 @@ const supportPartners = [
     id: 'bmo-walk-so-kids-can-talk',
     name: 'BMO Walk so Kids Can Talk',
     href: 'https://walksokidscantalk.ca',
-    logo: 'https://walksokidscantalk.ca/walkfortalk/media/images/logo_KHP_new_EN.svg',
+    logo: '/events/images/bmo-walk-so-kids-badge.png',
   },
 ];
 
@@ -25,6 +25,70 @@ const uniqueEventGalleryImages = Array.from(
 const galleryMediaItems = arrangeGalleryMedia(
   buildGalleryMediaItems(uniqueEventGalleryImages, eventGalleryVideos, VIDEO_TILE_POSTERS),
 );
+
+function EventCard({ event, index }) {
+  return (
+    <motion.li
+      initial={{ opacity: 0, y: 14 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.04 }}
+      className={`flex h-full flex-col rounded-xl border border-stone-700/80 bg-stone-800/60 p-5 ${
+        event.isPast ? 'opacity-80' : ''
+      }`}
+    >
+      <span
+        className={`text-xs font-bold uppercase tracking-wider ${
+          event.isPast ? 'text-stone-500' : event.highlight ? 'text-amber-400' : 'text-stone-300'
+        }`}
+      >
+        {event.dateLabel}
+      </span>
+      <div className="mt-2 flex flex-wrap items-center gap-2">
+        <h3 className={`text-lg font-bold leading-tight ${event.isPast ? 'text-stone-300' : 'text-white'}`}>
+          {event.title}
+        </h3>
+        {event.isPast ? (
+          <span className="inline-flex items-center rounded-full border border-stone-600 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-stone-400">
+            Passed
+          </span>
+        ) : (
+          <span className="inline-flex items-center rounded-full border border-amber-500/40 bg-amber-500/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-amber-300">
+            Upcoming
+          </span>
+        )}
+      </div>
+      <div className="mt-2 flex items-start gap-2 text-sm text-stone-300">
+        <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden />
+        <span>{event.location}</span>
+      </div>
+      {event.imageUrl ? (
+        <img
+          src={event.imageUrl}
+          alt={`${event.title} event`}
+          className="mt-4 aspect-[4/3] w-full rounded-lg border border-stone-700 object-cover"
+          loading="lazy"
+        />
+      ) : null}
+      {event.description ? (
+        <p className="mt-3 flex-1 text-sm leading-relaxed text-stone-400">{event.description}</p>
+      ) : (
+        <div className="flex-1" />
+      )}
+      {event.infoUrl ? (
+        <a
+          href={event.infoUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-amber-400 hover:text-amber-300"
+        >
+          {event.infoLinkLabel || 'More info'}
+          <ExternalLink className="h-3.5 w-3.5 shrink-0" aria-hidden />
+        </a>
+      ) : null}
+    </motion.li>
+  );
+}
 
 const EventsPage = () => {
   const today = new Date();
@@ -40,12 +104,10 @@ const EventsPage = () => {
       if (a.isPast !== b.isPast) return a.isPast ? 1 : -1;
       if (!a.eventDate || !b.eventDate) return 0;
       if (!a.isPast) {
-        // Upcoming: soonest first
         const byDate = a.eventDate - b.eventDate;
         if (byDate !== 0) return byDate;
         return (a.sortOrder ?? 0) - (b.sortOrder ?? 0);
       }
-      // Past: most recent first (Oakville, Movie Night, then older events)
       const byDate = b.eventDate - a.eventDate;
       if (byDate !== 0) return byDate;
       return (b.sortOrder ?? 0) - (a.sortOrder ?? 0);
@@ -83,113 +145,53 @@ const EventsPage = () => {
         />
 
         <section className="border-b border-stone-200 bg-white">
-          <div className="mx-auto max-w-3xl px-4 pb-10 pt-12 text-center md:pb-12 md:pt-14">
+          <div className="mx-auto max-w-4xl px-4 pb-8 pt-12 text-center md:pb-10 md:pt-14">
             <p className="text-lg leading-relaxed text-stone-600 md:text-xl">
               We support youth, communities, and those facing homelessness—along with women&apos;s shelters,
               Indigenous initiatives and reconciliation, and causes focused on mental health, food access, and
               sustainability.
             </p>
+            <div className="mx-auto mt-8 max-w-2xl border-t border-stone-200 pt-8">
+              <p className="text-sm font-semibold uppercase tracking-wider text-stone-500">
+                Proud supporter &amp; participant
+              </p>
+              <div className="mt-4 flex flex-wrap items-center justify-center gap-4">
+                {supportPartners.map((partner) => (
+                  <a
+                    key={partner.id}
+                    href={partner.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex max-w-full items-center justify-center rounded-xl border border-amber-200 bg-amber-50/80 px-6 py-4 transition hover:shadow-md"
+                  >
+                    <img
+                      src={partner.logo}
+                      alt={`${partner.name} logo`}
+                      className="h-12 w-auto max-w-full object-contain md:h-14"
+                      loading="lazy"
+                    />
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
-          <div className="mx-auto grid max-w-6xl gap-8 px-4 pb-14 lg:grid-cols-[1.3fr_1fr] lg:items-stretch">
+
+          <div className="mx-auto max-w-6xl px-4 pb-14">
             <motion.div
               initial={{ opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="rounded-2xl border border-stone-200 bg-stone-900 p-8 text-white"
+              className="rounded-2xl border border-stone-200 bg-stone-900 p-6 md:p-8"
             >
               <div className="mb-6 flex items-center gap-3">
                 <Calendar className="h-6 w-6 text-amber-400" aria-hidden />
-                <h2 className="text-2xl font-bold">Events we are attending</h2>
+                <h2 className="text-2xl font-bold text-white">Events we are attending</h2>
               </div>
-              <ul className="space-y-6">
-                {timelineEvents.map((ev) => (
-                  <li
-                    key={ev.id}
-                    className={`border-l-2 pl-4 ${ev.isPast ? 'border-stone-700 opacity-75' : ev.highlight ? 'border-amber-500' : 'border-stone-600'}`}
-                  >
-                    <span
-                      className={`block text-xs font-bold uppercase tracking-wider ${
-                        ev.isPast ? 'text-stone-500' : ev.highlight ? 'text-amber-400' : 'text-stone-300'
-                      }`}
-                    >
-                      {ev.dateLabel}
-                    </span>
-                    <div className="mt-1 flex items-center gap-2">
-                      <h3 className={`text-lg font-bold ${ev.isPast ? 'text-stone-300' : 'text-white'}`}>{ev.title}</h3>
-                      {ev.isPast ? (
-                        <span className="inline-flex items-center rounded-full border border-stone-600 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-stone-400">
-                          Passed
-                        </span>
-                      ) : (
-                        <span className="inline-flex items-center rounded-full border border-amber-500/40 bg-amber-500/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-amber-300">
-                          Upcoming
-                        </span>
-                      )}
-                    </div>
-                    <div className="mt-1 flex items-center gap-2 text-sm text-stone-300">
-                      <MapPin className="h-3 w-3 shrink-0" aria-hidden />
-                      <span>{ev.location}</span>
-                    </div>
-                    {ev.imageUrl ? (
-                      <img
-                        src={ev.imageUrl}
-                        alt={`${ev.title} event`}
-                        className="mt-4 w-full max-w-sm rounded-lg border border-stone-700 object-cover shadow-md"
-                        loading="lazy"
-                      />
-                    ) : null}
-                    {ev.description ? (
-                      <p className="mt-3 text-sm leading-relaxed text-stone-400">{ev.description}</p>
-                    ) : null}
-                    {ev.infoUrl ? (
-                      <a
-                        href={ev.infoUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-amber-400 hover:text-amber-300"
-                      >
-                        {ev.infoLinkLabel || 'More info'}
-                        <ExternalLink className="h-3.5 w-3.5 shrink-0" aria-hidden />
-                      </a>
-                    ) : null}
-                  </li>
+              <ul className="grid grid-cols-1 gap-5 md:grid-cols-3">
+                {timelineEvents.map((ev, index) => (
+                  <EventCard key={ev.id} event={ev} index={index} />
                 ))}
               </ul>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.05 }}
-              className="flex flex-col lg:h-full"
-            >
-              <div className="flex h-full flex-col justify-center rounded-2xl border border-amber-200 bg-amber-50 p-6 md:p-8">
-                <div className="mb-4 flex items-center gap-2 text-amber-700">
-                  <HeartHandshake className="h-5 w-5 shrink-0" aria-hidden />
-                  <p className="text-xl font-black leading-tight tracking-tight text-stone-900 md:text-2xl">
-                    We are a proud supporter and participant of the following events
-                  </p>
-                </div>
-                <div className="mt-2 flex flex-1 flex-col justify-center gap-4">
-                  {supportPartners.map((partner) => (
-                    <a
-                      key={partner.id}
-                      href={partner.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-center rounded-xl border border-amber-200/80 bg-white/80 p-5 transition hover:shadow-sm"
-                    >
-                      <img
-                        src={partner.logo}
-                        alt={`${partner.name} logo`}
-                        className="h-14 w-auto object-contain md:h-16"
-                        loading="lazy"
-                      />
-                    </a>
-                  ))}
-                </div>
-              </div>
             </motion.div>
           </div>
         </section>

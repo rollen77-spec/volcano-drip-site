@@ -367,6 +367,15 @@ export const eventGalleryImages = [
 
 export const eventGalleryVideos = [
   {
+    title: 'Asado 2026 — pickup counter',
+    desc: 'Serving iced coffees from the Volcano Drip pickup table at Assembly Park.',
+    url: '/events/videos/assado-pickup-counter-2026.mp4',
+    posterUrl: '/events/images/assado-pickup-counter-poster.jpg',
+    dateIso: '2026-06-26',
+    group: 'assado-2026-booth',
+    size: 'portrait',
+  },
+  {
     title: 'Oakville Pop-Up — coffee meets fashion',
     desc: 'Video from the June 5, 2026 Oakville Pop-Up in downtown Oakville.',
     url: '/events/videos/oakville-pop-up-june-2026.MOV',
