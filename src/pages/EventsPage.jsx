@@ -145,29 +145,29 @@ const EventsPage = () => {
         />
 
         <section className="border-b border-stone-200 bg-white">
-          <div className="mx-auto max-w-4xl px-4 pb-8 pt-12 text-center md:pb-10 md:pt-14">
+          <div className="mx-auto max-w-5xl px-4 pb-8 pt-12 text-center md:pb-10 md:pt-14">
             <p className="text-lg leading-relaxed text-stone-600 md:text-xl">
               We support youth, communities, and those facing homelessness—along with women&apos;s shelters,
               Indigenous initiatives and reconciliation, and causes focused on mental health, food access, and
               sustainability.
             </p>
-            <div className="mx-auto mt-8 max-w-2xl border-t border-stone-200 pt-8">
-              <p className="text-sm font-semibold uppercase tracking-wider text-stone-500">
+            <div className="mx-auto mt-10 w-full max-w-5xl border-t border-stone-200 pt-10">
+              <p className="text-base font-bold uppercase tracking-[0.2em] text-stone-700 md:text-lg">
                 Proud supporter &amp; participant
               </p>
-              <div className="mt-4 flex flex-wrap items-center justify-center gap-4">
+              <div className="mt-6">
                 {supportPartners.map((partner) => (
                   <a
                     key={partner.id}
                     href={partner.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex max-w-full items-center justify-center rounded-xl border border-amber-200 bg-amber-50/80 px-6 py-4 transition hover:shadow-md"
+                    className="block overflow-hidden rounded-2xl border-2 border-amber-200 bg-gradient-to-b from-amber-50 via-white to-amber-50/50 p-4 shadow-md transition hover:border-amber-300 hover:shadow-lg md:p-6"
                   >
                     <img
                       src={partner.logo}
                       alt={`${partner.name} logo`}
-                      className="h-12 w-auto max-w-full object-contain md:h-14"
+                      className="mx-auto w-full max-w-4xl object-contain"
                       loading="lazy"
                     />
                   </a>

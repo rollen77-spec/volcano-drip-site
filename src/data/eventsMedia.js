@@ -367,12 +367,12 @@ export const eventGalleryImages = [
 
 export const eventGalleryVideos = [
   {
-    title: 'Asado 2026 — pickup counter',
-    desc: 'Serving iced coffees from the Volcano Drip pickup table at Assembly Park.',
+    title: 'Asado 2026 — Sumatra Black guests',
+    desc: 'Guests sharing Sumatra Black at Assembly Park during Asado 2026.',
     url: '/events/videos/assado-pickup-counter-2026.mp4',
     posterUrl: '/events/images/assado-pickup-counter-poster.jpg',
     dateIso: '2026-06-26',
-    group: 'assado-2026-booth',
+    group: 'assado-2026-guests',
     size: 'portrait',
   },
   {

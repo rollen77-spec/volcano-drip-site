@@ -67,19 +67,21 @@ const MediaItem = ({ item, className, showVideoBadge = false, variant = 'grid' }
   // In the grid we render *no* real <video> tags to avoid background fetching.
   // In the modal we render the actual <video>.
   if (item.type === 'video' && variant === 'grid') {
-    const logo = DEFAULT_VIDEO_POSTER;
+    const tilePoster = item.posterUrl || DEFAULT_VIDEO_POSTER;
+    const usesEventPoster = Boolean(item.posterUrl);
 
     return (
       <div className={`${className} relative overflow-hidden bg-stone-950`}>
-        <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 p-6 sm:gap-4 sm:p-8">
-          <img
-            src={logo}
-            alt=""
-            aria-hidden
-            className="h-auto max-h-[42%] w-auto max-w-[72%] object-contain opacity-95"
-            loading="lazy"
-            decoding="async"
-          />
+        <img
+          src={tilePoster}
+          alt=""
+          aria-hidden
+          className={`absolute inset-0 h-full w-full ${usesEventPoster ? 'object-cover object-center' : 'object-contain p-6 opacity-95'}`}
+          loading="lazy"
+          decoding="async"
+        />
+        <div className="absolute inset-0 bg-black/25" aria-hidden />
+        <div className="absolute left-3 top-3">
           <span className="rounded-full bg-black/55 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-white">
             Video
           </span>
