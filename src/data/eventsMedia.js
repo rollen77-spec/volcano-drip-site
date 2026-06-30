@@ -17,6 +17,95 @@ export const VIDEO_TILE_POSTERS = [
 ];
 
 export const eventGalleryImages = [
+  // —— June 26–28, 2026 — Asado @ Assembly Park ——
+  {
+    title: 'Asado 2026 — Volcano Drip booth',
+    desc: 'Guest with Inca Ascent at our Assembly Park booth — Latin culture, music, and single-origin coffee all weekend.',
+    url: '/events/images/event-assado-booth-inca-ascent.png',
+    dateIso: '2026-06-26',
+    group: 'assado-2026-booth',
+    size: 'portrait',
+  },
+  {
+    title: 'Asado 2026 — Antigua Ember & Copán Rise',
+    desc: 'Showcasing Antigua Ember and Copán Rise single-origin bags at Asado 2026.',
+    url: '/events/images/event-assado-antigua-copan-guest.png',
+    dateIso: '2026-06-26',
+    group: 'assado-2026-product-shots',
+    size: 'portrait',
+  },
+  {
+    title: 'Asado 2026 — Antigua Ember guest',
+    desc: 'Guest enjoying iced Volcano Drip with Antigua Ember from Guatemala.',
+    url: '/events/images/event-assado-antigua-ember-guest.png',
+    dateIso: '2026-06-26',
+    group: 'assado-2026-guests',
+    size: 'portrait',
+  },
+  {
+    title: 'Asado 2026 — branded tote',
+    desc: 'Attendees with a Volcano Drip canvas tote at the Toronto Latinos Asado festival.',
+    url: '/events/images/event-assado-tote-bag-guests.png',
+    dateIso: '2026-06-26',
+    group: 'assado-2026-guests',
+    size: 'portrait',
+  },
+  {
+    title: 'Asado 2026 — iced drinks',
+    desc: 'Couple with Volcano Drip iced coffees at Assembly Park.',
+    url: '/events/images/event-assado-couple-iced-drinks.png',
+    dateIso: '2026-06-26',
+    group: 'assado-2026-drinks',
+    size: 'portrait',
+  },
+  {
+    title: 'Asado 2026 — frozen coffee',
+    desc: 'Refreshing frozen Volcano Drip coffee at the Asado festival.',
+    url: '/events/images/event-assado-woman-frozen-coffee.png',
+    dateIso: '2026-06-26',
+    group: 'assado-2026-drinks',
+    size: 'portrait',
+  },
+  {
+    title: 'Asado 2026 — frozen coffee on the patio',
+    desc: 'Volcano Drip frozen coffee slushie on a sunny Assembly Park afternoon.',
+    url: '/events/images/event-assado-frozen-coffee-table.png',
+    dateIso: '2026-06-26',
+    group: 'assado-2026-drinks',
+    size: 'portrait',
+  },
+  {
+    title: 'Asado 2026 — iced coffee to go',
+    desc: 'Guest with a branded iced Volcano Drip cup at Assembly Park.',
+    url: '/events/images/event-assado-guest-iced-coffee.png',
+    dateIso: '2026-06-26',
+    group: 'assado-2026-guests',
+    size: 'portrait',
+  },
+  {
+    title: 'Asado 2026 — branded cup close-up',
+    desc: 'Iced Volcano Drip coffee at our mobile setup — Asado 2026.',
+    url: '/events/images/event-assado-branded-cup-closeup.png',
+    dateIso: '2026-06-26',
+    group: 'assado-2026-drinks',
+    size: 'portrait',
+  },
+  {
+    title: 'Asado 2026 — pickup counter',
+    desc: 'Serving iced coffees and samples from the Volcano Drip pickup table.',
+    url: '/events/images/event-assado-pickup-counter.png',
+    dateIso: '2026-06-26',
+    group: 'assado-2026-booth',
+  },
+  {
+    title: 'Asado 2026 — Assembly Park',
+    desc: 'Assembly Park, Vaughan — home of Asado 2026 with Toronto Latinos.',
+    url: '/events/images/event-assado-assembly-park-sign.png',
+    dateIso: '2026-06-26',
+    group: 'assado-2026-venue',
+    size: 'portrait',
+  },
+
   // —— June 5, 2026 — Outdoor Movie Night ——
   {
     title: 'Outdoor Movie Night — Piaggio display',
