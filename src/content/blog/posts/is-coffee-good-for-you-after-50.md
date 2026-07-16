@@ -5,7 +5,7 @@ excerpt: Coffee drinkers over 50 have real reasons to feel good about their habi
 category: Coffee Science
 keywords: is coffee good for you, coffee after 50, coffee health benefits, coffee and longevity, coffee brain health, coffee type 2 diabetes, moderate coffee consumption
 hero_image: /blog/is-coffee-good-for-you-after-50-banner.jpg
-hero_image_alt: Banner for Is Coffee Good for You? What the Science Says After 50 — Volcano Drip logo and a mug filled with roasted coffee beans
+hero_image_alt: Coffee Is Good for You — top-down view of a white mug filled with roasted coffee beans
 og_image: /blog/is-coffee-good-for-you-after-50-banner.jpg
 ---
 
