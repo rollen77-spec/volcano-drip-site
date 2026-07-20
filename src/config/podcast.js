@@ -8,8 +8,10 @@ export const PODCAST_NAME = 'The Daily Grind Podcast';
 /**
  * Self-hosted audio: place MP3 files in `public/audio/` (served as `/audio/...`).
  * Optional `.env` overrides if you use different filenames or a CDN URL:
- *   VITE_PODCAST_AUDIO_BREWING, VITE_PODCAST_AUDIO_VOLCANIC, VITE_PODCAST_AUDIO_FRESHNESS, VITE_PODCAST_AUDIO_FESTIVALS
+ *   VITE_PODCAST_AUDIO_BREWING, VITE_PODCAST_AUDIO_VOLCANIC, VITE_PODCAST_AUDIO_FRESHNESS,
+ *   VITE_PODCAST_AUDIO_FESTIVALS, VITE_PODCAST_AUDIO_HEALTH
  * External `listenUrl` is optional (e.g. Wondercraft) — shown as a secondary link when set.
+ * Optional `relatedBlog` `{ path, label }` links the episode to its companion article.
  */
 export const PODCAST_EPISODES = [
   {
@@ -49,5 +51,19 @@ export const PODCAST_EPISODES = [
       import.meta.env.VITE_PODCAST_AUDIO_FESTIVALS?.trim() ||
       '/audio/podcast-coffee-festivals-new-social-scene.mp3',
     listenUrl: import.meta.env.VITE_PODCAST_EPISODE_FESTIVALS_URL ?? '',
+  },
+  {
+    id: 'coffee-health-benefits-and-myths',
+    title: 'Coffee and Health: Benefits and Myths',
+    description:
+      'What the research actually says about coffee and your health — the real benefits, the persistent myths, and why moderate coffee drinking looks better the older you get.',
+    audioSrc:
+      import.meta.env.VITE_PODCAST_AUDIO_HEALTH?.trim() ||
+      '/audio/podcast-coffee-health-benefits-and-myths.mp3',
+    listenUrl: import.meta.env.VITE_PODCAST_EPISODE_HEALTH_URL ?? '',
+    relatedBlog: {
+      path: '/blog/is-coffee-good-for-you-after-50',
+      label: 'Is Coffee Good for You? What the Science Says After 50',
+    },
   },
 ];

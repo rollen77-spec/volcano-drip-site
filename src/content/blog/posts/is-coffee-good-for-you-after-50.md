@@ -15,6 +15,12 @@ The science has moved on considerably. A large and growing body of research now 
 
 Here's an honest look at what the research actually shows, what to watch for after 50, and why the quality of the coffee you drink matters more than most people realise.
 
+We also unpack the benefits and the myths on [The Daily Grind podcast](/podcast#episode-coffee-health-benefits-and-myths). If you'd rather listen than read, you can [find that episode here](/podcast#episode-coffee-health-benefits-and-myths).
+
+> **Listen: Coffee and Health — Benefits and Myths**
+> What the research says about coffee and your health, and which old warnings still hold up.
+> [Listen now on The Daily Grind →](/podcast#episode-coffee-health-benefits-and-myths)
+
 ---
 
 ## The Short Answer: Yes, Coffee Is Good for Most People
@@ -94,6 +100,8 @@ Coffee isn't medicine, and it's not a substitute for sleep, exercise, or a good 
 If you want to make the most of it, start with beans that are worth drinking: single-origin, high-altitude, and — where possible — Fairtrade Organic. Your morning cup can be both something you look forward to and something that's quietly working in your favour.
 
 Explore our full lineup of single-origin volcanic-region coffees at [volcanodrip.com/shop](/shop), or try them all with the [Volcanic Origins Club subscription](/subscription).
+
+For the full conversation on benefits, myths, and what moderate coffee drinking looks like after 50, [listen to Coffee and Health on The Daily Grind](/podcast#episode-coffee-health-benefits-and-myths).
 
 ---
 

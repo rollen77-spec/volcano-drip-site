@@ -74,6 +74,18 @@ const PodcastPage = () => {
                       <PodcastAudioPlayer src={ep.audioSrc} label={ep.title} className="mt-6" />
                     ) : null}
 
+                    {ep.relatedBlog?.path ? (
+                      <p className="mt-4 text-sm text-stone-600">
+                        Companion article:{' '}
+                        <Link
+                          to={ep.relatedBlog.path}
+                          className="font-semibold text-amber-900 underline-offset-4 hover:text-amber-700 hover:underline"
+                        >
+                          {ep.relatedBlog.label || 'Read on the blog'}
+                        </Link>
+                      </p>
+                    ) : null}
+
                     {ep.listenUrl ? (
                       <a
                         href={ep.listenUrl}
