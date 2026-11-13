@@ -83,7 +83,7 @@ This is the gift that keeps showing up. Each month, four 340g bags of freshly ro
 
 **Give them:** A [Volcano Drip Gift Card](/shop) (C$100)
 
-A gift card isn't a cop-out when it comes with a great story. Let them explore all five volcanic origins and choose their own favourites. It's also the perfect last-minute save. No shipping, no guessing, no wrapping paper wrestling.
+A gift card isn't a cop-out when it comes with a great story. Let them explore all five volcanic origins and choose their own favourites. It's also the perfect last-minute save. No shipping, no guessing, no wrapping. They can use it in part or in full on their next online order, and it never expires.
 
 ### Bonus: The Free Stocking Stuffer
 
