@@ -15,7 +15,7 @@ Good news: coffee gifts for coffee lovers are some of the easiest wins of the se
 
 The trick is matching the coffee to the person. Below, we've sorted the coffee people in your life into six types, with the gift that will make each of them unreasonably happy. No barista degree required.
 
-And if this is your first order with us, use code **NEWCUST20** at checkout for **20% off**. Consider it an early gift to yourself.
+And if this is your first order with us, use code **NEWCUST20** at checkout for **20% off** your coffee bags. Consider it an early gift to yourself.
 
 ---
 
@@ -123,9 +123,9 @@ In other words, you're not just giving coffee. You're giving a little piece of a
 
 ## New Here? Save 20% on Your First Order
 
-[![NEWCUST20: new customers get 20% off their first Volcano Drip order](/blog/newcust20-banner.jpg)](/shop)
+[![NEWCUST20: new customers get 20% off coffee bags on their first Volcano Drip order](/blog/newcust20-banner.jpg)](/shop)
 
-New customers get **20% off** their first Volcano Drip order with code **NEWCUST20** at checkout. Stock up on gifts, or keep a bag for yourself. We won't tell.
+New customers get **20% off** coffee bags on their first Volcano Drip order with code **NEWCUST20** at checkout. (Not valid on gift cards or the Volcanic Origins Box subscription.) Stock up on gifts, or keep a bag for yourself. We won't tell.
 
 ## The Bottom Line
 
@@ -133,6 +133,6 @@ The best coffee gift isn't the most expensive one. It's the one that fits how th
 
 Still stuck? Here's the cheat sheet: Sumatra Black for the bold, Primera Luz for the pour-over crowd, Antigua Ember for the cozy, Copán Rise or Inca Ascent for the conscious shopper, the Volcanic Origins Box for the curious, and a gift card for everyone else.
 
-**Ready to tick some names off your list?** [Shop all five volcanic origins](/shop) or [gift the Volcanic Origins Box](/subscription), and don't forget **NEWCUST20** for 20% off your first order.
+**Ready to tick some names off your list?** [Shop all five volcanic origins](/shop) or [gift the Volcanic Origins Box](/subscription), and don't forget **NEWCUST20** for 20% off coffee bags on your first order.
 
 Happy brewing, and happy holidays from all of us at Volcano Drip.
