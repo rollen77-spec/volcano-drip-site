@@ -85,9 +85,9 @@ This is the gift that keeps showing up. Each month, four 340g bags of freshly ro
 
 A gift card isn't a cop-out when it comes with a great story. Let them explore all five volcanic origins and choose their own favourites. It's also the perfect last-minute save. No shipping, no guessing, no wrapping. They can use it in part or in full on their next online order, and it never expires.
 
-### Bonus: The Free Stocking Stuffer
+### Bonus: Tune In to The Daily Grind Podcast
 
-Pair any bag with an episode of [The Daily Grind Podcast](/podcast). Write "Press play while it brews" on the gift tag and point them to Episode 2, *Volcanic Coffee Unveiled*, all about why volcanic soil makes such a difference. Buying for a parent? Episode 5 covers coffee and health, with a companion post: [Is Coffee Good for You? What the Science Says After 50](/blog/is-coffee-good-for-you-after-50).
+Check out [The Daily Grind Podcast](/podcast), where we talk about everything from brewing the perfect cup and why volcanic soil matters, to coffee freshness, Toronto's coffee festival scene, and coffee and your health (with a companion post: [Is Coffee Good for You? What the Science Says After 50](/blog/is-coffee-good-for-you-after-50)). Check in regularly, as new episodes are added all the time.
 
 ---
 
