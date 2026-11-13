@@ -47,7 +47,7 @@ Once the CO₂ has settled, what you get is the actual flavour the roaster worke
 
 After the rest period ends, you're in the peak freshness window — typically days 3–28 after roasting, depending on roast level and brew method. This is when the coffee is at its most expressive.
 
-For our single-origin volcanic roasts, this is when the terroir is most audible in the cup. The citrus brightness of our [Primera Luz (Costa Rica)](/origins/costa-rica), the caramel depth of the [Antigua Ember (Guatemala)](/origins/guatemala), the earthy smokiness of the [Sumatra Black (Indonesia)](/origins/indonesia) — these notes are most vivid during peak freshness. After day 28, they're still there, but softer.
+For our single-origin volcanic roasts, this is when the terroir is most audible in the cup. The apricot brightness of our [Primera Luz (Costa Rica)](/origins/costa-rica), the caramel depth of the [Antigua Ember (Guatemala)](/origins/guatemala), the cedar and tobacco notes of the [Sumatra Black (Indonesia)](/origins/indonesia) — these notes are most vivid during peak freshness. After day 28, they're still there, but softer.
 
 Bill's practical advice from the podcast: brew a cup on day 4, another on day 7, and another on day 10, with the same beans. Take notes. The evolution you taste will teach you more about that specific bean than anything written on the bag — and it'll help you find your own personal sweet spot.
 

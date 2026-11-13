@@ -31,7 +31,7 @@ The key is starting with beans worth chilling. Commodity coffee and supermarket 
 
 ### Recipe 1: Iced Citrus Pour Over (The Light & Bright One)
 
-**Best with:** [Primera Luz](/origins/costa-rica) — our Costa Rica light roast with notes of citrus, honey, and milk chocolate
+**Best with:** [Primera Luz](/origins/costa-rica) — our Costa Rica light roast with notes of cocoa, caramel, and apricot
 
 This method brews hot coffee directly over ice, which chills it instantly and locks in the delicate aromatics before they can escape. It's the fastest path to a genuinely good iced coffee.
 
@@ -49,7 +49,7 @@ This method brews hot coffee directly over ice, which chills it instantly and lo
 4. The coffee hits the ice as it drips — chilling instantly.
 5. Stir, add more ice if needed, and drink immediately.
 
-**Why it works:** The rapid chill stops the extraction precisely and preserves the citrus brightness and honey sweetness that make Primera Luz what it is. No bitterness, no flatness.
+**Why it works:** The rapid chill stops the extraction precisely and preserves the apricot brightness and caramel sweetness that make Primera Luz what it is. No bitterness, no flatness.
 
 **Tip:** Don't add milk — drink it black the first time. You might not go back.
 
@@ -57,7 +57,7 @@ This method brews hot coffee directly over ice, which chills it instantly and lo
 
 **Best with:** [Sumatra Black](/origins/indonesia) — our Indonesian dark roast with notes of earth, dark chocolate, and smoke
 
-Cold brew and a bold dark roast are made for each other. The long, slow extraction draws out the deep chocolate and smoky notes of Sumatra Black while leaving behind any harshness. The result is rich, smooth, and endlessly versatile — drink it straight, over milk, or as a base for the next recipe.
+Cold brew and a bold dark roast are made for each other. The long, slow extraction draws out the deep dark chocolate and cedar notes of Sumatra Black while leaving behind any harshness. The result is rich, smooth, and endlessly versatile — drink it straight, over milk, or as a base for the next recipe.
 
 **What you need:**
 
@@ -75,7 +75,7 @@ Cold brew and a bold dark roast are made for each other. The long, slow extracti
 
 **To serve:** Pour 1 part concentrate over ice with 1–2 parts water (or milk). Adjust to taste.
 
-**Why it works:** Sumatra Black's earthy, chocolatey depth is exactly what you want in a cold brew. The coarse grind and slow extraction avoid over-bitterness and let the dark roast's best qualities lead.
+**Why it works:** Sumatra Black's dark chocolate and cedar depth is exactly what you want in a cold brew. The coarse grind and slow extraction avoid over-bitterness and let the dark roast's best qualities lead.
 
 **Tip:** The concentrate also makes an excellent base for Recipe 4 below.
 

@@ -59,7 +59,7 @@ A lot of commodity coffee — the stuff in supermarket tins — comes from lower
 At Volcano Drip, all of our coffees come from elevated volcanic-region farms. But there's a significant range — and each elevation range produces something distinct.
 
 **[Primera Luz](/origins/costa-rica) — Costa Rica — 1,400m**
-The classic "high altitude light roast" profile. Grown in the volcanic highlands of Costa Rica, Primera Luz shows exactly what slow ripening at elevation produces: bright citrus, delicate honey sweetness, and a milk chocolate finish. It's complex without being heavy.
+The classic "high altitude light roast" profile. Grown in the volcanic highlands of Costa Rica, Primera Luz shows exactly what slow ripening at elevation produces: cocoa, a long caramel sweetness, and a bright note of apricot. It's complex without being heavy.
 
 **[Antigua Ember](/origins/guatemala) — Guatemala — 1,500m**
 Guatemala's Antigua valley sits at around 1,500m and is ringed by three volcanoes. Antigua Ember captures that altitude in its flavour: rich cocoa, a long caramel middle, and a subtle spiced finish. The higher elevation means good acidity is present, but the volcanic soil rounds it into something smooth rather than sharp.
@@ -67,7 +67,7 @@ Guatemala's Antigua valley sits at around 1,500m and is ringed by three volcanoe
 **[Sumatra Black](/origins/indonesia) — Indonesia — 3,404m**
 This is where it gets extraordinary. Sumatra Black is grown on the slopes of the Barisan mountain range in Sumatra at 3,404m — among the highest elevations for coffee cultivation anywhere in the world. For context, most "high altitude" coffee is considered anything above 1,500m. At 3,404m, the growing conditions are genuinely extreme.
 
-The result is a coffee that defies expectations of what a dark roast can be. Where most dark roasts rely on the roast process for their flavour, Sumatra Black brings its own extraordinary complexity from the bean itself — earthy, deeply chocolatey, with a smoky finish that lingers. The altitude-driven density means it holds up to dark roasting without going flat or bitter.
+The result is a coffee that defies expectations of what a dark roast can be. Where most dark roasts rely on the roast process for their flavour, Sumatra Black brings its own extraordinary complexity from the bean itself — deep dark chocolate and cedar, with a hint of tobacco that lingers. The altitude-driven density means it holds up to dark roasting without going flat or bitter.
 
 The surprising fact about Sumatra Black: at that elevation, nighttime temperatures can drop close to freezing, even near the equator. The coffee plant is essentially growing in conditions most people would associate with a mountain, not a tropical island. That stress is what produces such an intense, distinct cup.
 
