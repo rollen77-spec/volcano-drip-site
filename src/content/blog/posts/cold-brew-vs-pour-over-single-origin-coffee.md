@@ -29,7 +29,7 @@ Cold water extracts slowly and selectively. Over 12–24 hours, it pulls out the
 
 Pour over is a high-resolution method. It shows you exactly what a coffee is. The controlled pour, the bloom, the draw-down — each step influences extraction in ways you can taste. With a single-origin light or medium roast, a good pour over will give you distinct tasting notes: not just "coffee" but the specific character of that origin.
 
-With our [Primera Luz](/origins/costa-rica) from Costa Rica, a pour over brings out a clean citrus brightness with honey sweetness and a milk chocolate finish — exactly as the bean was grown and roasted to express. The volcanic soil of the Tarrazú region shows through.
+With our [Primera Luz](/origins/costa-rica) from Costa Rica, a pour over brings out clean notes of cocoa and caramel with a bright pop of apricot — exactly as the bean was grown and roasted to express. The volcanic soil of the Tarrazú region shows through.
 
 With our [Inca Ascent](/origins/peru) from Peru, pour over lifts the soft citrus and stone fruit notes while the subtle cocoa sits quietly in the background. It's the kind of cup that rewards paying attention.
 
@@ -37,7 +37,7 @@ With our [Inca Ascent](/origins/peru) from Peru, pour over lifts the soft citrus
 
 Cold brew is a low-resolution, high-enjoyment method. It softens the edges. Acidity drops, bitterness fades, and the natural sweetness of the bean comes forward in a way hot brewing rarely achieves. If you find pour over too sharp or tart, cold brew from the same beans can feel like a different coffee entirely.
 
-This is where darker, bolder roasts shine. Our [Sumatra Black](/origins/indonesia) — grown at 3,404m on the slopes of the Barisan mountains — was practically made for cold brew. The earthy depth, the dark chocolate backbone, the subtle smokiness: cold water amplifies the rich base notes and turns the result into something that drinks almost like a dessert without being sweet.
+This is where darker, bolder roasts shine. Our [Sumatra Black](/origins/indonesia) — grown at 3,404m on the slopes of the Barisan mountains — was practically made for cold brew. The dark chocolate backbone, the cedar, the hint of tobacco: cold water amplifies the rich base notes and turns the result into something that drinks almost like a dessert without being sweet.
 
 [Antigua Ember](/origins/guatemala) from Guatemala is another excellent cold brew candidate. The cocoa and caramel notes that define this medium roast become even more pronounced when extracted cold and slow.
 
@@ -45,7 +45,7 @@ This is where darker, bolder roasts shine. Our [Sumatra Black](/origins/indonesi
 
 A useful general rule: **the lighter the roast, the more you benefit from pour over. The darker the roast, the more cold brew rewards you.** Here's how the Volcano Drip lineup lines up:
 
-- **Primera Luz (Costa Rica, Light)** — Pour over. The citrus and honey notes need heat to fully express.
+- **Primera Luz (Costa Rica, Light)** — Pour over. The apricot and caramel notes need heat to fully express.
 - **Inca Ascent (Peru, Medium)** — Pour over first, cold brew second. Versatile, but complexity shines hot.
 - **Antigua Ember (Guatemala, Medium)** — Either method. The caramel base works beautifully cold or hot.
 - **Copán Rise (Honduras, Medium)** — Either method. Balanced and smooth in both formats.

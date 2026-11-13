@@ -312,7 +312,7 @@ const HomePage = () => {
                   <div className="mb-6">
                     <h4 className="text-[10px] uppercase text-stone-500 font-bold mb-2 tracking-widest">Tasting Notes</h4>
                     <div className="flex flex-wrap justify-center gap-x-2 gap-y-1 text-sm text-stone-200 font-medium">
-                      <span>Citrus •</span><span>Honey •</span><span>Milk Chocolate</span>
+                      <span>Cocoa •</span><span>Caramel •</span><span>Apricot</span>
                     </div>
                   </div>
 
@@ -376,7 +376,7 @@ const HomePage = () => {
                   <div className="mb-6">
                     <h4 className="text-[10px] uppercase text-stone-500 font-bold mb-2 tracking-widest">Tasting Notes</h4>
                     <div className="flex flex-wrap justify-center gap-x-2 gap-y-1 text-sm text-stone-200 font-medium">
-                      <span>Earthy •</span><span>Dark Chocolate •</span><span>Smoky</span>
+                      <span>Dark Chocolate •</span><span>Cedar •</span><span>Tobacco</span>
                     </div>
                   </div>
 

@@ -43,7 +43,7 @@ At higher elevations, temperatures are cooler, and the growing season is longer.
 
 It also means the cherry’s cell walls can become **denser** as the plant works harder in thinner air and cooler temperatures. That density is part of what gives specialty coffee beans their ability to produce complex, multi-note flavours during roasting.
 
-Our **[Sumatra Black](/origins/indonesia)**, grown in Sumatra’s volcanic highlands at high elevation, is built to show **deep earthy character**, dark chocolate undertones, and a smoky finish—profile traits that volcanic terroir and altitude help shape.
+Our **[Sumatra Black](/origins/indonesia)**, grown in Sumatra’s volcanic highlands at high elevation, is built to show **deep dark chocolate** character, with notes of cedar and a hint of tobacco on the finish—profile traits that volcanic terroir and altitude help shape.
 
 Similarly, our **[Antigua Ember](/origins/guatemala)** from Guatemala’s Antigua Valley grows where three surrounding volcanoes (Agua, Fuego, and Acatenango) have spent centuries depositing mineral-rich ash across the valley floor. The result is a medium roast with chocolate, caramel, and subtle spice notes that many drinkers recognise as distinctly Guatemalan.
 
