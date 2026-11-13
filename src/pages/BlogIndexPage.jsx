@@ -11,10 +11,13 @@ function formatPostDate(iso) {
   if (!iso) return '';
   const d = new Date(iso);
   if (Number.isNaN(d.getTime())) return iso;
+  // Post dates are date-only (YYYY-MM-DD), which JS parses as UTC midnight.
+  // Format in UTC so the calendar day isn't shifted back in North American time zones.
   return d.toLocaleDateString('en-CA', {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
+    timeZone: 'UTC',
   });
 }
 
