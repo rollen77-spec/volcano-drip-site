@@ -9,7 +9,7 @@ export const PODCAST_NAME = 'The Daily Grind Podcast';
  * Self-hosted audio: place MP3 files in `public/audio/` (served as `/audio/...`).
  * Optional `.env` overrides if you use different filenames or a CDN URL:
  *   VITE_PODCAST_AUDIO_BREWING, VITE_PODCAST_AUDIO_VOLCANIC, VITE_PODCAST_AUDIO_FRESHNESS,
- *   VITE_PODCAST_AUDIO_FESTIVALS, VITE_PODCAST_AUDIO_HEALTH
+ *   VITE_PODCAST_AUDIO_FESTIVALS, VITE_PODCAST_AUDIO_HEALTH, VITE_PODCAST_AUDIO_CHERRY
  * External `listenUrl` is optional (e.g. Wondercraft) — shown as a secondary link when set.
  * Optional `relatedBlog` `{ path, label }` links the episode to its companion article.
  */
@@ -65,5 +65,15 @@ export const PODCAST_EPISODES = [
       path: '/blog/is-coffee-good-for-you-after-50',
       label: 'Is Coffee Good for You? What the Science Says After 50',
     },
+  },
+  {
+    id: 'cherry-to-cup-journey-of-a-coffee-bean',
+    title: 'From Cherry to Cup: The Journey of a Coffee Bean',
+    description:
+      'An insightful look at the journey your coffee takes before it reaches your morning cup — from a ripe red cherry on the branch through picking, processing, drying, roasting and brewing, sorting coffee myth from fact along the way.',
+    audioSrc:
+      import.meta.env.VITE_PODCAST_AUDIO_CHERRY?.trim() ||
+      '/audio/podcast-cherry-to-cup-journey-of-a-coffee-bean.mp3',
+    listenUrl: import.meta.env.VITE_PODCAST_EPISODE_CHERRY_URL ?? '',
   },
 ];
